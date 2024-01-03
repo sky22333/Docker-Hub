@@ -2,7 +2,7 @@
 
 国内从 Docker Hub 拉取镜像有时会遇到困难，此时可以配置镜像加速器。Docker 官方和国内很多云服务商都提供了国内加速器服务。
 
-> Dockerized 实践 https://github.com/y0ngb1n/dockerized
+> 原地址 - [Docker Hub 镜像加速](https://gist.github.com/y0ngb1n/7e8f16af3242c7815e7ca2f0833d3ea6)
 
 ## 配置加速地址
 
