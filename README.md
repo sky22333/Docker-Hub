@@ -1,4 +1,4 @@
-# Docker Hub 镜像加速器
+# Docker Hub 镜像加速
 
 国内从 Docker Hub 拉取镜像有时会遇到困难，此时可以配置镜像加速器。Docker 官方和国内很多云服务商都提供了国内加速器服务。
 
@@ -28,7 +28,7 @@ sudo systemctl restart docker
 对于 Mac 和 Windows 用户，直接在 Docker Desktop 系统设置中，配置 registry-mirrors 即可。
 
 ---
-## 检查加速器是否生效
+## 检查加速是否生效
 
 命令行执行 `docker info`，如果从结果中看到了如下内容，说明配置成功。
 
@@ -53,10 +53,10 @@ user   0m0.176s
 sys    0m0.120s
 ```
 ---
-## Docker Hub 镜像加速器列表
+## Docker Hub 镜像加速列表
 以下镜像站来源于互联网（感谢热心网友），可能出现宕机、转内网、关停等情况，建议同时配置多个镜像源。
 
-镜像加速器 | 镜像加速器地址 | 说明 | 其它加速
+镜像 | 镜像加速地址 | 说明 | 其它加速
 --- | --- | --- | ---
 [DaoCloud 镜像站](https://github.com/DaoCloud/public-image-mirror) | `https://docker.m.daocloud.io` | |  Docker Hub、GCR、K8S、GHCR、Quay、NVCR 等
 [网易云](https://c.163yun.com/hub) | `https://hub-mirror.c.163.com` | | Docker Hub
