@@ -70,8 +70,6 @@ sys    0m0.120s
 
 + https://docs.docker.com/registry/recipes/mirror/
 + https://github.com/yeasy/docker_practice/blob/master/install/mirror.md
-+ https://github.com/moby/moby/blob/d409b05970e686993e343d226fae5b463d872082/docs/articles/registry_mirror.md
-+ https://www.fengbohello.top/archives/docker-registry-mirror
 + https://www.ilanni.com/?p=14534
-+ https://github.com/Azure/container-service-for-azure-china/blob/master/aks/README.md#22-container-registry-proxy
 + https://moelove.info/2020/09/20/突破-DockerHub-限制全镜像加速服务/
++ https://gist.github.com/y0ngb1n/7e8f16af3242c7815e7ca2f0833d3ea6
