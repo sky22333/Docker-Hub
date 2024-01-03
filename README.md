@@ -25,6 +25,8 @@ sudo systemctl daemon-reload
 sudo systemctl restart docker
 ```
 
+对于 Mac 和 Windows 用户，直接在 Docker Desktop 系统设置中，配置 registry-mirrors 即可。
+
 ---
 ## 检查加速器是否生效
 
