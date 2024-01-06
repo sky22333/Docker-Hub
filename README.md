@@ -4,7 +4,7 @@
 
 > 原地址 - [Docker Hub 镜像加速](https://gist.github.com/y0ngb1n/7e8f16af3242c7815e7ca2f0833d3ea6)
 
-### 安装docker
+## 安装docker
 官方安装脚本：
 ```
 curl -fsSL https://get.docker.com | sh
