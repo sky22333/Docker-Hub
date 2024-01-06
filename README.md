@@ -4,6 +4,17 @@
 
 > 原地址 - [Docker Hub 镜像加速](https://gist.github.com/y0ngb1n/7e8f16af3242c7815e7ca2f0833d3ea6)
 
+### 安装docker
+官方安装脚本：
+```
+curl -fsSL https://get.docker.com | sh
+```
+
+国内环境阿里云镜像脚本：
+```
+curl -fsSL https://get.docker.com | sudo bash -s docker --mirror Aliyun && sudo systemctl enable --now docker
+```
+
 ## 配置加速地址
 
 > Ubuntu 16.04+、Debian 8+、CentOS 7+
