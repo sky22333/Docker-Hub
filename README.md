@@ -10,9 +10,16 @@
 curl -fsSL https://get.docker.com | sh
 ```
 
-国内环境阿里云镜像脚本：
+国内阿里云镜像
+
 ```
-curl -fsSL https://get.docker.com | sudo bash -s docker --mirror Aliyun && sudo systemctl enable --now docker
+curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
+```
+
+Azure 源(中国区 azure)
+
+```
+curl -fsSL https://get.docker.com | bash -s docker --mirror AzureChinaCloud
 ```
 
 ## 配置加速地址
