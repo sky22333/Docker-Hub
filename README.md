@@ -22,6 +22,25 @@ Azure 源(中国区 azure)
 curl -fsSL https://get.docker.com | bash -s docker --mirror AzureChinaCloud
 ```
 
+<details>
+  <summary>安装Docker Compose</summary>
+  下载 Docker Compose:
+运行以下命令来下载 Docker Compose。可以在[GitHub发布页面](https://github.com/docker/compose/releases)上找到最新版本号并替换
+
+```
+sudo curl -L "https://github.com/docker/compose/releases/download/v2.23.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+```
+添加可执行权限:
+```
+sudo chmod +x /usr/local/bin/docker-compose
+```
+验证安装:
+```
+docker-compose --version
+```
+
+</details>
+
 ## 配置加速地址
 
 > Ubuntu 16.04+、Debian 8+、CentOS 7+
