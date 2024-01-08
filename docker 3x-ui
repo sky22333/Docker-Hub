@@ -1,3 +1,5 @@
+mkdir 3x-ui && cd 3x-ui
+
 docker run -itd \
    -e XRAY_VMESS_AEAD_FORCED=false \
    -v $PWD/db/:/etc/x-ui/ \
