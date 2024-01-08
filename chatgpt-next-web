@@ -8,7 +8,7 @@ docker run -d -p 3000:3000 \
 
 
 
-不希望用户输入api key请添加此项：
+不希望用户输入api key可以添加此项：
 -e HIDE_USER_API_KEY=1
 
 使用代理启动服务可以添加此项：
