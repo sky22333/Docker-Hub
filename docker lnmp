@@ -45,6 +45,7 @@ services:
       - ./redis:/data
 
 
+
 docker-compose up -d
 
 
