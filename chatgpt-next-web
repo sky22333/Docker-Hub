@@ -1,6 +1,3 @@
-mkdir gptweb && cd gptweb
-
-
 docker run -d -p 3000:3000 \
    -e OPENAI_API_KEY=你的api key \
    -e BASE_URL=https://api.openai.com \
