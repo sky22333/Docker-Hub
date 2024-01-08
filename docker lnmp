@@ -1,4 +1,4 @@
-sudo cd /home && touch docker-compose.yml nginx.conf
+cd /home && touch docker-compose.yml nginx.conf
 
 
 version: '3.8'
