@@ -38,7 +38,7 @@ docker logs -f mtproxy
 默认所有访客都不被允许连接，只有当访客尝试访问了下面的地址，才会将访客IP加入到白名单中。
 IP 和端口取决于你 docker 的配置：
 
-http://ip/add.php
+http://127.0.0.1/add.php
 
 
 
