@@ -1,4 +1,4 @@
-mkdir x-ui && cd x-ui
+mkdir xui && cd xui
 
 docker run -itd --network=host \
     -v $PWD/db/:/etc/x-ui/ \
