@@ -1,4 +1,4 @@
-mkdir 3x-ui && cd 3x-ui
+mkdir 3xui && cd 3xui
 
 docker run -itd \
    -e XRAY_VMESS_AEAD_FORCED=false \
