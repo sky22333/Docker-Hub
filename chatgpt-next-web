@@ -1,6 +1,5 @@
 mkdir gptweb && cd gptweb
 
-docker pull yidadaa/chatgpt-next-web
 
 docker run -d -p 3000:3000 \
    -e OPENAI_API_KEY=你的api key \
