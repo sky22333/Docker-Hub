@@ -1,0 +1,37 @@
+启动时，emby Web 界面将侦听容器中的端口 8096。
+
+托管 Emby 实例
+
+
+  
+sudo docker run -it --name emby -e TZ=EST5EDT -p 8096:8096 -p 8920:8920 \
+            -p 7359:7359/udp -p 1900:1900/udp -d dperson/emby
+
+              
+              
+              
+              
+或者使用本地存储：
+
+sudo docker run -it --name emby -e TZ=EST5EDT -p 8096:8096 -p 8920:8920 \
+            -p 7359:7359/udp -p 1900:1900/udp \
+            -v /path/to/directory:/config \
+            -v /path/to/media:/media -d dperson/emby
+
+
+
+
+
+环境变量:
+TZ- 同上，配置zoneinfo时区，IEEST5EDT
+USERID- 设置应用程序用户的UID
+GROUPID- 为应用程序用户设置GID          
+
+
+
+
+
+
+
+
+---  
