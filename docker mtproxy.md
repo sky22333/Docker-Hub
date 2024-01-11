@@ -12,7 +12,7 @@ ellermister/mtproxy
 
   
 
-**镜像默认开启了 IP 段白名单**，如果你不需要可以配置 `ip_white_list="OFF"`
+**创建普通镜像：**，不需要白名单修改此部分 `ip_white_list="OFF"`
 
 ```
 docker run -d \
