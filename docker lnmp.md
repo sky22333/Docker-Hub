@@ -35,7 +35,7 @@ services:
     volumes:
       - ./mysql:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: tingfengROOT
+      MYSQL_ROOT_PASSWORD: tingfengYYDS
       MYSQL_USER: tingfeng
       MYSQL_PASSWORD: tingfengYYDS
 
