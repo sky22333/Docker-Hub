@@ -1,3 +1,4 @@
+```
 docker run -d \
   --name=npm \
   -p 80:80 \
@@ -7,7 +8,15 @@ docker run -d \
   -v /home/npm/letsencrypt:/etc/letsencrypt \
   --restart=always \
   jc21/nginx-proxy-manager:latest
+```
 
 
-默认用户名: admin@example.com
-默认密码: changeme
+默认用户名: 
+```
+admin@example.com
+```
+
+默认密码: 
+```
+changeme
+```
