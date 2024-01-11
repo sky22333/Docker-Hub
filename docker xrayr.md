@@ -1,4 +1,4 @@
-###  docker安装
+###  docker安装（可能会出问题）
 在root目录下创建配置文件，并用下面的命令启动
 ```  
 touch config.yml
