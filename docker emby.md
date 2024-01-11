@@ -24,8 +24,11 @@ sudo docker run -it --name emby -e TZ=Asia/Shanghai -p 8096:8096 -p 8920:8920 \
 
 
 环境变量:
+
 TZ- 配置时区 `TZ=Asia/Shanghai` 为中国上海
+
 USERID- 设置应用程序用户的UID
+
 GROUPID- 为应用程序用户设置GID          
 
 
