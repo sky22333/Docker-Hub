@@ -3,12 +3,13 @@
 
 web页面端口为 `8000`
 
+创建项目文件夹
+
 ```
 mkdir wordpress-docker && cd wordpress-docker
 ```
-```
-nano docker-compose.yml
-```
+
+创建`docker-compose.yml`文件并写入以下代码配置：
 
 
 ```
