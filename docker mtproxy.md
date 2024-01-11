@@ -26,9 +26,9 @@ docker run -d \
 ellermister/mtproxy
 ```
 
-`ip_white_list="OFF"` \` \` 这一行为关闭白名单
+`ip_white_list="OFF"` \  \  这一行为关闭白名单
 
-`-e secret="548593a9c0688f4f7d9d57377897d964" \` \` 这一行为指定密钥，格式为：32位十六进制字符。
+`-e secret="548593a9c0688f4f7d9d57377897d964" \  \  这一行为指定密钥，格式为：32位十六进制字符。
 
 **在日志中查看链接的参数配置**：
 
