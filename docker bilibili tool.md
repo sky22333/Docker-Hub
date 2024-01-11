@@ -18,16 +18,16 @@ docker run -d --name="bili" \
 
 
 
-查看实时日志
-```
-docker logs -f bili
-```
-
-
 
 扫码登录启动脚本
 ```
 docker exec -it bili bash -c "dotnet Ray.BiliBiliTool.Console.dll --runTasks=Login"
+```
+
+
+查看实时日志
+```
+docker logs -f bili
 ```
 
 
