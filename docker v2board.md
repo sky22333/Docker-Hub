@@ -1,6 +1,9 @@
 ## Docker-Compose 部署教程
 本文教你如何在命令行使用docker-compose + sqlite来快速部署Xboard  
 如果你需要使用Mysql，你需要自行处理好Mysql的安装。
+
+[项目地址](https://github.com/cedar2025/Xboard/tree/dev)
+
 ### 部署 (使用docker-compose 2分钟部署)
 > 在此提供Xboard安装、快速体验Xboard的步骤。   
 使用docker compose + sqlite 快速部署站点（**无需安装Mysql以及redis**）
