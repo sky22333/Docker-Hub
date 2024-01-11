@@ -1,29 +1,29 @@
 在root目录下创建配置文件，并用下面的命令启动
-  
+```  
 touch config.yml
+```
 
-
+```
 docker pull ghcr.io/xrayr-project/xrayr:latest && docker run --restart=always --name xrayr -d -v /config.yml:/etc/XrayR/config.yml --network=host ghcr.io/xrayr-project/xrayr:latest
+```
 
 
 
-
-配置文件教程地址：
-
-https://xrayr-project.github.io/XrayR-doc/xrayr-pei-zhi-wen-jian-shuo-ming/config.html
+[配置文件教程地址](https://xrayr-project.github.io/XrayR-doc/xrayr-pei-zhi-wen-jian-shuo-ming/config.html)
 
 
 
 
 脚本安装：
-
+```
 bash <(curl -Ls https://raw.githubusercontent.com/XrayR-project/XrayR-release/master/install.sh)
+```
 
-配置文件路径：/etc/XrayR
+配置文件路径： `/etc/XrayR`
 
 
 
-
+```
 Log:
   Level: warning # Log level: none, error, warning, info, debug 
   AccessPath: # /etc/XrayR/access.Log
@@ -166,7 +166,7 @@ Nodes:
 #        DNSEnv: # DNS ENV option used by DNS provider
 #          ALICLOUD_ACCESS_KEY: aaa
 #          ALICLOUD_SECRET_KEY: bbb
-
+```
 
 
 ---
