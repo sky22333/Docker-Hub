@@ -23,7 +23,7 @@ docker logs -f bili
 
 
 
-扫码进行登录启动脚本
+扫码登录启动脚本
 ```
 docker exec -it bili bash -c "dotnet Ray.BiliBiliTool.Console.dll --runTasks=Login"
 ```
