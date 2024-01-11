@@ -1,7 +1,7 @@
 ###  docker-compose部署wordpress博客系统
 
 
-端口为 `8000`
+web页面端口为 `8000`
 
 ```
 mkdir wordpress-docker && cd wordpress-docker
