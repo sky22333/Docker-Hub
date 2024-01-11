@@ -12,7 +12,7 @@ ellermister/mtproxy
 
   
 
-**创建普通镜像：**，不需要白名单修改此部分 `ip_white_list="OFF"`
+**创建普通镜像：**，不需要白名单 `ip_white_list="OFF"`
 
 ```
 docker run -d \
