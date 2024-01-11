@@ -36,5 +36,8 @@ docker logs -f bili
 可以查看有没有出异常，或者掉登录的情况
 
 
+[官方配置说明
+](https://github.com/RayWangQvQ/BiliBiliTool.Docs/blob/main/configuration.md)
+
 
 ---
