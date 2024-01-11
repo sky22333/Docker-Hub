@@ -1,9 +1,12 @@
+```
 mkdir wordpress-docker && cd wordpress-docker
-
+```
+```
 nano docker-compose.yml
+```
 
 
-
+```
 version: "3.9"
 
 services:
@@ -40,7 +43,7 @@ networks:
   wp:
 volumes:
   db_data: {}
-
+```
 
 
 
