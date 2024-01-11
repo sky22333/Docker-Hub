@@ -171,3 +171,6 @@ Nodes:
 
 
 ---
+
+####  機場官網容易被墻，若訂閲鏈接和官網域名一致，會導致節點使用受限，所以把訂閲鏈接和機場官網分成兩個域名，將訂閲域名綁定到Cloudflare上，解析IP為你的機場原始IP，雲朵想開就開，然後添加以下配置，可以防止訂閲地址被解析為機場網站，從而防止被墻。
+![alt](/url "(https://github.com/taotao1058/Docker-Hub/blob/main/png/jichangurl.png)https://github.com/taotao1058/Docker-Hub/blob/main/png/jichangurl.png")
