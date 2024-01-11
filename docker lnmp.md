@@ -1,6 +1,8 @@
+```
 cd /home && touch docker-compose.yml nginx.conf
+```
 
-
+```
 version: '3.8'
 
 services:
@@ -43,10 +45,12 @@ services:
     restart: always
     volumes:
       - ./redis:/data
+```
 
 
-
+```
 docker-compose up -d
+```
 
 
 
