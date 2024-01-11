@@ -48,8 +48,10 @@ docker-compose --version
 
 创建或修改 `/etc/docker/daemon.json`：
 
-```bash
+```
 sudo mkdir -p /etc/docker
+```
+```
 sudo tee /etc/docker/daemon.json <<-'EOF'
 {
     "registry-mirrors": [
@@ -59,7 +61,11 @@ sudo tee /etc/docker/daemon.json <<-'EOF'
     ]
 }
 EOF
+```
+```
 sudo systemctl daemon-reload
+```
+```
 sudo systemctl restart docker
 ```
 
