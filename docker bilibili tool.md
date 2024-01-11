@@ -25,12 +25,13 @@ docker exec -it bili bash -c "dotnet Ray.BiliBiliTool.Console.dll --runTasks=Log
 ```
 
 
-查看实时日志
+查看日志
 ```
 docker logs -f bili
 ```
 
 
+每天的日志记录存放在`/bili/Logs`目录下
 
 
 
