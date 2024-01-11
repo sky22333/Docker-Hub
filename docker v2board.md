@@ -75,7 +75,7 @@ dockcer compose up -d
 
 ###  审计规则：
 
-正则表达式：
+####  正则表达式：
 ```
 (.*\.||)(dafahao|mingjinglive|chinaaid|botanwang|xinsheng|rfi|breakgfw|chengmingmag|jinpianwang|xizang-zhiye|breakgfw|qi-gong|voachinese|mhradio|rfa|edoors|edoors|renminbao|soundofhope|zhengjian|dafahao|minghui|dongtaiwang|epochtimes|ntdtv|falundafa|wujieliulan|aboluowang|bannedbook|secretchina|dajiyuan|boxun|chinadigitaltimes|huaglad|dwnews|creaders|oneplusnews|rfa)\.(cn|com|org|net|club|net|fr|tw|hk|eu|info|me)
 (.*\.||)(gov|12377|12315|talk.news.pts.org|creaders|zhuichaguoji|efcc.org|cyberpolice|aboluowang|tuidang|epochtimes|nytimes|dafahao|falundafa|minghui|falunaz|zhengjian|110.qq|mingjingnews|inmediahk|xinsheng|bannedbook|ntdtv|falungong|12321|secretchina|epochweekly|cn.rfi)\.(cn|com|org|net|club|net|fr|tw|hk|eu|info|me)
@@ -98,7 +98,7 @@ Private Tracker protocol
 ```
 
 
-域名过滤：
+####  域名过滤：
 ```
 # 轮子、Fake News
 falundafa
