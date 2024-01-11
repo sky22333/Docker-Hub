@@ -1,3 +1,4 @@
+###  docker安装
 在root目录下创建配置文件，并用下面的命令启动
 ```  
 touch config.yml
@@ -14,7 +15,7 @@ docker pull ghcr.io/xrayr-project/xrayr:latest && docker run --restart=always --
 
 
 
-脚本安装：
+###  脚本安装：
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/XrayR-project/XrayR-release/master/install.sh)
 ```
