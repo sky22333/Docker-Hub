@@ -10,6 +10,8 @@ docker run -d \
   jc21/nginx-proxy-manager:latest
 ```
 
+端口为`81`
+
 
 默认用户名: 
 ```
