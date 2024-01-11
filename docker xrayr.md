@@ -22,6 +22,8 @@ bash <(curl -Ls https://raw.githubusercontent.com/XrayR-project/XrayR-release/ma
 
 配置文件路径： `/etc/XrayR`
 
+配置文件示例：
+
 
 
 ```
