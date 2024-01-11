@@ -43,7 +43,7 @@ Nodes:
   - PanelType: "NewV2board" # Panel type: SSpanel, NewV2board, PMpanel, Proxypanel, V2RaySocks, GoV2Panel
     ApiConfig:
       ApiHost: "https://wangdazhuang.top"
-      ApiKey: "6xks9dmz5x11111"
+      ApiKey: "6xks1dmz1xii1z2z"
       NodeID: 3
       NodeType: V2ray # Node type: V2ray, Shadowsocks, Trojan, Shadowsocks-Plugin
       Timeout: 30 # Timeout for the api request
@@ -80,7 +80,7 @@ Nodes:
           Dest: 80 # Required, Destination of fallback, check https://xtls.github.io/config/features/fallback.html for details.
           ProxyProtocolVer: 0 # Send PROXY protocol version, 0 for disable
       DisableLocalREALITYConfig: false  # disable local reality config
-      EnableREALITY: true # Enable REALITY
+      EnableREALITY: false # Enable REALITY
       REALITYConfigs:
         Show: true # Show REALITY debug
         Dest: www.smzdm.com:443 # Required, Same as fallback
@@ -143,7 +143,7 @@ Nodes:
 #          Path: # HTTP PATH, Empty for any
 #          Dest: 80 # Required, Destination of fallback, check https://xtls.github.io/config/features/fallback.html for details.
 #          ProxyProtocolVer: 0 # Send PROXY protocol version, 0 for disable
-#      EnableREALITY: true # Enable REALITY
+#      EnableREALITY: false # Enable REALITY
 #      REALITYConfigs:
 #        Show: true # Show REALITY debug
 #        Dest: www.smzdm.com:443 # Required, Same as fallback
