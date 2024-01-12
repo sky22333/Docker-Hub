@@ -1,7 +1,7 @@
 ###  docker安装
 创建配置文件，并用下面的命令启动
 ```  
-touch /etc/XrayR/config.yml && cd /etc/XrayR
+mkdir -p /etc/XrayR && touch /etc/XrayR/config.yml && cd /etc/XrayR
 ```
 
 ```
