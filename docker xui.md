@@ -14,7 +14,6 @@ docker run -itd \
 ```
 
 ```
-默认信息
 端口：9900
 用户名：admin
 密码：admin
