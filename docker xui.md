@@ -5,7 +5,7 @@ mkdir xui && cd xui
 ```
 ```
 docker run -itd \
-    -p 8899:8899 \
+    -p 9900:9900 \
     -e XRAY_VMESS_AEAD_FORCED=false \
     -v $PWD/db/:/etc/x-ui/ \
     -v $PWD/cert/:/root/cert/ \
@@ -15,7 +15,7 @@ docker run -itd \
 
 ```
 默认信息
-端口：8899
+端口：9900
 用户名：admin
 密码：admin
 ```
