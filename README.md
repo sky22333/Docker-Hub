@@ -42,6 +42,18 @@ docker-compose --version
 
 </details>
 
+##  docker常用命令:
+
+| 功能    | 命令 | 示例 |
+|-------------|-------------------|----------------|
+| 查看容器  | `docker ps`      |            |
+| 停止容器  | `docker stop`      |                |
+| 删除容器 | `docker rm`       |                |
+| 查看镜像 | `docker images`   |             |
+| 删除镜像  | `docker rmi -f`   |            |
+| 删除所有镜像  | `docker rmi -f $(docker images -aq)`  |            |
+
+
 ## 配置加速地址
 
 > Ubuntu 16.04+、Debian 8+、CentOS 7+
