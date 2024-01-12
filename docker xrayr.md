@@ -1,11 +1,11 @@
 ###  docker安装（可能会出问题）
 在root目录下创建配置文件，并用下面的命令启动
 ```  
-touch config.yml
+touch /etc/XrayR/config.yml
 ```
 
 ```
-docker pull ghcr.io/xrayr-project/xrayr:latest && docker run --restart=always --name xrayr -d -v /config.yml:/etc/XrayR/config.yml --network=host ghcr.io/xrayr-project/xrayr:latest
+docker pull ghcr.io/xrayr-project/xrayr:latest && docker run --restart=always --name xrayr -d -v /etc/XrayR/config.yml:/etc/XrayR/config.yml --network=host ghcr.io/xrayr-project/xrayr:latest
 ```
 
 
