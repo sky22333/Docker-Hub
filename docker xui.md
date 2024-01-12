@@ -53,3 +53,31 @@ docker run -itd --network=host \
 上述版本为 FranzKafkaYu/x-ui 版本（已闭源）
 如果希望使用 vaxilu/x-ui版本 （已停更），仅需要将上述镜像最后一行修改为 enwaiax/x-ui
 ```
+
+---
+
+###  伊朗3xui
+
+```
+mkdir 3xui && cd 3xui
+```
+```
+docker run -itd \
+   -e XRAY_VMESS_AEAD_FORCED=false \
+   -v $PWD/db/:/etc/x-ui/ \
+   -v $PWD/cert/:/root/cert/ \
+   --network=host \
+   --restart=unless-stopped \
+   --name 3x-ui \
+   ghcr.io/mhsanaei/3x-ui:latest
+```
+
+```
+默认信息
+端口：2053
+用户名：admin
+密码：admin
+```
+
+
+---
