@@ -5,7 +5,7 @@ mkdir xui && cd xui
 ```
 ```
 docker run -itd \
-    -p 54321:54321 \
+    -p 8899:8899 \
     -e XRAY_VMESS_AEAD_FORCED=false \
     -v $PWD/db/:/etc/x-ui/ \
     -v $PWD/cert/:/root/cert/ \
@@ -14,7 +14,7 @@ docker run -itd \
 ```
 
 ```
-端口：54321
+端口：8899
 用户名：admin
 密码：admin
 ```
