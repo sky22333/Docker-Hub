@@ -47,10 +47,12 @@ docker-compose --version
 | 功能    | 命令 | 说明 |
 |-------------|-------------------|----------------|
 | 查看容器  | `docker ps`      |            |
-| 停止容器  | `docker stop`      |                |
-| 删除容器 | `docker rm`       |                |
-| 查看镜像 | `docker images`   |             |
-| 删除镜像  | `docker rmi -f`   |            |
+| 停止容器  | `docker stop`      |   `docker stop 容器名或IPD`             |
+| 启动容器  | `docker start`      | `docker start 容器名或IPD`           |
+| 重启容器  | `docker restart`      |  `docker restart 容器名或IPD`          |
+| 删除容器 | `docker rm`       |  `docker rm 容器名或IPD`              |
+| 查看镜像 | `docker images`   | `docker images 容器名或IPD`            |
+| 删除镜像  | `docker rmi -f`   |  `docker rmi -f 容器名或IPD`          |
 | 删除所有镜像  | `docker rmi -f $(docker images -aq)`  |            |
 
 
