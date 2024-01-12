@@ -37,6 +37,10 @@ mkdir -p /etc/XrayR && cd /etc/XrayR
 ```
 unzip /etc/XrayR-linux-64.zip
 ```
+
+编辑节点配置`/etc/XrayR/config.yml`
+
+
 后台运行
 ```
 nohup ./XrayR --config config.yml &
