@@ -21,7 +21,12 @@ docker run -itd \
 密码：admin
 ```
 
+修改用户名和密码
+```
+docker exec -it x-ui sh
 
+./x-ui setting -username 用户名 -password 密码
+```
 
 
 ---
