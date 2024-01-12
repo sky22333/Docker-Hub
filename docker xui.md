@@ -27,6 +27,11 @@ docker exec -it x-ui sh
 ./x-ui setting -username 用户名 -password 密码
 ```
 
+重置面板：
+```
+./x-ui setting -h
+```
+
 
 ---
 
