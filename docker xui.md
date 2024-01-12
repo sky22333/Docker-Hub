@@ -1,3 +1,35 @@
+最新伊朗版xui
+
+```
+mkdir xui && cd xui
+```
+```
+mkdir x-ui && cd x-ui
+docker run -itd \
+    -p 8899:8899 \
+    -e XRAY_VMESS_AEAD_FORCED=false \
+    -v $PWD/db/:/etc/x-ui/ \
+    -v $PWD/cert/:/root/cert/ \
+    --name x-ui --restart=unless-stopped \
+    alireza7/x-ui:latest
+```
+
+```
+默认信息
+端口：8899
+用户名：admin
+密码：admin
+```
+
+
+
+
+---
+
+---
+
+
+
 ```
 mkdir xui && cd xui
 ```
