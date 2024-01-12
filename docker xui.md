@@ -4,7 +4,6 @@
 mkdir xui && cd xui
 ```
 ```
-mkdir x-ui && cd x-ui
 docker run -itd \
     -p 8899:8899 \
     -e XRAY_VMESS_AEAD_FORCED=false \
