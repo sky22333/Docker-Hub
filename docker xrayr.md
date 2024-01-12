@@ -43,6 +43,8 @@ nohup ./XrayR --config config.yml &
 ```
 查看日志
 ```
+tail -f nohup.out
+
 cat /etc/nohup.out
 ```
 查看进程ID
