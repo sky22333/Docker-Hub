@@ -22,6 +22,40 @@ bash <(curl -Ls https://raw.githubusercontent.com/XrayR-project/XrayR-release/ma
 
 配置文件路径： `/etc/XrayR`
 
+###  手动安装：
+
+[下载github上的xrayr包](https://github.com/XrayR-project/XrayR/releases)  一般下载`XrayR-linux-64.zip`的文件
+
+
+创建文件
+```
+mkdir -p /etc/XrayR && cd /etc/XrayR
+```
+将文件上传到`/etc/XrayR`目录
+
+解压文件
+```
+unzip /etc/XrayR-linux-64.zip
+```
+后台运行
+```
+nohup ./XrayR --config config.yml &
+```
+查看日志
+```
+cat /etc/nohup.out
+```
+查看进程ID
+```
+ps aux | grep XrayR
+```
+停止xrayr
+```
+sudo kill -9 [PID]
+```
+
+
+
 配置示例：
 
 
