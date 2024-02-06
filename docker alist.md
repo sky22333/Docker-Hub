@@ -15,4 +15,5 @@ docker exec -it alist ./alist admin random
 docker exec -it alist ./alist admin set 你的密码
 ```
 
-
+进入方式为：`ip:54321`
+端口可自行修改
