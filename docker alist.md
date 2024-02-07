@@ -5,13 +5,9 @@ docker run -d --restart=unless-stopped -v /etc/alist:/opt/alist/data -p 54321:52
 ```
 
 
+##### 手动设置一个密码
+
 ```
-# 随机生成一个密码
-
-docker exec -it alist ./alist admin random
-
-# 手动设置一个密码
-
 docker exec -it alist ./alist admin set 你的密码
 ```
 
