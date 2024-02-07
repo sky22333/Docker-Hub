@@ -33,7 +33,7 @@ sudo curl -L "https://github.com/docker/compose/releases/download/v2.24.5/docker
 ```
 添加可执行权限:
 ```
-sudo chmod +x /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
 ```
 验证安装:
 ```
