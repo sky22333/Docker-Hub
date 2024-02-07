@@ -5,13 +5,14 @@ mkdir xui && cd xui
 ```
 ```
 docker run -itd \
-    -p 54321:54321 \
+    -p 54321:54321 -p 8443:8443 -p 8080:8080 \
     -e XRAY_VMESS_AEAD_FORCED=false \
     -v $PWD/db/:/etc/x-ui/ \
     -v $PWD/cert/:/root/cert/ \
     --name x-ui --restart=unless-stopped \
     alireza7/x-ui:latest
 ```
+注意`-p 54321:54321 -p 8443:8443 -p 8080:8080 \` 这一行需要映射节点端口
 
 ```
 端口：54321
