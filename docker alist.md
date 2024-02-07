@@ -5,11 +5,14 @@ docker run -d --restart=unless-stopped -v /etc/alist:/opt/alist/data -p 54321:52
 ```
 
 
-##### 手动设置一个密码
+##### 设置密码
 
 ```
 docker exec -it alist ./alist admin set 你的密码
 ```
 
 进入方式为：`ip:54321`
+
+用户名为：`admin`
+
 端口可自行修改
