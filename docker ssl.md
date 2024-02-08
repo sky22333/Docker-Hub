@@ -7,7 +7,7 @@
 3、本地创建cloudflare的api token
 
 ```
-nano /root/cf.inni
+nano /root/cf.ini
 ```
 
 ```
