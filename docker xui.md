@@ -5,14 +5,14 @@ mkdir xui && cd xui
 ```
 ```
 docker run -itd \
-    -p 54321:54321 -p 8443:8443 -p 8080:8080 \
+    -p 54321:54321 -p 51122:51122 -p 9527:9527 \
     -e XRAY_VMESS_AEAD_FORCED=false \
     -v $PWD/db/:/etc/x-ui/ \
     -v $PWD/cert/:/root/cert/ \
     --name x-ui --restart=unless-stopped \
     alireza7/x-ui:latest
 ```
-注意`-p 8443:8443 -p 8080:8080 \` 这一行为节点端口 可自行更改。面板内部端口`54321`不可更改，但映射的外部端口可自行更改。
+注意`-p 51122:51122 -p 9527:9527 \` 这一行为节点端口 可自行更改。面板内部端口`54321`不可更改，但映射的外部端口可自行更改。
 
 ```
 端口：54321
