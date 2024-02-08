@@ -10,7 +10,7 @@
 3、本地创建cloudflare的api token
 
 ```
-nano /root/cf.ini
+touch /root/cf.ini
 ```
 
 ```
@@ -54,7 +54,7 @@ docker run -it --rm --name certbot \
 3：创建 cf.ini 文件
 
 ```
-nano /root/cf.ini
+touch /root/cf.ini
 ```
 
 ```
