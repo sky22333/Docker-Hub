@@ -45,9 +45,11 @@ docker run -it --rm --name certbot \
 
 1：域名解析到阿里云
 
-2：创建阿里云 DNS API Token:
-   在阿里云控制台中，转到 `访问控制` > `AccessKey 管理`。 
-   创建一个新的 `AccessKey`，并确保为该 `AccessKey` 启用阿里云 DNS API 权限。
+2：创建阿里云 `DNS API Token`
+
+   在阿里云控制台中，转到 `访问控制` > `AccessKey 管理`
+   
+   创建一个新的 `AccessKey`，并确保为该 `AccessKey` 启用阿里云 `DNS API 权限`
 
 3：创建 cf.ini 文件
 
