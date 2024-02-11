@@ -14,7 +14,7 @@ docker run -d --restart unless-stopped \
   --network host \
   -v /home/videos:/config \
   linuxserver/ffmpeg \
-  /bin/bash -c "while true; do for file in /config/*.mp4; do ffmpeg -i \$file -c copy -f flv 推流地址/密钥; done; sleep 1; done"
+  /bin/bash -c "while true; do for file in /config/*.mp4; do ffmpeg -i \$file -c copy -f flv '推流地址/密钥'; done; sleep 1; done"
 ```
 
 ---
