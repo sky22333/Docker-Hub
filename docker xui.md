@@ -68,7 +68,7 @@ docker run -itd \
 
 ---
 
-###  国人版本xui
+###  FranzKafkaYu/x-ui版本
 
 ```
 mkdir xui && cd xui
@@ -87,8 +87,6 @@ docker run -itd --network=host \
 端口： 54321
 用户名： admin
 密码： admin
-
-此镜像为FranzKafkaYu/x-ui的版本 
 ```
 
 ---
