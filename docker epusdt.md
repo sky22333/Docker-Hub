@@ -34,7 +34,7 @@ services:
     volumes:
       - ./epusdt.conf:/app/.env
     ports:
-      - 8000:8000
+      - 8333:8000
 ```
 
 修改MYSQL_ROOT_PASSWORD数据库root密码
@@ -43,7 +43,7 @@ services:
 
 用户名和数据库名不用修改
 
-如服务器8000端口可能被占用,需修改epusdt映射端口,例如58000:8000
+equsdt端口为8333
 
 
 #### epusdt.conf
@@ -211,7 +211,7 @@ docker logs -f epusdt-epusdt-1
 
 #### 配置反代域名
 
-仅需要将usdt 域名反代到 8000 或者上述修改的 58000 端口即可
+仅需要将usdt 域名反代到 8333
 
 访问域名显示`hello epusdt, https://github.com/assimon/epusdt`表示成功
 
