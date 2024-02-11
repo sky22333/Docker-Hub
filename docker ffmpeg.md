@@ -20,6 +20,18 @@ docker run -d --restart always \
   -f flv "推流地址"
 ```
 
+
+```
+docker run -d --restart always \
+  --network host \
+  -v /home/videos:/tmp/video \
+  linuxserver/ffmpeg \
+  -re -stream_loop -1 -pattern_type glob -i "/tmp/video/*.mp4" \
+  -c:v libx264 -preset veryfast -b:v 1500k \
+  -c:a aac -b:a 92k \
+  -f flv "推流地址"
+```
+
 ---
 
 ##  带宽码率推荐:
