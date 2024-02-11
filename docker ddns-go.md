@@ -1,6 +1,6 @@
 ##  docker部署ddns-go域名动态解析服务
 
-挂载主机目录, 使用docker host模式。
+挂载主机目录, docker host模式。
 ```
 docker run -d --name ddns-go --restart=always --net=host -v /opt:/root jeessy/ddns-go
 ```
