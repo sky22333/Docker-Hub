@@ -10,11 +10,14 @@ mkdir /home/videos && cd /home/videos
 
 
 ```
-docker run -d --restart unless-stopped \
+docker run -d --restart always \
   --network host \
-  -v /home/videos:/config \
+  -v /home/videos:/tmp/video \
   linuxserver/ffmpeg \
-  /bin/bash -c "while true; do for file in /config/*.mp4; do ffmpeg -i \$file -c copy -f flv '推流地址/密钥'; done; sleep 1; done"
+  -re -stream_loop -1 -i /tmp/video/视频文件名称.mp4 \
+  -c:v libx264 -preset veryfast -b:v 3000k \
+  -c:a aac -b:a 128k \
+  -f flv rtmp://推流地址/live/推流密钥
 ```
 
 ---
