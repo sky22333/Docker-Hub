@@ -10,7 +10,7 @@ mkdir /home/videos && cd /home/videos
 
 
 ```
-docker run --rm -it \
+docker run -d --restart unless-stopped \
   --network host \
   -v 视频文件目录:/config \
   linuxserver/ffmpeg \
