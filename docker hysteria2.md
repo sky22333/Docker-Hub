@@ -40,7 +40,7 @@ docker run -dt --network=host --restart=always --name hysteria -v
 
 ```
 {
-  "server": "域名:36712",
+  "server": "域名:37210",
   "obfs": "fuck me till the daylight",
   "up_mbps": 30,
   "down_mbps": 100,
