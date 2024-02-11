@@ -18,13 +18,13 @@ docker pull weikedata/acgfaka:latest
 ```
 
 ```
-docker run -p 8080:80 --name acgfaka -d weikedata/acgfaka:latest
+docker run -p 8222:80 --name acgfaka -d weikedata/acgfaka:latest
 ```
 
-使用`ip:8080`访问后台
+使用`ip:8222`访问后台
 
 数据库名称为`mysql`
 
 MySQL地址填docker内部IP`172.17.0.1`
 
-密码都是`123456` 可以在部署命令中自行更改
+数据库密码`123456` 可以在部署命令中自行更改
