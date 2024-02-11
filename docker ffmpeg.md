@@ -1,6 +1,6 @@
 ### docker版ffmpeg无人值守推流直播：
 
-先把视频剪辑合并成一个视频，视频需MP4格式，然后放入`/home/videos`目录下
+先把MP4视频放入`/home/videos`目录下
 
 
 ```
