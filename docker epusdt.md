@@ -43,7 +43,7 @@ services:
 
 用户名和数据库名不用修改
 
-equsdt端口为8333
+epusdt端口为8333
 
 
 #### epusdt.conf
