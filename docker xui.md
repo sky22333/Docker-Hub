@@ -39,7 +39,7 @@ docker exec -it x-ui sh
 
 ---
 
-###  伊朗3xui
+###  伊朗3x-ui
 
 ```
 mkdir 3xui && cd 3xui
