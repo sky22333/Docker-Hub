@@ -16,7 +16,7 @@ docker run -d --name myredis -p 6379:6379 redis --requirepass "123456"
 docker run -dit --name dujiaoka -p 8111:80 -p 9000:9000 -e WEB_DOCUMENT_ROOT=/app/public jiangjuhong/dujiaoka:latest
 ```
 
-进入安装页面：
+输入`IP:8111`进入安装页面
 
 数据库名称为`mysql`
 
@@ -28,7 +28,7 @@ MySQL和Redis地址都填docker内部IP`172.17.0.1`
 
 用户名和密码都是`admin`，`admin`
 
-后台为`你的IP/admin`
+后台路径为`admin`
 
 ```
 docker run -dit --name dujiaoka -p 8111:80 -p 9000:9000 -e ADMIN_HTTPS=true -e WEB_DOCUMENT_ROOT=/app/public jiangjuhong/dujiaoka:latest
