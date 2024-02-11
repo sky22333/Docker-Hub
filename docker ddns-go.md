@@ -8,9 +8,9 @@ docker run -d --name ddns-go --restart=always --net=host -v /opt:/root jeessy/dd
 
 [可选] 使用 ghcr.io 镜像
 ```
-docker run -d --name ddns-go --restart=always --net=host -v /opt/ddns-go:/root ghcr.io/jeessy2/ddns-go
+docker run -d --name ddns-go --restart=always --net=host -v /opt:/root ghcr.io/jeessy2/ddns-go
 ```
 [可选] 支持启动带参数 -l监听地址 -f间隔时间(秒)
 ```
-docker run -d --name ddns-go --restart=always --net=host -v /opt/ddns-go:/root jeessy/ddns-go -l
+docker run -d --name ddns-go --restart=always --net=host -v /opt:/root jeessy/ddns-go -l
 ```
