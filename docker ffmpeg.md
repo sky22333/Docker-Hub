@@ -12,7 +12,7 @@ mkdir /home/videos && cd /home/videos
 ```
 docker run -d --restart unless-stopped \
   --network host \
-  -v 视频文件目录:/config \
+  -v /home/videos:/config \
   linuxserver/ffmpeg \
   /bin/bash -c "while true; do for file in /config/*.mp4; do ffmpeg -i \$file -c copy -f flv 推流地址/密钥; done; sleep 1; done"
 ```
