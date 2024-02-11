@@ -20,11 +20,6 @@ docker run -d --restart always \
   -f flv "推流地址"
 ```
 
-多个视频文件
-
-```
-docker run -d --restart always --network host -v /home/videos:/tmp/video linuxserver/ffmpeg sh -c 'ffmpeg -re -pattern_type glob -i "/tmp/video/*.mp4" -c:v libx264 -preset veryfast -b:v 1500k -c:a aac -b:a 92k -f flv "推流地址"'
-```
 
 ---
 
