@@ -3,7 +3,7 @@
 创建配置文件`/etc/xray/config.json`
 
 配置文件示例：
-···
+```
 {
     "log": {
         "loglevel": "warning"
