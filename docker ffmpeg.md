@@ -14,10 +14,10 @@ docker run -d --restart always \
   --network host \
   -v /home/videos:/tmp/video \
   linuxserver/ffmpeg \
-  -re -stream_loop -1 -i /tmp/video/视频文件.mp4 \
+  -re -stream_loop -1 -i /tmp/video/视频文件名称.mp4 \
   -c:v libx264 -preset veryfast -b:v 1500k \
   -c:a aac -b:a 92k \
-  -f flv rtmp://推流地址/live/推流密钥
+  -f flv "推流地址"
 ```
 
 ---
