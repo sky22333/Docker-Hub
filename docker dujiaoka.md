@@ -1,6 +1,8 @@
 ### docker快速部署独角数卡
 
-先安装MySQL和Redis：
+先配置npm把域名反代到`8111`端口
+
+安装MySQL和Redis：
 
 ```
 docker run -d -p 3306:3306  -e MYSQL_ROOT_PASSWORD=123456 --name mysql -v /data/mysql/config/my.cnf:/etc/mysql/my.cnf -v /data/mysql/db:/var/lib/mysql mysql:5.7
@@ -10,13 +12,13 @@ docker run -d -p 3306:3306  -e MYSQL_ROOT_PASSWORD=123456 --name mysql -v /data/
 docker run -d --name myredis -p 6379:6379 redis --requirepass "123456"
 ```
 
-然后部署独角数卡
+部署独角数卡
 
 ```
 docker run -dit --name dujiaoka -p 8111:80 -p 9000:9000 -e ADMIN_HTTPS=true -e WEB_DOCUMENT_ROOT=/app/public jiangjuhong/dujiaoka:latest
 ```
 
-输入`IP:8111`进入安装页面
+输入域名进入安装页面
 
 数据库名称为`mysql`
 
