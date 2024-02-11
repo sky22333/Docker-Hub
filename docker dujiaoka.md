@@ -13,7 +13,7 @@ docker run -d --name myredis -p 6379:6379 redis --requirepass "123456"
 然后部署独角数卡
 
 ```
-docker run -dit --name dujiaoka -p 80:80 -p 9000:9000 -p 443:443 -e ADMIN_HTTPS=true -e WEB_DOCUMENT_ROOT=/app/public jiangjuhong/dujiaoka
+docker run -dit --name dujiaoka -p 80:80 -p 9000:9000 -e ADMIN_HTTPS=true -e WEB_DOCUMENT_ROOT=/app/public jiangjuhong/dujiaoka
 ```
 
 进入安装页面：
