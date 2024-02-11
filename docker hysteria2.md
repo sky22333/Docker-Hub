@@ -1,5 +1,13 @@
 ## 使用docker部署hysteria2代理
 
+#### 先为域名申请证书
+
+脚本
+
+```
+wget -N --no-check-certificate https://github.com/taotao1058/shell/raw/main/acme.sh && bash acme.sh
+```
+
 #### 创建文件
 
 ```
