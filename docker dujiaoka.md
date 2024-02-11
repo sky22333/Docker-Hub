@@ -18,6 +18,8 @@ docker run -dit --name dujiaoka -p 80:80 -p 9000:9000 -p 443:443 -e ADMIN_HTTPS=
 
 进入安装页面：
 
+数据库名称为`mysql`
+
 
 MySQL和Redis地址都填docker内部IP`172.17.0.1`
 
