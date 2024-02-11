@@ -3,7 +3,7 @@
 先安装MySQL和Redis：
 
 ```
-docker run -d -p 3306:3306  -e MYSQL_ROOT_PASSWORD=123456 --name mysql -v /data/mysql/config/my.cnf:/etc/mysql/my.cnf -v /data/mysql/db:/var/lib/mysql mysql:5.7
+docker run -d -p 3306:3306  -e MYSQL_ROOT_PASSWORD=123456 --name dujiaoka -v /data/mysql/config/my.cnf:/etc/mysql/my.cnf -v /data/mysql/db:/var/lib/mysql mysql:5.7
 ```
 
 ```
@@ -18,7 +18,6 @@ docker run -dit --name dujiaoka -p 80:80 -p 9000:9000 -p 443:443 -e ADMIN_HTTPS=
 
 进入安装页面：
 
-数据库名称为`mysql`
 
 MySQL和Redis地址都填docker内部IP`172.17.0.1`
 
