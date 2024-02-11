@@ -1,4 +1,4 @@
-###  最新伊朗版xui---国内环境可拉取
+###  最新伊朗版xui
 
 ```
 mkdir xui && cd xui
@@ -39,6 +39,29 @@ docker exec -it x-ui sh
 
 ---
 
+###  伊朗3xui
+
+```
+mkdir 3xui && cd 3xui
+```
+```
+docker run -itd \
+   -e XRAY_VMESS_AEAD_FORCED=false \
+   -v $PWD/db/:/etc/x-ui/ \
+   -v $PWD/cert/:/root/cert/ \
+   --network=host \
+   --restart=unless-stopped \
+   --name 3x-ui \
+   lovechen/3x-ui:latest
+```
+
+```
+默认信息
+端口：54321
+用户名：admin
+密码：admin
+```
+
 ---
 
 ---
@@ -72,29 +95,6 @@ docker run -itd --network=host \
 ```
 
 ---
-
-###  伊朗3xui
-
-```
-mkdir 3xui && cd 3xui
-```
-```
-docker run -itd \
-   -e XRAY_VMESS_AEAD_FORCED=false \
-   -v $PWD/db/:/etc/x-ui/ \
-   -v $PWD/cert/:/root/cert/ \
-   --network=host \
-   --restart=unless-stopped \
-   --name 3x-ui \
-   ghcr.io/mhsanaei/3x-ui:latest
-```
-
-```
-默认信息
-端口：2053
-用户名：admin
-密码：admin
-```
 
 
 ---
