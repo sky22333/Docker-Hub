@@ -18,4 +18,4 @@ docker run -d \
 
 web端口为：`8123`
 
-`home/zhineng_config`配置为yaml格式
+
