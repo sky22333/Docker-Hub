@@ -5,7 +5,7 @@ mkdir -p /etc/XrayR && touch /etc/XrayR/config.yml && cd /etc/XrayR
 ```
 
 ```
-docker pull ghcr.io/xrayr-project/xrayr:latest && docker run --restart=always --name xrayr -d -v /etc/XrayR/config.yml:/etc/XrayR/config.yml --network=host ghcr.io/xrayr-project/xrayr:latest
+docker pull cloudorz/xrayr:latest && docker run --restart=always --name xrayr -d -v /etc/XrayR/config.yml:/etc/XrayR/config.yml --network=host cloudorz/xrayr:latest
 ```
 
 
