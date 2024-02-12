@@ -16,7 +16,7 @@ sudo docker run -it --name emby -e TZ=Asia/Shanghai -p 8096:8096 -p 8920:8920 \
 sudo docker run -it --name emby -e TZ=Asia/Shanghai -p 8096:8096 -p 8920:8920 \
             -p 7359:7359/udp -p 1900:1900/udp \
             -v /path/to/directory:/config \
-            -v /path/to/media:/media -d dperson/emby
+            -v /path/to/media:/media -d emby/embyserver
 ```
 
 
