@@ -1,6 +1,10 @@
 ## Home Assistant开源智能家居自动化管理平台
 
 ```
+touch /home/zhineng_config
+```
+
+```
 docker run -d \
   --name zhineng \
   --network=host \
