@@ -34,7 +34,7 @@ USERID- 设置应用程序用户的UID
 
 GROUPID- 为应用程序用户设置GID        
 
-可选镜像：
+不同架构的镜像：
 
 `emby/embyserver_arm32v7`
 
