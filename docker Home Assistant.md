@@ -4,7 +4,6 @@
 docker run -d \
   --name zhineng \
   --network=host \
-  --restart=unless-stopped \
   --privileged \
   --restart=unless-stopped \
   -e TZ=Asia/Shanghai \
