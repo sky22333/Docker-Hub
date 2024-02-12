@@ -12,6 +12,9 @@ sudo docker run -it --name emby -e TZ=Asia/Shanghai -p 8096:8096 -p 8920:8920 \
               
               
 使用宿主机存储数据：
+
+确保`/path/to/directory`和`/path/to/media`这两个路径替换为实际的目录路径，这些目录将用于挂载到容器内
+
 ```
 sudo docker run -it --name emby -e TZ=Asia/Shanghai -p 8096:8096 -p 8920:8920 \
             -p 7359:7359/udp -p 1900:1900/udp \
