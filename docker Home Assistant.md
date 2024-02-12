@@ -8,6 +8,7 @@ docker run -d \
   --restart=unless-stopped \
   -e TZ=Asia/Shanghai \
   -v /home/zhineng_config:/config \
+  -v /run/dbus:/run/dbus:ro \
   homeassistant/amd64-addon-mosquitto
 ```
 
