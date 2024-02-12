@@ -29,7 +29,13 @@ TZ- 配置时区 `TZ=Asia/Shanghai` 为中国上海
 
 USERID- 设置应用程序用户的UID
 
-GROUPID- 为应用程序用户设置GID          
+GROUPID- 为应用程序用户设置GID        
+
+可选镜像：
+
+`emby/embyserver_arm32v7`
+
+`emby/embyserver_arm64v8`
 
 
 
