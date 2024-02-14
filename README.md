@@ -50,7 +50,7 @@ docker-compose --version
 |-------------|-------------------|----------------|
 | 查看容器  | `docker ps`      |   `-a`查看包括已停止的容器         |
 | 容器详细信息  | `docker inspect`      |    `docker inspect 容器名或ID`  `Mounts`内容为挂载点       |
-| 进入容器内部  | `docker exec -it 容器名 /bin/bash`      |   使用`ls`内部目录查看所有文件        |
+| 进入容器内部  | `docker exec -it 容器名 /bin/bash`      |   使用`ls 内部目录`查看所有文件        |
 | 停止容器  | `docker stop`      |   `docker stop 容器名或ID`             |
 | 启动容器  | `docker start`      | `docker start 容器名或ID`           |
 | 重启容器  | `docker restart`      |  `docker restart 容器名或ID`          |
