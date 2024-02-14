@@ -48,7 +48,7 @@ docker-compose --version
 
 | 功能    | 命令 | 说明 |
 |-------------|-------------------|----------------|
-| 查看容器  | `docker ps`      |            |
+| 查看容器  | `docker ps`      |   `-a`查看包括已停止的容器         |
 | 容器详细信息  | `docker inspect`      |    `docker inspect 容器名或ID`  `Mounts`内容为挂载点       |
 | 停止容器  | `docker stop`      |   `docker stop 容器名或ID`             |
 | 启动容器  | `docker start`      | `docker start 容器名或ID`           |
@@ -56,7 +56,7 @@ docker-compose --version
 | 删除容器 | `docker rm`       |  `docker rm 容器名或ID`              |
 | 查看镜像 | `docker images`   | `docker images 镜像名或ID`            |
 | 删除镜像  | `docker rmi -f`   |  `docker rmi -f 镜像名或ID`          |
-| 删除所有镜像  | `docker rmi -f $(docker images -aq)`  |            |
+| 删除所有镜像  | `docker rmi -f $(docker images -aq)`  |   所有镜像         |
 
 
 ## 配置加速地址
