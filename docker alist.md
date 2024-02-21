@@ -32,7 +32,7 @@ docker exec -it alist ./alist admin set 你的密码
 <style type="text/css">
     /* 图标和按钮样式设置 */
     .hope-icon {
-        color: #000000 !important; /* 设置所有图标颜色为黑色 */
+        color: #393939 !important; /* 设置所有图标颜色为黑色 */
     }
 
     .hope-button {
