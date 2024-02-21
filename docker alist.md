@@ -107,23 +107,6 @@ docker exec -it alist ./alist admin set 你的密码
 	display: none !important /*隐藏页脚(自行选择)*/
 }
 
-<!-- head -->
-
-<!-- 增加底部文字 -->
-<div style="text-align: center ; ">
-<p align="center">
-&copy; Powered by <a target="_blank" href="url" >站点名称</a>
-<span>|</span>
-<a target="_blank" href="/@manage" >管理</a>
-</p>
-</div>
-
-#footer {
-	line-height: 50px;
-	text-align: center;
-	letter-spacing: 1px
-}
-
 /*背景*/
 .hope-ui-dark {
 	background-color: #555555 !important /*暗色模式背景色*/
