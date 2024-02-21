@@ -17,7 +17,7 @@ docker exec -it alist ./alist admin set 你的密码
 
 端口可自行修改
 
-
+管理路径为`/@manage`
 
 
 
