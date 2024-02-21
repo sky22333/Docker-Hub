@@ -37,7 +37,7 @@ docker exec -it alist ./alist admin set 你的密码
 
     .hope-button {
         color: #fff !important; /* 设置按钮字体为白色 */
-        background-color: #000000 !important; /* 设置按钮背景为黑色 */
+        background-color: #393939 !important; /* 设置按钮背景为黑色 */
     }
 
     /* 特定元素的背景颜色设置 */
@@ -69,7 +69,7 @@ docker exec -it alist ./alist admin set 你的密码
     .left-toolbar-box svg:hover,
     .center-toolbar svg:hover {
         color: white !important; /* 设置工具栏图标悬停时的颜色为白色 */
-        background-color: #000000; /* 设置工具栏图标悬停时的背景色为黑色 */
+        background-color: #393939; /* 设置工具栏图标悬停时的背景色为黑色 */
     }
 
     .hope-c-PJLV-icHSmvX-css {
