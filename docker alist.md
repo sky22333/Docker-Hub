@@ -113,7 +113,7 @@ docker exec -it alist ./alist admin set 你的密码
 }
 
 .hope-ui-light {
-	background-image: url(https://www.freeimg.cn/i/2024/02/21/65d60082bbd1e.jpeg);
+	background-image: url(https://www.freeimg.cn/i/2024/02/21/65d60082bbd1e.jpeg); /*PC背景图*/
 	background-position: center;
 	background-attachment: fixed;
 	background-size: cover;
@@ -122,7 +122,7 @@ docker exec -it alist ./alist admin set 你的密码
 
 @media screen and (max-width:960px) {
 	.hope-ui-light {
-		background-image: url(https://www.freeimg.cn/i/2024/02/21/65d60082889ed.jpeg);
+		background-image: url(https://www.freeimg.cn/i/2024/02/21/65d60082889ed.jpeg); /*手机背景图*/
 	}
 }
 
