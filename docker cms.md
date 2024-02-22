@@ -93,3 +93,40 @@ docker start maccms
 
 ---
 ---
+### 使用最新的镜像，网站目录已映射到`/root/cms/cms`目录
+
+```
+version: '3.3'
+services:
+  # 苹果cms
+  maccms:
+    depends_on:
+      - db
+    image: esme518/docker-maccms10  # 使用 esme518/docker-maccms10 镜像
+    restart: always
+    ports:
+      - 800:80 # 左边为主机端口,可以修改.
+    container_name: maccms
+    volumes:
+      - ./cms:/var/www/html  # 将容器内的 /var/www/html 目录映射到宿主机的 ./cms 目录
+  # mysql数据库
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin@ADMIN  # 数据库密码，可以修改
+    container_name: maccms-mysql
+  # phpmyadmin管理数据库
+  phpmyadmin:
+    depends_on:
+      - db
+    image: phpmyadmin:5.1-apache
+    restart: always
+    ports:
+      - 809:80
+    environment:
+      - PMA_HOST=db:3306
+      - PMA_USER=root
+      - PMA_PASSWORD=admin@ADMIN  # 密码和上面的数据库 root 密码保持一致
+    container_name: maccms-mysql-phpmyadmin
+```
