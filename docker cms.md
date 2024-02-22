@@ -93,7 +93,7 @@ docker start maccms
 
 ---
 ---
-### 使用最新的镜像，网站目录已映射到`/root/cms/cms`目录
+### 使用最新的镜像
 
 ```
 version: '3.3'
