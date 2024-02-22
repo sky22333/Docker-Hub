@@ -60,6 +60,17 @@ docker-compose --version
 | 删除镜像  | `docker rmi -f`   |  `docker rmi -f 镜像名或ID`          |
 | 删除所有镜像  | `docker rmi -f $(docker images -aq)`  |   删除所有镜像         |
 
+docker内部安装vim编辑器
+
+```
+apt-get update
+```
+```
+apt-get install vim
+```
+
+vim输入: `set encoding=utf-8`解决中文乱码问题
+
 
 ## 配置加速地址
 
