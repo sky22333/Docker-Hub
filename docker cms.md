@@ -85,3 +85,5 @@ chmod -R 755 /root/cms/cms/addons/mycj
 `
 
 然后后台应用商城刷新并启用
+
+#### [免费模板推荐](https://www.ys720.com/wangzhanmoban/maccms/)
