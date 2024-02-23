@@ -15,11 +15,13 @@ services:
   maccms:
     depends_on:
       - db
-    image: aoliyougei/maccms:v1.3  # 带海螺模板 带萌芽采集插件 v1.2仿B站模板
+    image: esme518/docker-maccms10  # 使用 esme518/docker-maccms10 最新镜像
     restart: always
     ports:
       - 800:80 # 左边为主机端口,可以修改.
     container_name: maccms
+    volumes:
+      - ./cms:/var/www/html  # 将容器内的 /var/www/html 目录映射到宿主机的 ./cms 目录
   # mysql数据库
   db:
     image: mysql:5.7
@@ -72,27 +74,4 @@ docker start maccms
 
 ---
 ---
-### 使用最新原版镜像
 
-```
-version: '3.3'
-services:
-  # 苹果cms
-  maccms:
-    depends_on:
-      - db
-    image: esme518/docker-maccms10  # 使用 esme518/docker-maccms10 最新镜像
-    restart: always
-    ports:
-      - 800:80 # 左边为主机端口,可以修改.
-    container_name: maccms
-    volumes:
-      - ./cms:/var/www/html  # 将容器内的 /var/www/html 目录映射到宿主机的 ./cms 目录
-  # mysql数据库
-  db:
-    image: mysql:5.7
-    restart: always
-    environment:
-      - MYSQL_ROOT_PASSWORD=admin@ADMIN  # 数据库密码，可以修改
-    container_name: maccms-mysql
-```
