@@ -89,3 +89,5 @@ chmod -R 755 /root/cms/cms/addons/mycj
 然后后台应用商城刷新并启用
 
 #### [免费模板推荐](https://www.ys720.com/wangzhanmoban/maccms/)
+
+提示：有的模板需要直接放在网站根目录（并把原始的`template`目录改名防止冲突），有的需要放在`template`目录
