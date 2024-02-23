@@ -57,19 +57,7 @@ docker-compose up -d
 
 文件已经映射到本地，模板文件在`/root/cms/cms/template`目录
 
-先停止容器
-```
-docker stop maccms
-```
-
 然后把模板文件上传到`/root/cms/cms/template`目录下
-
-启动容器
-```
-docker start maccms
-```
-
-回到浏览器，ctl+f5强制刷新页面，就能看到模板替换成功了
 
 
 ---
