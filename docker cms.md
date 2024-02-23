@@ -55,9 +55,8 @@ docker-compose up -d
 
 #### 更换模板
 
-文件已经映射到本地，模板文件在`/root/cms/cms/template`目录
+文件已经映射到本地，把模板文件放在`/root/cms/cms/template`目录
 
-然后把模板文件上传到`/root/cms/cms/template`目录下
 
 
 ---
