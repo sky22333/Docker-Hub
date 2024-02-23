@@ -15,7 +15,7 @@ services:
   maccms:
     depends_on:
       - db
-    image: esme518/docker-maccms10  # 使用 esme518/docker-maccms10 镜像
+    image: aoliyougei/maccms  # 带模板带萌芽采集
     restart: always
     ports:
       - 800:80 # 左边为主机端口,可以修改.
