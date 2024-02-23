@@ -15,34 +15,20 @@ services:
   maccms:
     depends_on:
       - db
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: aoliyougei/maccms:v1.3  #maccms10镜像，默认海螺模板，带萌芽采集插件
+    image: esme518/docker-maccms10  # 使用 esme518/docker-maccms10 镜像
     restart: always
     ports:
-      - 800:80 #左边为主机端口,可以修改.
+      - 800:80 # 左边为主机端口,可以修改.
     container_name: maccms
+    volumes:
+      - ./cms:/var/www/html  # 将容器内的 /var/www/html 目录映射到宿主机的 ./cms 目录
   # mysql数据库
   db:
     image: mysql:5.7
     restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=admin@ADMIN  #数据库密码，可以修改
+      - MYSQL_ROOT_PASSWORD=admin@ADMIN  # 数据库密码，可以修改
     container_name: maccms-mysql
-  # phpmyadmin管理数据库
-  phpmyadmin:
-    depends_on:
-      - db
-    image: phpmyadmin:5.1-apache
-    restart: always
-    ports:
-      - 809:80
-    environment:
-      - PMA_HOST=db:3306
-      - PMA_USER=root
-      - PMA_PASSWORD=admin@ADMIN  #密码和上面的数据库root密码保持一致
-    container_name: maccms-mysql-phpmyadmin
 ```
 
 #### 运行
@@ -69,20 +55,15 @@ docker-compose up -d
 
 #### 更换模板
 
-以上docker部署的应用，没有任何文件映射到本地。默认影视模板的位置在容器里面，所以想要替换模板，需要把本地的模板拷贝到maccms容器里面的对应模板位置进行替换。
+文件已经映射到本地，模板文件在`/root/cms/cms/template`目录
 
 先停止容器
 ```
 docker stop maccms
 ```
 
-然后把模板文件上传到`/root/cms`目录下
+然后把模板文件上传到`/root/cms/cms/template`目录下
 
-
-拷贝模板文件到容器相应位置
-```
-docker cp /root/cms/模板文件名 17b9613aa80b:/var/www/html/template/
-```
 启动容器
 ```
 docker start maccms
