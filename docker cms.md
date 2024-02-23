@@ -21,7 +21,7 @@ services:
       - 800:80 # 左边为主机端口,可以修改.
     container_name: maccms
     volumes:
-      - ./cms:/var/www/html  # 将容器内的 /var/www/html 目录映射到宿主机的 ./cms 目录
+      - ./cms:/var/www/html  # 将数据映射到 /root/cms 目录
   # mysql数据库
   db:
     image: mysql:5.7
