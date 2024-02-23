@@ -74,7 +74,7 @@ docker start maccms
 
 ---
 ---
-### 使用最新的镜像
+### 使用最新原版镜像
 
 ```
 version: '3.3'
