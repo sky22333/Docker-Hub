@@ -75,6 +75,8 @@ docker start maccms
 ---
 ---
 
+#### [图图采集插件](https://maccmsbox.com/details416.html)
+
 #### [萌芽采集插件](https://www.mycj.pro/mycj-down)
 
 下载插件上传到cms目录，并使用`unzip`命令解压
