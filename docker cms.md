@@ -15,7 +15,7 @@ services:
   maccms:
     depends_on:
       - db
-    image: aoliyougei/maccms:v1.3  # 带海螺模板 带萌芽采集插件
+    image: aoliyougei/maccms:v1.3  # 带海螺模板 带萌芽采集插件 v1.2仿B站模板
     restart: always
     ports:
       - 800:80 # 左边为主机端口,可以修改.
