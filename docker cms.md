@@ -66,7 +66,7 @@ docker-compose up -d
 
 #### [萌芽采集插件](https://www.mycj.pro/mycj-down)
 
-下载插件上传到cms目录，并使用`unzip`命令解压
+下载插件上传到网站根目录，并使用`unzip`命令解压
 
 赋予权限`addons/mycj`目录下的全部权限
 
