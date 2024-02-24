@@ -82,4 +82,4 @@ docker-compose up -d
 
 [收藏模板4](https://www.maccmsbox.com/details41.html)
 
-提示：有的模板需要直接放在网站根目录（并把原始的`template`目录改名防止冲突），有的需要放在`template`目录
+提示：放在`template`目录，有的模板需要直接放在网站根目录（并把原始的`template`目录改名防止冲突）
