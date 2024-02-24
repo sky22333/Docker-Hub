@@ -68,10 +68,7 @@ docker-compose up -d
 
 下载插件上传到cms目录，并使用`unzip`命令解压
 
-赋予权限
-`
-chmod -R 755 /root/cms/cms/addons/mycj
-`
+赋予权限`addons/mycj`目录下的全部权限
 
 然后后台应用商城刷新并启用
 
