@@ -170,7 +170,7 @@ docker exec -it alist ./alist admin set 你的密码
 <script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
 ```
 
-### 滚动字幕（放入元信息）
+### 滚动字幕（放入元信息——顶部说明）
 
 黑色字体
 
