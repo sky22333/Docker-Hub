@@ -198,3 +198,112 @@ docker exec -it alist ./alist admin set 你的密码
     </a>
 </span>
 ```
+
+### 底部美化
+
+```
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<style>
+.hope-c-PJLV-ikSuVsl-css {
+    background: none!important;
+}
+.markdown-body a {
+    color: #000!important;
+}
+.hope-ui-dark .markdown-body a {
+    color: #fff!important;
+}
+.copyright .link {
+    padding: 4px;
+    background: rgba(0, 0, 0, 0.3); /* 透明的浅黑色 */
+    border-radius: 0 8px 8px 0;
+}
+.copyright .name {
+    padding: 4px;
+    background: transparent; /* 或者使用 background: rgba(0, 0, 0, 0); */
+    border-radius: 8px 0 0 8px;
+    color: #000;
+}
+.copyright {
+    padding: 50px;
+    background: rgba(0, 0, 0, 0)!important; /* 透明的浅黑色 */
+}
+.copyright a {
+    color: #fff;
+}
+br.phone,
+br.pad {
+    display: none;
+}
+@media (max-width: 891px) {
+    br.pad {
+        display: block;
+    }
+}
+@media (max-width: 561px) {
+    br.phone {
+        display: block;
+    }
+}
+.hope-c-PJLV-ieESZju-css {
+    display: none;
+}
+img.hope-c-PJLV-ibwASZs-css {
+    width: auto;
+}
+.hope-ui-dark .copyright .name {
+    background: #000;
+}
+.runtime {
+    margin-top: 20px;
+    color: #fff;
+    text-align: right!important;
+}
+.about,
+.state {
+    width: min(99%, 980px);
+    text-align: center;
+    padding-inline: 2%;
+}
+.state {
+    margin-top: 20px;
+    color: #fff;
+}
+</style>
+```
+
+底部美化的自定义内容：
+
+```
+<div class="copyright" align="center"><div class="about"><p>
+<span class="name">© 2020-2023</span><span class="link"><a href="https://iymark.com">冰沫记</a></span><br class="phone"><br class="phone">
+<span class="name">粤ICP备</span><span class="link"><a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener nofollow noopener">2020085709号</a></span><br class="pad"><br class="pad">
+<span class="name">管理员</span><span class="link"><a href="https://pan.iymark.com/@manage" target="_blank" rel="noopener">古哥</a></span><br class="phone"><br class="phone">
+<span class="name">云存储合作</span><span class="link"><a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank" rel="noopener nofollow noopener">又拍云</a></span><br class="phone"><br class="phone">
+<span class="name">服务器提供</span><span class="link"><a href="https://www.aliyun.com/activity?userCode=wq3yosh9" target="_blank" rel="noopener nofollow noopener">阿里云</a></span>
+</p>
+<div class="runtime">
+<span id="runtime_span"></span>
+<script type="text/javascript">
+    function show_runtime() {
+        window.setTimeout("show_runtime()", 1000);
+        X = new Date("2/24/2023 00:00:00");
+        Y = new Date();
+        T = (Y.getTime() - X.getTime());
+        M = 24 * 60 * 60 * 1000;
+        a = T / M;
+        A = Math.floor(a);
+        b = (a - A) * 24;
+        B = Math.floor(b);
+        c = (b - B) * 60;
+        C = Math.floor((b - B) * 60);
+        D = Math.floor((c - C) * 60);
+        runtime_span.innerHTML = "<span class=\"name\">稳定运行" + A + "天</span><span class=\"link\">" + B + "时" + C + "分" + D + "秒</span>"
+    }
+    show_runtime();
+</script>
+</div>
+</div>
+<div class="state"><p>免责声明：本站为个人网盘，网盘所发布的一切影视、源代码、注册信息及软件等资源仅限用于学习和研究目的</p></div>
+</div>
+```
