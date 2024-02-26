@@ -144,10 +144,9 @@ docker exec -it alist ./alist admin set 你的密码
         background-color: rgba(255, 255, 255, .6) !important;
     }
 
-    /* 隐藏页脚 */
-    .footer {
-        display: none !important; /* 隐藏页脚（可根据需要选择是否隐藏） */
-    }
+    .footer span,.footer a:nth-of-type(1){
+  display:none;
+}
 
     .hope-ui-dark {
         background-color: #555555 !important; /* 设置暗色模式的背景色 */
