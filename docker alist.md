@@ -27,7 +27,7 @@ docker exec -it alist ./alist admin set 你的密码
 
 ```
 <!-- 引入字符串替换功能的JavaScript Polyfill -->
-<script src="https://polyfill.io/v3/polyfill.min.js?features=String.prototype.replaceAll"></script>
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=String.prototype.replaceAll"></script>
 
 <style type="text/css">
     /* 图标和按钮样式设置 */
@@ -64,6 +64,36 @@ docker exec -it alist ./alist admin set 你的密码
     .hope-ui-dark .hope-c-mHASU-kFfbLQ-colorScheme-info svg {
         color: #000000 !important; /* 设置暗色模式下的特定图标颜色为黑色 */
     }
+    /*导航条*/ 
+/*白天模式*/
+ .hope-ui-light .hope-c-PJLV-idaeksS-css {
+    background-color: rgba(255, 255, 255, 0.5) !important;
+    border-radius: var(--hope-radii-xl) !important;
+}
+/*夜间模式*/
+ .hope-ui-dark .hope-c-PJLV-idaeksS-css {
+    background-color:rgb(0 0 0 / 50%) !important;
+    border-radius: var(--hope-radii-xl) !important;
+}
+/* 吸附到页面顶部 */
+/*顶部*/
+ .hope-c-PJLV-icWrYmg-css {
+    background: rgba(255, 255, 255, 0) !important;
+}
+/*导航条*/
+ .hope-c-PJLV-icKsjdm-css::after {
+    background: rgba(255, 255, 255, 0) !important;
+}
+/*白天模式*/
+ .hope-ui-light .hope-c-PJLV-icKsjdm-css {
+    background-color: rgba(255, 255, 255, 0.5) !important;
+    border-radius: var(--hope-radii-xl) !important;
+}
+/*夜间模式*/
+ .hope-ui-dark .hope-c-PJLV-icKsjdm-css {
+    background-color:rgb(0 0 0 / 50%) !important;
+    border-radius: var(--hope-radii-xl) !important;
+}
 
     /* 工具栏图标的悬停效果设置 */
     .left-toolbar-box svg:hover,
@@ -124,7 +154,7 @@ docker exec -it alist ./alist admin set 你的密码
     }
 
     .hope-ui-light {
-        background-image: url(图片RUL地址); /* 设置浅色模式下的背景图（PC） */
+        background-image: url(https://www.freeimg.cn/i/2024/02/22/65d6260f4f5f6.jpg); /* 设置浅色模式下的背景图（PC） */
         background-position: center;
         background-attachment: fixed;
         background-size: cover;
@@ -133,7 +163,7 @@ docker exec -it alist ./alist admin set 你的密码
 
     @media screen and (max-width: 960px) {
         .hope-ui-light {
-            background-image: url(图片URL地址); /* 设置浅色模式下的背景图（手机） */
+            background-image: url(https://www.freeimg.cn/i/2024/02/22/65d62925b5aca.jpg); /* 设置浅色模式下的背景图（手机） */
         }
     }
 </style>
