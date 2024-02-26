@@ -26,7 +26,7 @@ docker exec -it alist ./alist admin set 你的密码
 替换自定义头部代码
 
 ```
-<!-- 引入字符串替换功能的JavaScript Polyfill -->
+<!-- 引入字符串替换功能的 JavaScript Polyfill -->
 <script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=String.prototype.replaceAll"></script>
 
 <style type="text/css">
@@ -64,36 +64,30 @@ docker exec -it alist ./alist admin set 你的密码
     .hope-ui-dark .hope-c-mHASU-kFfbLQ-colorScheme-info svg {
         color: #000000 !important; /* 设置暗色模式下的特定图标颜色为黑色 */
     }
+
     /*导航条*/ 
-/*白天模式*/
- .hope-ui-light .hope-c-PJLV-idaeksS-css {
-    background-color: rgba(255, 255, 255, 0.5) !important;
-    border-radius: var(--hope-radii-xl) !important;
-}
-/*夜间模式*/
- .hope-ui-dark .hope-c-PJLV-idaeksS-css {
-    background-color:rgb(0 0 0 / 50%) !important;
-    border-radius: var(--hope-radii-xl) !important;
-}
-/* 吸附到页面顶部 */
-/*顶部*/
- .hope-c-PJLV-icWrYmg-css {
-    background: rgba(255, 255, 255, 0) !important;
-}
-/*导航条*/
- .hope-c-PJLV-icKsjdm-css::after {
-    background: rgba(255, 255, 255, 0) !important;
-}
-/*白天模式*/
- .hope-ui-light .hope-c-PJLV-icKsjdm-css {
-    background-color: rgba(255, 255, 255, 0.5) !important;
-    border-radius: var(--hope-radii-xl) !important;
-}
-/*夜间模式*/
- .hope-ui-dark .hope-c-PJLV-icKsjdm-css {
-    background-color:rgb(0 0 0 / 50%) !important;
-    border-radius: var(--hope-radii-xl) !important;
-}
+    /*白天模式*/
+    .hope-ui-light .hope-c-PJLV-idaeksS-css {
+        background-color: rgba(255, 255, 255, 0.5) !important;
+        border-radius: var(--hope-radii-xl) !important;
+    }
+
+    /* 吸附到页面顶部 */
+    /*顶部*/
+    .hope-c-PJLV-icWrYmg-css {
+        background: rgba(255, 255, 255, 0) !important;
+    }
+
+    /*导航条*/
+    .hope-c-PJLV-icKsjdm-css::after {
+        background: rgba(255, 255, 255, 0) !important;
+    }
+
+    /*白天模式*/
+    .hope-ui-light .hope-c-PJLV-icKsjdm-css {
+        background-color: rgba(255, 255, 255, 0.5) !important;
+        border-radius: var(--hope-radii-xl) !important;
+    }
 
     /* 工具栏图标的悬停效果设置 */
     .left-toolbar-box svg:hover,
@@ -144,12 +138,8 @@ docker exec -it alist ./alist admin set 你的密码
         background-color: rgba(255, 255, 255, .6) !important;
     }
 
-    .footer span,.footer a:nth-of-type(1){
-  display:none;
-}
-
-    .hope-ui-dark {
-        background-color: #555555 !important; /* 设置暗色模式的背景色 */
+    .footer span, .footer a:nth-of-type(1) {
+        display: none;
     }
 
     .hope-ui-light {
