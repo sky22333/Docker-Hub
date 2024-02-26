@@ -158,12 +158,3 @@ docker exec -it alist ./alist admin set 你的密码
 </style>
 ```
 
-#### 只隐藏版权（保留管理）
-
-替换隐藏部分的代码
-
-```
-.footer span,.footer a:nth-of-type(1){
-  display:none;
-}
-```
