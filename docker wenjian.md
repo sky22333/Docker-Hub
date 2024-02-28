@@ -2,7 +2,7 @@
 
 
 ```
-touch /home/filebrowser.db
+touch /home/filebrowser.db /home/settings.json
 ```
 
 
