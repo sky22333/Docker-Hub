@@ -23,7 +23,7 @@
 启动：
 ```
 docker run -d \
-    -v /home/filebrowser.db:/database/filebrowser.db \
+    -v /home/filebrowser.db:/database \
     -v /home/settings.json:/config/settings.json \
     -e PUID=$(id -u) \
     -e PGID=$(id -g) \
