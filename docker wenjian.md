@@ -1,29 +1,15 @@
 ### Liunx文件管理器
 
-首先在`home`目录下创建`settings.json`配置文件
 
 ```
-{
-  "address": "0.0.0.0",
-  "port": 7777,
-  "log": "",
-  "root": "/",
-  "auth": true,
-  "users": [
-    {
-      "username": "admin",
-      "password": "admin",
-      "hash_method": "bcrypt"
-    }
-  ],
-  "commands": []
-}
+touch /home/filebrowser.db
 ```
 
-启动：
+
 ```
 docker run -d \
-    -v /home/filebrowser.db:/database \
+    -v /:/srv \
+    -v /home/filebrowser.db:/database/filebrowser.db \
     -v /home/settings.json:/config/settings.json \
     -e PUID=$(id -u) \
     -e PGID=$(id -g) \
