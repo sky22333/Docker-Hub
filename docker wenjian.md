@@ -7,7 +7,6 @@
   "address": "0.0.0.0",
   "port": 7777,
   "log": "",
-  "database": "/home/filebrowser.db",
   "root": "/",
   "auth": true,
   "users": [
@@ -23,8 +22,7 @@
 
 启动：
 ```
-docker run \
-    -v /:/srv \
+docker run -d \
     -v /home/filebrowser.db:/database/filebrowser.db \
     -v /home/settings.json:/config/settings.json \
     -e PUID=$(id -u) \
