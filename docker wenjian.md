@@ -5,10 +5,10 @@
 ```
 {
   "address": "0.0.0.0",
-  "port": 80,
+  "port": 7777,
   "log": "stdout",
-  "database": "/database/filebrowser.db",
-  "root": "/srv",
+  "database": "/home/filebrowser.db",
+  "root": "/",
   "auth": true,
   "users": [
     {
@@ -16,7 +16,8 @@
       "password": "admin",
       "hash_method": "bcrypt"
     }
-  ]
+  ],
+  "commands": []
 }
 ```
 
