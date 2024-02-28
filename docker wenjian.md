@@ -34,3 +34,5 @@ docker run \
 ```
 
 使用`ip:7777`进入文件管理器，账户名为`admin`密码为`admin`
+
+设置里增加文件管理命令`unzip tar chmod`
