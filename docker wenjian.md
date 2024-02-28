@@ -2,7 +2,7 @@
 
 
 ```
-touch /home/filebrowser.db /home/settings.json
+touch /home/filebrowser.db
 ```
 
 
@@ -10,7 +10,6 @@ touch /home/filebrowser.db /home/settings.json
 docker run -d \
     -v /:/srv \
     -v /home/filebrowser.db:/database/filebrowser.db \
-    -v /home/settings.json:/config/settings.json \
     -e PUID=$(id -u) \
     -e PGID=$(id -g) \
     -p 7777:80 \
