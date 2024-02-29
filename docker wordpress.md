@@ -1,4 +1,4 @@
-###  docker-compose部署wordpress博客系统
+###  docker-compose部署wordpress网站系统
 
 
 web页面端口为 `8000`
