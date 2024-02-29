@@ -11,4 +11,7 @@ docker run -d \
 ```
 
 
-每次修改文件需重启nginx：`docker restart mynginx`
+每次修改文件需重启nginx：
+```
+docker restart mynginx
+```
