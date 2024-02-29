@@ -19,10 +19,10 @@ docker run -d \
 
 #### 环境变量
 ```
-export http_proxy=http://127.0.0.1:20171
-export https_proxy=http://127.0.0.1:20171
+export http_proxy=socks5://127.0.0.1:20170
+export https_proxy=socks5://127.0.0.1:20170
 ```
-默认情况下 v2rayA 会通过核心开放 20170(socks5), 20171(http)
+默认情况下 v2rayA 会通过内核开放 20170(socks5), 20171(http)
 
 
 #### 透明代理配置
