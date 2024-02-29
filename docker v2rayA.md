@@ -16,6 +16,8 @@ docker run -d \
   mzz2017/v2raya
 ```
 
+web面板地址：`http://公网IP:2017`
+
 
 #### 环境变量
 ```
