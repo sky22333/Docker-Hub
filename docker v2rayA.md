@@ -1,4 +1,4 @@
-### v2rayA的liunx系统代理工具
+### liunx系统代理工具V2rayA
 
 ```
 docker run -d \
