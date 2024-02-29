@@ -17,3 +17,6 @@ docker run -d \
 ```
 
 
+#### 透明代理配置
+
+![alt](/png/touming.jpg)
