@@ -17,7 +17,7 @@ docker run -d --name myredis -p 6379:6379 redis --requirepass "123456"
 部署独角数卡
 
 ```
-docker run -dit --name dujiaoka -p 8111:80 -p 9000:9000 -e ADMIN_HTTPS=true -e ADMIN_ROUTE_PREFIX=/admin -e WEB_DOCUMENT_ROOT=/app/public jiangjuhong/dujiaoka:latest
+docker run -dit --name dujiaoka -p 8111:80 -p 9000:9000 -e APP_URL=https://域名 -e ADMIN_HTTPS=true -e ADMIN_ROUTE_PREFIX=/admin -e WEB_DOCUMENT_ROOT=/app/public jiangjuhong/dujiaoka:latest
 ```
 
 输入域名进入安装页面
