@@ -18,7 +18,7 @@ services:
     image: esme518/docker-maccms10  # 使用 esme518/docker-maccms10 最新镜像
     restart: always
     ports:
-      - 800:80 # 左边为主机端口,可以修改.
+      - 172.17.0.1:800:80 # 左边为主机端口,可以修改.
     container_name: maccms
     volumes:
       - ./cms:/var/www/html  # 将数据映射到 /root/cms 目录
