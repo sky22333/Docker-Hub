@@ -14,7 +14,7 @@ docker pull weikedata/acgfaka:latest
 ```
 
 ```
-docker run -p 8222:80 --name acgfaka -d weikedata/acgfaka:latest
+docker run -p 172.17.0.1:8222:80 --name acgfaka -d weikedata/acgfaka:latest
 ```
 
 使用`ip:8222`访问后台
