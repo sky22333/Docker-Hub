@@ -59,5 +59,5 @@ MySQL和Redis地址都填docker内部IP`172.17.0.1`
 
 替换：
 ```
-docker cp /home/background.png 94227ee3444b:/app/public/assets/luna/img/background.png
+docker cp /home/background.png dujiaoka:/app/public/assets/luna/img/background.png
 ```
