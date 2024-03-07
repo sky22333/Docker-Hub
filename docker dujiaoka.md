@@ -45,3 +45,7 @@ MySQL和Redis地址都填docker内部IP`172.17.0.1`
 ```
 /app/resources/views
 ```
+css样式路径
+```
+/app/public/assets
+```
