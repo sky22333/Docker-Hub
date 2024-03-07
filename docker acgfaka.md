@@ -17,7 +17,7 @@ docker pull weikedata/acgfaka:latest
 docker run -p 172.17.0.1:8222:80 --name acgfaka -d weikedata/acgfaka:latest
 ```
 
-使用`ip:8222`访问后台
+使用域名反代`8222`端口访问和安装(端口只监听docker地址)
 
 数据库名称为`mysql`
 
