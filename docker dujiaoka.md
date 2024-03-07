@@ -49,3 +49,14 @@ css样式路径
 ```
 /app/public/assets
 ```
+
+替换lnua主题背景示例
+
+上传文件到主机home文件夹
+
+把准备好的图片名称改为`background.png`
+
+替换
+```
+docker cp /home/background.png 94227ee3444b:/app/public/assets/luna/img/background.png
+```
