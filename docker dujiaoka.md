@@ -65,3 +65,32 @@ docker exec -it dujiaoka /bin/bash
 ```
 docker cp /home/background.png dujiaoka:/app/public/assets/luna/img/background.png
 ```
+
+#### 底部运行时间代码
+```
+<div style="text-align: center; padding: 20px;">
+    <span>网站已运行: <span id="adian_time" style="color: #000; font-weight: bold;"></span></span>
+</div>
+
+<script>
+    function stime() {
+        var start = new Date(2023, 9, 5, 12, 0, 0); // 月份是从0开始的，所以5月是4
+        var now = new Date();
+        var diff = now - start; // 时间差（毫秒）
+
+        var msec = diff;
+        var dd = Math.floor(msec / 1000 / 60 / 60 / 24);
+        msec -= dd * 1000 * 60 * 60 * 24;
+        var hh = Math.floor(msec / 1000 / 60 / 60);
+        msec -= hh * 1000 * 60 * 60;
+        var mm = Math.floor(msec / 1000 / 60);
+        msec -= mm * 1000 * 60;
+        var ss = Math.floor(msec / 1000);
+        msec -= ss * 1000;
+
+        var dni = dd + "天" + hh + "小时" + mm + "分" + ss + "秒";
+        document.getElementById("adian_time").innerHTML = dni;
+    }
+    setInterval(stime, 1000); // 每秒更新时间
+</script>
+```
