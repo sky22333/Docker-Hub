@@ -34,4 +34,14 @@ MySQL和Redis地址都填docker内部IP`172.17.0.1`
 
 后台路径为`admin`
 
+### 高阶操作
 
+底部页脚路径
+```
+/app/resources/views/luna/layouts/_footer.blade.php
+```
+
+主题路径
+```
+/app/resources/views
+```
