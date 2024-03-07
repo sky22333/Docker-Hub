@@ -30,6 +30,14 @@ services:
       - MYSQL_ROOT_PASSWORD=admin@ADMIN  # 数据库密码，可以修改
     container_name: maccms-mysql
 ```
+若要共用数据库请替换数据库部分
+```
+    environment:
+      - DB_HOST=172.17.0.1
+      - DB_NAME=mysql
+      - DB_USER=root
+      - DB_PASSWORD=123456
+```
 
 #### 运行
 ```
