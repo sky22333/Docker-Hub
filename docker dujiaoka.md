@@ -36,27 +36,25 @@ MySQL和Redis地址都填docker内部IP`172.17.0.1`
 
 ### 高阶操作
 
-底部页脚路径
+#### 底部页脚路径
 ```
 /app/resources/views/luna/layouts/_footer.blade.php
 ```
 
-主题路径
+#### 主题路径
 ```
 /app/resources/views
 ```
-css样式路径
+#### css样式路径
 ```
 /app/public/assets
 ```
 
-替换lnua主题背景示例
+#### 替换lnua主题背景示例
 
-上传文件到主机home文件夹
+上传图片到服务器的`home`目录，把上传的图片名称改为`background.png`。
 
-把准备好的图片名称改为`background.png`
-
-替换
+替换：
 ```
 docker cp /home/background.png 94227ee3444b:/app/public/assets/luna/img/background.png
 ```
