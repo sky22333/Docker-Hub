@@ -19,6 +19,8 @@ docker run -itd \
 密码：admin
 ```
 
+节点数据在`root/db`目录下
+
 修改用户名和密码
 ```
 docker exec -it x-ui sh
