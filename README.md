@@ -32,7 +32,7 @@ curl -fsSL https://get.docker.com | bash -s docker --mirror AzureChinaCloud
 国内环境可以[通过这种方法](https://github.com/taotao1058/GitHub-CN/tree/main?tab=readme-ov-file#%E6%96%B9%E6%B3%95%E4%B8%80)下载
 
 ```
-curl -L "https://github.com/docker/compose/releases/download/v2.24.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+curl -L "https://github.com/docker/compose/releases/download/v2.25.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 ```
 添加可执行权限:
 ```
