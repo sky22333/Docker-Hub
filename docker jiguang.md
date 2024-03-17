@@ -100,6 +100,9 @@ networks:
     driver: bridge
 ```
 
+面板端口为：`8000`
+
+
 开启ipv6支持：
 ```
 找到 enable_ipv6: false 该行，将 false 改为 true
