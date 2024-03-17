@@ -1,11 +1,11 @@
 ## 极光转发面板
 
-创建文件：
+### 创建文件：
 ```
 mkdir -p ~/aurora && cd ~/aurora && touch docker-compose.yml
 ```
 
-写入配置：
+### 写入配置：
 
 ```
 version: '3.7'
@@ -103,22 +103,22 @@ networks:
 面板端口为：`8000`
 
 
-开启ipv6支持：
+### 开启ipv6支持：
 ```
 找到 enable_ipv6: false 该行，将 false 改为 true
 ```
 
-ip6tables命令（注意，重启系统会导致规则被重置，需重新添加）：
+### ip6tables命令（注意，重启系统会导致规则被重置，需重新添加）：
 ```
 ip6tables -t nat -A POSTROUTING -s fd00:ea23:9c80:4a54:e242:5f97::/96 -j MASQUERADE
 ```
 
-启动面板：
+### 启动面板：
 ```
 docker-compose up -d
 ```
 
-创建管理员用户（密码必须设置8位以上，否则无法登陆）：
+### 创建管理员用户（密码必须设置8位以上，否则无法登陆）：
 ```
 docker-compose exec backend python app/initial_data.py
 ```
