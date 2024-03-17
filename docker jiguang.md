@@ -105,9 +105,9 @@ networks:
 
 ### （可选）开启ipv6支持：
 ```
-找到 enable_ipv6: false 该行，将 false 改为 true
+1：找到 enable_ipv6: false 该行，将 false 改为 true
 
-然后输入以下命令（注意，重启系统会导致规则被重置，需重新添加）：
+2：输入以下命令（注意，重启系统会导致规则被重置，需重新添加）
 
 ip6tables -t nat -A POSTROUTING -s fd00:ea23:9c80:4a54:e242:5f97::/96 -j MASQUERADE
 ```
