@@ -1,4 +1,4 @@
-## docker-compose 安装极光转发面板
+## Docker-compose 安装极光转发面板
 
 ### 创建文件：
 ```
