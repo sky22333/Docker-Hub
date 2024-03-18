@@ -66,7 +66,9 @@ docker-compose --version
 | 删除镜像  | `docker rmi -f`   |  `docker rmi -f 镜像名或ID`          |
 | 删除所有镜像  | `docker rmi -f $(docker images -aq)`  |   删除所有镜像         |
 
-安装vim编辑器
+---
+
+### vim编辑器
 
 ```
 apt-get update
