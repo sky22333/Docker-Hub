@@ -66,7 +66,7 @@ docker-compose --version
 | 删除镜像  | `docker rmi -f`   |  `docker rmi -f 镜像名或ID`          |
 | 删除所有镜像  | `docker rmi -f $(docker images -aq)`  |   删除所有镜像         |
 
-docker内部安装vim编辑器
+安装vim编辑器
 
 ```
 apt-get update
@@ -76,6 +76,21 @@ apt-get install vim
 ```
 
 vim输入: `set encoding=utf-8`解决中文乱码问题
+
+
+
+vim常用命令
+
+| 功能    | 命令 | 说明 |
+|-------------|-------------------|----------------|
+| 退出并保存  | `:wq`      |   命令模式中执行         |
+| 只退出不保存  | `:q!`      |    命令模式中执行      |
+| 清空所有内容  | `:%d`      |   命令模式中执行        |
+| 粘贴模式保持代码格式  | `:set paste`      |   命令模式中执行             |
+| 进入编辑模式  | `i`      | 命令模式中执行          |
+| 退出编辑模式  | `esc`      |  编辑模式中执行         |
+| 更改编码适配中文 | `:set encoding=utf-8`       |  命令模式中执行              |
+
 
 
 ## 配置加速地址
