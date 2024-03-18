@@ -75,11 +75,9 @@ apt-get update
 apt-get install vim
 ```
 
-vim输入: `set encoding=utf-8`解决中文乱码问题
 
 
-
-vim常用命令
+vim常用命令：
 
 | 功能    | 命令 | 说明 |
 |-------------|-------------------|----------------|
