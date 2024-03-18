@@ -82,12 +82,4 @@ docker-compose up -d
 
 #### [免费模板推荐](https://www.maccmsbox.com/)
 
-[收藏模板X1](https://www.maccmsbox.com/details108.html)
-
-[收藏模板2](https://www.maccmsbox.com/details75.html)
-
-[收藏模板3](https://www.maccmsbox.com/details392.html)
-
-[收藏模板4](https://www.maccmsbox.com/details41.html)
-
-模板文件放在`template`目录，有的模板需要直接放在网站根目录（并把原始的`template`目录改名防止冲突）
+模板文件放在`template`目录，有的模板需要直接放在网站根目录
