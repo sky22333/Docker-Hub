@@ -1,7 +1,7 @@
 ###  docker-compose部署wordpress网站系统
 
 
-web页面端口为 `8000`
+web页面端口为 `8000`     后台路径 `wp-admin`
 
 创建项目文件夹
 
@@ -59,3 +59,47 @@ docker-compose up -d
 
 
 ---
+
+
+
+
+### 修改docker中wordpress的上传限制。
+
+查看你当前Wordpress容器ID，命令如下：
+```
+docker ps
+```
+使用命令进入 wordpress 容器进入具体容器是使用下面的命令
+```
+docker exec -it 容器ID /bin/bash       //备注：替换容器ID
+```
+wordpress 容器中的这个路径`/usr/local/etc/php/`，是存放 `php.ini` 的地方，但是默认是没有 `php.ini` 这个文件的，所以我们要通过复制一份`php.ini-production`文件，来生成 `php.ini` 文件。
+```
+cd /usr/local/etc/php/
+```
+```
+cp php.ini-production php.ini
+```
+然后使用vim编辑器修改即可，如果没有则需要安装一下
+
+更新及安装vim，使用如下代码
+```
+apt-get update
+apt-get install vim
+```
+安装完成vim，现在就可以对php.ini进行编辑了。
+```
+vim php.ini
+```
+修改这几个变量，当然根据自己需求修改。
+```
+upload_max_filesize = 200M    #文件大小限制
+post_max_size = 250M    #post大小限制
+memory_limit = 500M        #内存占用限制
+```
+最后一步！
+
+重启wordpress
+```
+docker restart 容器ID
+```
