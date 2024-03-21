@@ -136,7 +136,7 @@ FRONTEND_URL=http://0.0.0.0:3000
 
 # 如果设置了该变量，所有未经认证的页面将回退到默认的语言设置。
 # 每当创建一个新账户时，默认语言将是 DEFAULT_LOCALE 而不是 en
-# DEFAULT_LOCALE=en
+# DEFAULT_LOCALE=cn
 
 # 如果您计划使用CDN来存储您的资源，请设置资产CDN主机
 ASSET_CDN_HOST=
