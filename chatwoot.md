@@ -278,3 +278,7 @@ ANDROID_BUNDLE_ID=com.chatwoot.app
 # 环境配置结束
 ```
 
+
+#### [Docker部署教程](https://www.chatwoot.com/docs/self-hosted/deployment/docker)
+
+#### [集成到网页的教程](https://www.chatwoot.com/docs/product/channels/live-chat/create-website-channel)
