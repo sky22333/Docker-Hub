@@ -19,6 +19,13 @@ docker pull cloudorz/xrayr:latest && docker run --restart=always --name xrayr -d
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/XrayR-project/XrayR-release/master/install.sh)
 ```
+### v2bx脚本（支持hy2，vless）
+```
+wget -N https://raw.githubusercontent.com/wyx2685/V2bX-script/master/install.sh && bash install.sh
+```
+
+
+---
 
 配置文件路径： `/etc/XrayR`
 
