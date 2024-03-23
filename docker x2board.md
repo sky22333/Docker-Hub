@@ -8,11 +8,14 @@
 
 ---
 
-主题目录`public/theme`
+主题目录
+```public/theme```
 
-支付插件目录`app/Payments/`
+支付插件目录
+```app/Payments```
 
-客户端适配参考目录`app/Http/Controllers/Client/Protocols/`
+客户端适配参考目录
+```app/Http/Controllers/Client/Protocols```
 
 忘记管理员密码可以在站点目录下执行命令找回密码
 ```
