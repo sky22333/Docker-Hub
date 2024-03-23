@@ -1,7 +1,7 @@
 ## Docker-Compose 部署教程
 
 
-## [项目地址](https://github.com/cedar2025/Xboard/tree/dev)
+## [项目地址](https://github.com/cedar2025/Xboard)
 
 
 
