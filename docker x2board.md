@@ -14,6 +14,20 @@
 
 客户端适配参考目录`app/Http/Controllers/Client/Protocols/`
 
+忘记管理员密码可以在站点目录下执行命令找回密码
+```
+docker exec -it xboard-xboard-1 /bin/sh
+```
+```
+php artisan reset:password 管理员邮箱
+```
+更改后台路径后需重启
+```
+cd /root/Xboard
+```
+```
+docker compose restart
+```
 ---
 
 ###  订阅被墙解决办法：
