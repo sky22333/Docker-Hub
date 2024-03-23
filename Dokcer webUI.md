@@ -23,5 +23,5 @@ Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/microsoft/
 
 
 ```
-docker run -d --name portainer --restart always -v \\.\pipe\docker_engine:\\.\pipe\docker_engine portainer/portainer-ce:latest
+docker run -d -p 9000:9000 --name portainer --restart always -v \\.\pipe\docker_engine:\\.\pipe\docker_engine portainer/portainer-ce:latest
 ```
