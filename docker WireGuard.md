@@ -2,11 +2,11 @@
 
 
 ```
-$ docker run -d \
+docker run -d \
   --name=wg-easy \
-  -e LANG=de \
-  -e WG_HOST= 🚨YOUR_SERVER_IP \
-  -e 密码= 🚨您的管理员密码\
+  -e LANG=en \
+  -e WG_HOST=YOUR_SERVER_IP \
+  -e PASSWORD=YOUR_ADMIN_PASSWORD \
   -v ~/.wg-easy:/etc/wireguard \
   -p 51820:51820/udp \
   -p 51821:51821/tcp \
@@ -14,7 +14,7 @@ $ docker run -d \
   --cap-add=SYS_MODULE \
   --sysctl="net.ipv4.conf.all.src_valid_mark=1" \
   --sysctl="net.ipv4.ip_forward=1" \
-  --restart 除非停止 \
+  --restart unless-stopped \
   ghcr.io/wg-easy/wg-easy
 ```
 
@@ -22,7 +22,7 @@ $ docker run -d \
 [Docker hub的镜像](https://hub.docker.com/r/weejewel/wg-easy/tags)
 
 
-> 💡 替换`YOUR_SERVER_IP`为您的 WAN IP 或动态 DNS 主机名。
+> 💡 替换`YOUR_SERVER_IP`为您的主机IP地址。
 >
 > 💡 替换`YOUR_ADMIN_PASSWORD`为登录 Web UI 的密码。
 
