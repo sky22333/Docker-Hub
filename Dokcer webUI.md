@@ -1,12 +1,12 @@
 ## Docker图形化界面
 
 
-liunx使用docker安装：
+### liunx使用docker安装：
 ```
 docker run -d -p 9000:9000 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer-ce:latest
 ```
 
-win系统：
+### win系统：
 ```
 netsh advfirewall firewall add rule name="cluster_management" dir=in action=allow protocol=TCP localport=2377
 netsh advfirewall firewall add rule name="node_communication_tcp" dir=in action=allow protocol=TCP localport=7946
