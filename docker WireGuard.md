@@ -38,8 +38,8 @@ docker run -d \
 > 💡 特殊环境说明
 
 ```
-  --sysctl="net.ipv4.conf.all.disable_ipv6=0" \                     //值为0表示不禁用IPv6
-  --sysctl="net.ipv6.conf.all.forwarding=1" \                       //启用IPv6转发。值为1表示启用，允许容器转发IPv6流量，这在容器作为路由器时特别有用。
+  --sysctl="net.ipv4.conf.all.disable_ipv6=0" \                //值为0表示不禁用IPv6
+  --sysctl="net.ipv6.conf.all.forwarding=1" \                  //启用IPv6转发。值为1表示启用，允许容器转发IPv6流量，适合路由器
 ```
 
 WireGuard 也可以通过 Docker Compose 启动 - 参考[docker-compose.yml配置](https://github.com/wg-easy/wg-easy/blob/master/docker-compose.yml)
