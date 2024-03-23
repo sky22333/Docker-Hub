@@ -23,12 +23,21 @@ docker run -d \
 
 
 > 💡 替换`YOUR_SERVER_IP`为您的主机IP地址。
->
 > 💡 替换`YOUR_ADMIN_PASSWORD`为登录 Web UI 的密码。
-
-Web UI 默认端口`http://0.0.0.0:51821`
-
+> 💡 Web UI 默认端口`http://0.0.0.0:51821`
 > 💡 您的配置文件将保存在`~/.wg-easy`
+>
+> 💡 回国线路增加以下配置
+```
+  -e WG_DEFAULT_DNS=114.114.114.114,223.5.5.5 \
+```
+
+> 💡 IPv6环境请修改以下配置
+
+```
+  --sysctl="net.ipv4.conf.all.disable_ipv6=0" \
+  --sysctl="net.ipv6.conf.all.forwarding=1" \
+```
 
 WireGuard 也可以通过 Docker Compose 启动 - 参考[docker-compose.yml配置](https://github.com/wg-easy/wg-easy/blob/master/docker-compose.yml)
 
