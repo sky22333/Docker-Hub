@@ -35,7 +35,7 @@ docker run -d \
   -e WG_DEFAULT_DNS=114.114.114.114,223.5.5.5 \
 ```
 
-> 💡 IPv6环境请修改以下配置
+> 💡 只启用IPV6请修改以下配置
 
 ```
   --sysctl="net.ipv4.conf.all.disable_ipv6=0" \
