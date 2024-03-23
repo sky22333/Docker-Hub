@@ -30,14 +30,12 @@ docker run -d \
 > 
 > 💡 您的配置文件将保存在`~/.wg-easy`
 >
-> 💡 回国线路增加以下配置
-```
-  -e WG_DEFAULT_DNS=114.114.114.114,223.5.5.5 \
-```
+
 
 > 💡 特殊环境说明
 
 ```
+  -e WG_DEFAULT_DNS=114.114.114.114,223.5.5.5 \                //修改为国内DNS
   --sysctl="net.ipv4.conf.all.disable_ipv6=0" \                //值为0表示不禁用IPv6
   --sysctl="net.ipv6.conf.all.forwarding=1" \                  //启用IPv6转发。值为1表示启用，允许容器转发IPv6流量，适合路由器
 ```
