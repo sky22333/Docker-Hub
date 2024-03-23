@@ -7,7 +7,11 @@
 
 ---
 
+主题目录`public/theme`
 
+支付插件目录`app/Payments/`
+
+客户端适配参考目录`app/Http/Controllers/Client/Protocols/`
 
 ---
 
