@@ -19,7 +19,7 @@ $ docker run -d \
 ```
 
 #### 说明
-[docker hub的镜像](https://hub.docker.com/r/weejewel/wg-easy/tags)
+[Docker hub的镜像](https://hub.docker.com/r/weejewel/wg-easy/tags)
 
 
 > 💡 替换`YOUR_SERVER_IP`为您的 WAN IP 或动态 DNS 主机名。
