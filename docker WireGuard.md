@@ -23,8 +23,11 @@ docker run -d \
 
 
 > 💡 替换`YOUR_SERVER_IP`为您的主机IP地址。
+> 
 > 💡 替换`YOUR_ADMIN_PASSWORD`为登录 Web UI 的密码。
+> 
 > 💡 Web UI 默认端口`http://0.0.0.0:51821`
+> 
 > 💡 您的配置文件将保存在`~/.wg-easy`
 >
 > 💡 回国线路增加以下配置
