@@ -12,5 +12,5 @@ docker run --name typecho-server -p 8080:80 -e TYPECHO_SITE_URL=https://your-dom
 
 #### 主题文件目录`usr/themes`
 ```
-docker cp root/主题文件名 typecho-server:/app/usr/themes
+docker cp /root/主题文件名 typecho-server:/app/usr/themes
 ```
