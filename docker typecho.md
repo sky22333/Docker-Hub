@@ -12,6 +12,11 @@ docker run --name typecho-server -p 8080:80 -e TYPECHO_SITE_URL=https://your-dom
 
 #### 主题文件目录`usr/themes`
 
+安装git:
+```
+sudo apt install git
+```
+
 下载主题：
 ```
 git clone 主题Git仓库地址
