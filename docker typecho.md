@@ -11,3 +11,6 @@ docker run --name typecho-server -p 8080:80 -e TYPECHO_SITE_URL=https://your-dom
 重置后台管理员账户：删除站点目录的`config.inc.php`文件，然后重新安装选择保留原有数据库即可
 
 #### 主题文件目录`usr/themes`
+```
+docker cp home/myzhuti typecho-server:usr/themes
+```
