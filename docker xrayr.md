@@ -69,153 +69,70 @@ sudo kill -9 [PID]
 
 
 
-###  配置示例：
+###  审计：
 
 
 
 ```
-Log:
-  Level: warning # Log level: none, error, warning, info, debug 
-  AccessPath: # /etc/XrayR/access.Log
-  ErrorPath: # /etc/XrayR/error.log
-DnsConfigPath: # /etc/XrayR/dns.json # Path to dns config, check https://xtls.github.io/config/dns.html for help
-RouteConfigPath: # /etc/XrayR/route.json # Path to route config, check https://xtls.github.io/config/routing.html for help
-InboundConfigPath: # /etc/XrayR/custom_inbound.json # Path to custom inbound config, check https://xtls.github.io/config/inbound.html for help
-OutboundConfigPath: # /etc/XrayR/custom_outbound.json # Path to custom outbound config, check https://xtls.github.io/config/outbound.html for help
-ConnectionConfig:
-  Handshake: 4 # Handshake time limit, Second
-  ConnIdle: 30 # Connection idle time limit, Second
-  UplinkOnly: 2 # Time limit when the connection downstream is closed, Second
-  DownlinkOnly: 4 # Time limit when the connection is closed after the uplink is closed, Second
-  BufferSize: 64 # The internal cache size of each connection, kB
-Nodes:
-  - PanelType: "NewV2board" # Panel type: SSpanel, NewV2board, PMpanel, Proxypanel, V2RaySocks, GoV2Panel
-    ApiConfig:
-      ApiHost: "https://wangdazhuang.top"
-      ApiKey: "6xks1dmz1xii1z2z"
-      NodeID: 3
-      NodeType: V2ray # Node type: V2ray, Shadowsocks, Trojan, Shadowsocks-Plugin
-      Timeout: 30 # Timeout for the api request
-      EnableVless: false # Enable Vless for V2ray Type
-      VlessFlow: "" # Only support vless
-      SpeedLimit: 0 # Mbps, Local settings will replace remote settings, 0 means disable
-      DeviceLimit: 0 # Local settings will replace remote settings, 0 means disable
-      RuleListPath: # /etc/XrayR/rulelist Path to local rulelist file
-      DisableCustomConfig: false # disable custom config for sspanel
-    ControllerConfig:
-      ListenIP: 0.0.0.0 # IP address you want to listen
-      SendIP: 0.0.0.0 # IP address you want to send pacakage
-      UpdatePeriodic: 60 # Time to update the nodeinfo, how many sec.
-      EnableDNS: false # Use custom DNS config, Please ensure that you set the dns.json well
-      DNSType: AsIs # AsIs, UseIP, UseIPv4, UseIPv6, DNS strategy
-      EnableProxyProtocol: false # Only works for WebSocket and TCP
-      AutoSpeedLimitConfig:
-        Limit: 0 # Warned speed. Set to 0 to disable AutoSpeedLimit (mbps)
-        WarnTimes: 0 # After (WarnTimes) consecutive warnings, the user will be limited. Set to 0 to punish overspeed user immediately.
-        LimitSpeed: 0 # The speedlimit of a limited user (unit: mbps)
-        LimitDuration: 0 # How many minutes will the limiting last (unit: minute)
-      GlobalDeviceLimitConfig:
-        Enable: false # Enable the global device limit of a user
-        RedisAddr: 127.0.0.1:6379 # The redis server address
-        RedisPassword: YOUR PASSWORD # Redis password
-        RedisDB: 0 # Redis DB
-        Timeout: 5 # Timeout for redis request
-        Expiry: 60 # Expiry time (second)
-      EnableFallback: false # Only support for Trojan and Vless
-      FallBackConfigs:  # Support multiple fallbacks
-        - SNI: # TLS SNI(Server Name Indication), Empty for any
-          Alpn: # Alpn, Empty for any
-          Path: # HTTP PATH, Empty for any
-          Dest: 80 # Required, Destination of fallback, check https://xtls.github.io/config/features/fallback.html for details.
-          ProxyProtocolVer: 0 # Send PROXY protocol version, 0 for disable
-      DisableLocalREALITYConfig: false  # disable local reality config
-      EnableREALITY: false # Enable REALITY
-      REALITYConfigs:
-        Show: true # Show REALITY debug
-        Dest: www.smzdm.com:443 # Required, Same as fallback
-        ProxyProtocolVer: 0 # Send PROXY protocol version, 0 for disable
-        ServerNames: # Required, list of available serverNames for the client, * wildcard is not supported at the moment.
-          - wangdazhuang.top
-        PrivateKey: 4BXPQHhbBiiTS21bGNb3o9Fujqbm4QVkrbCfTBmV6kE # Required, execute './xray x25519' to generate.
-        MinClientVer: # Optional, minimum version of Xray client, format is x.y.z.
-        MaxClientVer: # Optional, maximum version of Xray client, format is x.y.z.
-        MaxTimeDiff: 0 # Optional, maximum allowed time difference, unit is in milliseconds.
-        ShortIds: # Required, list of available shortIds for the client, can be used to differentiate between different clients.
-          - ""
-          - 0123456789abcdef
-      CertConfig:
-        CertMode: dns # Option about how to get certificate: none, file, http, tls, dns. Choose "none" will forcedly disable the tls config.
-        CertDomain: "node1.test.com" # Domain to cert
-        CertFile: /etc/XrayR/cert/node1.test.com.cert # Provided if the CertMode is file
-        KeyFile: /etc/XrayR/cert/node1.test.com.key
-        Provider: alidns # DNS cert provider, Get the full support list here: https://go-acme.github.io/lego/dns/
-        Email: test@me.com
-        DNSEnv: # DNS ENV option used by DNS provider
-          ALICLOUD_ACCESS_KEY: aaa
-          ALICLOUD_SECRET_KEY: bbb
-
-#  - PanelType: "SSpanel" # Panel type: SSpanel, V2board, NewV2board, PMpanel, Proxypanel, V2RaySocks, GoV2Panel
-#    ApiConfig:
-#      ApiHost: "http://127.0.0.1:668"
-#      ApiKey: "123"
-#      NodeID: 41
-#      NodeType: V2ray # Node type: V2ray, Shadowsocks, Trojan, Shadowsocks-Plugin
-#      Timeout: 30 # Timeout for the api request
-#      EnableVless: false # Enable Vless for V2ray Type
-#      VlessFlow: "xtls-rprx-vision" # Only support vless
-#      SpeedLimit: 0 # Mbps, Local settings will replace remote settings, 0 means disable
-#      DeviceLimit: 0 # Local settings will replace remote settings, 0 means disable
-#      RuleListPath: # /etc/XrayR/rulelist Path to local rulelist file
-#    ControllerConfig:
-#      ListenIP: 0.0.0.0 # IP address you want to listen
-#      SendIP: 0.0.0.0 # IP address you want to send pacakage
-#      UpdatePeriodic: 60 # Time to update the nodeinfo, how many sec.
-#      EnableDNS: false # Use custom DNS config, Please ensure that you set the dns.json well
-#      DNSType: AsIs # AsIs, UseIP, UseIPv4, UseIPv6, DNS strategy
-#      EnableProxyProtocol: false # Only works for WebSocket and TCP
-#      AutoSpeedLimitConfig:
-#        Limit: 0 # Warned speed. Set to 0 to disable AutoSpeedLimit (mbps)
-#        WarnTimes: 0 # After (WarnTimes) consecutive warnings, the user will be limited. Set to 0 to punish overspeed user immediately.
-#        LimitSpeed: 0 # The speedlimit of a limited user (unit: mbps)
-#        LimitDuration: 0 # How many minutes will the limiting last (unit: minute)
-#      GlobalDeviceLimitConfig:
-#        Enable: false # Enable the global device limit of a user
-#        RedisAddr: 127.0.0.1:6379 # The redis server address
-#        RedisPassword: YOUR PASSWORD # Redis password
-#        RedisDB: 0 # Redis DB
-#        Timeout: 5 # Timeout for redis request
-#        Expiry: 60 # Expiry time (second)
-#      EnableFallback: false # Only support for Trojan and Vless
-#      FallBackConfigs:  # Support multiple fallbacks
-#        - SNI: # TLS SNI(Server Name Indication), Empty for any
-#          Alpn: # Alpn, Empty for any
-#          Path: # HTTP PATH, Empty for any
-#          Dest: 80 # Required, Destination of fallback, check https://xtls.github.io/config/features/fallback.html for details.
-#          ProxyProtocolVer: 0 # Send PROXY protocol version, 0 for disable
-#      EnableREALITY: false # Enable REALITY
-#      REALITYConfigs:
-#        Show: true # Show REALITY debug
-#        Dest: www.smzdm.com:443 # Required, Same as fallback
-#        ProxyProtocolVer: 0 # Send PROXY protocol version, 0 for disable
-#        ServerNames: # Required, list of available serverNames for the client, * wildcard is not supported at the moment.
-#          - www.smzdm.com
-#        PrivateKey: YOUR_PRIVATE_KEY # Required, execute './xray x25519' to generate.
-#        MinClientVer: # Optional, minimum version of Xray client, format is x.y.z.
-#        MaxClientVer: # Optional, maximum version of Xray client, format is x.y.z.
-#        MaxTimeDiff: 0 # Optional, maximum allowed time difference, unit is in milliseconds.
-#        ShortIds: # Required, list of available shortIds for the client, can be used to differentiate between different clients.
-#          - ""
-#          - 0123456789abcdef
-#      CertConfig:
-#        CertMode: dns # Option about how to get certificate: none, file, http, tls, dns. Choose "none" will forcedly disable the tls config.
-#        CertDomain: "node1.test.com" # Domain to cert
-#        CertFile: /etc/XrayR/cert/node1.test.com.cert # Provided if the CertMode is file
-#        KeyFile: /etc/XrayR/cert/node1.test.com.key
-#        Provider: alidns # DNS cert provider, Get the full support list here: https://go-acme.github.io/lego/dns/
-#        Email: test@me.com
-#        DNSEnv: # DNS ENV option used by DNS provider
-#          ALICLOUD_ACCESS_KEY: aaa
-#          ALICLOUD_SECRET_KEY: bbb
+{
+  "domainStrategy": "IPOnDemand",
+  "rules": [
+    {
+      "type": "field",
+      "outboundTag": "block",
+      "ip": [
+        "geoip:private"
+      ]
+    },
+    {
+      "type": "field",
+      "outboundTag": "block",
+      "domain": [
+        "regexp:(api|ps|sv|offnavi|newvector|ulog.imap|newloc)(.map|).(baidu|n.shifen).com",
+        "regexp:(.+.|^)(360|so).(cn|com)",
+        "regexp:(Subject|HELO|SMTP)",
+        "regexp:(torrent|.torrent|peer_id=|info_hash|get_peers|find_node|BitTorrent|announce_peer|announce.php?passkey=)",
+        "regexp:(^.@)(guerrillamail|guerrillamailblock|sharklasers|grr|pokemail|spam4|bccto|chacuo|027168).(info|biz|com|de|net|org|me|la)",
+        "regexp:(.?)(xunlei|sandai|Thunder|XLLiveUD)(.)",
+        "regexp:(..||)(dafahao|mingjinglive|botanwang|minghui|dongtaiwang|falunaz|epochtimes|ntdtv|falundafa|falungong|wujieliulan|zhengjian).(org|com|net)",
+        "regexp:(ed2k|.torrent|peer_id=|announce|info_hash|get_peers|find_node|BitTorrent|announce_peer|announce.php?passkey=|magnet:|xunlei|sandai|Thunder|XLLiveUD|bt_key)",
+        "regexp:(.+.|^)(360|speedtest|fast|so).(cn|com|net)",
+        "regexp:(.*.||)(guanjia.qq.com|qqpcmgr|QQPCMGR)",
+        "regexp:(.*.||)(rising|kingsoft|duba|xindubawukong|jinshanduba).(com|net|org)",
+        "regexp:(.*.||)(netvigator|torproject).(com|cn|net|org)",
+        "regexp:(..||)(visa|mycard|mastercard|gov|gash|beanfun|bank).",
+        "regexp:(.*.||)(gov|12377|12315|talk.news.pts.org|creaders|zhuichaguoji|efcc.org|cyberpolice|aboluowang|tuidang|epochtimes|nytimes|zhengjian|110.qq|mingjingnews|inmediahk|xinsheng|breakgfw|chengmingmag|jinpianwang|qi-gong|mhradio|edoors|renminbao|soundofhope|xizang-zhiye|bannedbook|ntdtv|12321|secretchina|dajiyuan|boxun|chinadigitaltimes|dwnews|huaglad|oneplusnews|epochweekly|cn.rfi).(cn|com|org|net|club|net|fr|tw|hk|eu|info|me)",
+        "regexp:(.*.||)(miaozhen|cnzz|talkingdata|umeng).(cn|com)",
+        "regexp:(.*.||)(mycard).(com|tw)",
+        "regexp:(.*.||)(gash).(com|tw)",
+        "regexp:(.bank.)",
+        "regexp:(.*.||)(pincong).(rocks)",
+        "regexp:(.*.||)(taobao).(com)"
+      ]
+    },
+    {
+      "type": "field",
+      "outboundTag": "block",
+      "ip": [
+          "127.0.0.1/32",
+          "10.0.0.0/8",
+          "fc00::/7",
+          "fe80::/10",
+          "172.16.0.0/12"
+      ]
+    },
+    {
+      "type": "field",
+      "outboundTag": "block",
+      "protocol": ["bittorrent"]
+    },
+    {
+      "type": "field",
+      "outboundTag": "block",
+      "port": "22,23,24,25,107,194,445,465,587,992,3389,6665-6669,6679,6697,6881-6999,7000,10000-65535"
+    }
+  ]
+}
 ```
 
 
