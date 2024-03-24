@@ -5,7 +5,7 @@
 
 ### [部署教程](https://github.com/cedar2025/Xboard/blob/dev/docs/docker-compose%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97.md)
 
-
+#### [防注册机器人](https://www.google.com/recaptcha/admin/create)
 ---
 
 主题目录
