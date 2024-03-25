@@ -99,7 +99,7 @@ queue_level_low=1
 tg_bot_token=
 #telegram代理url(大陆地区服务器可使用一台国外服务器做反代tg的url)，如果运行的本来就是境外服务器，则无需填写
 tg_proxy=
-#管理员userid
+#管理员TG的id
 tg_manage=
 
 #api接口认证token
@@ -123,7 +123,7 @@ forced_usdt_rate=
 
 修改第 48 行`tg_bot_token=`为上文创建的 Telegram Bot 的Token
 
-修改第 52 行`tg_manage=`为上文创建的 Telegram Bot 的ID
+修改第 52 行`tg_manage=`改为你的TG的ID
 
 
 #### epusdt.sql
@@ -185,19 +185,17 @@ docker-compose up -d
 
 #### 初始化数据库
 
-将下述命令中的`-pCHANGE_YOUR_PASSWORD`的密码改为上述设置的新密码,注意需要保留前缀`-p`,例如上文修改密码`MYSQL_PASSWORD=aaabbbccc`,此处则为`-paaabbbccc`
-
+将下述命令中的`数据库`的密码改为你的数据库密码，注意需要保留前缀`-p`不能有空格。
 如下图执行后无任何显示代表成功,否则将会报错.
 
 ```
-docker exec -i epusdt-db-1 sh -c 'exec mysql -uepusdt -pCHANGE_YOUR_PASSWORD epusdt' < epusdt.sql
+docker exec -i epusdt-db-1 sh -c 'exec mysql -uepusdt -p数据库密码 epusdt' < epusdt.sql
 ```
 
 #### 重启服务
 
 ```
-docker-compose down
-docker-compose up -d
+docker-compose restart
 ```
 
 #### 检查服务
@@ -219,7 +217,7 @@ docker logs -f epusdt-epusdt-1
 #### 配置支付
 
 商户ID为上述创建的密码`123qweASD`
-商户密钥填写API地址`https://usdt域名.com/api/v1/order/create-transaction`
+商户密钥填写API地址`https://USDT域名/api/v1/order/create-transaction`
 
 
 ---
