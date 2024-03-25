@@ -117,7 +117,7 @@ forced_usdt_rate=
 
 修改第 24 行`mysql_passwd`为上节MYSQL_PASSWORD的用户密码(注意:非 root 密码)
 
-修改第 55 行`api_auth_token=123qweASD`创建一个密码用于dujiaoka 支付设置中使用.
+修改第 55 行`api_auth_token=`创建一个强密码用于支付设置中使用.
 
 注意:因为本项目是独立部署到 docker compose 内,所以第 21,33 行已经修改为db,redis,不能使用 127.0.0.1.
 
@@ -218,7 +218,7 @@ docker logs -f epusdt-epusdt-1
 
 #### 配置支付
 
-商户ID为上述创建的密码`123qweASD`
+商户ID填你创建的`api_auth_token=`密码
 商户密钥填写API地址`https://USDT域名/api/v1/order/create-transaction`
 
 
