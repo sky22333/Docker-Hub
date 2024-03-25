@@ -1,8 +1,8 @@
-### docker运行xray
+## docker运行xray
 
-创建配置文件`/etc/xray/config.json`
+### 创建配置文件`/etc/xray/config.json`
 
-配置文件示例：
+### 配置文件示例：
 ```
 {
     "log": {
@@ -38,13 +38,18 @@
 }
 ```
 
-运行：
+
+### 共享网络运行：
+```
+docker run -d --network="host" --name xray --restart=always -v /etc/xray:/etc/xray teddysun/xray
+```
+### 端口映射运行：
+这里的端口要与配置文件里的入站端口相同
 
 ```
 docker run -d -p 8080:8080 --name xray --restart=always -v /etc/xray:/etc/xray teddysun/xray
 ```
 
-这里的端口要与配置文件里的入站端口相同
 
 ---
 ---
