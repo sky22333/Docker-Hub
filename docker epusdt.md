@@ -219,6 +219,7 @@ docker logs -f epusdt-epusdt-1
 #### 配置支付
 
 商户ID填你创建的`api_auth_token=`密码
+
 商户密钥填写API地址`https://USDT域名/api/v1/order/create-transaction`
 
 
