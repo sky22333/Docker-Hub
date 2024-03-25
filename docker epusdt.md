@@ -174,7 +174,7 @@ create index wallet_address_token_index
     on wallet_address (token);
 ```
 
-勿动！
+此配置勿动！
 
 
 #### 首次启动
