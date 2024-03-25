@@ -15,10 +15,10 @@ services:
     image: mariadb:focal
     restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=CHANGE_YOUR_PASSWORD
+      - MYSQL_ROOT_PASSWORD=admin520
       - MYSQL_DATABASE=epusdt
       - MYSQL_USER=epusdt
-      - MYSQL_PASSWORD=CHANGE_YOUR_PASSWORD
+      - MYSQL_PASSWORD=admin520
     volumes:
       - ./mysql:/var/lib/mysql
 
@@ -72,7 +72,7 @@ max_backups=3
 mysql_host=db
 mysql_port=3306
 mysql_user=epusdt
-mysql_passwd=CHANGE_YOUR_PASSWORD
+mysql_passwd=admin520
 # 请修改 epusdt 数据库密码
 mysql_database=epusdt
 mysql_table_prefix=
@@ -205,6 +205,8 @@ docker logs -f epusdt-epusdt-1
 ```
 
 查看epusdt服务出现`http server started on [::]:8000`则表示成功.
+
+(可选)如果报错需要重新部署请删除数据库`rm -rf ./mysql/*`
 
 
 #### 配置反代域名
