@@ -234,6 +234,8 @@ docker logs -f epusdt-epusdt-1
 ### v2board接口
 
 
+创建文件`EpusdtPay.php`写入以下配置，然后放到支付插件目录。
+
 ```
 <?php
 
