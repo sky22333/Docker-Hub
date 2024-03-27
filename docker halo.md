@@ -7,3 +7,5 @@ docker run -it -d --name halo -p 8090:8090 -v ~/.halo2:/root/.halo2 halohub/halo
 
 
 地址： `http://ip:8090`
+
+后台路径：`/console`
