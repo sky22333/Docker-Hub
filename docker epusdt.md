@@ -338,7 +338,7 @@ class EpusdtPay {
 
 ---
 ---
-### 另一个版本的epusdt
+### 另一个版本的epusdt（快速部署）
 [项目地址](https://github.com/v03413/bepusdt)
 
 ---
