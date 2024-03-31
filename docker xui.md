@@ -95,3 +95,23 @@ docker run -itd --network=host \
 
 
 ---
+### Reality域名推荐列表
+```
+addons.mozilla.org
+s0.awsstatic.com
+d1.awsstatic.com
+images-na.ssl-images-amazon.com
+m.media-amazon.com
+
+player.live-video.net
+one-piece.com
+lol.secure.dyn.riotcdn.net
+www.lovelive-anime.jp
+www.swift.com
+academy.nvidia.com
+www.cisco.com
+cdn-dynmedia-1.microsoft.com
+update.microsoft
+www.tesla.com
+www.cloudflare.com
+```
