@@ -56,7 +56,7 @@ docker compose restart
 ---
 
 
-右下角按钮
+##### 主题配置——主题设置——自定义页脚
 
 ```
 <!DOCTYPE html>
