@@ -50,7 +50,7 @@ sudo touch /home/appsettings.json /etc/TokenPay.db
     "Address": "TLxxxxxxxxxxxxxxxxxxx" //归集收款地址
   },
   "Telegram": {
-    "AdminUserId": 12345678, // 你的账号ID，如不知道ID，可给https://t.me/EShopFakaBot 发送 /me 获取用户ID
+    "AdminUserId": 12345678, // 你的账号ID，查询机器人https://t.me/getidsbot
     "BotToken": "1234567890:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" //从https://t.me/BotFather 创建机器人时，会给你BotToken
   },
   "RateMove": { //汇率微调，支持设置正负数，仅支持两位小数
