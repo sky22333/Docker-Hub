@@ -62,7 +62,7 @@ sudo touch /home/appsettings.json /etc/TokenPay.db
 
 ## 运行
 ```
-docker run -d -p 5000:80 -v /home/appsettings.json:/app/appsettings.json -v /etc/TokenPay.db:/app/TokenPay.db dapiaoliang666/token-pay:latest
+docker run -d --restart always -p 5000:80 -v /home/appsettings.json:/app/appsettings.json -v /etc/TokenPay.db:/app/TokenPay.db dapiaoliang666/token-pay:latest
 ```
 
 然后将外网域名反代到`5000`端口
