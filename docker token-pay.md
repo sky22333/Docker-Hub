@@ -66,3 +66,9 @@ docker run -d --restart always -p 5000:80 -v /home/appsettings.json:/app/appsett
 ```
 
 然后将外网域名反代到`5000`端口
+
+
+如果需要重新部署需要清空`/etc/TokenPay.db`文件里的内容
+
+
+#### [官方地址](https://github.com/LightCountry/TokenPay)
