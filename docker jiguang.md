@@ -8,7 +8,7 @@ mkdir -p ~/aurora && cd ~/aurora && touch docker-compose.yml
 ### 写入配置：
 
 ```
-version: '3.7'
+version: '3.8'
 services:
   worker:
     image: leishi1313/aurora-admin-backend:latest
