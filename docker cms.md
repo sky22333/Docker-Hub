@@ -9,7 +9,7 @@ mkdir /root/cms ; cd /root/cms && touch docker-compose.yml
 #### 编辑`docker-compose.yml`配置
 
 ```
-version: '3.3'
+version: '3.8'
 services:
   # 苹果cms
   maccms:
