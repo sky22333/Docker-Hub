@@ -13,7 +13,7 @@ mkdir wordpress-docker && cd wordpress-docker
 
 
 ```
-version: "3.9"
+version: "3.8"
 
 services:
   db:
