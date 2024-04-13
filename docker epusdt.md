@@ -9,7 +9,7 @@ mkdir epusdt && cd epusdt && touch docker-compose.yml epusdt.conf epusdt.sql
 #### docker-compose.yml
 
 ```
-version: "3"
+version: "3.8"
 services:
   db:
     image: mariadb:focal
