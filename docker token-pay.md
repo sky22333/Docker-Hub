@@ -2,7 +2,7 @@
 
 #### 创建配置文件
 ```
-sudo touch /etc/appsettings.json /etc/TokenPay.db
+sudo touch /home/appsettings.json /etc/TokenPay.db
 ```
 
 #### 写入`appsettings.json`配置
