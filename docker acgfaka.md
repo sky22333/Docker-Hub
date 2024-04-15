@@ -10,10 +10,6 @@ docker run -d -p 172.17.0.1:3306:3306  -e MYSQL_ROOT_PASSWORD=123456 --name mysq
 部署
 
 ```
-docker pull weikedata/acgfaka:latest
-```
-
-```
 docker run -p 172.17.0.1:8222:80 --name acgfaka -d weikedata/acgfaka:latest
 ```
 
