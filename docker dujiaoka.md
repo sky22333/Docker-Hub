@@ -2,7 +2,7 @@
 
 先配置npm把域名反代到`8111`端口，申请证书用`80`端口。
 
-[查看npm部署方法](https://github.com/taotao1058/Docker-Hub/blob/main/docker%20NPM.md#docker%E9%83%A8%E7%BD%B2nginx-proxy-manager)
+[查看npm部署方法](https://github.com/sky22333/Docker-Hub/blob/main/docker%20NPM.md#docker%E9%83%A8%E7%BD%B2nginx-proxy-manager)
 
 安装MySQL和Redis：
 
