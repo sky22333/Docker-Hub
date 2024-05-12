@@ -16,18 +16,18 @@ curl -sSL https://mirrors.tuna.tsinghua.edu.cn/acme.sh | sh
 
 阿里云平台：登录控制台，在 `Access Key` 管理页面创建 `Access Key` 和 `Access Secret`。
 
-Cloudflare平台：将下面命令中的`dns_aliyun`改为`dns_cf`然后根据提示输入 Cloudflare 邮箱和 API密钥
+将下面命令中的`dns_cf`改为`dns_aliyun`然后根据提示输入`Access Key` 和 `Access Secret`。
 
- **配置阿里云DNS插件：** 
+ **配置Cloudflare插件：** 
 ```
-~/.acme.sh/acme.sh --set-default-ca --server letsencrypt --dns dns_aliyun
+~/.acme.sh/acme.sh --set-default-ca --server letsencrypt --dns dns_cf
 ```
 
  **申请证书：**
 ```
-~/.acme.sh/acme.sh --issue --dns dns_aliyun -d 你的域名
+~/.acme.sh/acme.sh --issue --dns dns_cf -d 你的域名
 ```
-根据提示填入`Access Key` 和 `Access Secret`
+根据提示输入 Cloudflare 邮箱和 API密钥
 
 申请完成后证书将保存在`root/acme.sh`目录
 
