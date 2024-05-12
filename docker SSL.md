@@ -27,8 +27,6 @@ curl -sSL https://mirrors.tuna.tsinghua.edu.cn/acme.sh | sh
 ```
 根据提示输入 Cloudflare 邮箱和 API密钥
 
-申请完成后证书将保存在`root/acme.sh`目录
-
 
 
 ## 使用HTTP方式申请
