@@ -41,5 +41,5 @@ curl -sSL https://mirrors.tuna.tsinghua.edu.cn/acme.sh | sh
   --key-file /etc/ssl/certs/你的域名/key.pem \
   --fullchain-file /etc/ssl/certs/你的域名/fullchain.pem
 ```
-
+可以在最后一行添加--reloadcmd "service nginx reload直接配置到nginx
  **证书将保存在`/etc/ssl/certs`目录** 
