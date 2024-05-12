@@ -1,86 +1,49 @@
-##  通过docker直接申请Letsencrypt的SSL证书
+# acme证书脚本
 
 
-### Cloudfalre
-
-1、域名解析到cloudfalre
-
-2、安装docker环境
-
-3、本地创建cloudflare的api token
-
+## 安装脚本
+ **官方脚本：** 
 ```
-touch /root/cf.ini
+curl https://get.acme.sh | sh
 ```
 
+ **国内镜像脚本：** 
 ```
-# Cloudflare API credentials used by Certbot
-dns_cloudflare_email = 你的Cloudflare邮件
-dns_cloudflare_api_key = 你的Cloudflare API密钥
-```
-
-4、执行如下命令直接获取到证书
-
-```
-docker run -it --rm --name certbot \
-    -v "/etc/letsencrypt:/etc/letsencrypt" \
-    -v "/var/lib/letsencrypt:/var/lib/letsencrypt" \
-    -v "/root/cf.ini:/root/cf.ini" \
-    certbot/dns-cloudflare certonly \
-    --dns-cloudflare \
-    --dns-cloudflare-credentials /root/cf.ini \
-    -d 你的域名
+curl -sSL https://mirrors.tuna.tsinghua.edu.cn/acme.sh | sh
 ```
 
-回车后会让你输入一个邮箱，然后一路Y就行了。
+## 使用DNS申请
 
-上面主要是把本地的证书认证信息映射到容器对应的目录，否则会提示找不到
+阿里云平台：登录控制台，在 `Access Key` 管理页面创建 `Access Key` 和 `Access Secret`。
 
-5、执行成功之后会提示对应的证书所在的目录
+Cloudflare平台：将下面命令中的`dns_aliyun`改为`dns_cf`然后根据提示输入 Cloudflare 邮箱和 API密钥
 
-
----
-
-
-
-#### 阿里云
-
-1：域名解析到阿里云
-
-2：创建阿里云 `DNS API Token`
-
-   在阿里云控制台中，转到 `访问控制` > `AccessKey 管理`
-   
-   创建一个新的 `AccessKey`，并确保为该 `AccessKey` 启用阿里云 `DNS API 权限`
-
-3：创建 cf.ini 文件
-
+ **配置阿里云DNS插件：** 
 ```
-touch /root/cf.ini
+~/.acme.sh/acme.sh --set-default-ca --server letsencrypt --dns dns_aliyun
 ```
 
+ **申请证书：**
 ```
-# Aliyun DNS credentials used by Certbot
-dns_aliyun_email = <Your_Aliyun_Email>
-dns_aliyun_access_key_id = <Your_Aliyun_AccessKey_ID>
-dns_aliyun_access_key_secret = <Your_Aliyun_AccessKey_Secret>
+~/.acme.sh/acme.sh --issue --dns dns_aliyun -d 你的域名
 ```
+根据提示填入`Access Key` 和 `Access Secret`
 
-4：执行命令获取证书
+申请完成后证书将保存在`root/acme.sh`目录
 
+
+
+## 使用HTTP方式申请
 ```
-docker run -it --rm --name certbot \
-    -v "/etc/letsencrypt:/etc/letsencrypt" \
-    -v "/var/lib/letsencrypt:/var/lib/letsencrypt" \
-    -v "/root/cf.ini:/root/cf.ini" \
-    certbot/dns-aliyun certonly \
-    --dns-aliyun \
-    --dns-aliyun-credentials /root/cf.ini \
-    -d 你的域名
+~/.acme.sh/acme.sh --issue --standalone -d 你的域名
 ```
 
-5：执行成功之后会提示对应的证书所在的目录
+## 安装证书
+```
+~/.acme.sh/acme.sh --install-cert -d 你的域名 \
+  --cert-file /etc/ssl/certs/你的域名/cert.pem \
+  --key-file /etc/ssl/certs/你的域名/key.pem \
+  --fullchain-file /etc/ssl/certs/你的域名/fullchain.pem
+```
 
-
-
----
+ **证书将保存在`/etc/ssl/certs`目录** 
