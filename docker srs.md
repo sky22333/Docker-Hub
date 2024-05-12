@@ -1,4 +1,4 @@
-### SRS流媒体框架
+### SRS流媒体服务
 
 ```
 docker run --restart always -d -it --name oryx -v $HOME/data:/data \
