@@ -4,7 +4,7 @@
 
 #### docker运行命令
 ```
-docker run -d -v /data:/app/data -p 8080:8080 -p 1935:1935 dapiaoliang666/zhibo:latest
+docker run -d -v /data:/app/data -p 8080:8080 -p 1935:1935 owncast/owncast:latest
 ```
 
 这将绑定data目录，以便您可以访问备份和数据库
