@@ -1,4 +1,4 @@
-### SRS流媒体服务
+### SRS流媒体直播服务
 
 ```
 docker run --restart always -d -it --name oryx -v $HOME/data:/data \
