@@ -71,6 +71,10 @@ docker-compose --version
 | 停止所有容器  | `docker stop $(docker ps -aq)`  |   停止所有容器         |
 
 ---
+[官方仓库](https://hub.docker.com/)
+[官方文档](https://docs.docker.com/build/building/packaging/)
+
+---
 
 ### vim编辑器
 
