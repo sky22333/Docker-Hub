@@ -55,6 +55,7 @@ docker-compose --version
 
 | 功能    | 命令 | 说明 |
 |-------------|-------------------|----------------|
+| 编译镜像  | `docker build -t 镜像名:latest .`      |   `latest`为镜像标签         |
 | 查看容器  | `docker ps`      |   `-a`查看包括已停止的容器         |
 | 容器详细信息  | `docker inspect`      |    `docker inspect 容器名或ID`  挂载点在`Mounts`块       |
 | 进入容器内部  | `docker exec -it 容器名 /bin/bash`      |   使用`ls 内部目录`查看所有文件        |
