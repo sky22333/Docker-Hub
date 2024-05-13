@@ -44,3 +44,9 @@ curl -sSL https://mirrors.tuna.tsinghua.edu.cn/acme.sh | sh
 可以在最后一行添加`--reloadcmd "service nginx reload`直接配置到nginx
 
  **证书将保存在`/etc/ssl/certs`目录** 
+
+### win系统申请证书
+
+[进入win系统acme官网](https://www.win-acme.com/)
+
+下载程序，执行exe文件，按照提示操作
