@@ -36,6 +36,9 @@ apt install socat
 
 ## 安装证书
 ```
+mkdir -p /etc/ssl/certs/你的域名/
+```
+```
 ~/.acme.sh/acme.sh --install-cert -d 你的域名 \
   --cert-file /etc/ssl/certs/你的域名/cert.pem \
   --key-file /etc/ssl/certs/你的域名/key.pem \
