@@ -5,11 +5,12 @@
 ## 安装脚本
  **官方脚本：** 
 ```
+apt install socat curl
+```
+```
 curl https://get.acme.sh | sh
 ```
-```
-apt install socat
-```
+
 
 
 ## 使用DNS申请
