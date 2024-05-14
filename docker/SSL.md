@@ -1,5 +1,6 @@
 # acme域名证书脚本
 
+[官方文档](https://github.com/acmesh-official/acme.sh/wiki/%E8%AF%B4%E6%98%8E)
 
 ## 安装脚本
  **官方脚本：** 
@@ -7,10 +8,6 @@
 curl https://get.acme.sh | sh
 ```
 
- **国内镜像脚本：** 
-```
-curl -sSL https://mirrors.tuna.tsinghua.edu.cn/acme.sh | sh
-```
 
 ## 使用DNS申请
 
