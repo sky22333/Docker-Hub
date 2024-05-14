@@ -23,7 +23,7 @@ apt install socat
 
  **申请证书：**
 ```
-~/.acme.sh/acme.sh --issue --dns dns_cf -d 你的域名 --server letsencrypt
+~/.acme.sh/acme.sh --issue --dns dns_cf -d 你的域名
 ```
 根据提示输入 Cloudflare 邮箱和 API密钥
 
