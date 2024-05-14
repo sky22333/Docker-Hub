@@ -31,7 +31,7 @@ apt install socat
 
 ## 使用HTTP方式申请
 ```
-~/.acme.sh/acme.sh --issue --standalone -d 你的域名
+~/.acme.sh/acme.sh --issue --standalone -d 你的域名 --server letsencrypt
 ```
 
 ## 安装证书
