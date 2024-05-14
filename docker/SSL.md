@@ -23,7 +23,11 @@ apt install socat
 
  **申请证书：**
 ```
-~/.acme.sh/acme.sh --issue --dns dns_cf -d 你的域名 --CF_Email 你的邮箱 --CF_Key 你的令牌
+export CF_Key="api key"
+export CF_Email="邮箱"
+```
+```
+~/.acme.sh/acme.sh --issue --dns dns_cf -d 你的域名
 ```
 
 
