@@ -7,6 +7,9 @@
 ```
 curl https://get.acme.sh | sh
 ```
+```
+apt install socat
+```
 
 
 ## 使用DNS申请
