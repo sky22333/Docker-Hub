@@ -23,7 +23,7 @@ apt install socat
 
  **申请证书：**
 ```
-~/.acme.sh/acme.sh --issue --dns dns_cf -d 你的域名
+~/.acme.sh/acme.sh --issue --dns dns_cf -d 你的域名 --server letsencrypt
 ```
 根据提示输入 Cloudflare 邮箱和 API密钥
 
@@ -34,19 +34,15 @@ apt install socat
 ~/.acme.sh/acme.sh --issue --standalone -d 你的域名 --server letsencrypt
 ```
 
-## 安装证书
-```
-mkdir -p /etc/ssl/certs/你的域名/
-```
+## 安装证书(可选)
 ```
 ~/.acme.sh/acme.sh --install-cert -d 你的域名 \
-  --cert-file /etc/ssl/certs/你的域名/cert.pem \
-  --key-file /etc/ssl/certs/你的域名/key.pem \
-  --fullchain-file /etc/ssl/certs/你的域名/fullchain.pem
+  --cert-file /etc/ssl/cert.pem \
+  --key-file /etc/ssl/key.pem \
+  --fullchain-file /etc/ssl/fullchain.pem
 ```
 可以在最后一行添加`--reloadcmd "service nginx reload`直接配置到nginx
 
- **证书将保存在`/etc/ssl/certs`目录** 
 
 ### win系统申请证书
 
