@@ -4,20 +4,42 @@
 
 [查看npm部署方法](https://github.com/sky22333/Docker-Hub/blob/main/docker/docker%20NPM.md#docker%E9%83%A8%E7%BD%B2nginx-proxy-manager)
 
-安装MySQL和Redis：
-
-```
-docker run -d -p 172.17.0.1:3306:3306  -e MYSQL_ROOT_PASSWORD=123456 --name mysql -v /data/mysql/config/my.cnf:/etc/mysql/my.cnf -v /data/mysql/db:/var/lib/mysql mysql:5.7
-```
-
-```
-docker run -d --name myredis -p 172.17.0.1:6379:6379 redis --requirepass "123456"
-```
-
 部署独角数卡
 
 ```
-docker run -dit --name dujiaoka -p 172.17.0.1:8111:80 -p 9000:9000 -e APP_URL=https://域名 -e ADMIN_HTTPS=true -e ADMIN_ROUTE_PREFIX=/admin -e WEB_DOCUMENT_ROOT=/app/public jiangjuhong/dujiaoka:latest
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    ports:
+      - "172.17.0.1:3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "123456"
+    volumes:
+      - /data/mysql/config/my.cnf:/etc/mysql/my.cnf
+      - /data/mysql/db:/var/lib/mysql
+
+  myredis:
+    image: redis
+    container_name: myredis
+    ports:
+      - "172.17.0.1:6379:6379"
+    command: redis-server --requirepass "123456"
+
+  dujiaoka:
+    image: jiangjuhong/dujiaoka:latest
+    container_name: dujiaoka
+    ports:
+      - "172.17.0.1:8111:80"
+      - "9000:9000"
+    environment:
+      - APP_URL=https://域名
+      - ADMIN_HTTPS=true
+      - ADMIN_ROUTE_PREFIX=/admin
+      - WEB_DOCUMENT_ROOT=/app/public
+    restart: always
 ```
 
 输入域名进入安装页面
