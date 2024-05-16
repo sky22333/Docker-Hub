@@ -91,11 +91,11 @@ apt-get install vim
 ```
 vim php.ini
 ```
-修改这几个变量，当然根据自己需求修改。
+修改这几个变量，根据自己需求修改。
 ```
-upload_max_filesize = 200M    #文件大小限制
-post_max_size = 250M    #post大小限制
-memory_limit = 500M        #内存占用限制
+upload_max_filesize = 2M    # PHP最大上传文件大小
+post_max_size = 8M    #服务器最大数据量和文件大小
+memory_limit = 128M        #PHP内存占用限制
 ```
 最后一步！
 
