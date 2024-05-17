@@ -2,11 +2,11 @@
 
 ```
 docker run -d --name mtproxy \
---restart=always \
--e domain="cloudflare.com" \
--p 8080:80 \
--p 8443:443 \
-ellermister/mtproxy
+  --restart=always \
+  -e domain="cloudflare.com" \
+  -p 8080:80 \
+  -p 8443:443 \
+  ellermister/mtproxy
 ```
 
   
