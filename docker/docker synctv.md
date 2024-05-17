@@ -16,4 +16,4 @@ root
 
 
 
-如果你想改前端文件，需要clone前端项目，然后修改编译出前端文件，然后映射到docker内部比如: `-v dist:/root/dist`，然后运行项目的时候加上启动参数 `--web-path /root/dist` 就行
+如果你想改前端文件，需要clone前端项目，然后修改，编译出前端文件，然后运行docker的时候映射编译好的前端文件：`-v /路径/dist:/root/dist`，同时添加环境变量`-e WEB_PATH=/dist`
