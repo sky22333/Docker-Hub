@@ -28,9 +28,9 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - WEB_PATH=/root/dist
+      - WEB_PATH=/dist
     volumes:
-      - /路径/dist:/root/dist
+      - /路径/dist:/dist
     container_name: synctv
     restart: always
 ```
