@@ -17,3 +17,20 @@ root
 
 
 如果你想改前端文件，需要clone前端项目，然后修改，编译出前端文件，然后运行docker的时候映射编译好的前端文件：`-v /路径/dist:/root/dist`，同时添加环境变量`-e WEB_PATH=/dist`
+
+
+例如：
+```
+version: '3.8'
+services:
+  synctv:
+    image: synctvorg/synctv
+    ports:
+      - "8080:8080"
+    environment:
+      - WEB_PATH=/root/dist
+    volumes:
+      - /路径/dist:/root/dist
+    container_name: synctv
+    restart: always
+```
