@@ -1,7 +1,7 @@
 ### 直播和观影平台synctv
 
 ```
-docker run -d --name synctv -p 8080:8080 synctvorg/synctv
+docker run -d --name synctv -p 8080:8080 synctvorg/synctv:latest
 ```
 
 默认管理员账户：
@@ -23,5 +23,5 @@ root
 
 例如：
 ```
-docker run -d --name synctv -p 8080:8080 -e WEB_PATH=/dist -v /路径/dist:/dist synctvorg/synctv
+docker run -d --name synctv -p 8080:8080 -e WEB_PATH=/dist -v /路径/dist:/dist synctvorg/synctv:latest
 ```
