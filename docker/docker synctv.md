@@ -23,16 +23,5 @@ root
 
 例如：
 ```
-version: '3.8'
-services:
-  synctv:
-    image: synctvorg/synctv
-    ports:
-      - "8080:8080"
-    environment:
-      - WEB_PATH=/dist
-    volumes:
-      - /路径/dist:/dist
-    container_name: synctv
-    restart: always
+docker run -d --name synctv -p 8080:8080 -e WEB_PATH=/dist -v /路径/dist:/dist synctvorg/synctv
 ```
