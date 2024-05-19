@@ -13,8 +13,7 @@ docker run --restart always -d -it --name oryx -v $HOME/data:/data \
 
 docker安装
 ```
-docker run -d --rm -it -p 1935:1935 -p 8080:8080 registry.cn-hangzhou.aliyuncs.com/ossrs/srs:5 \
-  ./objs/srs -c conf/http.flv.live.conf
+docker run -d --name srs -p 1935:1935 -p 1985:1985 -p 8080:8080 ossrs/srs:latest
 ```
 `IP:8080`端口可进入SRS后台获取视频URL
 
