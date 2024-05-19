@@ -11,7 +11,7 @@ docker run --restart always -d --name oryx -v $HOME/data:/data -p 80:2022 -p 443
 
 docker安装
 ```
-docker run -d --name srs -p 1935:1935 -p 1985:1985 -p 8080:8080 ossrs/srs:latest
+docker run -d --restart always --name srs -p 1935:1935 -p 1985:1985 -p 8080:8080 ossrs/srs:latest
 ```
 `IP:8080`端口可进入SRS后台获取视频URL
 
