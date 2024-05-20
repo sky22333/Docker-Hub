@@ -114,12 +114,12 @@ ip6tables -t nat -A POSTROUTING -s fd00:ea23:9c80:4a54:e242:5f97::/96 -j MASQUER
 
 ### 启动面板：
 ```
-docker-compose up -d
+docker compose up -d
 ```
 
 ### 创建管理员用户（密码必须设置8位以上，否则无法登陆）：
 ```
-docker-compose exec backend python app/initial_data.py
+docker compose exec backend python app/initial_data.py
 ```
 
 
