@@ -11,23 +11,21 @@ mkdir /root/cms ; cd /root/cms && touch docker-compose.yml
 ```
 version: '3.8'
 services:
-  # 苹果cms
   maccms:
     depends_on:
       - db
     image: esme518/docker-maccms10:latest   # 使用 esme518/docker-maccms10 最新镜像
     restart: always
     ports:
-      - 172.17.0.1:800:80 # 左边为主机端口,可以修改.
+      - 800:80    # 端口映射
     container_name: maccms
     volumes:
       - ./cms:/var/www/html  # 将数据映射到 /root/cms 目录
-  # mysql数据库
   db:
     image: mysql:5.7
     restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=admin@ADMIN  # 数据库密码，可以修改
+      - MYSQL_ROOT_PASSWORD=admin@ADMIN  # 数据库密码
     container_name: maccms-mysql
 ```
 若要共用数据库请替换数据库部分
