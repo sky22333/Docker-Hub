@@ -17,7 +17,7 @@ services:
     image: esme518/docker-maccms10:latest   # 使用esme518/docker-maccms10最新镜像
     restart: always
     ports:
-      - 800:80    # 端口映射
+      - 8090:80    # 端口映射
     container_name: maccms
     volumes:
       - ./cms:/var/www/html  # 将数据映射到 /root/cms 目录
@@ -46,7 +46,7 @@ docker-compose up -d
 #### 进入安装页面
 
 ```
-启动成功后，浏览器输入ip:800端口就进入了系统安装界面
+启动成功后，浏览器输入ip:8090端口就进入了系统安装界面
 
 服务器地址：db
 数据库端口：3306
@@ -56,7 +56,7 @@ docker-compose up -d
 ```
 
 
-然后浏览器输入`http://你的ip:800/cmsadmin.php`进入站点后台
+然后浏览器输入`http://你的ip:8090/cmsadmin.php`进入站点后台
 
 
 #### 更换模板
