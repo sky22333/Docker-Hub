@@ -14,7 +14,7 @@ services:
   maccms:
     depends_on:
       - db
-    image: esme518/docker-maccms10:latest   # 使用 esme518/docker-maccms10 最新镜像
+    image: esme518/docker-maccms10:latest   # 使用esme518/docker-maccms10最新镜像
     restart: always
     ports:
       - 800:80    # 端口映射
