@@ -20,6 +20,6 @@ docker compose up -d
 ```
 数据库地址：mysql
 数据库名称：acgfakadb
-数据库用户名：acgfakauser
+数据库账号：acgfakauser
 数据库密码：acgfakapassword
 ```
