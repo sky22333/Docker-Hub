@@ -6,6 +6,9 @@ git clone https://github.com/sky22333/acg-faka.git
 ```
 #### 一键编译启动
 ```
+cd /acg-faka
+```
+```
 docker compose up -d
 ```
 
