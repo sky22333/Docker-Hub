@@ -1,22 +1,22 @@
-### docker部署异次元发卡
+## docker部署异次元发卡
 
-安装数据库
-
+#### 拉取源码
 ```
-docker run -d -p 172.17.0.1:3306:3306  -e MYSQL_ROOT_PASSWORD=123456 --name mysql -v /data/mysql/config/my.cnf:/etc/mysql/my.cnf -v /data/mysql/db:/var/lib/mysql mysql:5.7
+git clone https://github.com/sky22333/acg-faka.git
 ```
-
-
-部署
-
+#### 一键编译启动
 ```
-docker run -p 172.17.0.1:8222:80 --name acgfaka -d weikedata/acgfaka:latest
+docker compose up -d
 ```
 
-使用域名反代`8222`端口访问和安装(端口只监听docker地址)
+#### 配置
 
-数据库名称为`mysql`
+`http://你的IP:9000`进入网站，后台路径为`/admin`
 
-MySQL地址填docker内部IP`172.17.0.1`
 
-数据库密码`123456` 可以在部署命令中自行更改
+```
+数据库地址：mysql
+数据库名称：acgfakadb
+数据库用户名：acgfakauser
+数据库密码：acgfakapassword
+```
