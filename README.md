@@ -136,7 +136,7 @@ sudo systemctl restart docker
 ---
 ## 检查加速是否生效
 
-命令行执行 `docker info`，如果从结果中看到了如下内容，说明配置成功。
+查看docker系统信息 `docker info`，如果从结果中看到了如下内容，说明配置成功。
 
 ```console
 Registry Mirrors:
