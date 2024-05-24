@@ -58,6 +58,7 @@ docker-compose --version
 | 编译镜像  | `docker build -t 镜像名 .`      |   先`docker login`登录docker hub        |
 | 推送镜像  | `docker push 用户名/镜像名`      |   需先标记镜像 `docker 本地镜像名 用户名/镜像名`        |
 | 查看容器  | `docker ps`      |   `-a`查看包括已停止的容器         |
+| 容器资源占用  | `docker stats`      |   查看所有容器资源占用         |
 | 容器详细信息  | `docker inspect`      |    `docker inspect 容器名或ID`  挂载点在`Mounts`块       |
 | 进入容器内部  | `docker exec -it 容器名 /bin/bash`      |   使用`ls 内部目录`查看所有文件        |
 | 停止容器  | `docker stop`      |   `docker stop 容器名或ID`             |
