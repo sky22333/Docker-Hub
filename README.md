@@ -148,10 +148,8 @@ Registry Mirrors:
 
 拉取镜像前，可使用 `time` 统计所花费的总时间。测速前记得移除本地的镜像。
 
-例如：
-```
-time docker pull node:latest
-```
+例如：`time docker pull node:latest`
+
 ---
 ## Docker Hub 镜像加速列表
 以下镜像站来源于互联网（感谢热心网友），可能出现宕机、转内网、关停等情况，建议同时配置多个镜像源。
