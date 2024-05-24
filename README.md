@@ -148,7 +148,7 @@ Registry Mirrors:
 
 拉取镜像前，可使用 `time` 统计所花费的总时间。测速前记得移除本地的镜像。
 
-例如
+例如：
 ```
 time docker pull node:latest
 ```
