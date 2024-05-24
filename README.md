@@ -59,7 +59,7 @@ docker-compose --version
 | 推送镜像  | `docker push 用户名/镜像名`      |   需先标记镜像 `docker 本地镜像名 用户名/镜像名`        |
 | 查看容器  | `docker ps`      |   `-a`查看包括已停止的容器         |
 | 容器资源占用  | `docker stats`      |   查看所有容器资源占用         |
-| 容器详细信息  | `docker inspect`      |  挂载在`Mounts`网络在`Networks`       |
+| 容器详细信息  | `docker inspect`      |  挂载看`Mounts`网络看`Networks`       |
 | 进入容器内部  | `docker exec -it 容器名 /bin/bash`      |   使用`ls 内部目录`查看所有文件        |
 | 停止容器  | `docker stop`      |   `docker stop 容器名或ID`             |
 | 启动容器  | `docker start`      | `docker start 容器名或ID`           |
