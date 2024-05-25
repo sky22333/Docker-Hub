@@ -17,12 +17,6 @@ curl -fsSL https://get.docker.com | sh
 curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
 ```
 
-Azure 源(中国微软源)
-
-```
-curl -fsSL https://get.docker.com | bash -s docker --mirror AzureChinaCloud
-```
-
 <details>
   <summary>安装Docker Compose</summary>
   
