@@ -144,6 +144,13 @@ Registry Mirrors:
 
 例如：`time docker pull node:latest`
 
+## 卸载Docker
+```
+sudo systemctl stop docker
+sudo apt-get purge docker-ce docker-ce-cli containerd.io
+sudo rm -rf /etc/docker /var/lib/docker
+```
+
 ---
 ## Docker Hub 镜像加速列表
 以下镜像站来源于互联网（感谢热心网友），可能出现宕机、转内网、关停等情况，建议同时配置多个镜像源。
