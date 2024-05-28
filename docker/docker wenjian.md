@@ -1,15 +1,9 @@
 ### Liunx文件管理器
 
-
-```
-touch /home/filebrowser.db
-```
-
-
 ```
 docker run -d \
     -v /:/srv \
-    -v /home/filebrowser.db:/database/filebrowser.db \
+    -v /home:/database \
     -e PUID=$(id -u) \
     -e PGID=$(id -g) \
     -p 7777:80 \
