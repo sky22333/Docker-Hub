@@ -40,3 +40,17 @@ docker run -d --name synctv -p 8080:8080 -e WEB_PATH=/dist -v /路径/dist:/dist
 
 更改房间页面样式：src/components/cinema/RoomInfo.vue        #  可删除分享链接元素，防止分享链接带密码
 ```
+
+#### 后端改为游客可以发言
+```
+git clone https://github.com/synctv-org/synctv.git
+```
+
+后端项目`internal/op/room.go`目录的256行和287行`=`号后面改为`model.NoPermission | model.PermissionSendChatMessage`，然后编译docker镜像运行
+
+```
+docker build -t tv .
+```
+```
+docker run -d --name tv -p 8080:8080 -e WEB_PATH=/dist -v 文件路径:/dist tv
+```
