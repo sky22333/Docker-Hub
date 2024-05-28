@@ -1,4 +1,4 @@
-### 直播和观影平台synctv
+## 直播和观影平台synctv
 
 ```
 docker run -d --name synctv -p 8080:8080 synctvorg/synctv:latest
@@ -24,4 +24,19 @@ root
 例如：
 ```
 docker run -d --name synctv -p 8080:8080 -e WEB_PATH=/dist -v /路径/dist:/dist synctvorg/synctv:latest
+```
+
+## 相关代码目录
+```
+更改用户权限目录：src/types/User.ts
+
+更改logo和站点名：src/components/Header.vue        # 95行可去掉logo灰色背景
+
+更改logs图片：src/assets/appIcons/synctv-nobg.svg
+
+更改底部版权：src/views/HomeView.vue
+
+更改浏览器地址栏图标：public/favicon.svg
+
+更改房间页面样式：src/components/cinema/RoomInfo.vue        #  可删除分享链接元素，防止分享链接带密码
 ```
