@@ -32,11 +32,11 @@ docker run -d --name synctv -p 8080:8080 -e WEB_PATH=/dist -v /路径/dist:/dist
 
 更改首页文本和站点名称：src/components/Header.vue        # 95行可去掉logo灰色背景
 
-更改logs图片：src/assets/appIcons/synctv-nobg.svg
+更改首页logs图片：src/assets/appIcons/synctv-nobg.svg
 
 更改底部版权：src/views/HomeView.vue
 
-更改浏览器地址栏图标：public/favicon.svg
+更改浏览器地址栏logo图标：public/favicon.svg
 
 更改房间页面样式：src/components/cinema/RoomInfo.vue        #  可删除分享链接元素，防止分享链接带密码
 ```
