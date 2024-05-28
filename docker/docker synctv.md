@@ -38,7 +38,7 @@ docker run -d --name synctv -p 8080:8080 -e WEB_PATH=/dist -v /路径/dist:/dist
 
 更改浏览器地址栏logo图标：public/favicon.svg
 
-更改房间页面样式：src/components/cinema/RoomInfo.vue        #  可删除分享链接元素，防止分享链接带密码
+更改房间页面样式：src/components/cinema/RoomInfo.vue        # 可删除分享链接模块，防止分享链接带密码
 ```
 
 #### 后端改为游客可以发言
