@@ -61,7 +61,7 @@ docker-compose --version
 | 删除容器 | `docker rm`       |  `docker rm 容器名或ID`              |
 | 查看镜像 | `docker images`   | `docker images 镜像名或ID`            |
 | 删除镜像  | `docker rmi -f`   |  `docker rmi -f 镜像名或ID`          |
-| 清除缓存  | `docker system prune`   |  清除所有未使用资源`容器 网络 镜像 缓存`    |
+| 清除资源  | `docker system prune`   |  清除所有未使用资源`容器 网络 镜像 缓存`    |
 | 删除所有镜像  | `docker rmi -f $(docker images -aq)`  |   删除所有镜像         |
 | 删除所有容器  | `docker container prune -f`  |   删除所有已停止容器         |
 | 停止所有容器  | `docker stop $(docker ps -aq)`  |   停止所有容器         |
