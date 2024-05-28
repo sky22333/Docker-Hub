@@ -32,7 +32,7 @@ docker run -d --name synctv -p 8080:8080 -e WEB_PATH=/dist -v /路径/dist:/dist
 
 更改首页文本和站点名称：src/components/Header.vue        # 95行可去掉logo灰色背景
 
-更改首页logs图片：src/assets/appIcons/synctv-nobg.svg
+更改首页logo图片：src/assets/appIcons/synctv-nobg.svg
 
 更改底部版权：src/views/HomeView.vue
 
