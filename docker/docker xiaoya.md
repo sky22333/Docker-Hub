@@ -17,7 +17,7 @@ services:
       - '5678:80'
     restart: unless-stopped
 ```
-配置`home/xiaoya`文件内的参数
+配置`home/xiaoya`文件内的参数，然后重启
 
 #### 教程
 
