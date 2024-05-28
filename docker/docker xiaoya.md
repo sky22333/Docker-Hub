@@ -1,7 +1,4 @@
 ### 小雅媒体库
-```
-mkdir /home/xiaoya
-```
 
 ```
 version: '3.8'
@@ -20,7 +17,7 @@ services:
       - '5678:80'
     restart: unless-stopped
 ```
-
+配置`home/xiaoya`文件内的参数
 
 #### 教程
 
@@ -36,7 +33,7 @@ webdav 账号密码
 docker restart xiaoya
 ```
 
-#### 定时任务
+#### 定时重启
 ```
 crontab -e
 ```
