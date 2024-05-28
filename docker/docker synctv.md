@@ -30,7 +30,7 @@ docker run -d --name synctv -p 8080:8080 -e WEB_PATH=/dist -v /路径/dist:/dist
 ```
 更改用户权限目录：src/types/User.ts
 
-更改logo和站点名：src/components/Header.vue        # 95行可去掉logo灰色背景
+更改logo和站点名称：src/components/Header.vue        # 95行可去掉logo灰色背景
 
 更改logs图片：src/assets/appIcons/synctv-nobg.svg
 
