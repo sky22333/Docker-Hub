@@ -54,8 +54,6 @@ docker run -itd \
 ```
 默认信息
 端口：9090
-用户名：admin
-密码：admin
 ```
 
 ---
