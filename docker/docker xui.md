@@ -5,10 +5,10 @@ mkdir xui && cd xui
 ```
 ```
 docker run -itd \
-    --network host \
     -e XRAY_VMESS_AEAD_FORCED=false \
     -v $PWD/db/:/etc/x-ui/ \
     -v $PWD/cert/:/root/cert/ \
+    --network host \
     --name x-ui --restart=unless-stopped \
     alireza7/x-ui:latest
 ```
