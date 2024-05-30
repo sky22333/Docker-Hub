@@ -1,9 +1,6 @@
 ###  最新伊朗版xui
 
 ```
-mkdir xui && cd xui
-```
-```
 docker run -itd \
     -e XRAY_VMESS_AEAD_FORCED=false \
     -v $PWD/db/:/etc/x-ui/ \
@@ -44,9 +41,6 @@ docker exec -it x-ui sh
 ###  伊朗3x-ui
 
 ```
-mkdir 3xui && cd 3xui
-```
-```
 docker run -itd \
    -e XRAY_VMESS_AEAD_FORCED=false \
    -v $PWD/db/:/etc/x-ui/ \
@@ -72,9 +66,6 @@ docker run -itd \
 
 ###  FranzKafkaYu/x-ui版本
 
-```
-mkdir xui && cd xui
-```
 ```
 docker run -itd --network=host \
     -v $PWD/db/:/etc/x-ui/ \
