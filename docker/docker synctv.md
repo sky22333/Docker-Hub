@@ -52,5 +52,5 @@ git clone https://github.com/synctv-org/synctv.git
 docker build -t tv .
 ```
 ```
-docker run -d --name tv -p 8080:8080 -e WEB_PATH=/dist -v 文件路径:/dist tv
+docker run -d --name tv -p 8080:8080 -e RTMP_PORT=1935 -e WEB_PATH=/dist -v 文件路径:/dist tv
 ```
