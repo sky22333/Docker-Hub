@@ -72,3 +72,114 @@ docker run -d --restart always -p 5000:80 -v /home/appsettings.json:/app/appsett
 
 
 #### [官方地址](https://github.com/LightCountry/TokenPay)
+
+
+
+## `v2board`对接`TokenPay`
+
+### 1. 将插件复制到`v2board`对应目录
+### 2. 到`v2board`后台-**支付配置**中添加支付方式
+注意事项
+1. API地址末尾请不要有斜线，如`https://token-pay.xxx.com`  
+2. 币种请填写指定字符，支持的币种请参考[币种说明](../../Wiki/Currency.md) 
+3. 如果你要同时支持USDT和TRX付款，你需要添加两条支付方式，依此类推  
+
+请参考此图填写
+<img src="../../Wiki/imgs/v2board-payment.png" alt="v2board支付方式配置"/>
+
+
+### 插件代码
+
+创建文件`TokenPay.php`复制到`v2board`支付目录
+
+```
+<?php
+
+namespace App\Payments;
+
+use \Curl\Curl;
+
+class TokenPay {
+    public function __construct($config)
+    {
+        $this->config = $config;
+    }
+
+    public function form()
+    {
+        return [
+            'token_pay_url' => [
+                'label' => 'API 地址',
+                'description' => '您的 TokenPay API 接口地址(例如: https://token-pay.xxx.com)',
+                'type' => 'input',
+            ],
+            'token_pay_apitoken' => [
+                'label' => 'API Token',
+                'description' => '您的 TokenPay API Token',
+                'type' => 'input',
+            ],
+            'token_pay_currency' => [
+                'label' => '币种',
+                'description' => '您的 TokenPay 币种，如 USDT_TRC20、TRX',
+                'type' => 'input',
+            ]
+        ];
+    }
+
+    public function pay($order)
+    {
+        $params = [
+			"ActualAmount" => $order['total_amount'] / 100,
+			"OutOrderId" => $order['trade_no'], 
+			"OrderUserKey" => strval($order['user_id']), 
+			"Currency" => $this->config['token_pay_currency'],
+			'RedirectUrl' => $order['return_url'],
+			'NotifyUrl' => $order['notify_url'],
+        ];
+        ksort($params);
+        reset($params);
+        $str = stripslashes(urldecode(http_build_query($params))) . $this->config['token_pay_apitoken'];
+        $params['Signature'] = md5($str);
+
+        $curl = new Curl();
+        $curl->setUserAgent('TokenPay');
+        $curl->setOpt(CURLOPT_SSL_VERIFYPEER, 0);
+        $curl->setOpt(CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+        $curl->post($this->config['token_pay_url'] . '/CreateOrder', json_encode($params));
+        $result = $curl->response;
+        $curl->close();
+
+        if (!isset($result->success) || !$result->success) {
+            abort(500, "Failed to create order. Error: {$result->message}");
+        }
+
+        $paymentURL = $result->data;
+        return [
+            'type' => 1, // 0:qrcode 1:url
+            'data' => $paymentURL
+        ];
+    }
+
+    public function notify($params)
+    {
+        $sign = $params['Signature'];
+        unset($params['Signature']);
+        ksort($params);
+        reset($params);
+        $str = stripslashes(urldecode(http_build_query($params))) . $this->config['token_pay_apitoken'];
+        if ($sign !== md5($str)) {
+            die('cannot pass verification');
+        }
+        $status = $params['Status'];
+        // 0: Pending 1: Paid 2: Expired
+        if ($status != 1) {
+            die('failed');
+        }
+        return [
+            'trade_no' => $params['OutOrderId'],
+            'callback_no' => $params['Id'],
+            'custom_result' => 'ok'
+        ];
+    }
+}
+```
