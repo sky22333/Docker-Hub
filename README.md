@@ -35,7 +35,7 @@ chmod +x /usr/local/bin/docker-compose
 ```
 验证安装:
 ```
-docker-compose --version
+docker-compose -v
 ```
 
 ---
