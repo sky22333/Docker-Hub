@@ -85,7 +85,7 @@ docker run -d --restart always -p 5000:80 -v /home/appsettings.json:/app/appsett
 3. 如果你要同时支持USDT和TRX付款，你需要添加两条支付方式，依此类推  
 
 请参考此图填写
-<img src="../../Wiki/imgs/v2board-payment.png" alt="v2board支付方式配置"/>
+<img src="../png/TokenPay.png" alt="v2board支付方式配置"/>
 
 
 ### 插件代码
