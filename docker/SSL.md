@@ -50,3 +50,26 @@ export CF_Email="你的邮箱"
 [进入win系统acme官网](https://www.win-acme.com/)
 
 下载程序，执行exe文件，按照提示操作
+
+
+# docker一键申请
+
+```
+services:
+  https-portal:
+    image: steveltn/https-portal:1
+    ports:
+      - '80:80'
+      - '443:443'
+    environment:
+      DOMAINS: 'example.com' # 你的域名
+      STAGE: 'production' # 生产环境
+      FORCE_RENEW: 'true' # 证书续订
+    volumes:
+      - https-portal-data:/var/lib/https-portal
+      - https-portal-certs:/var/lib/https-portal/certs # 存储证书文件
+
+volumes:
+  https-portal-data: # 避免升级HTTPS-PORTAL时重新签名
+  https-portal-certs: # 存储证书文件
+```
