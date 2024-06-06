@@ -67,9 +67,35 @@ services:
       FORCE_RENEW: 'true' # 证书续订
     volumes:
       - https-portal-data:/var/lib/https-portal
-      - https-portal-certs:/var/lib/https-portal/certs # 存储证书文件
+      - /var:/var/lib/https-portal # 映射文件到宿主机
 
 volumes:
-  https-portal-data: # 避免升级HTTPS-PORTAL时重新签名
-  https-portal-certs: # 存储证书文件
+  https-portal-data:
+```
+
+
+### dns方式申请
+
+```
+services:
+  https-portal:
+    image: steveltn/https-portal:1
+    ports:
+      - '80:80'
+      - '443:443'
+    environment:
+      DOMAINS: 'uuuadc.top'
+      STAGE: 'production' # 使用生产环境
+      FORCE_RENEW: 'true' # 证书续订
+      DNS_PROVIDER: 'cloudflare' # 或 'alidns'
+      CLOUDFLARE_EMAIL: 'your-email@example.com' # 对应于Cloudflare
+      CLOUDFLARE_API_KEY: 'your-cloudflare-api-token' # 对应于Cloudflare
+      # ALI_KEY: 'your-ali-access-key-id' # 对应于阿里云
+      # ALI_SECRET: 'your-ali-access-key-secret' # 对应于阿里云
+    volumes:
+      - https-portal-data:/var/lib/https-portal
+      - /var:/var/lib/https-portal # 映射文件到宿主机
+
+volumes:
+  https-portal-data:
 ```
