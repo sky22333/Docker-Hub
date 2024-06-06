@@ -84,8 +84,8 @@ services:
       - '80:80'
       - '443:443'
     environment:
-      DOMAINS: 'uuuadc.top'
-      STAGE: 'production' # 使用生产环境
+      DOMAINS: 'example.com' # 你的域名
+      STAGE: 'production'
       FORCE_RENEW: 'true' # 证书续订
       DNS_PROVIDER: 'cloudflare' # 或 'alidns'
       CLOUDFLARE_EMAIL: 'your-email@example.com' # 对应于Cloudflare
