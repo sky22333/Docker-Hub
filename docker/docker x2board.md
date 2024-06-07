@@ -61,56 +61,12 @@ docker compose restart
 
 
 
-##### 主题配置——主题设置——自定义页脚
+## 迁移
 
-```
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Custom Animated Button</title>
-    <style>
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
-            20%, 40%, 60%, 80% { transform: translateX(10px); }
-        }
+将数据库文件全部导出为sql
 
-        .tg-service-button {
-            position: fixed;
-            right: 20px;
-            bottom: 20px;
-            padding: 6px 16px; /* Further reduced padding */
-            background-color: rgba(255, 255, 255, 0.7); /* 70% transparency */
-            color: black; /* Black text */
-            font-weight: bold; /* Bold font */
-            border: 2px solid black; /* Black border */
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 14px; /* Reduced font size */
-            text-align: center;
-            box-shadow: 0 0 8px black; /* Black glow effect */
-        }
-    </style>
-</head>
-<body>
+另一个服务器搭建好后，进数据库清空数据表
 
-    <button class="tg-service-button" onclick="redirectToTelegram()">交流群</button>
+导入sql备份文件
 
-    <script>
-        function redirectToTelegram() {
-            window.open('https://t.me', '_blank');
-        }
-
-        // Start shaking after every 6 seconds, shake for 1 second
-        setInterval(function() {
-            let button = document.querySelector('.tg-service-button');
-            button.style.animation = 'shake 1s';
-            setTimeout(function() {
-                button.style.animation = 'none';
-            }, 1000);
-        }, 6000);
-    </script>
-
-</body>
-</html>
-```
+进入数据库的`v2_settings`表，修改`https`配置，域名配置，路径配置
