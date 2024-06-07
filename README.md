@@ -150,8 +150,8 @@ Registry Mirrors:
 
 ---
 ## 备用方法：直接传送镜像
-
-#### A服务器保存Docker镜像(`myimage`为镜像名)
+国外服务器拉取镜像后打包压缩到本地，然后传输到国内服务器，`myimage`为镜像名
+#### A服务器保存Docker镜像
 ```
 docker save myimage > myimage.tar
 ```
