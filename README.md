@@ -135,6 +135,17 @@ sudo systemctl daemon-reload
 sudo systemctl restart docker
 ```
 
+
+### 检查加速是否生效
+
+查看docker系统信息 `docker info`，如果从结果中看到了如下内容，说明配置成功。
+
+```console
+Registry Mirrors:
+ [...]
+ https://docker.m.daocloud.io
+```
+
 对于 Mac 和 Windows 用户，直接在 Docker Desktop 系统设置中，配置 registry-mirrors 即可。
 
 ---
@@ -152,22 +163,18 @@ scp myimage.tar root@192.0.2.0:/home
 
 #### B服务器加载Docker镜像
 
-`cd /home`
+```
+cd /home
+```
 
 ```
 docker load < myimage.tar
 ```
-
----
-## 检查加速是否生效
-
-查看docker系统信息 `docker info`，如果从结果中看到了如下内容，说明配置成功。
-
-```console
-Registry Mirrors:
- [...]
- https://docker.m.daocloud.io
+查看镜像
 ```
+docker images
+```
+---
 
 ## Docker Hub 镜像测速
 
