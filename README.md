@@ -110,17 +110,6 @@ sudo tee /etc/docker/daemon.json <<-'EOF'
 }
 EOF
 ```
-#### 或者使用socks代理
-```
-sudo tee /etc/docker/daemon.json <<-'EOF'
-{
-  "host": "127.0.0.1",
-  "port": 1080,
-  "user": "用户名",
-  "pass": "密码"
-}
-EOF
-```
 ```
 sudo systemctl daemon-reload
 ```
@@ -140,6 +129,28 @@ Registry Mirrors:
 ```
 
 对于 Mac 和 Windows 用户，直接在 Docker Desktop 系统设置中，配置 registry-mirrors 即可。
+
+---
+## 使用代理拉取镜像
+
+#### 创建配置文件
+```
+sudo mkdir -p /etc/systemd/system/docker.service.d
+```
+```
+sudo vim /etc/systemd/system/docker.service.d/http-proxy.conf
+```
+#### 在文件中添加代理
+```
+[Service]
+Environment="HTTP_PROXY=socks5://user:pass@127.0.0.1:1080"
+Environment="HTTPS_PROXY=socks5://user:pass@127.0.0.1:1080"
+```
+#### 重启Docker
+```
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+```
 
 ---
 ## 备用方法：直接传送镜像
