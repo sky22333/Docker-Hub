@@ -73,11 +73,7 @@ docker-compose --version
 
 ### vim编辑器
 
-```
-apt-get install vim
-```
-
-
+安装：`apt-get install vim`或者`apk add vim`
 
 vim常用命令：
 
