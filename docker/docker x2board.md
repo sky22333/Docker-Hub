@@ -113,3 +113,5 @@ EXIT;
 mysql -u root -p mysql < /tmp/mysql.sql
 ```
 通过这些步骤，你将删除现有数据库中的所有表，然后导入新的SQL文件内容。这将确保数据被完全覆盖。
+
+然后进入数据库的v2_settings表，修改https配置，域名配置，路径配置，即可正常进入后台
