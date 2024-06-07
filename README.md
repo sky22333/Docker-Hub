@@ -74,9 +74,6 @@ docker-compose --version
 ### vim编辑器
 
 ```
-apt-get update
-```
-```
 apt-get install vim
 ```
 
