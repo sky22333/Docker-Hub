@@ -102,8 +102,10 @@ SET @stmt = CONCAT('DROP TABLE IF EXISTS ', @tables);
 PREPARE stmt FROM @stmt;
 EXECUTE stmt;
 DEALLOCATE PREPARE stmt;
+```
 
-退出MySQL交互界面：
+#### 退出MySQL交互界面
+```
 EXIT;
 ```
 #### 导入数据库
