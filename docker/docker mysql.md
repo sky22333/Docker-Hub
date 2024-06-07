@@ -35,3 +35,10 @@ docker run --name my-phpmyadmin -d -p 7890:80 phpmyadmin/phpmyadmin
 -e PMA_PASSWORD=123456     // 指定登录数据库的密码。
 --network my_network       // 指定容器网络
 ```
+
+---
+
+#### 查看容器网络
+```
+docker inspect -f '{{.HostConfig.NetworkMode}}' 容器名称或ID
+```
