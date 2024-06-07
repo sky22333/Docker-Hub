@@ -151,7 +151,10 @@ Environment="HTTPS_PROXY=socks5://user:pass@127.0.0.1:1080"
 sudo systemctl daemon-reload
 sudo systemctl restart docker
 ```
-
+#### 查看环境变量
+```
+sudo systemctl show --property=Environment docker
+```
 ---
 ## 备用方法：直接传送镜像
 国外服务器拉取镜像后打包压缩到本地，然后传输到国内服务器，`myimage`为镜像名
