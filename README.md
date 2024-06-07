@@ -151,7 +151,7 @@ Registry Mirrors:
 ---
 ## 备用方法：直接传送镜像
 
-#### A服务器保存Docker镜像
+#### A服务器保存Docker镜像(`myimage`为镜像名)
 ```
 docker save myimage > myimage.tar
 ```
