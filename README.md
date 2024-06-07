@@ -117,7 +117,7 @@ sudo tee /etc/docker/daemon.json <<-'EOF'
 }
 EOF
 ```
-#### 或者
+#### 或者使用socks代理
 ```
 sudo tee /etc/docker/daemon.json <<-'EOF'
 {
