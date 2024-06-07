@@ -138,6 +138,27 @@ sudo systemctl restart docker
 对于 Mac 和 Windows 用户，直接在 Docker Desktop 系统设置中，配置 registry-mirrors 即可。
 
 ---
+## 备用方法：直接传送镜像
+
+#### A服务器保存Docker镜像
+```
+docker save myimage > myimage.tar
+```
+#### 传送到B服务器
+```
+scp myimage.tar root@192.0.2.0:/home
+```
+然后输入B服务器root密码
+
+#### B服务器加载Docker镜像
+
+`cd /home`
+
+```
+docker load < myimage.tar
+```
+
+---
 ## 检查加速是否生效
 
 查看docker系统信息 `docker info`，如果从结果中看到了如下内容，说明配置成功。
