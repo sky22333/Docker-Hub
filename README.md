@@ -119,6 +119,17 @@ sudo tee /etc/docker/daemon.json <<-'EOF'
 }
 EOF
 ```
+#### 或者
+```
+sudo tee /etc/docker/daemon.json <<-'EOF'
+{
+  "host": "127.0.0.1",
+  "port": 1080,
+  "user": "用户名",
+  "pass": "密码"
+}
+EOF
+```
 ```
 sudo systemctl daemon-reload
 ```
