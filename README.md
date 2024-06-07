@@ -2,8 +2,6 @@
 
 国内从 Docker Hub 拉取镜像有时会遇到困难，此时可以配置镜像加速器。Docker 官方和国内很多云服务商都提供了国内加速器服务。一般国内源的上游都会配置成docker hub，国内源可以理解为缓存或CDN，如果你去pull，国内源本地没有或过期，它就会去docker hub pull的。
 
-> 参考 - [Docker Hub 镜像加速](https://gist.github.com/y0ngb1n/7e8f16af3242c7815e7ca2f0833d3ea6)
-
 ## 安装docker
 官方安装脚本：
 
@@ -54,7 +52,7 @@ docker-compose --version
 | 查看容器  | `docker ps`      |   `-a`查看包括已停止的容器         |
 | 容器资源占用  | `docker stats`      |   查看所有容器资源占用         |
 | 容器详细信息  | `docker inspect`      |  挂载看`Mounts`网络看`Networks`       |
-| 进入容器内部  | `docker exec -it 容器名 /bin/bash`      |   结尾使用`/sh`也行        |
+| 进入容器内部  | `docker exec -it 容器名 /bin/sh`      |   结尾使用`/bash`也行        |
 | 停止容器  | `docker stop`      |   `docker stop 容器名或ID`             |
 | 启动容器  | `docker start`      | `docker start 容器名或ID`           |
 | 重启容器  | `docker restart`      |  `docker restart 容器名或ID`          |
@@ -181,7 +179,4 @@ sudo rm -rf /etc/docker /var/lib/docker
 ## 参考链接
 
 + https://docs.docker.com/registry/recipes/mirror/
-+ https://github.com/yeasy/docker_practice/blob/master/install/mirror.md
-+ https://www.ilanni.com/?p=14534
-+ https://moelove.info/2020/09/20/突破-DockerHub-限制全镜像加速服务/
 + https://gist.github.com/y0ngb1n/7e8f16af3242c7815e7ca2f0833d3ea6
