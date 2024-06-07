@@ -1,6 +1,6 @@
 # Docker Hub 镜像加速
 
-国内从 Docker Hub 拉取镜像有时会遇到困难，此时可以配置镜像加速器。Docker 官方和国内很多云服务商都提供了国内加速器服务。一般国内源的上游都会配置成docker hub，国内源可以理解为缓存或CDN，如果你去pull，国内源本地没有或过期，它就会去docker hub pull的。
+国内从 Docker Hub 拉取镜像有时会遇到困难，此时可以配置镜像加速器。
 
 ## 安装docker
 官方安装脚本：
