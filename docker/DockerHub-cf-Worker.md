@@ -4,7 +4,7 @@
 
 创建新的 Cloudflare Worker。
 
-将上述代码复制粘贴到 Cloudflare Worker 编辑器中。
+将代码复制粘贴到 Cloudflare Worker 编辑器中。
 
 配置 Worker 路由，使其处理你希望加速的请求路径。
 
