@@ -130,11 +130,9 @@ sudo tee /etc/docker/daemon.json &lt;&lt;EOF
 }
 EOF                </pre>
                 <pre>
-sudo systemctl daemon-reload
-                </pre>
+sudo systemctl daemon-reload                </pre>
                 <pre>
-sudo systemctl restart docker
-                </pre>
+sudo systemctl restart docker                </pre>
                 <br/>
                 <p>
                     为了避免 Worker 用量耗尽，你可以手动 pull 镜像然后 re-tag 之后 push 至本地镜像仓库。
