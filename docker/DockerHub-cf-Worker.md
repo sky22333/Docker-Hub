@@ -124,7 +124,7 @@ export default {
                     为了加速镜像拉取,你可以使用以下命令设置 registry mirror:
                 </p>
                 <pre>
-sudo tee /etc/docker/daemon.json <<EOF
+sudo tee /etc/docker/daemon.json &lt;&lt;EOF
 {
     "registry-mirrors": ["https://{{host}}"]
 }
