@@ -189,7 +189,7 @@ sudo systemctl restart docker</code><button class="copy-button" onclick="copyCod
 
 #### Caddyfile配置
 ```
-你的域名 {
+yourdomain.com {
     reverse_proxy https://registry-1.docker.io {
         header_up Host registry-1.docker.io
         header_up X-Real-IP {remote}
@@ -198,7 +198,7 @@ sudo systemctl restart docker</code><button class="copy-button" onclick="copyCod
         header_up Authorization {>Authorization}
         header_down Authorization {<Authorization}
 
-        # 关闭缓存
+        # 关闭缓存以确保数据的即时性，但您可以根据需求调整
         transport http {
             no_http2
             disable_keepalive
@@ -206,8 +206,10 @@ sudo systemctl restart docker</code><button class="copy-button" onclick="copyCod
         }
 
         handle_response 301, 302, 307 {
-            rewrite * {http.reverse_proxy.upstream.header.Location}
-            reverse_proxy
+            @location {
+                uri {http.reverse_proxy.upstream.header.Location}
+            }
+            reverse_proxy @location
         }
     }
 }
