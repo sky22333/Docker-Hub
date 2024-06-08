@@ -176,13 +176,9 @@ docker-compose --version
 sudo mkdir -p /etc/docker
 ```
 ```
-sudo tee /etc/docker/daemon.json <<-'EOF'
+sudo tee /etc/docker/daemon.json <<EOF
 {
-    "registry-mirrors": [
-        "https://dockerproxy.com",
-        "https://docker.mirrors.ustc.edu.cn",
-        "https://docker.nju.edu.cn"
-    ]
+    "registry-mirrors": ["https://do.nark.eu.org"]
 }
 EOF
 ```
@@ -280,11 +276,7 @@ sudo rm -rf /etc/docker /var/lib/docker
 
 镜像 | 镜像加速地址 | 说明 | 其它加速
 --- | --- | --- | ---
-[DaoCloud 镜像站](https://github.com/DaoCloud/public-image-mirror) | `https://docker.m.daocloud.io` | |  Docker Hub、GCR、K8S、GHCR、Quay、NVCR 等
-[Docker 镜像代理](https://dockerproxy.com) | `https://dockerproxy.com` | | Docker Hub、GCR、K8S、GHCR
-[百度云](https://cloud.baidu.com/doc/CCE/s/Yjxppt74z#%E4%BD%BF%E7%94%A8dockerhub%E5%8A%A0%E9%80%9F%E5%99%A8) | `https://mirror.baidubce.com` | | Docker Hub
-[南京大学镜像站](https://doc.nju.edu.cn/books/35f4a) | `https://docker.nju.edu.cn` | | Docker Hub、GCR、GHCR、Quay、NVCR 等
-[中科院软件所镜像站](https://mirror.iscas.ac.cn/mirror/docker.html) | `https://mirror.iscas.ac.cn` | | Docker Hub
+[网友自建](https://do.nark.eu.org/) | `https://do.nark.eu.org` | | Docker Hub
 [阿里云](https://cr.console.aliyun.com/) | `https://<your_code>.mirror.aliyuncs.com` | 需登录分配 | Docker Hub 未同步最新源镜像
 
 ## 参考链接
