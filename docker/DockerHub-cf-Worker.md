@@ -4,207 +4,144 @@
 
 > [示例站点](https://do.nark.eu.org/)
 
-
-登录 Cloudflare 账户。
-
-创建新的 Cloudflare Worker。
-
-将代码复制粘贴到 Cloudflare Worker 编辑器中。
-
-配置 Worker 路由，添加自定义域名，例如：`docker.your-domain.com/*`
-
-保存并部署 Worker。
-
-
-
+#### 将 `worker.js` 的内容替换为下面内容
 ```
-'use strict'
+import HTML from './docker.html';
 
-const hub_host = 'registry-1.docker.io'
-const auth_url = 'https://auth.docker.io'
-const workers_url = 'https://你的域名'
-/**
- * static files (404.html, sw.js, conf.js)
- */
+export default {
+    async fetch(request) {
+        const url = new URL(request.url);
+        const path = url.pathname;
+        const originalHost = request.headers.get("host");
+        const registryHost = "registry-1.docker.io";
 
-/** @type {RequestInit} */
-const PREFLIGHT_INIT = {
-    status: 204,
-    headers: new Headers({
-        'access-control-allow-origin': '*',
-        'access-control-allow-methods': 'GET,POST,PUT,PATCH,TRACE,DELETE,HEAD,OPTIONS',
-        'access-control-max-age': '1728000',
-    }),
-}
+        if (path.startsWith("/v2/")) {
+        const headers = new Headers(request.headers);
+        headers.set("host", registryHost);
 
-/**
- * @param {any} body
- * @param {number} status
- * @param {Object<string, string>} headers
- */
-function makeRes(body, status = 200, headers = {}) {
-    headers['access-control-allow-origin'] = '*'
-    return new Response(body, {status, headers})
-}
+        const registryUrl = `https://${registryHost}${path}`;
+        const registryRequest = new Request(registryUrl, {
+            method: request.method,
+            headers: headers,
+            body: request.body,
+            // redirect: "manual",
+            redirect: "follow",
+        });
 
+        const registryResponse = await fetch(registryRequest);
 
-/**
- * @param {string} urlStr
- */
-function newUrl(urlStr) {
-    try {
-        return new URL(urlStr)
-    } catch (err) {
-        return null
-    }
-}
+        console.log(registryResponse.status);
 
-
-addEventListener('fetch', e => {
-    const ret = fetchHandler(e)
-        .catch(err => makeRes('cfworker error:\n' + err.stack, 502))
-    e.respondWith(ret)
-})
-
-
-/**
- * @param {FetchEvent} e
- */
-async function fetchHandler(e) {
-  const getReqHeader = (key) => e.request.headers.get(key);
-
-  let url = new URL(e.request.url);
-
-  if (url.pathname === '/token') {
-      let token_parameter = {
-        headers: {
-        'Host': 'auth.docker.io',
-        'User-Agent': getReqHeader("User-Agent"),
-        'Accept': getReqHeader("Accept"),
-        'Accept-Language': getReqHeader("Accept-Language"),
-        'Accept-Encoding': getReqHeader("Accept-Encoding"),
-        'Connection': 'keep-alive',
-        'Cache-Control': 'max-age=0'
-        }
-      };
-      let token_url = auth_url + url.pathname + url.search
-      return fetch(new Request(token_url, e.request), token_parameter)
-  }
-
-  url.hostname = hub_host;
-  
-  let parameter = {
-    headers: {
-      'Host': hub_host,
-      'User-Agent': getReqHeader("User-Agent"),
-      'Accept': getReqHeader("Accept"),
-      'Accept-Language': getReqHeader("Accept-Language"),
-      'Accept-Encoding': getReqHeader("Accept-Encoding"),
-      'Connection': 'keep-alive',
-      'Cache-Control': 'max-age=0'
-    },
-    cacheTtl: 3600
-  };
-
-  if (e.request.headers.has("Authorization")) {
-    parameter.headers.Authorization = getReqHeader("Authorization");
-  }
-
-  let original_response = await fetch(new Request(url, e.request), parameter)
-  let original_response_clone = original_response.clone();
-  let original_text = original_response_clone.body;
-  let response_headers = original_response.headers;
-  let new_response_headers = new Headers(response_headers);
-  let status = original_response.status;
-
-  if (new_response_headers.get("Www-Authenticate")) {
-    let auth = new_response_headers.get("Www-Authenticate");
-    let re = new RegExp(auth_url, 'g');
-    new_response_headers.set("Www-Authenticate", response_headers.get("Www-Authenticate").replace(re, workers_url));
-  }
-
-  if (new_response_headers.get("Location")) {
-    return httpHandler(e.request, new_response_headers.get("Location"))
-  }
-
-  let response = new Response(original_text, {
-            status,
-            headers: new_response_headers
-        })
-  return response;
-  
-}
-
-
-/**
- * @param {Request} req
- * @param {string} pathname
- */
-function httpHandler(req, pathname) {
-    const reqHdrRaw = req.headers
-
-    // preflight
-    if (req.method === 'OPTIONS' &&
-        reqHdrRaw.has('access-control-request-headers')
-    ) {
-        return new Response(null, PREFLIGHT_INIT)
-    }
-
-    let rawLen = ''
-
-    const reqHdrNew = new Headers(reqHdrRaw)
-
-    const refer = reqHdrNew.get('referer')
-
-    let urlStr = pathname
-    
-    const urlObj = newUrl(urlStr)
-
-    /** @type {RequestInit} */
-    const reqInit = {
-        method: req.method,
-        headers: reqHdrNew,
-        redirect: 'follow',
-        body: req.body
-    }
-    return proxy(urlObj, reqInit, rawLen, 0)
-}
-
-
-/**
- *
- * @param {URL} urlObj
- * @param {RequestInit} reqInit
- */
-async function proxy(urlObj, reqInit, rawLen) {
-    const res = await fetch(urlObj.href, reqInit)
-    const resHdrOld = res.headers
-    const resHdrNew = new Headers(resHdrOld)
-
-    // verify
-    if (rawLen) {
-        const newLen = resHdrOld.get('content-length') || ''
-        const badLen = (rawLen !== newLen)
-
-        if (badLen) {
-            return makeRes(res.body, 400, {
-                '--error': `bad len: ${newLen}, except: ${rawLen}`,
-                'access-control-expose-headers': '--error',
-            })
+        const responseHeaders = new Headers(registryResponse.headers);
+        responseHeaders.set("access-control-allow-origin", originalHost);
+        responseHeaders.set("access-control-allow-headers", "Authorization");
+        return new Response(registryResponse.body, {
+            status: registryResponse.status,
+            statusText: registryResponse.statusText,
+            headers: responseHeaders,
+        });
+        } else {
+        return new Response(HTML.replace(/{{host}}/g, originalHost), {
+            status: 200,
+            headers: {
+            "content-type": "text/html"
+            }
+        });
         }
     }
-    const status = res.status
-    resHdrNew.set('access-control-expose-headers', '*')
-    resHdrNew.set('access-control-allow-origin', '*')
-    resHdrNew.set('Cache-Control', 'max-age=1500')
-    
-    resHdrNew.delete('content-security-policy')
-    resHdrNew.delete('content-security-policy-report-only')
-    resHdrNew.delete('clear-site-data')
-
-    return new Response(res.body, {
-        status,
-        headers: resHdrNew
-    })
 }
 ```
+
+#### 点击左侧按钮创建一个`docker.html`文件并放入以下代码
+```
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Mirror Usage</title>
+        <style>
+        html {
+        height: 100%;
+        }
+        body {
+        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        font-size: 16px;
+        color: #333;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        }
+        .container {
+            margin: 0 auto;
+            max-width: 600px;
+        }
+
+        .header {
+            background-color: #438cf8;
+            color: white;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .content {
+            padding: 32px;
+        }
+
+        .footer {
+            background-color: #f2f2f2;
+            padding: 10px;
+            text-align: center;
+            font-size: 14px;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+        <h1>Mirror Usage</h1>
+        </div>
+        <div class="container">
+        <div class="content">
+            <p>镜像加速说明</p>
+            <p>
+            为了加速镜像拉取,你可以使用以下命令设置registery mirror:
+            </p>
+            <pre>
+            sudo tee /etc/docker/daemon.json &lt;&lt;EOF
+            {
+                "registry-mirrors": ["https://{{host}}"]
+            }
+            EOF
+            </pre>
+            </br>
+            <p>
+            为了避免 Worker 用量耗尽,你可以手动 pull 镜像然后 re-tag 之后 push 至本地镜像仓库
+            </p>
+            <pre>
+            </pre>
+        </div>
+        </div>
+        <div class="footer">
+        <p>Powered by Cloudflare Workers</p>
+        </div>
+    </body>
+</html>
+```
+接下来，点击右上角的 部署，稍等片刻
+
+最后，返回面板，在 设置，触发器 处设置一个自己的域名，一切就大功告成了
+不建议使用自带的 workers.dev 的域名，被墙了
+
+
+
