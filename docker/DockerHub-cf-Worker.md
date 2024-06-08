@@ -59,7 +59,7 @@ export default {
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Mirror Usage</title>
+        <title>Docker Hub 镜像加速</title>
         <style>
         html {
         height: 100%;
@@ -132,12 +132,12 @@ EOF
                 </code></pre>
                 <br/>
                 <p>
-                    为了避免 Worker 用量耗尽,你可以手动 pull 镜像然后 re-tag 之后 push 至本地镜像仓库
+                    为了避免 Worker 用量耗尽，你可以手动 pull 镜像然后 re-tag 之后 push 至本地镜像仓库。
                 </p>
             </div>
         </div>
         <div class="footer">
-            <p>Powered by Cloudflare Workers</p>
+            <p>自用 Docker Hub 镜像加速</p>
         </div>
     </body>
 </html>
