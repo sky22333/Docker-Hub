@@ -16,6 +16,80 @@ curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
 ```
 
 <details>
+  <summary>手动安装Docker</summary>
+  
+####  下载 Docker:
+```
+wget https://download.docker.com/linux/static/stable/x86_64/docker-26.1.3.tgz
+tar xzvf docker-26.1.3.tgz
+sudo mv docker/* /usr/local/bin/
+```
+#### 创建 Docker 服务文件
+```
+sudo nano /etc/systemd/system/docker.service
+```
+添加以下内容
+```
+[Unit]
+Description=Docker Application Container Engine
+Documentation=https://docs.docker.com
+After=network-online.target firewalld.service
+Wants=network-online.target
+
+[Service]
+Type=notify
+ExecStart=/usr/local/bin/dockerd
+ExecReload=/bin/kill -s HUP $MAINPID
+TimeoutSec=0
+RestartSec=2
+Restart=always
+
+# Note that StartLimit* options were moved from "Service" to "Unit" in systemd 229.
+# Both the old, and new location are accepted by systemd 229 and up, so using the old location
+# to make them work for either version of systemd.
+StartLimitBurst=3
+
+# Note that StartLimitInterval was renamed to StartLimitIntervalSec in systemd 230.
+StartLimitInterval=60s
+
+# Having non-zero Limit*s causes performance problems due to accounting overhead
+# in the kernel. We recommend using cgroups to do container-local accounting.
+LimitNOFILE=infinity
+LimitNPROC=infinity
+LimitCORE=infinity
+
+# Uncomment TasksMax if your systemd version supports it.
+# Only systemd 226 and above support this version.
+TasksMax=infinity
+
+# set delegate yes so that systemd does not reset the cgroups of docker containers
+Delegate=yes
+
+# kill only the docker process, not all processes in the cgroup
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
+```
+
+#### 启动并启用 Docker 服务
+```
+sudo systemctl daemon-reload
+sudo systemctl start docker
+sudo systemctl enable docker
+```
+#### 查看版本
+```
+docker -v
+```
+
+
+
+
+</details>
+
+
+<details>
   <summary>安装Docker Compose</summary>
   
   ###  下载 Docker Compose:
