@@ -20,7 +20,7 @@ curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
   
 ####  下载 Docker:
 
-[文件下载地址-下载后上传到root目录](https://download.docker.com/linux/static/stable/x86_64/)
+[文件下载地址——下载后上传到root目录](https://download.docker.com/linux/static/stable/x86_64/)
 
 ```
 wget https://download.docker.com/linux/static/stable/x86_64/docker-26.1.3.tgz  // 配合代理直接下载（可选）
