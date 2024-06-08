@@ -185,32 +185,48 @@ sudo systemctl restart docker</code><button class="copy-button" onclick="copyCod
 
 ---
 
-### 使用caddy反代加速docker hub
+### 使用nginx反代加速docker hub
 
-#### Caddyfile配置
+#### nginx配置
 ```
-yourdomain.com {
-    reverse_proxy https://registry-1.docker.io {
-        header_up Host registry-1.docker.io
-        header_up X-Real-IP {remote}
-        header_up X-Forwarded-For {remote}
-        header_up X-Forwarded-Proto {scheme}
-        header_up Authorization {>Authorization}
-        header_down Authorization {<Authorization}
+server {
+    listen 443 ssl;
+    server_name yourdomain.com;
 
-        # 关闭缓存以确保数据的即时性，但您可以根据需求调整
-        transport http {
-            no_http2
-            disable_keepalive
-            flush_interval -1
-        }
+    ssl_certificate /path/to/your/certificate.crt;
+    ssl_certificate_key /path/to/your/certificate.key;
 
-        handle_response 301, 302, 307 {
-            @location {
-                uri {http.reverse_proxy.upstream.header.Location}
-            }
-            reverse_proxy @location
-        }
+    ssl_session_timeout 24h;
+    ssl_ciphers 'ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256';
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers on;
+
+    location / {
+        proxy_pass https://registry-1.docker.io;  # Docker Hub 的官方镜像仓库
+        proxy_set_header Host registry-1.docker.io;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+
+        # 关闭缓存
+        proxy_buffering off;
+
+        # 转发认证相关的头部
+        proxy_set_header Authorization $http_authorization;
+        proxy_pass_header Authorization;
+
+        # 对 upstream 状态码检查，实现 error_page 错误重定向
+        proxy_intercept_errors on;
+        # error_page 指令默认只检查了第一次后端返回的状态码，开启后可以跟随多次重定向。
+        recursive_error_pages on;
+        # 根据状态码执行对应操作，以下为301、302、307状态码都会触发
+        error_page 301 302 307 = @handle_redirect;
+    }
+
+    location @handle_redirect {
+        resolver 1.1.1.1;
+        set $saved_redirect_location $upstream_http_location;
+        proxy_pass $saved_redirect_location;
     }
 }
 ```
