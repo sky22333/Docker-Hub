@@ -189,44 +189,75 @@ sudo systemctl restart docker</code><button class="copy-button" onclick="copyCod
 
 #### nginx配置
 ```
-server {
-    listen 443 ssl;
-    server_name yourdomain.com;
+user www-data;
+worker_processes auto;
+pid /run/nginx.pid;
+include /etc/nginx/modules-enabled/*.conf;
 
-    ssl_certificate /path/to/your/certificate.crt;
-    ssl_certificate_key /path/to/your/certificate.key;
+events {
+    worker_connections 768;
+}
 
-    ssl_session_timeout 24h;
-    ssl_ciphers 'ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256';
-    ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
-    ssl_prefer_server_ciphers on;
+http {
+    include /etc/nginx/mime.types;
+    default_type application/octet-stream;
 
-    location / {
-        proxy_pass https://registry-1.docker.io;  # Docker Hub 的官方镜像仓库
-        proxy_set_header Host registry-1.docker.io;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
+    log_format main '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
 
-        # 关闭缓存
-        proxy_buffering off;
+    access_log /var/log/nginx/access.log main;
 
-        # 转发认证相关的头部
-        proxy_set_header Authorization $http_authorization;
-        proxy_pass_header Authorization;
+    sendfile on;
+    tcp_nopush on;
+    tcp_nodelay on;
+    keepalive_timeout 65;
+    types_hash_max_size 2048;
 
-        # 对 upstream 状态码检查，实现 error_page 错误重定向
-        proxy_intercept_errors on;
-        # error_page 指令默认只检查了第一次后端返回的状态码，开启后可以跟随多次重定向。
-        recursive_error_pages on;
-        # 根据状态码执行对应操作，以下为301、302、307状态码都会触发
-        error_page 301 302 307 = @handle_redirect;
+    include /etc/nginx/conf.d/*.conf;
+    include /etc/nginx/sites-enabled/*;
+
+    server {
+        listen 80;
+        server_name 你的域名;
+
+        location / {
+            return 301 https://$host$request_uri;
+        }
     }
 
-    location @handle_redirect {
-        resolver 1.1.1.1;
-        set $saved_redirect_location $upstream_http_location;
-        proxy_pass $saved_redirect_location;
+    server {
+        listen 443 ssl;
+        server_name 你的域名;
+
+        ssl_certificate /root/.acme.sh/你的域名_ecc/fullchain.cer;
+        ssl_certificate_key /root/.acme.sh/你的域名_ecc/你的域名.key;
+
+        ssl_session_timeout 24h;
+        ssl_ciphers 'ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256';
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
+
+        location / {
+            proxy_pass https://registry-1.docker.io;
+            proxy_set_header Host registry-1.docker.io;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+
+            proxy_buffering off;
+            proxy_set_header Authorization $http_authorization;
+            proxy_pass_header Authorization;
+
+            proxy_intercept_errors on;
+            recursive_error_pages on;
+            error_page 301 302 307 = @handle_redirect;
+        }
+
+        location @handle_redirect {
+            resolver 1.1.1.1;
+            set $saved_redirect_location $upstream_http_location;
+            proxy_pass $saved_redirect_location;
+        }
     }
 }
 ```
