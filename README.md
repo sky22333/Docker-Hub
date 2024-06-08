@@ -29,7 +29,7 @@ sudo mv docker/* /usr/local/bin/
 ```
 #### 创建 Docker 服务文件
 ```
-sudo nano /etc/systemd/system/docker.service
+sudo vim /etc/systemd/system/docker.service
 ```
 添加以下内容
 ```
