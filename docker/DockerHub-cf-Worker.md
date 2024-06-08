@@ -121,18 +121,20 @@ export default {
             <div class="content">
                 <p>镜像加速说明</p>
                 <p>
-                    为了加速镜像拉取,你可以使用以下命令设置 registry mirror:
+                    为了加速镜像拉取，你可以使用以下命令设置 registry mirror
                 </p>
+                <pre>
+sudo mkdir -p /etc/docker</pre>
                 <pre>
 sudo tee /etc/docker/daemon.json &lt;&lt;EOF
 {
     "registry-mirrors": ["https://{{host}}"]
 }
-EOF                </pre>
+EOF</pre>
                 <pre>
-sudo systemctl daemon-reload                </pre>
+sudo systemctl daemon-reload</pre>
                 <pre>
-sudo systemctl restart docker                </pre>
+sudo systemctl restart docker</pre>
                 <br/>
                 <p>
                     为了避免 Worker 用量耗尽，你可以手动 pull 镜像然后 re-tag 之后 push 至本地镜像仓库。
