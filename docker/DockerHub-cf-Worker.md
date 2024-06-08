@@ -11,7 +11,7 @@
 
 将代码复制粘贴到 Cloudflare Worker 编辑器中。
 
-配置 Worker 路由，使其处理你希望加速的请求路径。
+配置 Worker 路由，添加自定义域名，例如：`docker.your-domain.com/*`
 
 保存并部署 Worker。
 
