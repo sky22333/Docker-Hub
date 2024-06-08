@@ -157,7 +157,7 @@ sudo systemctl daemon-reload</code><button class="copy-button" onclick="copyCode
 sudo systemctl restart docker</code><button class="copy-button" onclick="copyCode(this)">复制代码</button></pre>
 </div>
 <div class="footer">
-    &copy; 使用 CloudFlare Worker 自建，请勿滥用。<a href="https://github.com">网站链接</a>
+    &copy; 自建站点，请勿滥用。<a href="https://github.com">网站链接</a>
 </div>
 <script>
         function copyCode(button) {
