@@ -115,7 +115,7 @@ export default {
     </head>
     <body>
         <div class="header">
-            <h1>Mirror Usage</h1>
+            <h1>Docker Hub 镜像加速</h1>
         </div>
         <div class="container">
             <div class="content">
