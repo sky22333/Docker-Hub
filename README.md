@@ -19,6 +19,9 @@ curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
   <summary>手动安装Docker</summary>
   
 ####  下载 Docker:
+
+[文件下载地址](https://download.docker.com/linux/static/stable/x86_64/)
+
 ```
 wget https://download.docker.com/linux/static/stable/x86_64/docker-26.1.3.tgz
 tar xzvf docker-26.1.3.tgz
