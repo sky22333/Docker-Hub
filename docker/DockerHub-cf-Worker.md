@@ -183,4 +183,32 @@ sudo systemctl restart docker</code><button class="copy-button" onclick="copyCod
 不建议使用自带的 workers.dev 的域名，被墙了
 
 
+---
 
+### 使用caddy反代加速docker hub
+
+#### Caddyfile配置
+```
+你的域名 {
+    reverse_proxy https://registry-1.docker.io {
+        header_up Host registry-1.docker.io
+        header_up X-Real-IP {remote}
+        header_up X-Forwarded-For {remote}
+        header_up X-Forwarded-Proto {scheme}
+        header_up Authorization {>Authorization}
+        header_down Authorization {<Authorization}
+
+        # 关闭缓存
+        transport http {
+            no_http2
+            disable_keepalive
+            flush_interval -1
+        }
+
+        handle_response 301, 302, 307 {
+            rewrite * {http.reverse_proxy.upstream.header.Location}
+            reverse_proxy
+        }
+    }
+}
+```
