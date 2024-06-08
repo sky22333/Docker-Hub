@@ -74,13 +74,11 @@ export default {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-
         }
         .container {
             margin: 0 auto;
             max-width: 600px;
         }
-
         .header {
             background-color: #438cf8;
             color: white;
@@ -88,52 +86,58 @@ export default {
             display: flex;
             align-items: center;
         }
-
         h1 {
             font-size: 24px;
             margin: 0;
             padding: 0;
         }
-
         .content {
             padding: 32px;
         }
-
         .footer {
             background-color: #f2f2f2;
             padding: 10px;
             text-align: center;
             font-size: 14px;
         }
+        pre {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: 10px;
+            overflow-x: auto;
+        }
+        code {
+            font-family: "Courier New", Courier, monospace;
+            background-color: #f8f8f8;
+            padding: 2px 4px;
+        }
         </style>
     </head>
     <body>
         <div class="header">
-        <h1>Mirror Usage</h1>
+            <h1>Mirror Usage</h1>
         </div>
         <div class="container">
-        <div class="content">
-            <p>镜像加速说明</p>
-            <p>
-            为了加速镜像拉取,你可以使用以下命令设置registery mirror:
-            </p>
-            <pre>
-            sudo tee /etc/docker/daemon.json &lt;&lt;EOF
-            {
-                "registry-mirrors": ["https://{{host}}"]
-            }
-            EOF
-            </pre>
-            </br>
-            <p>
-            为了避免 Worker 用量耗尽,你可以手动 pull 镜像然后 re-tag 之后 push 至本地镜像仓库
-            </p>
-            <pre>
-            </pre>
-        </div>
+            <div class="content">
+                <p>镜像加速说明</p>
+                <p>
+                    为了加速镜像拉取,你可以使用以下命令设置 registry mirror:
+                </p>
+                <pre><code>
+sudo tee /etc/docker/daemon.json <<EOF
+{
+    "registry-mirrors": ["https://{{host}}"]
+}
+EOF
+                </code></pre>
+                <br/>
+                <p>
+                    为了避免 Worker 用量耗尽,你可以手动 pull 镜像然后 re-tag 之后 push 至本地镜像仓库
+                </p>
+            </div>
         </div>
         <div class="footer">
-        <p>Powered by Cloudflare Workers</p>
+            <p>Powered by Cloudflare Workers</p>
         </div>
     </body>
 </html>
