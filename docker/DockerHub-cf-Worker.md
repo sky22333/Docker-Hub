@@ -285,7 +285,7 @@ sudo systemctl restart docker</code><button class="copy-button" onclick="copyCod
         <div class="container">
             <div class="content">
                 <h2>Docker Hub 镜像加速</h2>
-                <p>为了加速镜像拉取，你可以使用以下命令设置 registry mirror：</p>
+                <p>为了加速镜像拉取，你可以使用以下命令设置 registry mirror</p>
                 <pre><code>sudo mkdir -p /etc/docker</code><button class="copy-button" onclick="copyCode(this)">复制</button></pre>
                 <pre><code>sudo tee /etc/docker/daemon.json &lt;&lt;EOF
 {
