@@ -185,11 +185,126 @@ sudo systemctl restart docker</code><button class="copy-button" onclick="copyCod
 
 ---
 <details>
-<summary>点击展开/折叠</summary>
+<summary>主页样式二</summary>
 
-这里是折叠块的内容。
-
-你可以在这里放置更多的 Markdown 内容，比如：
+#### 主页样式二
+```
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Docker Hub 镜像加速</title>
+        <style>
+        html, body {
+            height: 100%;
+        }
+        body {
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-size: 16px;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            margin: 0 auto;
+            max-width: 600px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #438cf8;
+            color: white;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+        }
+        h1 {
+            font-size: 24px;
+            margin: 0;
+            padding: 0;
+        }
+        .content {
+            padding: 32px;
+            flex-grow: 1;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 16px;
+            border-radius: 4px;
+            position: relative;
+            overflow: auto;
+            margin-bottom: 16px;
+        }
+        code {
+            display: block;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .copy-button {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            padding: 4px 8px;
+            background-color: #438cf8;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .footer {
+            padding: 5px;
+            text-align: center;
+            font-size: 15px;
+        }
+        .footer a {
+            color: #438cf8;
+            text-decoration: none;
+        }
+        </style>
+        <script>
+            function copyCode(button) {
+                const code = button.previousElementSibling.innerText;
+                navigator.clipboard.writeText(code).then(function() {
+                    button.innerText = "已复制";
+                    setTimeout(function() {
+                        button.innerText = "复制";
+                    }, 2000);
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Docker Hub 镜像加速</h1>
+        </div>
+        <div class="container">
+            <div class="content">
+                <h2>Docker Hub 镜像加速</h2>
+                <p>为了加速镜像拉取，你可以使用以下命令设置 registry mirror：</p>
+                <pre><code>sudo mkdir -p /etc/docker</code><button class="copy-button" onclick="copyCode(this)">复制</button></pre>
+                <pre><code>sudo tee /etc/docker/daemon.json &lt;&lt;EOF
+{
+    "registry-mirrors": ["https://{{host}}"]
+}
+EOF</code><button class="copy-button" onclick="copyCode(this)">复制</button></pre>
+                <pre><code>sudo systemctl daemon-reload</code><button class="copy-button" onclick="copyCode(this)">复制</button></pre>
+                <pre><code>sudo systemctl restart docker</code><button class="copy-button" onclick="copyCode(this)">复制</button></pre>
+                <br>
+                <p>不用设置环境也可以直接使用，用法示例：</p>
+                <pre><code>docker pull {{host}}/node:latest</code><button class="copy-button" onclick="copyCode(this)">复制</button></pre>
+            </div>
+        </div>
+        <div class="footer">
+            <p><a href="https://hub.docker.com" target="_blank">Docker Hub 镜像加速</a></p>
+        </div>
+    </body>
+</html>
+```
 
 
 </details>
