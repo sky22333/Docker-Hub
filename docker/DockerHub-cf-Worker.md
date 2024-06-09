@@ -157,7 +157,7 @@ sudo systemctl daemon-reload</code><button class="copy-button" onclick="copyCode
 sudo systemctl restart docker</code><button class="copy-button" onclick="copyCode(this)">复制代码</button></pre>
 </div>
 <div class="footer">
-    &copy; 自建站点，请勿滥用。<a href="https://github.com">网站链接</a>
+    &copy; 自建站点，请勿滥用。<a href="https://hub.docker.com">Docker加速</a>
 </div>
 <script>
         function copyCode(button) {
@@ -296,7 +296,7 @@ EOF</code><button class="copy-button" onclick="copyCode(this)">复制</button></
                 <pre><code>sudo systemctl restart docker</code><button class="copy-button" onclick="copyCode(this)">复制</button></pre>
                 <br>
                 <p>不用设置环境也可以直接使用，用法示例：</p>
-                <pre><code>docker pull {{host}}/node:latest</code><button class="copy-button" onclick="copyCode(this)">复制</button></pre>
+                <pre><code>docker pull {{host}}/ubuntu/mysql</code><button class="copy-button" onclick="copyCode(this)">复制</button></pre>
             </div>
         </div>
         <div class="footer">
