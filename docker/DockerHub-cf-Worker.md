@@ -155,6 +155,10 @@ EOF</code><button class="copy-button" onclick="copyCode(this)">复制代码</but
 sudo systemctl daemon-reload</code><button class="copy-button" onclick="copyCode(this)">复制代码</button></pre>
 <pre><code>
 sudo systemctl restart docker</code><button class="copy-button" onclick="copyCode(this)">复制代码</button></pre>
+<p>不用设置环境也可以直接使用，用法示例：</p>
+<pre><code>
+docker pull {{host}}/library/mysql:5.7</code><button class="copy-button" onclick="copyCode(this)">复制代码</button></pre>
+<p>说明：library是一个特殊的命名空间，它代表的是官方镜像。</p>
 </div>
 <div class="footer">
     &copy; 自建站点，请勿滥用。<a href="https://hub.docker.com">Docker加速</a>
@@ -297,7 +301,7 @@ EOF</code><button class="copy-button" onclick="copyCode(this)">复制</button></
                 <br>
                 <p>不用设置环境也可以直接使用，用法示例：</p>
                 <pre><code>docker pull {{host}}/library/mysql:5.7</code><button class="copy-button" onclick="copyCode(this)">复制</button></pre>
-                <p>在Docker中，library是一个特殊的命名空间，它包含了所有的官方镜像。当你从Docker Hub拉取一个官方镜像时，例如mysql，实际上你拉取的是library/mysql</p>
+                <p>说明：library是一个特殊的命名空间，它代表的是官方镜像。</p>
             </div>
         </div>
         <div class="footer">
