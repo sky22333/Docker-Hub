@@ -52,7 +52,7 @@ export default {
 }
 ```
 
-#### 点击左侧按钮创建一个`docker.html`文件并放入以下代码
+#### 点击左侧按钮创建一个`docker.html`文件并放入以下代码—暗黑样式
 ```
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -185,7 +185,7 @@ sudo systemctl restart docker</code><button class="copy-button" onclick="copyCod
 
 ---
 <details>
-<summary>主页样式二</summary>
+<summary>主页样式二——白色样式</summary>
 
 #### 主页样式二
 ```
