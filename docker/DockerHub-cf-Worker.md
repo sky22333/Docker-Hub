@@ -187,7 +187,16 @@ sudo systemctl restart docker</code><button class="copy-button" onclick="copyCod
 
 ### 使用nginx反代加速docker hub
 
-#### nginx配置
+
+#### 安装nginx
+```
+sudo apt update && sudo apt install -y nginx && sudo systemctl stop nginx
+```
+
+申请证书后并放入下面的配置
+
+
+#### `/etc/nginx/nginx.conf`配置
 ```
 user www-data;
 worker_processes auto;
@@ -260,4 +269,16 @@ http {
         }
     }
 }
+```
+
+#### 启动nginx
+```
+sudo nginx -s reload
+```
+没有报错就说明配置已经生效
+
+
+设置开机自启
+```
+sudo systemctl enable nginx
 ```
