@@ -184,7 +184,18 @@ sudo systemctl restart docker</code><button class="copy-button" onclick="copyCod
 
 
 ---
+<details>
+<summary>点击展开/折叠</summary>
 
+这里是折叠块的内容。
+
+你可以在这里放置更多的 Markdown 内容，比如：
+
+
+</details>
+
+
+---
 ### 使用nginx反代加速docker hub
 
 
