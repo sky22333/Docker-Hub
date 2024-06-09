@@ -296,7 +296,8 @@ EOF</code><button class="copy-button" onclick="copyCode(this)">复制</button></
                 <pre><code>sudo systemctl restart docker</code><button class="copy-button" onclick="copyCode(this)">复制</button></pre>
                 <br>
                 <p>不用设置环境也可以直接使用，用法示例：</p>
-                <pre><code>docker pull {{host}}/ubuntu/mysql</code><button class="copy-button" onclick="copyCode(this)">复制</button></pre>
+                <pre><code>docker pull {{host}}/library/mysql:5.7</code><button class="copy-button" onclick="copyCode(this)">复制</button></pre>
+                <p>在Docker中，library是一个特殊的命名空间，它包含了所有的官方镜像。当你从Docker Hub拉取一个官方镜像时，例如mysql，实际上你拉取的是library/mysql</p>
             </div>
         </div>
         <div class="footer">
