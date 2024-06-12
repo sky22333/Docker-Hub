@@ -301,7 +301,7 @@ EOF</code><button class="copy-button" onclick="copyCode(this)">复制</button></
                 <br>
                 <p>不用设置环境也可以直接使用，用法示例：</p>
                 <pre><code>docker pull {{host}}/library/mysql:5.7</code><button class="copy-button" onclick="copyCode(this)">复制</button></pre>
-                <p>说明：library是一个特殊的命名空间，它代表的是官方镜像。</p>
+                <p>说明：library是一个特殊的命名空间，它代表的是官方镜像。如果是某个用户的镜像就把library替换为镜像的用户名</p>
             </div>
         </div>
         <div class="footer">
