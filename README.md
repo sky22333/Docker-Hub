@@ -190,6 +190,13 @@ sudo systemctl restart docker
 ```
 
 
+#### 如果您当前有正在运行的容器不方便重启Docker服务，则不用设置环境也可以直接使用，用法示例：
+```
+docker pull do.nark.eu.org/library/mysql:5.7
+```
+说明：`library`是一个特殊的命名空间，它代表的是官方镜像。如果是某个用户的镜像就把`library`替换为镜像的用户名。
+
+
 ### 检查加速是否生效
 
 查看docker系统信息 `docker info`，如果从结果中看到了如下内容，说明配置成功。
