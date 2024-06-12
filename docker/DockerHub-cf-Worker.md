@@ -158,7 +158,7 @@ sudo systemctl restart docker</code><button class="copy-button" onclick="copyCod
 <p><h3>不用设置环境也可以直接使用，用法示例：</h3></p>
 <pre><code>
 docker pull {{host}}/library/mysql:5.7</code><button class="copy-button" onclick="copyCode(this)">复制代码</button></pre>
-<p>说明：library是一个特殊的命名空间，它代表的是官方镜像。</p>
+<p>说明：library是一个特殊的命名空间，它代表的是官方镜像。如果是某个用户的镜像就把library替换为镜像的用户名</p>
 </div>
 <div class="footer">
     &copy; 自建站点，请勿滥用。<a href="https://hub.docker.com">Docker加速</a>
