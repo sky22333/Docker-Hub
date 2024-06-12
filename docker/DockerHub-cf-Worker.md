@@ -1,8 +1,8 @@
-## 代理并加速 Docker Hub 的镜像拉取请求
+## 代理并加速 Docker Hub 的镜像拉取请求 Workers 和 Pages部署
 
 
 
-> [示例站点](https://do.nark.eu.org/)
+> [网友示例站点](https://do.nark.eu.org/)
 
 #### 将 `worker.js` 的内容替换为下面内容
 ```
