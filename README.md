@@ -2,6 +2,8 @@
 
 国内从 Docker Hub 拉取镜像有时会遇到困难，此时可以配置镜像加速器。
 
+自建Docker镜像加速教程：[点我跳转](https://github.com/sky22333/Docker-Hub/tree/main/registry-mirror)。 支持多种仓库
+
 ### 安装Docker（如果安装困难可以选择手动安装）
 官方安装脚本：
 
