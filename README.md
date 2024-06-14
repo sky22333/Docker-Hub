@@ -204,7 +204,7 @@ docker pull do.nark.eu.org/library/mysql:5.7
 ```console
 Registry Mirrors:
  [...]
- https://docker.m.daocloud.io
+ https://do.nark.eu.org
 ```
 
 对于 Mac 和 Windows 用户，直接在 Docker Desktop 系统设置中，配置 registry-mirrors 即可。
