@@ -216,7 +216,7 @@ docker logs -f epusdt-epusdt-1
 访问域名显示`hello epusdt, https://github.com/assimon/epusdt`表示成功
 
 
-#### 配置支付
+#### 独角数卡配置支付
 
 商户ID填你创建的`api_auth_token=`密码
 
