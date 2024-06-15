@@ -242,7 +242,7 @@ services:
       - TG_BOT_TOKEN=机器人token
       - TG_BOT_ADMIN_ID=TG账户ID
       - AUTH_TOKEN=认证token
-      - APP_URI=支付域名地址需带前缀
+      - APP_URI=支付域名需带前缀
 ```
 ```
 docker compose up -d
