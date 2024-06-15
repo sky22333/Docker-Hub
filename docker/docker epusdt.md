@@ -230,17 +230,23 @@ docker logs -f epusdt-epusdt-1
 ### 另一个版本的epusdt（快速部署）
 [项目地址](https://github.com/v03413/bepusdt)
 
-
+`docker-compose.yaml`
 ```
-docker run -d --restart=always \
--p 8999:8080 \
--e TG_BOT_TOKEN=机器人token \
--e TG_BOT_ADMIN_ID=TG账户ID \
--e AUTH_TOKEN=认证token \
--e APP_URI=支付域名需带HTTPS \
-v03413/bepusdt:1.9.22
+services:
+  bepusdt:
+    image: v03413/bepusdt:1.9.22
+    restart: always
+    ports:
+      - "8999:8080"
+    environment:
+      - TG_BOT_TOKEN=机器人token
+      - TG_BOT_ADMIN_ID=TG账户ID
+      - AUTH_TOKEN=认证token
+      - APP_URI=支付域名需带HTTPS
 ```
-
+```
+docker compose up -d
+```
 ---
 ---
 ---
