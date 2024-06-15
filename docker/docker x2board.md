@@ -69,7 +69,6 @@ docker compose restart
 
 导入sql备份文件
 
-进入数据库的`v2_settings`表，修改`https`配置，域名配置，路径配置
 
 
 #### 复制SQL文件到MySQL容器
