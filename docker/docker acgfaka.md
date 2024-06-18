@@ -23,3 +23,14 @@ docker compose up -d
 数据库账号：acgfakauser
 数据库密码：acgfakapassword
 ```
+
+
+
+#### 更改后台路径
+
+进入异次元目录 /kernel/kernel.php 文件，转到21行 
+```
+ } elseif (trim($_GET['s'], "/") == 'admin') {
+PHP
+```
+修改`admin`
