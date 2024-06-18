@@ -78,7 +78,7 @@ docker exec -it dujiaoka /bin/bash
 
 
 
-#### 底部页脚路径
+#### 底部版权路径
 ```
 /app/resources/views/luna/layouts/_footer.blade.php
 ```
