@@ -28,7 +28,7 @@ docker compose up -d
 
 #### 更改后台路径
 
-进入异次元目录 /kernel/kernel.php 文件，转到21行 
+异次元目录`/kernel/kernel.php`，21行 
 ```
  } elseif (trim($_GET['s'], "/") == 'admin') {
 PHP
