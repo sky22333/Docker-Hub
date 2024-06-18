@@ -104,7 +104,7 @@ docker cp /home/background.png dujiaoka:/app/public/assets/luna/img/background.p
 #### 底部运行时间代码
 ```
 <div style="text-align: center; padding: 20px;">
-    <span>网站已运行: <span id="adian_time" style="color: #000; font-weight: bold;"></span></span>
+    <span>本站已运行: <span id="adian_time" style="color: #000; font-weight: bold;"></span></span>
 </div>
 
 <script>
