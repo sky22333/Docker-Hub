@@ -68,6 +68,8 @@ MySQL和Redis地址都填docker内部IP`172.17.0.1`
 ```
 docker exec -it dujiaoka /bin/bash
 ```
+#### 首页价格标识
+路径`/app/resources/views/luna/static_pages/home.blade.php`
 
 #### 底部页脚路径
 ```
