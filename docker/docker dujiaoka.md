@@ -58,6 +58,10 @@ MySQL和Redis地址都填docker内部IP`172.17.0.1`
 
 ---
 ---
+#### 重置密码
+在容器内执行`php artisan admin:reset-password`然后输入需要重置密码的用户名，然后输入新密码
+
+忘记管理员用户名可在数据库的`admin_users`表查看
 
 ## 高阶操作
 
