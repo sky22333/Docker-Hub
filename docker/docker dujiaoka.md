@@ -7,14 +7,10 @@
 部署独角数卡
 
 ```
-version: '3.8'
-
 services:
   mysql:
     image: mysql:5.7
     container_name: mysql
-    ports:
-      - "172.17.0.1:3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: "123456"
     volumes:
@@ -24,9 +20,6 @@ services:
   myredis:
     image: redis
     container_name: myredis
-    ports:
-      - "172.17.0.1:6379:6379"
-    command: redis-server --requirepass "123456"
 
   dujiaoka:
     image: jiangjuhong/dujiaoka:latest
