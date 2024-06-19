@@ -3,7 +3,36 @@
 
 
 ```
-docker run --name typecho-server -p 8080:80 -e TYPECHO_SITE_URL=https://your-domain.com -d joyqi/typecho:nightly-php7.4-apache
+services:
+  mysql:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: typechoADMIN
+      MYSQL_DATABASE: typechoADMIN
+      MYSQL_USER: typechoADMIN
+      MYSQL_PASSWORD: typechoADMIN
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+
+  typecho:
+    image: joyqi/typecho:nightly-php7.4-apache
+    restart: always
+    depends_on:
+      - mysql
+    ports:
+      - "8080:80"
+    environment:
+      TYPECHO_SITE_URL: https://your-domain.com
+      TYPECHO_DB_HOST: mysql
+      TYPECHO_DB_NAME: typechoADMIN
+      TYPECHO_DB_USER: typechoADMIN
+      TYPECHO_DB_PASS: typechoADMIN
+    volumes:
+      - ./typecho-data:/var/www/html
+
+volumes:
+  mysql-data:
 ```
 
 `https://your-domain.com`替换为你的网址，提前反代好。
