@@ -32,7 +32,7 @@ services:
     image: jiangjuhong/dujiaoka:latest
     container_name: dujiaoka
     ports:
-      - "172.17.0.1:8111:80"
+      - "8111:80"
       - "9000:9000"
     environment:
       - APP_URL=https://域名
