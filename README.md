@@ -132,7 +132,7 @@ docker-compose --version
 | 容器详细信息  | `docker inspect`      |  挂载看`Mounts`网络看`Networks`       |
 | 进入容器内部  | `docker exec -it 容器名 /bin/sh`      |   结尾使用`/bash`也行        |
 | 创建容器网络  | `docker network create my-network`      |   `my-network`为网络名称        |
-| 容器加入网络  | `docker network connect my-network 容器名称`      |   替换容器名称或ID        |
+| 容器加入网络  | `docker network connect my-network 容器名`      |   替换容器名或ID        |
 | 查看网络  | `docker network inspect my-network`      |   查看`my-network`网络中的容器        |
 | 停止容器  | `docker stop`      |   `docker stop 容器名或ID`             |
 | 启动容器  | `docker start`      | `docker start 容器名或ID`           |
