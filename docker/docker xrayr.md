@@ -308,7 +308,7 @@ Nodes:
           - ""
           - 0123456789abcdef
       CertConfig:
-        CertMode: dns # 获取证书的方式：none, file, http, tls, dns。选择"none"将强制禁用tls配置。
+        CertMode: http # 获取证书的方式：none, file, http, tls, dns。选择"none"将强制禁用tls配置。
         CertDomain: "node1.test.com" # 证书的域名
         CertFile: /etc/XrayR/cert/node1.test.com.cert # CertMode为file时提供
         KeyFile: /etc/XrayR/cert/node1.test.com.key
