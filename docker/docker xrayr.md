@@ -159,3 +159,69 @@ sudo kill -9 [PID]
 
 
 ---
+
+
+### 根据域名分解到sk5协议，实现解锁奈飞和GPT
+
+`config.yml`配置中的`RouteConfigPath`和`OutboundConfigPath`配置注释去掉
+
+配置`route.json`
+
+```
+{
+  "domainStrategy": "IPOnDemand",
+  "rules": [
+    {
+      "type": "domain",
+      "domain": "*.chatgpt.com",
+      "outboundTag": "us1"
+    },
+    {
+      "type": "domain",
+      "domain": "*.netflix.com",
+      "outboundTag": "us1"
+    }
+  ]
+}
+```
+
+配置`custom_outbound.json`
+
+```
+[
+  {
+    "tag": "IPv4_out",
+    "protocol": "freedom",
+    "settings": {}
+  },
+  {
+    "tag": "IPv6_out",
+    "protocol": "freedom",
+    "settings": {
+      "domainStrategy": "UseIPv6"
+    }
+  },
+  {
+    "tag": "us1",
+    "protocol": "socks",
+    "settings": {
+      "servers": [
+        {
+          "address": "127.0.0.1",
+          "port": 1080,
+          "users": [
+            {
+              "user": "your_username",
+              "pass": "your_password"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "protocol": "blackhole",
+    "tag": "block"
+  }
+]
+```
