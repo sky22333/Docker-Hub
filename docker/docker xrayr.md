@@ -251,10 +251,10 @@ ConnectionConfig:
   DownlinkOnly: 4 # 上行连接关闭后的时间限制，秒
   BufferSize: 64 # 每个连接的内部缓存大小，kB
 Nodes:
-  - PanelType: "SSpanel" # 面板类型: SSpanel, NewV2board, PMpanel, Proxypanel, V2RaySocks, GoV2Panel, BunPanel
+  - PanelType: "NewV2board" # 面板类型: SSpanel, NewV2board, PMpanel, Proxypanel, V2RaySocks, GoV2Panel, BunPanel
     ApiConfig:
       ApiHost: "http://127.0.0.1:667"
-      ApiKey: "123"
+      ApiKey: "123asdoasdsada"
       NodeID: 41
       NodeType: V2ray # 节点类型: V2ray,vmess,vless, Shadowsocks, Trojan, Shadowsocks-Plugin
       Timeout: 30 # API请求的超时时间
@@ -312,7 +312,7 @@ Nodes:
         CertDomain: "node1.test.com" # 证书的域名
         CertFile: /etc/XrayR/cert/node1.test.com.cert # CertMode为file时提供
         KeyFile: /etc/XrayR/cert/node1.test.com.key
-        Provider: alidns # DNS证书提供商，获取完整支持列表请参考：https://go-acme.github.io/lego/dns/
+        Provider: cloudflare # DNS证书提供商，获取完整支持列表请参考：https://go-acme.github.io/lego/dns/
         Email: test@me.com
         DNSEnv: # DNS提供商使用的DNS环境选项
           ALICLOUD_ACCESS_KEY: aaa
