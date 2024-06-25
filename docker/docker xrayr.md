@@ -214,7 +214,7 @@ sudo kill -9 [PID]
     "settings": {
       "servers": [
         {
-          "address": "127.0.0.1",
+          "address": "192.168.1.1",
           "port": 10808,
           "users": [
             {
