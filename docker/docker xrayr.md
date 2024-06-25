@@ -161,8 +161,7 @@ sudo kill -9 [PID]
 ---
 
 
-### 根据域名分流到sk5协议节点，实现解锁奈飞和GPT
-
+### 二级代理
 `config.yml`配置中的`RouteConfigPath`和`OutboundConfigPath`配置注释去掉
 
 配置`route.json`
@@ -172,13 +171,8 @@ sudo kill -9 [PID]
   "domainStrategy": "IPOnDemand",
   "rules": [
     {
-      "type": "domain",
-      "domain": "*.chatgpt.com",
-      "outboundTag": "us1"
-    },
-    {
-      "type": "domain",
-      "domain": "*.netflix.com",
+      "type": "field",
+      "inboundTag": ["Shadowsocks_0.0.0.0_30000"],
       "outboundTag": "us1"
     }
   ]
