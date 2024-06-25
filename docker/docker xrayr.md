@@ -119,7 +119,7 @@ sudo kill -9 [PID]
 }
 ```
 
-#### 域名分流
+#### 无审计版
 ```
 {
   "domainStrategy": "IPOnDemand",
@@ -131,6 +131,11 @@ sudo kill -9 [PID]
         "domain:netflix.com"
       ],
       "outboundTag": "us1"
+    },
+    {
+      "type": "field",
+      "outboundTag": "IPv4_out",
+      "network": "udp,tcp"
     }
   ]
 }
