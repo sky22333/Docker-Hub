@@ -74,7 +74,9 @@ sudo kill -9 [PID]
 
 ###  审计：
 
+`config.yml`配置中的`RouteConfigPath`注释去掉
 
+然后配置路由策略`route.json`
 
 ```
     {
