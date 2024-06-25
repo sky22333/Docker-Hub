@@ -89,11 +89,11 @@ sudo kill -9 [PID]
         "domain:chatgpt.com",
         "domain:netflix.com"
       ],
-      "outboundTag": "IPv4_out" // 如需域名分流可改成us1路由
+      "outboundTag": "IPv4_out" //如需域名分流可改成us1路由，使用时需删掉注释
     },
     {
       "type": "field",
-      "outboundTag": "IPv4_out", // 如需全局分流可改成us1路由
+      "outboundTag": "IPv4_out", //如需全局分流可改成us1路由，使用时需删掉注释
       "network": "udp,tcp"
     },
     {
