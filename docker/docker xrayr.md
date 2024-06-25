@@ -166,8 +166,29 @@ sudo kill -9 [PID]
   "rules": [
     {
       "type": "field",
-      "inboundTag": ["Shadowsocks_0.0.0.0_30000"],
-      "outboundTag": "us1"
+      "outboundTag": "block",
+      "ip": [
+        "geoip:private"
+      ]
+    },
+    {
+      "type": "field",
+      "outboundTag": "block",
+      "protocol": [
+        "bittorrent"
+      ]
+    },
+    {
+      "type": "field",
+      "outboundTag": "us1",
+      "domain": [
+        "geosite:netflix"
+      ]
+    },
+    {
+      "type": "field",
+      "outboundTag": "us1",
+      "network": "udp,tcp"
     }
   ]
 }
