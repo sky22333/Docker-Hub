@@ -292,7 +292,7 @@ Nodes:
           Path: # HTTP路径，为空表示任何
           Dest: 80 # 必填，fallback的目标，请参考 https://xtls.github.io/config/features/fallback.html 获取详情
           ProxyProtocolVer: 0 # 发送PROXY协议版本，0表示禁用
-      DisableLocalREALITYConfig: false  # 禁用本地reality配置
+      DisableLocalREALITYConfig: true  # 禁用本地reality配置
       EnableREALITY: false # 启用REALITY
       REALITYConfigs:
         Show: true # 显示REALITY调试信息
