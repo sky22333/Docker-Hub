@@ -161,7 +161,7 @@ sudo kill -9 [PID]
 ---
 
 
-### 根据域名分解到sk5协议，实现解锁奈飞和GPT
+### 根据域名分流到sk5协议节点，实现解锁奈飞和GPT
 
 `config.yml`配置中的`RouteConfigPath`和`OutboundConfigPath`配置注释去掉
 
