@@ -189,24 +189,17 @@ sudo kill -9 [PID]
     "settings": {}
   },
   {
-    "tag": "IPv6_out",
-    "protocol": "freedom",
-    "settings": {
-      "domainStrategy": "UseIPv6"
-    }
-  },
-  {
     "tag": "us1",
     "protocol": "socks",
     "settings": {
       "servers": [
         {
           "address": "127.0.0.1",
-          "port": 1080,
+          "port": 10808,
           "users": [
             {
-              "user": "your_username",
-              "pass": "your_password"
+              "user": "youuser",
+              "pass": "youpass"
             }
           ]
         }
