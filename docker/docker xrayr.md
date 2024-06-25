@@ -18,9 +18,9 @@ docker run --restart=always --name xrayr -d -v /etc/XrayR/config.yml:/etc/XrayR/
 
 
 
-###  脚本安装：
+###  脚本安装xrayR：
 ```
-bash <(curl -Ls https://raw.githubusercontent.com/XrayR-project/XrayR-release/master/install.sh)
+wget -N https://raw.githubusercontent.com/XrayR-project/XrayR-release/master/install.sh && bash install.sh
 ```
 ### v2bx脚本（支持hy2，vless）
 ```
