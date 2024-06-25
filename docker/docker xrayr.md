@@ -90,6 +90,13 @@ sudo kill -9 [PID]
                 ]
             },
             {
+                "domain": [
+                    "geosite:google"
+                ],
+                "outboundTag": "IPv4_out",
+                "type": "field"
+            },
+            {
                 "type": "field",
                 "outboundTag": "block",
                 "domain": [
