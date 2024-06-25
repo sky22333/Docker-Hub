@@ -85,21 +85,6 @@ sudo kill -9 [PID]
             {
                 "type": "field",
                 "outboundTag": "block",
-                "ip": [
-                    "geoip:private",
-                    "geoip:cn"
-                ]
-            },
-            {
-                "domain": [
-                    "geosite:google"
-                ],
-                "outboundTag": "IPv4_out",
-                "type": "field"
-            },
-            {
-                "type": "field",
-                "outboundTag": "block",
                 "domain": [
                     "geosite:cn"
                 ]
@@ -136,7 +121,6 @@ sudo kill -9 [PID]
                 "type": "field",
                 "outboundTag": "block",
                 "ip": [
-                    "127.0.0.1/32",
                     "10.0.0.0/8",
                     "fc00::/7",
                     "fe80::/10",
