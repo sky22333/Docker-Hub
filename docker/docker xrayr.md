@@ -159,11 +159,24 @@ sudo kill -9 [PID]
 
 ## 配置`route.json`
 
-#### 全局代理
+#### 路由规则
 ```
 {
   "domainStrategy": "IPOnDemand",
   "rules": [
+    {
+      "type": "field",
+      "domain": [
+        "domain:chatgpt.com",
+        "domain:netflix.com"
+      ],
+      "outboundTag": "IPv4_out" // 如需分流可改成us1路由
+    },
+    {
+      "type": "field",
+      "outboundTag": "IPv4_out",
+      "network": "udp,tcp"
+    },
     {
       "type": "field",
       "outboundTag": "block",
@@ -179,16 +192,9 @@ sudo kill -9 [PID]
       ]
     },
     {
-      "type": "field",
-      "outboundTag": "us1",
-      "domain": [
-        "geosite:netflix"
-      ]
-    },
-    {
-      "type": "field",
-      "outboundTag": "us1",
-      "network": "udp,tcp"
+       "type": "field",
+       "outboundTag": "block",
+       "port": "22,23,24,25,107,194,445,465,587,992,3389,6665-6669,6679,6697,6881-6999,7000"
     }
   ]
 }
