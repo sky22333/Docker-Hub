@@ -161,11 +161,12 @@ sudo kill -9 [PID]
 ---
 
 
-### 二级代理
+## 二级代理
 `config.yml`配置中的`RouteConfigPath`和`OutboundConfigPath`配置注释去掉
 
-配置`route.json`
+## 配置`route.json`
 
+#### 全局代理
 ```
 {
   "domainStrategy": "IPOnDemand",
@@ -179,7 +180,24 @@ sudo kill -9 [PID]
 }
 ```
 
-配置`custom_outbound.json`
+#### 域名分流
+```
+{
+  "domainStrategy": "IPOnDemand",
+  "rules": [
+    {
+      "type": "field",
+      "domain": [
+        "domain:chatgpt.com",
+        "domain:netflix.com"
+      ],
+      "outboundTag": "us1"
+    }
+  ]
+}
+```
+
+## 配置`custom_outbound.json`
 
 ```
 [
