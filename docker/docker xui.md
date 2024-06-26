@@ -1,4 +1,4 @@
-###  最新伊朗版xui
+###  3xui
 
 ```
 docker run -itd \
