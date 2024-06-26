@@ -126,7 +126,7 @@ docker-compose --version
 | 功能    | 命令 | 说明 |
 |-------------|-------------------|----------------|
 | 编译镜像  | `docker build -t 镜像名 .`      |   先`docker login`登录docker hub        |
-| 推送镜像  | `docker push 用户名/镜像名`      |   需先标记镜像 `docker 本地镜像名 用户名/镜像名`        |
+| 推送镜像  | `docker push 用户名/镜像名`      |   需先标记镜像 `docker 本地镜像ID 用户名/镜像名`        |
 | 查看容器  | `docker ps`      |   `-a`查看包括已停止的容器         |
 | 容器资源占用  | `docker stats`      |   查看所有容器资源占用         |
 | 容器详细信息  | `docker inspect`      |  挂载看`Mounts`网络看`Networks`       |
