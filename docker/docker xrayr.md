@@ -204,7 +204,7 @@ Nodes:
     ApiConfig:
       ApiHost: "http://127.0.0.1:667"
       ApiKey: "123asdoasdsada"
-      NodeID: 41
+      NodeID: 1
       NodeType: V2ray # 节点类型: V2ray,vmess,vless, Shadowsocks, Trojan, Shadowsocks-Plugin
       Timeout: 30 # API请求的超时时间
       EnableVless: false # 启用Vless用于V2ray类型
