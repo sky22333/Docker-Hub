@@ -6,8 +6,8 @@ docker run -itd \
     -v $PWD/db/:/etc/x-ui/ \
     -v $PWD/cert/:/root/cert/ \
     --network host \
-    --name x-ui --restart=unless-stopped \
-    alireza7/x-ui:latest
+    --name xui --restart=unless-stopped \
+    dapiaoliang666/xui:latest
 ```
 
 ```
