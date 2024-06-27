@@ -3,7 +3,7 @@
 ```
 docker run -d --name mtproxy \
   --restart=always \
-  -e domain="tesla.com" \
+  -e domain="swift.com" \
   -p 8080:80 \
   -p 8443:443 \
   ellermister/mtproxy
@@ -16,7 +16,7 @@ docker run -d --name mtproxy \
 ```
 docker run -d --name mtproxy \
   --restart=always \
-  -e domain="tesla.com" \
+  -e domain="swift.com" \
   -e secret="548593a9c0688f1f7d9d57377897d321" \
   -e ip_white_list="OFF" \
   -p 8080:80 \
