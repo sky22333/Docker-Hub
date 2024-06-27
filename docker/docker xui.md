@@ -7,7 +7,7 @@ docker run -itd \
     -v $PWD/cert/:/root/cert/ \
     --network host \
     --name xui --restart=unless-stopped \
-    dapiaoliang666/xui:main
+    dapiaoliang666/xui:latest
 ```
 
 ```
