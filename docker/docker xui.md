@@ -82,4 +82,6 @@ cdn-dynmedia-1.microsoft.com
 update.microsoft
 www.tesla.com
 www.cloudflare.com
+
+swift.com
 ```
