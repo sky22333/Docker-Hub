@@ -1,13 +1,16 @@
 ###  3xui
 
 ```
-docker run -itd \
-    -e XRAY_VMESS_AEAD_FORCED=false \
-    -v $PWD/db/:/etc/x-ui/ \
-    -v $PWD/cert/:/root/cert/ \
-    --network host \
-    --name xui --restart=unless-stopped \
-    dapiaoliang666/3xui:latest
+docker run -d \
+  --name x-ui \
+  --hostname yourhostname \
+  -v $PWD/db/:/etc/x-ui/ \
+  -v $PWD/cert/:/root/cert/ \
+  --env XRAY_VMESS_AEAD_FORCED="false" \
+  --tty \
+  --network host \
+  --restart unless-stopped \
+  alireza7/x-ui
 ```
 
 ```
