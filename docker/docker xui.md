@@ -31,9 +31,13 @@ docker exec -it x-ui sh
 ./x-ui setting -h
 ```
 
+`62789监听失败可在界内入站修改`
 
 ---
-
+### 脚本
+```
+bash <(curl -Ls https://raw.githubusercontent.com/admin8800/3x-ui/main/install.sh)
+```
 
 ---
 
