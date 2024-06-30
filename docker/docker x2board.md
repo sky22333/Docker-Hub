@@ -27,6 +27,7 @@ app/Http/Controllers/Client/Protocols
 ```
 /www/resources/rules/custom.clash.yaml
 ```
+https://github.com/cedar2025/Xboard/tree/5a0e59b103657ccd300204046b877f653cd2aa30/app/Protocols
 
 忘记管理员密码可以在站点目录下执行命令找回密码
 ```
