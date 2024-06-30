@@ -25,7 +25,7 @@ app/Http/Controllers/Client/Protocols
 
 订阅下发文件目录
 ```
-resources\rules
+/www/resources/rules/custom.clash.yaml
 ```
 
 忘记管理员密码可以在站点目录下执行命令找回密码
