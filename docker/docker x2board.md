@@ -35,7 +35,7 @@ docker exec -it xboard-xboard-1 /bin/sh
 ```
 php artisan reset:password 管理员邮箱
 ```
-更改后台路径后需重启
+重启
 ```
 cd /root/Xboard
 ```
