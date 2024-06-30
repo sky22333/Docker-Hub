@@ -23,6 +23,11 @@ app/Payments
 app/Http/Controllers/Client/Protocols
 ```
 
+订阅下发文件目录
+```
+resources\rules
+```
+
 忘记管理员密码可以在站点目录下执行命令找回密码
 ```
 docker exec -it xboard-xboard-1 /bin/sh
