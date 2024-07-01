@@ -2,6 +2,11 @@ name: Docker Image CI
 
 on:
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version number'
+        required: true
+        default: 'latest'
 
 jobs:
   build:
@@ -18,11 +23,9 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
-            dapiaoliang666/name
+            ${{ github.repository }}/${{ github.event.inputs.version }}
           tags: |
-            type=ref,event=branch
-            type=ref,event=tag
-            type=pep440,pattern={{version}}
+            type=manual
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -42,5 +45,5 @@ jobs:
           context: .
           push: true
           platforms: linux/amd64,linux/arm64/v8,linux/386
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: ${{ github.repository }}:${{ github.event.inputs.version }}, ${{ github.repository }}:latest
           labels: ${{ steps.meta.outputs.labels }}
