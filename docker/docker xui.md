@@ -18,17 +18,15 @@ docker run -itd \
 
 面板数据在`root/db`目录下
 
-修改用户名和密码
+查看用户名和密码
+
 ```
-docker exec -it x-ui sh
-```
-```
-./x-ui setting -username 用户名 -password 密码
+/app/x-ui setting -show
 ```
 
 重置面板：
 ```
-./x-ui setting -h
+/app/x-ui setting -reset
 ```
 
 `62789监听失败可在界内入站修改`
