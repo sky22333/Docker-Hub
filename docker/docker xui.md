@@ -29,7 +29,15 @@ docker run -itd \
 /app/x-ui setting -reset
 ```
 
-`127.0.0.1:62789监听失败可在界内修改入站`
+#### 127.0.0.1:62789监听失败是因为服务器没有配置本地环回地址
+查看
+```
+ip addr show lo
+```
+分配
+```
+sudo ip addr add 127.0.0.1/8 dev lo
+```
 
 ---
 ### 脚本
