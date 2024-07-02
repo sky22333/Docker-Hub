@@ -42,7 +42,7 @@ sudo ip addr add 127.0.0.1/8 dev lo
 ---
 ### 脚本
 ```
-bash <(curl -Ls https://raw.githubusercontent.com/admin8800/3x-ui/main/install.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/admin8800/x-ui/main/install.sh)
 ```
 
 ---
