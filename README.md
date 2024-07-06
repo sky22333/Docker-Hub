@@ -183,7 +183,10 @@ sudo mkdir -p /etc/docker
 ```
 sudo tee /etc/docker/daemon.json <<EOF
 {
-    "registry-mirrors": ["https://do.nark.eu.org"]
+    "registry-mirrors": [
+        "https://do.nark.eu.org",
+        "https://docker.1panel.live"
+    ]
 }
 EOF
 ```
