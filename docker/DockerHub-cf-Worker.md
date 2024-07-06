@@ -2,7 +2,6 @@
 
 
 
-> [网友示例站点](https://do.nark.eu.org/)
 
 #### 将 `worker.js` 的内容替换为下面内容
 ```
