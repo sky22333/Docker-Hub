@@ -22,10 +22,10 @@ curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
   
 ####  下载 Docker:
 
-[文件下载地址—需要代理——下载后上传到服务器root目录](https://download.docker.com/linux/static/stable/x86_64/)
+[文件下载地址—需要代理——下载后上传到root目录](https://download.docker.com/linux/static/stable/x86_64/)
 
 ```
-tar xzvf docker-26.1.3.tgz  // 替换版本号
+tar xzvf docker-26.1.3.tgz     # 替换版本号
 sudo mv docker/* /usr/local/bin/
 ```
 #### 创建 Docker 服务文件
@@ -212,7 +212,7 @@ docker pull do.nark.eu.org/library/mysql:5.7
 ```console
 Registry Mirrors:
  [...]
- https://do.nark.eu.org
+ https://docker.1panel.live
 ```
 
 对于 Mac 和 Windows 用户，直接在 Docker Desktop 系统设置中，配置 registry-mirrors 即可。
@@ -291,7 +291,7 @@ sudo rm -rf /etc/docker /var/lib/docker
 
 镜像 | 镜像加速地址 | 说明 | 其它加速
 --- | --- | --- | ---
-[网友](https://hub.rat.dev/) | `https://hub.rat.dev` | | Docker Hub
+[网友提供](https://hub.rat.dev/) | `https://hub.rat.dev` | | Docker Hub
 [1panel](https://1panel.cn/docs/user_manual/containers/setting/) | `https://docker.1panel.live` | | Docker Hub
 [阿里云](https://cr.console.aliyun.com/) | `https://<your_code>.mirror.aliyuncs.com` | 需登录分配 | Docker Hub 镜像不是最新的
 
