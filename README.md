@@ -184,7 +184,7 @@ sudo mkdir -p /etc/docker
 sudo tee /etc/docker/daemon.json <<EOF
 {
     "registry-mirrors": [
-        "https://do.nark.eu.org",
+        "https://hub.rat.dev",
         "https://docker.1panel.live"
     ]
 }
