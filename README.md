@@ -291,9 +291,9 @@ sudo rm -rf /etc/docker /var/lib/docker
 
 镜像 | 镜像加速地址 | 说明 | 其它加速
 --- | --- | --- | ---
-[网友自建](https://do.nark.eu.org/) | `https://do.nark.eu.org` | | Docker Hub
+[网友](https://hub.rat.dev/) | `https://hub.rat.dev` | | Docker Hub
 [1panel](https://1panel.cn/docs/user_manual/containers/setting/) | `https://docker.1panel.live` | | Docker Hub
-[阿里云](https://cr.console.aliyun.com/) | `https://<your_code>.mirror.aliyuncs.com` | 需登录分配 | Docker Hub 未同步最新源镜像
+[阿里云](https://cr.console.aliyun.com/) | `https://<your_code>.mirror.aliyuncs.com` | 需登录分配 | Docker Hub 镜像版本过旧
 
 ## 参考链接
 
