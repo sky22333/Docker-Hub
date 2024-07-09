@@ -1,6 +1,6 @@
 ### Docker版基于warp的sk5代理
 
-[官方仓库](https://hub.docker.com/r/monius/docker-warp-socks)
+[项目地址](https://hub.docker.com/r/monius/docker-warp-socks)
 
 ### 1：普通部署
 
