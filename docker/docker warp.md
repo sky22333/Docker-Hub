@@ -20,7 +20,7 @@ docker run --privileged --restart=always -itd \
 
 此时你的9091端口的所有流量将通过WARP出站
 
-查看你的warp的ip：`curl -x "socks5h://127.0.0.1:9091" -fsSL "https://ifconfig.co"`
+查看你的warp的IP：`curl -x "socks5h://127.0.0.1:9091" -fsSL "https://ifconfig.co"`
 
 
 ### 2：WARP Plus 账户
