@@ -12,7 +12,7 @@ docker run --privileged --restart=always -itd \
     --sysctl net.ipv6.conf.all.disable_ipv6=0 \
     --sysctl net.ipv4.conf.all.src_valid_mark=1 \
     -v /lib/modules:/lib/modules \
-    -p 9091:9091 \
+    -p 127.0.0.1:9091:9091 \
     monius/docker-warp-socks
 ```
 
@@ -33,7 +33,7 @@ docker run --privileged --restart=always -itd \
     --sysctl net.ipv6.conf.all.disable_ipv6=0 \
     --sysctl net.ipv4.conf.all.src_valid_mark=1 \
     -v /lib/modules:/lib/modules \
-    -p 9091:9091 \
+    -p 127.0.0.1:9091:9091 \
     monius/docker-warp-socks
 ```
 运行`curl -x "socks5h://127.0.0.1:9091" -fsSL "https://www.cloudflare.com/cdn-cgi/trace"` 看到`plus`则表示WARP Plus密钥应用成功。
