@@ -16,8 +16,6 @@ docker run --privileged --restart=always -itd \
     monius/docker-warp-socks
 ```
 
-上述命令将创建一个后台服务，使整个容器网络可以加入双栈 cloudflare 网络池，而无需断开与主机的连接。
-
 此时你的9091端口的所有流量将通过WARP出站
 
 查看你的warp的IP：`curl -x "socks5h://127.0.0.1:9091" -fsSL "https://ifconfig.co"`
