@@ -13,3 +13,14 @@ docker inspect -f '{{.HostConfig.NetworkMode}}' 容器名称或ID
 ```
 
 
+## Metabase
+```
+docker run -d -p 3000:3000 \
+  -e "MB_DB_TYPE=mysql" \  # 数据库类型MySQL
+  -e "MB_DB_DBNAME=mysql" \  # 数据库名称
+  -e "MB_DB_PORT=3306" \  # 数据库端口
+  -e "MB_DB_USER=root" \  # 数据库用户名
+  -e "MB_DB_PASS=123456" \  # 数据库密码
+  -e "MB_DB_HOST=172.17.0.1" \  # 数据库地址
+  --name metabase metabase/metabase
+```
