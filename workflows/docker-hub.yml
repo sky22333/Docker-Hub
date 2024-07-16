@@ -1,4 +1,4 @@
-# Docker hub构建镜像示例，请替换密钥和用户名，手动触发，自动发布
+# Docker hub构建镜像示例，请替换密钥和用户名，手动触发，自动推送
 name: docker hub镜像构建
 
 on:
