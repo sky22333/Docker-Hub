@@ -1,5 +1,5 @@
 # docker hub构建镜像示例，请替换密钥和仓库名
-name: Docker hub构建
+name: docker hub构建
 
 on:
   workflow_dispatch:
