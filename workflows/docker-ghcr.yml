@@ -1,4 +1,4 @@
-# github构建镜像示例，请替换GIT_TOKEN密钥，手动触发
+# Github构建镜像示例，请替换GIT_TOKEN密钥，手动触发
 name: ghcr镜像构建
 
 on:
