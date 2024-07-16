@@ -42,3 +42,12 @@ docker run --name my-phpmyadmin -d -p 7890:80 phpmyadmin/phpmyadmin
 ```
 docker inspect -f '{{.HostConfig.NetworkMode}}' 容器名称或ID
 ```
+
+
+
+---
+
+#### redis
+```
+docker run -d -p 172.17.0.1:6379:6379 --name myredis redis:latest
+```
