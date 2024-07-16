@@ -1,4 +1,4 @@
-# github构建镜像示例，请替换GITHUB_密钥
+# github构建镜像示例，请替换GIT_TOKEN密钥
 name: ghcr镜像构建
 
 on:
@@ -32,7 +32,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_密钥 }}
+          password: ${{ secrets.GIT_TOKEN }}
 
       - name: Set version from input
         run: echo "VERSION=${{ github.event.inputs.version }}" >> $GITHUB_ENV
@@ -46,7 +46,7 @@ jobs:
       - name: Create GitHub release
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_密钥 }}
+          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
         with:
           tag_name: ${{ env.VERSION }}
           release_name: Release ${{ env.VERSION }}
