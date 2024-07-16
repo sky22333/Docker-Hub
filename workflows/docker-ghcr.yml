@@ -1,4 +1,5 @@
-name: Docker Publish
+# github构建镜像示例，请替换GITHUB_密钥
+name: ghcr镜像构建
 
 on:
   workflow_dispatch:
