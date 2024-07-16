@@ -1,4 +1,4 @@
-# docker hub构建镜像示例，请替换密钥和仓库名，手动触发
+# Docker hub构建镜像示例，请替换密钥和仓库名，手动触发
 name: docker hub构建
 
 on:
