@@ -34,3 +34,8 @@ docker compose up -d
 PHP
 ```
 修改`admin`
+
+#### 退出插件市场账号
+```
+/config/store.php
+```
