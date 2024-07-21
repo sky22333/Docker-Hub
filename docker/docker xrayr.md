@@ -71,7 +71,15 @@ sudo kill -9 [PID]
 ```
 
 ---
-
+ws传输配置，域名可留空，可更换伪装域名用来优选cf
+```
+{
+  "path": "/",
+  "headers": {
+    "Host": "v2ray.com"
+  }
+}
+```
 
 # 二级代理
 `config.yml`配置中的`RouteConfigPath`和`OutboundConfigPath`注释去掉
