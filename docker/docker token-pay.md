@@ -70,6 +70,16 @@ docker run -d --restart always -p 5000:80 -v /home/appsettings.json:/app/appsett
 
 如果需要重新部署需要清空`/etc/TokenPay.db`文件里的内容
 
+### 修改tokenpay付款金额小数后四位
+添加到16行
+
+改为2位示例
+```
+"Decimals:USDT_TRC20": 2,
+```
+如果需要定义其他币种，把USDT_TRC20换成相应币种
+
+
 
 #### [官方地址](https://github.com/LightCountry/TokenPay)
 
