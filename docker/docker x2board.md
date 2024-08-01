@@ -126,3 +126,16 @@ mysql -u root -p mysql < /tmp/mysql.sql
 通过这些步骤，你将删除现有数据库中的所有表，然后导入新的SQL文件内容。这将确保数据被完全覆盖。
 
 然后进入数据库的`v2_settings`表，修改https配置，域名配置，路径配置，即可正常进入后台
+
+
+
+
+### Xboard将reCAPTCHA替换为Cloudflare Turnstile的方法
+
+1. 修改 `/vendor/google/recaptcha/src/ReCaptcha/ReCaptcha.php` 中的 `SITE_VERIFY_URL` 为
+`https://challenges.cloudflare.com/turnstile/v0/siteverify`
+
+2.管理后台【主题配置】— 主题设置增加：
+`<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?compat=recaptcha" async defer></script>`
+
+3.cloudflare turnstile 增加Turnstile站点获取密钥。然后更改管理后台密钥
