@@ -150,7 +150,11 @@ mysql -u root -p mysql < /tmp/mysql.sql
 ### 邮件设置：
 
 SMTP服务器地址：smtp.qq.com、smtp.gmail.com、smtp.163.com、smtp.mail.yahoo.com等等
+
 SMTP 端口：465 (SSL)/587 (TLS)
+
 SMTP密码：谷歌搜索`Gmail邮箱获取SMTP密码`教程
+
 `打开Gmail邮箱——点击设置——点击查看所有设置——点击转发和 POP/IMAP——启用 IMAP——点击保存更改——点击继续`
+
 `点击管理你的google账号——点击安全性——点击两步验证——开启两步验证——点开两步验证——拉到最下面——点击应用专用密码——应用选择其他——自定义一个名称——点击生成`
