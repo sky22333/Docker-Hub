@@ -71,7 +71,7 @@ docker run -d --restart always -p 5000:80 -v /home/appsettings.json:/app/appsett
 如果需要重新部署需要清空`/etc/TokenPay.db`文件里的内容
 
 ### 修改tokenpay付款金额小数后四位
-添加到16行
+添加到15行
 
 改为2位示例
 ```
