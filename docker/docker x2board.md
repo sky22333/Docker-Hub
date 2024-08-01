@@ -1,7 +1,9 @@
 ## Docker-Compose 部署Xboard面板
 
 
-### [项目地址](https://github.com/cedar2025/Xboard)
+### [原项目地址](https://github.com/cedar2025/Xboard)
+
+### [备用项目](https://github.com/admin8800/Xboard)
 
 ### [部署教程](https://github.com/cedar2025/Xboard/blob/dev/docs/docker-compose%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97.md)
 
