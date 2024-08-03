@@ -124,6 +124,17 @@ Copy-Item -Path '~\scoop\shims\start-v2raya.cmd' -Destination '~\AppData\Roaming
 
 ## 国内Debian / Ubuntu切换apt源教程
 
+#### Github一键换源脚本
+```
+bash <(curl -sSL https://raw.githubusercontent.com/SuperManito/LinuxMirrors/main/ChangeMirrors.sh)
+```
+国内Gitee一键换源脚本
+```
+bash <(curl -sSL https://gitee.com/SuperManito/LinuxMirrors/raw/main/ChangeMirrors.sh)
+```
+
+
+#### 手动换源
 需要root权限
 
 先备份`sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak`
