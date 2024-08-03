@@ -116,7 +116,17 @@ docker-compose --version
 ```
 
 ---
-（可选）国内环境可[手动下载文件](https://github.com/docker/compose/releases)上传到`/usr/local/bin`目录，并重命名为`docker-compose`，然后增加执行权限。
+国内安装困难可以[手动下载文件](https://github.com/docker/compose/releases)上传到`/usr/local/bin`目录，并重命名为`docker-compose`，然后增加执行权限。
+```
+sudo cp docker-compose-linux-x86_64 /usr/local/bin/docker-compose
+```
+```
+chmod +x /usr/local/bin/docker-compose
+```
+验证安装:
+```
+docker-compose --version
+```
 
 ---
 
