@@ -11,10 +11,10 @@
 curl -fsSL https://get.docker.com | sh
 ```
 
-国内阿里云镜像
+国内安装脚本
 
 ```
-curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
+bash <(curl -sSL https://linuxmirrors.cn/docker.sh)
 ```
 
 <details>
