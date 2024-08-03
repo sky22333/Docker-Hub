@@ -11,7 +11,7 @@
 curl -fsSL https://get.docker.com | sh
 ```
 
-国内安装脚本[（说明）](https://linuxmirrors.cn/other/)
+国内安装脚本  [(说明)](https://linuxmirrors.cn/other/)
 
 ```
 bash <(curl -sSL https://linuxmirrors.cn/docker.sh)
