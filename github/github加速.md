@@ -260,6 +260,10 @@ hosts 文件在每个系统的位置不一，详情如下：
 
 https://www.jsdelivr.com/github
 
+https://tool.mintimate.cn/gh
+
+https://toolwa.com/github
+
 https://gh.api.99988866.xyz
 
 https://mirror.ghproxy.com
