@@ -37,9 +37,9 @@ services:
     volumes:
       - ./mysql:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: tingfengYYDS
-      MYSQL_USER: tingfeng
-      MYSQL_PASSWORD: tingfengYYDS
+      MYSQL_ROOT_PASSWORD: mysql666
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: mysql666
 
   redis:
     image: redis
@@ -51,7 +51,7 @@ services:
 
 
 ```
-docker-compose up -d
+docker compose up -d
 ```
 
 
