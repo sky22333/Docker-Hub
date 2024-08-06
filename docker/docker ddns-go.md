@@ -6,10 +6,6 @@ docker run -d --name ddns-go --restart=always --net=host -v /opt:/root jeessy/dd
 ```
 在浏览器中打开`http://主机IP:9876`并修改你的配置
 
-[可选] 使用 ghcr.io 镜像
-```
-docker run -d --name ddns-go --restart=always --net=host -v /opt:/root ghcr.io/jeessy2/ddns-go
-```
 [可选] 支持启动带参数 -l监听地址 -f间隔时间(秒)
 ```
 docker run -d --name ddns-go --restart=always --net=host -v /opt:/root jeessy/ddns-go -l
