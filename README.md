@@ -120,15 +120,15 @@ docker-compose --version
 
 [手动下载文件](https://github.com/docker/compose/releases) 上传到服务器的`/usr/local/bin`目录
 
-重命名为docker-compose：
+重命名为docker-compose
 ```
 sudo cp docker-compose-linux-x86_64 /usr/local/bin/docker-compose
 ```
-增加执行权限：
+增加执行权限
 ```
 chmod +x /usr/local/bin/docker-compose
 ```
-验证安装:
+验证安装
 ```
 docker-compose --version
 ```
