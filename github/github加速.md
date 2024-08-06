@@ -141,7 +141,7 @@ bash <(curl -sSL https://gitee.com/SuperManito/LinuxMirrors/raw/main/ChangeMirro
 
 打开文件`/etc/apt/sources.list`
 
-清华大学`debian 11`源
+国内清华大学`debian 11`源
 ```
 deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye main contrib non-free
 deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye main contrib non-free
@@ -171,7 +171,7 @@ deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted 
 # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
 ```
 
-官方`debian11`源
+官方`debian 11`源
 ```
 deb https://deb.debian.org/debian/ bullseye main contrib non-free
 deb-src https://deb.debian.org/debian/ bullseye main contrib non-free
@@ -184,6 +184,18 @@ deb-src https://deb.debian.org/debian/ bullseye-backports main contrib non-free
 
 deb https://deb.debian.org/debian-security/ bullseye-security main contrib non-free
 deb-src https://deb.debian.org/debian-security/ bullseye-security main contrib non-free
+```
+
+官方`debian 12`源
+```
+deb http://deb.debian.org/debian bookworm main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian bookworm main contrib non-free non-free-firmware
+
+deb http://deb.debian.org/debian-security/ bookworm-security main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian-security/ bookworm-security main contrib non-free non-free-firmware
+
+deb http://deb.debian.org/debian bookworm-updates main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian bookworm-updates main contrib non-free non-free-firmware
 ```
 
 更新源
