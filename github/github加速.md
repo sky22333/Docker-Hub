@@ -124,10 +124,7 @@ Copy-Item -Path '~\scoop\shims\start-v2raya.cmd' -Destination '~\AppData\Roaming
 
 ## 国内Debian / Ubuntu切换apt源教程
 
-#### Github一键换源脚本
-```
-bash <(curl -sSL https://raw.githubusercontent.com/SuperManito/LinuxMirrors/main/ChangeMirrors.sh)
-```
+
 国内Gitee一键换源脚本
 ```
 bash <(curl -sSL https://gitee.com/SuperManito/LinuxMirrors/raw/main/ChangeMirrors.sh)
@@ -153,7 +150,7 @@ deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-updates main contrib n
 deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-updates main contrib non-free
 ```
 
-清华大学`ubuntu 20.04`源
+国内清华大学`ubuntu 20.04`源
 
 ```
 deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
