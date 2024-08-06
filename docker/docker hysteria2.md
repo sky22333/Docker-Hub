@@ -5,7 +5,7 @@
 脚本
 
 ```
-wget -N --no-check-certificate https://github.com/taotao1058/shell/raw/main/acme.sh && bash acme.sh
+bash <(wget -qO- https://github.com/sky22333/shell/raw/main/acme.sh)
 ```
 
 #### 创建文件
