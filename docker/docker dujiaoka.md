@@ -1,6 +1,6 @@
 # docker快速部署独角数卡
 
-先配置npm把域名反代到`8111`端口，申请证书用`80`端口。
+先配置npm把域名反代到`8111`端口，申请证书用`80`端口。或者caddy反代也行
 
 [查看npm部署方法](https://github.com/sky22333/Docker-Hub/blob/main/docker/docker%20NPM.md#docker%E9%83%A8%E7%BD%B2nginx-proxy-manager)
 
