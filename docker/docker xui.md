@@ -75,12 +75,12 @@ docker run -itd --network=host \
 ---
 ### Reality域名推荐列表
 ```
+www.cloudflare.com
 addons.mozilla.org
 s0.awsstatic.com
 d1.awsstatic.com
 images-na.ssl-images-amazon.com
 m.media-amazon.com
-
 player.live-video.net
 one-piece.com
 lol.secure.dyn.riotcdn.net
@@ -89,9 +89,23 @@ www.swift.com
 academy.nvidia.com
 www.cisco.com
 cdn-dynmedia-1.microsoft.com
-update.microsoft
 www.tesla.com
-www.cloudflare.com
-
 swift.com
+```
+
+
+### 适合国内的优选cf域名推荐列表
+```
+# 稳定大厂域名
+unpkg.com
+www.visa.com.sg
+www.okcupid.com
+www.udemy.com
+time.cloudflare.com
+
+# 私人维护域名
+speed.marisalnc.com
+cloudflare.182682.xyz
+115155.xyz
+cdn.2020111.xyz
 ```
