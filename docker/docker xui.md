@@ -101,6 +101,7 @@ unpkg.com
 www.visa.com.sg
 www.okcupid.com
 www.udemy.com
+visa.cn
 time.cloudflare.com
 
 # 私人维护域名
