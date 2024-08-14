@@ -104,7 +104,7 @@ www.udemy.com
 visa.cn
 time.cloudflare.com
 
-# 私人维护域名
+# 私人维护-分钟级优选
 speed.marisalnc.com
 cloudflare.182682.xyz
 115155.xyz
