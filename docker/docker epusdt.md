@@ -234,7 +234,7 @@ docker logs -f epusdt-epusdt-1
 ```
 services:
   bepusdt:
-    image: v03413/bepusdt:1.9.22
+    image: v03413/bepusdt:latest
     restart: always
     ports:
       - "8999:8080"
