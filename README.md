@@ -36,7 +36,6 @@ sudo vim /etc/systemd/system/docker.service
 ```
 [Unit]
 Description=Docker Application Container Engine
-Documentation=https://docs.docker.com
 After=network-online.target firewalld.service
 Wants=network-online.target
 
@@ -44,32 +43,14 @@ Wants=network-online.target
 Type=notify
 ExecStart=/usr/local/bin/dockerd
 ExecReload=/bin/kill -s HUP $MAINPID
-TimeoutSec=0
-RestartSec=2
 Restart=always
-
-# Note that StartLimit* options were moved from "Service" to "Unit" in systemd 229.
-# Both the old, and new location are accepted by systemd 229 and up, so using the old location
-# to make them work for either version of systemd.
+RestartSec=2
 StartLimitBurst=3
-
-# Note that StartLimitInterval was renamed to StartLimitIntervalSec in systemd 230.
 StartLimitInterval=60s
-
-# Having non-zero Limit*s causes performance problems due to accounting overhead
-# in the kernel. We recommend using cgroups to do container-local accounting.
 LimitNOFILE=infinity
 LimitNPROC=infinity
 LimitCORE=infinity
-
-# Uncomment TasksMax if your systemd version supports it.
-# Only systemd 226 and above support this version.
-TasksMax=infinity
-
-# set delegate yes so that systemd does not reset the cgroups of docker containers
 Delegate=yes
-
-# kill only the docker process, not all processes in the cgroup
 KillMode=process
 
 [Install]
