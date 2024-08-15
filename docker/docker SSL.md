@@ -11,28 +11,6 @@ apt install socat curl -y
 curl https://get.acme.sh | sh
 ```
 
-
-
-## 使用DNS申请
-
-如果是阿里云平台：登录控制台，在 `Access Key` 管理页面创建 `Access Key` 和 `Access Secret`。将下面命令中的`dns_cf`改为`dns_aliyun`然后根据提示输入`Access Key` 和 `Access Secret`。
-
- **配置Cloudflare插件：** 
-```
-~/.acme.sh/acme.sh --set-default-ca --server letsencrypt --dns dns_cf
-```
-
- **申请证书：**
-```
-export CF_Key="你的api key"
-export CF_Email="你的邮箱"
-```
-```
-~/.acme.sh/acme.sh --issue --dns dns_cf -d 你的域名
-```
-
-
-
 ## 使用HTTP方式申请
 ```
 ~/.acme.sh/acme.sh --issue --standalone -d 你的域名 --server letsencrypt
