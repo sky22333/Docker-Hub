@@ -5,7 +5,7 @@
 ## 安装脚本
  **官方脚本：** 
 ```
-apt install socat curl
+apt install socat curl -y
 ```
 ```
 curl https://get.acme.sh | sh
