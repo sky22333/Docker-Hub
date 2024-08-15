@@ -15,6 +15,11 @@ curl https://get.acme.sh | sh
 ```
 ~/.acme.sh/acme.sh --issue --standalone -d 你的域名 --server letsencrypt
 ```
+切换CA机构
+```
+~/.acme.sh/acme.sh --issue --standalone -d 你的域名 --server https://acme.zerossl.com/v2/DV90
+```
+
 
 ## 安装证书(可选)
 ```
