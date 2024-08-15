@@ -59,6 +59,7 @@ WantedBy=multi-user.target
 
 #### 启动并启用 Docker 服务
 ```
+sudo chmod +x /etc/systemd/system/docker.service
 sudo systemctl daemon-reload
 sudo systemctl start docker
 sudo systemctl enable docker.service
