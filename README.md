@@ -248,7 +248,7 @@ docker save mysql > mysql.tar
 ```
 #### 传送到B服务器
 ```
-scp mysql.tar root@192.0.2.0:/home
+scp mysql.tar root@192.168.12.23:/home
 ```
 然后输入B服务器root密码
 
