@@ -241,14 +241,14 @@ sudo systemctl show --property=Environment docker
 ```
 ---
 ## 备用方法：直接传送镜像
-国外服务器拉取镜像后打包压缩到本地，然后传输到国内服务器，`myimage`为镜像名
-#### A服务器保存Docker镜像
+国外服务器拉取镜像后打包压缩到本地，然后传输到国内服务器，`mysql`为例
+#### A服务器压缩保存Docker镜像
 ```
-docker save myimage > myimage.tar
+docker save mysql > mysql.tar
 ```
 #### 传送到B服务器
 ```
-scp myimage.tar root@192.0.2.0:/home
+scp mysql.tar root@192.0.2.0:/home
 ```
 然后输入B服务器root密码
 
@@ -259,7 +259,7 @@ cd /home
 ```
 
 ```
-docker load < myimage.tar
+docker load < mysql.tar
 ```
 查看镜像
 ```
