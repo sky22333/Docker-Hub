@@ -248,6 +248,10 @@ services:
 docker compose up -d
 ```
 ---
+订单页页脚项目链接
+
+文件路径：`bepusdt/templates/checkout-counter.html`  62行`Powered by`
+
 ---
 ---
 ---
