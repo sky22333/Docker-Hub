@@ -33,7 +33,10 @@ services:
       - 3389:3389/udp
     stop_grace_period: 2m
 ```
-`docker compose up -d`
+- 启动
+```
+docker compose up -d
+```
 
 -   启动容器并使用您的 Web 浏览器连接到端口 `8006` 可查看进度
 -   安装完成后通过`3389`端口远程连接
