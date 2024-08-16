@@ -51,3 +51,34 @@ volumes:
 项目地址：https://github.com/dockur/windows
 
 MAC系统：https://github.com/dockur/macos
+
+
+
+
+
+  | **变量值** | **版本**              | **系统文件大小** |
+  |---|---|---|
+  | `win11`   | Windows 11 专业版           | 6.4 GB   |
+  | `win11e`  | Windows 11 企业版    | 5.8 GB   |
+  | `win10`   | Windows 10 专业版           | 5.7 GB   |
+  | `ltsc10`  | Windows 10 LTSC          | 4.6 GB   |
+  | `win10e`  | Windows 10 企业版    | 5.2 GB   |
+  ||||  
+  | `win8`    | Windows 8.1 专业版          | 4.0 GB   |
+  | `win8e`   | Windows 8.1 企业版   | 3.7 GB   |
+  | `win7`    | Windows 7 企业版     | 3.0 GB   |
+  | `vista`   | Windows Vista 企业版 | 3.0 GB   |
+  | `winxp`   | Windows XP 专业版  | 0.6 GB   |
+  ||||
+  | `2022`    | Windows Server 2022      | 4.7 GB   |
+  | `2019`    | Windows Server 2019      | 5.3 GB   |
+  | `2016`    | Windows Server 2016      | 6.5 GB   |
+  | `2012`    | Windows Server 2012      | 4.3 GB   |
+  | `2008`    | Windows Server 2008      | 3.0 GB   |
+  ||||
+  | `core11`  | 微型 11 内核             | 2.1 GB   |
+  | `tiny11`  | 微型 11                  | 3.8 GB   |
+  | `tiny10`  | 微型 10                  | 3.6 GB   |
+
+> [!TIP]
+> 要安装 ARM64 版本的 Windows，请使用[ dockur/windows-arm ] [dockur/windows-arm](https://github.com/dockur/windows-arm/).
