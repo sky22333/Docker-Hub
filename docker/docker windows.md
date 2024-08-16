@@ -81,4 +81,4 @@ MAC系统：https://github.com/dockur/macos
   | `tiny10`  | 微型 10                  | 3.6 GB   |
 
 > [!TIP]
-> 要安装 ARM64 版本的 Windows，请使用[ dockur/windows-arm ][dockur/windows-arm](https://github.com/dockur/windows-arm/).
+> 要安装 ARM64 版本的 Windows，请使用[ dockur/windows-arm ](https://github.com/dockur/windows-arm/).
