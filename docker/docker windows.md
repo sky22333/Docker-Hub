@@ -33,7 +33,7 @@ services:
       - 3389:3389/udp
     stop_grace_period: 2m
 ```
-- 启动
+启动
 ```
 docker compose up -d
 ```
@@ -41,10 +41,10 @@ docker compose up -d
 -   启动容器并使用您的 Web 浏览器连接到端口 `8006` 可查看进度
 -   安装完成后通过`3389`端口远程连接
 
-环境变量：
-`VERSION: "https://example.com/win.iso"` 指定镜像链接
+指定镜像链接，环境变量：
+`VERSION: "https://example.com/win.iso"`
 
-映射镜像文件：
+直接映射镜像文件：
 ```
 volumes:
   - /home/user/example.iso:/custom.iso
