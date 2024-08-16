@@ -56,7 +56,7 @@ MAC系统：https://github.com/dockur/macos
 
 
 
-  | **变量值** | **版本**              | **系统文件大小** |
+  | **变量值** | **版本**              | **系统大小** |
   |---|---|---|
   | `win11`   | Windows 11 专业版           | 6.4 GB   |
   | `win11e`  | Windows 11 企业版    | 5.8 GB   |
