@@ -14,7 +14,7 @@ sudo kvm-ok
 services:
   windows:
     image: dockurr/windows
-    container_name: windows
+    container_name: win
     environment:
       VERSION: "win11"
       LANGUAGE: "Chinese"
