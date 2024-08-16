@@ -1,7 +1,7 @@
 ### Docker安装windows系统
 
 
-### 加速选项
+### 配置中会默认开启KVM优化性能
 要验证您的系统是否支持 KVM，请运行以下命令：
 ```
 sudo apt install cpu-checker
