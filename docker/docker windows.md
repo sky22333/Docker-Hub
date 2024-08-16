@@ -7,7 +7,7 @@
 sudo apt install cpu-checker
 sudo kvm-ok
 ```
-
+- 如果没有KVM导致启动失败，可以在环境变量中添加`KVM: "N"`来取消KVM加速，并且注释掉`devices部分`，不过这样会导致性能下架，使用会非常卡顿。
 
 ### Docker-compose配置
 ```
