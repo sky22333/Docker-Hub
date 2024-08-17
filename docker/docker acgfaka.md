@@ -39,3 +39,17 @@ PHP
 ```
 /config/store.php
 ```
+
+
+#### 启动插件后自动取消
+
+一般是是服务器时间不同步的问题
+
+打开`/etc/php/8.1/fpm/php.ini`配置文件`php.ini`修正下面的配置，保存并重启
+
+`date.timezone = Asia/Shanghai`
+
+重启
+```
+sudo systemctl restart php8.1-fpm
+```
