@@ -1,0 +1,25 @@
+# 主域名，访问本地静态资源，其他二级域名反代相应的端口
+example.com {
+    root * /var/www
+    file_server
+}
+
+dockerhub.example.com {
+    reverse_proxy * localhost:5000
+}
+
+ghcr.example.com {
+    reverse_proxy * localhost:5001
+}
+
+gcr.example.com {
+    reverse_proxy * localhost:5003
+}
+
+k8sgcr.example.com {
+    reverse_proxy * localhost:5004
+}
+
+registryk8s.example.com {
+    reverse_proxy * localhost:5005
+}
