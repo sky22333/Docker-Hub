@@ -14,7 +14,7 @@ docker compose up -d
 
 #### 配置
 
-`http://你的IP:9000`进入网站，后台路径为`/admin`
+`http://你的IP:8080`进入网站，后台路径为`/admin`
 
 
 ```
