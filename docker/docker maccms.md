@@ -29,6 +29,7 @@ services:
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=maccms
     volumes:
       - /data/mysql:/var/lib/mysql
     networks:
@@ -52,7 +53,7 @@ docker compose up -d
 
 数据库地址：mysql
 数据库端口：3306
-数据库名称：mysql
+数据库名称：maccms
 数据库账号：root
 数据库密码：123456
 ```
