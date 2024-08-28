@@ -14,7 +14,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: "123456"
     volumes:
-      - /data/mysql/db:/var/lib/mysql
+      - /data/mysql:/var/lib/mysql
 
   myredis:
     image: redis
