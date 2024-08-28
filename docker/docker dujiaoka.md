@@ -14,7 +14,6 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: "123456"
     volumes:
-      - /data/mysql/config/my.cnf:/etc/mysql/my.cnf
       - /data/mysql/db:/var/lib/mysql
 
   myredis:
