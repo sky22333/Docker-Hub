@@ -28,8 +28,8 @@ services:
     container_name: mysql
     restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=123456
       - MYSQL_DATABASE=maccms
+      - MYSQL_ROOT_PASSWORD=123456
     volumes:
       - /data/mysql:/var/lib/mysql
     networks:
