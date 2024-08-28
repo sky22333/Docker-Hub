@@ -25,7 +25,7 @@ services:
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: wordpress
     networks:
-        - wp
+      - wp
 
   wordpress:
     depends_on:
@@ -43,6 +43,7 @@ services:
       WORDPRESS_DB_NAME: wordpress
     networks:
       - wp
+
 networks:
   wp:
 ```
