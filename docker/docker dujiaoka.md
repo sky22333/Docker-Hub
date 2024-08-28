@@ -19,7 +19,7 @@ services:
 
   myredis:
     image: redis
-    container_name: myredis
+    container_name: redis
 
   dujiaoka:
     image: jiangjuhong/dujiaoka:latest
@@ -43,7 +43,7 @@ services:
 用户名：root
 密码：123456
 
-redis地址：myredis
+redis地址：redis
 ```
 
 
