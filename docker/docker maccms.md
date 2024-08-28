@@ -50,7 +50,7 @@ docker compose up -d
 ```
 启动成功后，浏览器输入ip:8090端口就进入了系统安装界面
 
-服务器地址：mysql
+数据库地址：mysql
 数据库端口：3306
 数据库名称：mysql
 数据库账号：root
