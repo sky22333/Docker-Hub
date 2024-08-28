@@ -24,8 +24,7 @@ services:
     image: jiangjuhong/dujiaoka:latest
     container_name: dujiaoka
     ports:
-      - "8111:80"
-      - "9000:9000"
+      - "8080:80"
     environment:
       - APP_URL=https://域名
       - ADMIN_HTTPS=true
