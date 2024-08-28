@@ -58,7 +58,7 @@ docker compose up -d
 ```
 
 
-然后浏览器输入`http://你的ip:8090/cmsadmin.php`进入站点后台
+然后浏览器输入`http://IP:8090/cmsadmin.php`进入站点后台
 
 
 #### 更换模板
