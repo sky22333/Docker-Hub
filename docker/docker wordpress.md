@@ -6,7 +6,7 @@ web页面端口为 `8000`     后台路径 `wp-admin`
 创建项目文件夹
 
 ```
-mkdir wordpress-docker && cd wordpress-docker
+mkdir wordpress && cd wordpress
 ```
 
 创建`docker-compose.yml`文件并写入以下代码配置：
@@ -63,10 +63,7 @@ docker compose up -d
 
 ### 修改docker中wordpress的上传限制。
 
-查看你当前Wordpress容器ID，命令如下：
-```
-docker ps
-```
+
 使用命令进入 wordpress 容器进入具体容器是使用下面的命令
 ```
 docker exec -it wordpress /bin/bash       //备注：替换容器ID
