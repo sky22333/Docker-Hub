@@ -13,28 +13,31 @@ services:
   maccms:
     depends_on:
       - mysql
-    image: esme518/docker-maccms10:latest   # 使用esme518/docker-maccms10最新镜像
+    image: esme518/docker-maccms10:latest
     restart: always
     ports:
-      - 8090:80
+      - "8090:80"
     container_name: maccms
     volumes:
-      - ./cms:/var/www/html  # 将数据映射到 /root/cms 目录
+      - ./cms:/var/www/html
+    networks:
+      - cms_network
+
   mysql:
     image: mysql:5.7
     container_name: mysql
     restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=admin@ADMIN  # 数据库密码
+      - MYSQL_ROOT_PASSWORD=123456
+    volumes:
+      - /data/mysql:/var/lib/mysql
+    networks:
+      - cms_network
+
+networks:
+  cms_network:
 ```
-若要共用数据库请替换数据库部分
-```
-    environment:
-      - DB_HOST=mysql
-      - DB_NAME=mysql
-      - DB_USER=root
-      - DB_PASSWORD=123456
-```
+
 
 #### 运行
 ```
@@ -47,11 +50,11 @@ docker compose up -d
 ```
 启动成功后，浏览器输入ip:8090端口就进入了系统安装界面
 
-服务器地址：db
+服务器地址：mysql
 数据库端口：3306
-数据库名称：maccms
+数据库名称：mysql
 数据库账号：root
-数据库密码：在docker-cmopose.yml设置的数据库的密码
+数据库密码：123456
 ```
 
 
