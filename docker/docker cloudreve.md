@@ -59,3 +59,8 @@ docker compose up -d
 ```
 docker logs cloudreve
 ```
+
+
+
+---
+> [官方文档](https://docs.cloudreve.org/manage/db-script)
