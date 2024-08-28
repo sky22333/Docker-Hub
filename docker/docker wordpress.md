@@ -13,13 +13,11 @@ mkdir wordpress-docker && cd wordpress-docker
 
 
 ```
-version: "3.8"
-
 services:
   db:
     image: mysql:5.7
     volumes:
-      - db_data:/var/lib/mysql
+      - ./data/mysql:/var/lib/mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: wordpressyyds
@@ -47,8 +45,6 @@ services:
       - wp
 networks:
   wp:
-volumes:
-  db_data: {}
 ```
 
 运行：
