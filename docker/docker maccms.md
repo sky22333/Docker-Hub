@@ -31,7 +31,7 @@ services:
       - MYSQL_DATABASE=maccms
       - MYSQL_ROOT_PASSWORD=123456
     volumes:
-      - /data/mysql:/var/lib/mysql
+      - ./data/mysql:/var/lib/mysql
     networks:
       - cms_network
 
