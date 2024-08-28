@@ -28,6 +28,7 @@ services:
       - wp
 
   wordpress:
+    container_name: wp
     depends_on:
       - db
     image: wordpress:latest
@@ -68,7 +69,7 @@ docker ps
 ```
 使用命令进入 wordpress 容器进入具体容器是使用下面的命令
 ```
-docker exec -it 容器ID /bin/bash       //备注：替换容器ID
+docker exec -it wp /bin/bash       //备注：替换容器ID
 ```
 wordpress 容器中的这个路径`/usr/local/etc/php/`，是存放 `php.ini` 的地方，但是默认是没有 `php.ini` 这个文件的，所以我们要通过复制一份`php.ini-production`文件，来生成 `php.ini` 文件。
 ```
@@ -98,5 +99,5 @@ memory_limit = 128M           # PHP内存占用限制
 
 重启wordpress
 ```
-docker restart 容器ID
+docker restart wp
 ```
