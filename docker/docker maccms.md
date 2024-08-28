@@ -9,29 +9,28 @@ mkdir /root/cms ; cd /root/cms && touch docker-compose.yml
 #### 编辑`docker-compose.yml`配置
 
 ```
-version: '3.8'
 services:
   maccms:
     depends_on:
-      - db
+      - mysql
     image: esme518/docker-maccms10:latest   # 使用esme518/docker-maccms10最新镜像
     restart: always
     ports:
-      - 8090:80    # 端口映射
+      - 8090:80
     container_name: maccms
     volumes:
       - ./cms:/var/www/html  # 将数据映射到 /root/cms 目录
-  db:
+  mysql:
     image: mysql:5.7
+    container_name: mysql
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=admin@ADMIN  # 数据库密码
-    container_name: maccms-mysql
 ```
 若要共用数据库请替换数据库部分
 ```
     environment:
-      - DB_HOST=172.17.0.1
+      - DB_HOST=mysql
       - DB_NAME=mysql
       - DB_USER=root
       - DB_PASSWORD=123456
