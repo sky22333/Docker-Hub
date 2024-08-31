@@ -265,20 +265,21 @@ hosts 文件在每个系统的位置不一，详情如下：
 
 **PS：** 上述方法无效可以尝试重启机器。
 
-###  GitHub加速网站
 
-https://www.jsdelivr.com/github
-
-https://tool.mintimate.cn/gh
-
-https://toolwa.com/github
-
-https://gh.api.99988866.xyz
-
-https://mirror.ghproxy.com
-
-https://gitclone.com
-
-https://github.welab.eu.org
-
-https://ghps.cc
+### GitHub加速站
+- https://www.jsdelivr.com/github
+- https://github.moeyy.xyz
+- https://tool.mintimate.cn/gh
+- https://github.akams.cn
+- https://toolwa.com/github
+- https://gh.api.99988866.xyz
+- https://mirror.ghproxy.com
+- https://gitclone.com
+- https://github.welab.eu.org
+- https://ghps.cc
+- https://github.hscsec.cn
+- https://ghproxy.wujiyan.cc
+- https://ghproxy.homeboyc.cn
+- https://down.npee.cn
+- https://github.welab.eu.org
+- https://ghproxy.imciel.com
