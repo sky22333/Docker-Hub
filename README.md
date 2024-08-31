@@ -309,12 +309,9 @@ sudo rm -rf /etc/docker /var/lib/docker
 ```
 
 ---
-## Docker Hub 镜像加速列表
-以下镜像站来源于互联网（感谢热心网友），可能出现宕机、转内网、关停等情况，建议同时配置多个镜像源。
+## Docker最新镜像加速列表
 
-#### 目前可用镜像加速
-
-镜像 | 镜像加速地址 | 说明 | 其它加速
+镜像 | 镜像加速地址 | 说明 | 加速类型
 --- | --- | --- | ---
 [网友提供](https://hub.rat.dev/) | `https://hub.rat.dev` | | Docker Hub
 [1panel](https://1panel.cn/docs/user_manual/containers/setting/) | `https://docker.1panel.live` | | Docker Hub
