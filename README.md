@@ -22,7 +22,9 @@ bash <(curl -sSL https://gitee.com/SuperManito/LinuxMirrors/raw/main/DockerInsta
   
 ####  下载 Docker:
 
-[文件下载地址—需要代理——下载后上传到root目录](https://download.docker.com/linux/static/stable/x86_64/)
+[官方文件下载地址——下载后上传到root目录](https://download.docker.com/linux/static/stable/x86_64/)
+
+[清华大学下载地址](https://mirrors.tuna.tsinghua.edu.cn/docker-ce/)
 
 ```
 tar xzvf docker-26.1.3.tgz     # 替换版本号
