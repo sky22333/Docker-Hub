@@ -69,16 +69,18 @@ docker compose up -d flarum       # 启动站点
 ```
 
 
-- 安装插件
-
+- 扩展使用示例
+```
 查看所有插件
-```
 docker exec -ti flarum extension list
-```
+
 删除插件
+docker exec -ti flarum extension remove 作者/插件名
+
+安装插件
+docker exec -ti flarum extension require 作者/插件名
 ```
-docker exec -ti flarum extension remove 作者/插件
-```
+
 中文语言
 ```
 docker exec -ti flarum extension require flarum-lang/chinese-simplified:dev-master
