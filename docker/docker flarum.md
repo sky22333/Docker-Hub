@@ -97,6 +97,6 @@ docker exec -ti flarum extension require kk14569/flarum-hubui-x
 
 
 
-> 官网-[更多主题](https://flarum.org/extensions?tableSortColumn=downloads&tableSortDirection=desc)
+> 官网-[更多插件](https://flarum.org/extensions?tableSortColumn=downloads&tableSortDirection=desc)
 
 
