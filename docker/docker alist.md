@@ -9,7 +9,7 @@ services:
     container_name: alist
     restart: always
     volumes:
-      - /etc/alist:/opt/alist/data
+      - ./alist:/opt/alist/data
     ports:
       - "54321:5244"
     environment:
