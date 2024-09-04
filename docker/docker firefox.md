@@ -20,5 +20,5 @@ services:
     ports:
       - 3000:3000           # 映射端口
     shm_size: "2gb"         # 共享内存大小，防止崩溃
-    restart: unless-stopped
+    restart: always
 ```
