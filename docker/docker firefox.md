@@ -1,4 +1,4 @@
-### docker部署firefox云浏览器
+### docker部署火狐云浏览器
 - 创建项目文件
 ```
 mkdir -p firefox
