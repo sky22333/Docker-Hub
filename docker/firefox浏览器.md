@@ -1,7 +1,7 @@
 ### docker部署火狐云浏览器
 - 创建项目文件
 ```
-mkdir -p firefox
+mkdir -p firefox && cd firefox && touch docker-compose.yaml
 ```
 `docker-compose.yaml`配置
 
