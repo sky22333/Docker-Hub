@@ -30,6 +30,7 @@ changeme
 services:
   app:
     image: 'chishin/nginx-proxy-manager-zh:release'     # 中文镜像
+    container_name: npm
     restart: always
     ports:
       - '80:80'
