@@ -2,10 +2,20 @@
 
 
 ```
-docker run -d --name=npm -p 80:80 -p 81:81 -p 443:443 -v /home/npm/data:/data -v /home/npm/letsencrypt:/etc/letsencrypt --restart=always jc21/nginx-proxy-manager:latest
+docker run -d \
+  --name=npm \
+  -p 80:80 \
+  -p 81:81 \
+  -p 443:443 \
+  -v ./npm/data:/data \
+  -v ./npm/letsencrypt:/etc/letsencrypt \
+  --restart=always \
+  jc21/nginx-proxy-manager:latest
 ```
 
-端口为`81`
+> 中文镜像：`chishin/nginx-proxy-manager-zh:release`
+
+面板端口为`81`
 
 
 默认用户名: 
@@ -18,7 +28,9 @@ admin@example.com
 changeme
 ```
 
-注意：申请证书需要用 `80` 端口，可以申请完证书再改成反代端口。  docker内部IP一般为 `172.17.0.1` 
+注意：申请证书需要用 `80` 端口，可以申请完证书再改成反代端口。
+
+
 
 [官方文档](https://nginxproxymanager.com/advanced-config/)
 
@@ -29,7 +41,7 @@ changeme
 ```
 services:
   app:
-    image: 'chishin/nginx-proxy-manager-zh:release'     # 中文镜像
+    image: jc21/nginx-proxy-manager:latest
     container_name: npm
     restart: always
     ports:
