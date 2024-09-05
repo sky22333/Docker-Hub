@@ -8,22 +8,26 @@ mkdir -p firefox
 ```
 services:
   firefox:
-    image: linuxserver/firefox:latest
+    image: jlesage/firefox
     container_name: firefox
-    environment:
-      - PUID=1000          # 用户ID，根据需要调整
-      - PGID=1000          # 组ID，根据需要调整
-      - TZ=Asia/Shanghai   # 时区设置，修改为你所在的时区
-    volumes:
-      - ./config:/config   # 配置文件持久化路径
-      - ./downloads:/downloads  # 下载文件保存路径
     ports:
-      - 3000:3000           # 映射端口
-    shm_size: "2gb"         # 共享内存大小，防止崩溃
+      - "5800:5800"   # noVNC/Web访问端口
+      - "5900:5900"   # VNC访问端口
+    volumes:
+      - ./appdata/firefox:/config:rw          # 配置文件
+      - ./downloads:/storage/downloads:rw     # 映射下载目录
+      - /dev/shm:/dev/shm
+    environment:
+      - LANG=zh_CN.UTF-8
+      - LANGUAGE=zh_CN:zh
+      - LC_ALL=zh_CN.UTF-8
+      - ENABLE_CJK_FONT=1
+      - SECURE_CONNECTION=1          # 启用安全连接 (HTTPS)
+      - VNC_PASSWORD=yourpassword    # 设置VNC访问密码
     restart: always
 ```
 
 - 重启
 ```
-docker-compose restart
+docker restart firefox
 ```
