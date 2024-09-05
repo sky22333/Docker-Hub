@@ -19,7 +19,7 @@ services:
 ```
 
 
-##### 设置密码
+##### 修改密码
 
 ```
 docker exec -it alist ./alist admin set 你的密码
