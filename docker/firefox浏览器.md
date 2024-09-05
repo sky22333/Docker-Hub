@@ -14,7 +14,7 @@ services:
       - "5800:5800"   # noVNC/Web访问端口
       - "5900:5900"   # VNC访问端口
     volumes:
-      - ./appdata/firefox:/config:rw          # 配置文件
+      - ./appdata/firefox:/config:rw          # 映射配置文件到本地
       - /dev/shm:/dev/shm
     environment:
       - LANG=zh_CN.UTF-8
