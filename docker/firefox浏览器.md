@@ -15,7 +15,6 @@ services:
       - "5900:5900"   # VNC访问端口
     volumes:
       - ./appdata/firefox:/config:rw          # 配置文件
-      - ./downloads:/storage/downloads:rw     # 映射下载目录
       - /dev/shm:/dev/shm
     environment:
       - LANG=zh_CN.UTF-8
@@ -24,10 +23,11 @@ services:
       - ENABLE_CJK_FONT=1
       - WEB_AUDIO=1                  # 启用音频
       - TZ=Asia/Shanghai             # 设置时区为上海
-      - SECURE_CONNECTION=1          # 启用HTTPS（默认自签证书）
+      - SECURE_CONNECTION=0          # 启用HTTPS（0为关闭）
       - VNC_PASSWORD=yourpassword    # 设置VNC访问密码
     restart: always
 ```
+- 下载的文件在 `/firefox/appdata/firefox/downloads/`目录下
 
 - 重启
 ```
