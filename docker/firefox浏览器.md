@@ -22,3 +22,8 @@ services:
     shm_size: "2gb"         # 共享内存大小，防止崩溃
     restart: always
 ```
+
+- 重启
+```
+docker-compose restart
+```
