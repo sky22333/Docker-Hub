@@ -8,7 +8,7 @@ mkdir -p firefox
 ```
 services:
   firefox:
-    image: jlesage/firefox
+    image: jlesage/firefox:latest
     container_name: firefox
     ports:
       - "5800:5800"   # noVNC/Web访问端口
