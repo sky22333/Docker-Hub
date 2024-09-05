@@ -23,3 +23,19 @@ changeme
 
 
 ---
+
+### `docker-compose.yaml`配置
+
+```
+services:
+  app:
+    image: 'chishin/nginx-proxy-manager-zh:release'     # 中文镜像
+    restart: always
+    ports:
+      - '80:80'
+      - '81:81'
+      - '443:443'
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
+```
