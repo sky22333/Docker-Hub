@@ -23,7 +23,7 @@ services:
       - ENABLE_CJK_FONT=1
       - WEB_AUDIO=1                  # 启用音频
       - TZ=Asia/Shanghai             # 设置时区为上海
-      - SECURE_CONNECTION=0          # 启用HTTPS（0为关闭）
+      - SECURE_CONNECTION=0          # 启用HTTPS，0为关闭，配合反代使用
       - VNC_PASSWORD=yourpassword    # 设置VNC访问密码
     restart: always
 ```
