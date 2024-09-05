@@ -20,7 +20,7 @@ changeme
 
 注意：申请证书需要用 `80` 端口，可以申请完证书再改成反代端口。  docker内部IP一般为 `172.17.0.1` 
 
-
+[官方文档](https://nginxproxymanager.com/advanced-config/)
 
 ---
 
