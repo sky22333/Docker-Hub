@@ -24,7 +24,7 @@ services:
       - WEB_AUDIO=1                  # 启用音频
       - TZ=Asia/Shanghai             # 设置时区为上海
       - SECURE_CONNECTION=0          # 启用HTTPS，0为关闭，配合反代使用
-      - VNC_PASSWORD=admin222    # 设置VNC访问密码
+      - VNC_PASSWORD=admin222        # 设置VNC访问密码
     restart: always
 ```
 - 下载的文件在 `/firefox/appdata/firefox/downloads/`目录下
