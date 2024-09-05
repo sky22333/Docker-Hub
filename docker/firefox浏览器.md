@@ -28,6 +28,11 @@ services:
     restart: always
 ```
 - 下载的文件在 `/firefox/appdata/firefox/downloads/`目录下
+- 容器环境变量可用于快速轻松地配置单个用户。用户名和密码通过以下环境变量定义：
+```
+- WEB_AUTHENTICATION_USERNAME=admin
+- WEB_AUTHENTICATION_PASSWORD=admin
+```
 
 - 重启
 ```
