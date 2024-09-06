@@ -316,6 +316,7 @@ sudo rm -rf /etc/docker /var/lib/docker
 --- | --- | --- | ---
 [耗子面板](https://hub.rat.dev/) | `https://hub.rat.dev` | 无限制 | Docker Hub
 [1panel](https://1panel.cn/docs/user_manual/containers/setting/) | `https://docker.1panel.live` | 无限制 | Docker Hub
+[雷池长亭科技](https://docker.1ms.run) | `https://docker.1ms.run` | 大部分镜像都能拉 | Docker Hub
 [DaoCloud](https://github.com/DaoCloud/public-image-mirror) | `https://docker.m.daocloud.io` |白名单和限流 | Docker Hub
 [阿里云](https://cr.console.aliyun.com/) | `https://<your_code>.mirror.aliyuncs.com` | 需登录分配 | 镜像太旧
 
