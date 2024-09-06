@@ -310,7 +310,7 @@ sudo rm -rf /etc/docker /var/lib/docker
 ```
 
 ---
-## Docker最新镜像加速列表
+## Docker最新稳定加速源列表——非私人创建
 
 提供者 | 镜像加速地址 | 说明 | 加速类型
 --- | --- | --- | ---
