@@ -210,6 +210,7 @@ sudo mkdir -p /etc/docker
 sudo tee /etc/docker/daemon.json <<EOF
 {
     "registry-mirrors": [
+        "https://docker.1ms.run",
         "https://hub.rat.dev",
         "https://docker.1panel.live"
     ]
