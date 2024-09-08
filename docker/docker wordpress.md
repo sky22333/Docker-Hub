@@ -98,3 +98,58 @@ memory_limit = 128M           # PHP内存占用限制
 ```
 docker restart wordpress
 ```
+
+---
+---
+
+### 启用redis缓存
+
+```
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: wordpressyyds
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+    networks:
+      - wp
+
+  wordpress:
+    container_name: wordpress
+    depends_on:
+      - db
+      - redis  # 添加redis
+    image: wordpress:latest
+    volumes:
+      - ./data/wp:/var/www/html
+    ports:
+      - "8000:80"
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_REDIS_HOST: redis
+    networks:
+      - wp
+
+  redis:
+    image: redis:alpine
+    container_name: redis
+    restart: always
+    networks:
+      - wp
+
+networks:
+  wp:
+```
+
+
+
+- 插件商城搜索安装插件：`Redis Object Cache`
