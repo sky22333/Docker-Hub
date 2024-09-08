@@ -165,7 +165,9 @@ docker exec -it wordpress /bin/bash
 ```
 ```
 apt-get update && apt-get install -y libz-dev libssl-dev
+
 pecl install redis           # 执行这个命令后出现提示直接一路回车
+
 docker-php-ext-enable redis
 ```
 - 重启容器
