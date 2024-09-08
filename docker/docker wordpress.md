@@ -159,4 +159,18 @@ define('WP_CACHE', true);
 /* That's all, stop editing! Happy blogging. */
 ```
 
+- 容器内安装redis扩展
+```
+docker exec -it wordpress /bin/bash
+```
+```
+apt-get update && apt-get install -y libz-dev libssl-dev
+pecl install redis           # 执行这个命令后出现提示直接一路回车
+docker-php-ext-enable redis
+```
+- 重启容器
+```
+docker restart wordpress
+```
+
 - 插件商城搜索安装插件：`Redis Object Cache` 并启用`redis`缓存
