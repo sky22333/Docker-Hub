@@ -150,6 +150,13 @@ networks:
   wp:
 ```
 
+- 在`wp-config.php`文件中添加以下代码
+```
+define('WP_REDIS_HOST', 'redis');
+define('WP_CACHE', true);
 
+// 确保添加在这个代码前面
+/* That's all, stop editing! Happy blogging. */
+```
 
-- 插件商城搜索安装插件：`Redis Object Cache`
+- 插件商城搜索安装插件：`Redis Object Cache` 并启用`redis`缓存
