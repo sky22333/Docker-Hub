@@ -34,7 +34,7 @@ services:
 
 
 
-### 挂载服务器根目录和赋予容器root权限
+#### 挂载服务器根目录和赋予容器root权限
 ```
 services:
   code-server:
