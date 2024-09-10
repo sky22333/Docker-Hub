@@ -1,5 +1,12 @@
 ### Docker部署云vscode编辑器
 
+创建项目文件
+```
+mkdir -p code-server && touch docker-compose.yaml
+```
+
+
+
 `docker-compose.yaml`配置
 
 ```
