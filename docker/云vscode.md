@@ -14,7 +14,7 @@ services:
       - PASSWORD=admin123      # 设置code-server的登录密码
       - SUDO_PASSWORD=         # 设置服务器sudo权限的密码（可选）
     volumes:
-      - /:/host-root           # 将宿主机根目录挂载到容器
+      - /:/host-root           # 将宿主机根目录挂载到容器（生产环境不要直接挂载根目录）
       - ./code-server/config:/config    # 挂载配置文件
     ports:
       - 8443:8443
