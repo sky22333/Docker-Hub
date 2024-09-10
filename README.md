@@ -143,7 +143,7 @@ docker-compose --version
 | 删除所有镜像  | `docker rmi -f $(docker images -aq)`  |   删除所有镜像         |
 | 删除所有容器  | `docker container prune -f`  |   删除所有已停止容器         |
 | 停止所有容器  | `docker stop $(docker ps -aq)`  |   停止所有容器         |
-| 停止`docker-compose`的服务  | `docker compose down`  |   停止并删除所有运行的容器、网络和相关的资源。        |
+| `docker-compose`停止  | `docker compose down`  |   停止并删除        |
 
 ---
 [官方仓库](https://hub.docker.com/)
