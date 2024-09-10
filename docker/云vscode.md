@@ -2,7 +2,7 @@
 
 创建项目文件
 ```
-mkdir -p code-server && touch docker-compose.yaml
+mkdir -p code-server && cd code-server && touch docker-compose.yaml
 ```
 
 
