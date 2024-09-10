@@ -14,7 +14,7 @@ mkdir -vp cloudreve/{uploads,avatar} \
 && chmod -R 777 data/aria2
 ```
 
-启动
+`docker-compose.yaml`配置
 
 ```
 services:
