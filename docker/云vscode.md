@@ -21,9 +21,15 @@ services:
       - PASSWORD=admin123      # 设置code-server的登录密码
       - SUDO_PASSWORD=         # 设置服务器sudo权限的密码（可选）
     volumes:
-      - /:/config/workspace    # 将宿主机根目录挂载到容器（生产环境不要直接挂载根目录）
+      - /:/config/workspace
     ports:
       - 8443:8443
+    privileged: true
+    cap_add:
+      - ALL
+    security_opt:
+      - seccomp:unconfined
+      - apparmor:unconfined
     restart: always
 ```
 
