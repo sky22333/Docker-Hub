@@ -55,3 +55,8 @@ services:
 ```
 
 然后`docker compose up -d`运行
+
+
+---
+
+[项目地址](https://github.com/okxlin/docker-1panel)
