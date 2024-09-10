@@ -14,7 +14,7 @@ docker run -d \
 web端口：8082
 ```
 
-- `docker-compise.yaml`配置
+- `docker-compose.yaml`配置
 
 ```
 services:
