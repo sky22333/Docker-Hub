@@ -25,7 +25,7 @@ docker run -d \
 - 默认端口：`10086`
 - 默认账户：`1panel`
 - 默认密码：`1panel_password`
-- 默认入口：`entrance`
+- 后台路径：`entrance`
 ***
 - 不可调整参数
   - `/var/run/docker.sock`的相关映射
