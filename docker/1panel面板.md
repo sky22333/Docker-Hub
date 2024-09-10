@@ -1,3 +1,10 @@
+### 官方安装脚本
+```
+curl -sSL https://resource.fit2cloud.com/1panel/package/quick_start.sh -o quick_start.sh && sudo bash quick_start.sh
+```
+
+
+
 ### 使用docker安装1panel面板
 
 ### Docker方式安装
