@@ -35,6 +35,9 @@ services:
 
 
 #### 挂载服务器根目录和赋予容器root权限
+
+- 此配置将赋予容器最高权限，服务器所有的文件都可读写可修改（生产环境慎重使用）
+
 ```
 services:
   code-server:
@@ -58,6 +61,4 @@ services:
       - apparmor:unconfined
     restart: always
 ```
-
-- 此配置将赋予容器最高权限，服务器所有的文件都可读写可修改（生产环境慎重使用）
 
