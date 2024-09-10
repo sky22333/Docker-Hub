@@ -31,7 +31,7 @@ services:
 
 
 
-
+[官方文档](https://docs.linuxserver.io/images/docker-code-server/)
 
 
 #### 挂载服务器根目录和赋予容器root权限
