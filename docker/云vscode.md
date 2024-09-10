@@ -15,8 +15,8 @@ services:
     image: linuxserver/code-server:latest
     container_name: code-server
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=0
+      - PGID=0
       - TZ=Asia/Shanghai
       - PASSWORD=admin123      # 设置code-server的登录密码
       - SUDO_PASSWORD=         # 设置服务器sudo权限的密码（可选）
