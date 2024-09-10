@@ -2,7 +2,7 @@
 
 创建项目文件夹
 ```
-mkdir -p cloudreve && cd cloudreve
+mkdir -p cloudreve && cd cloudreve && touch docker-compose.yaml
 ```
 创建配置文件
 ```
