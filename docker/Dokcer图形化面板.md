@@ -11,6 +11,9 @@ docker run -d \
   portainer/portainer-ce:latest
 ```
 
+
+- 中文镜像：`outlovecn/portainer-cn`
+
 ### win系统：
 ```
 netsh advfirewall firewall add rule name="cluster_management" dir=in action=allow protocol=TCP localport=2377
