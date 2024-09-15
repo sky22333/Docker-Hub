@@ -36,7 +36,7 @@ docker run --name my-phpmyadmin -d -p 7890:80 phpmyadmin:latest
 --network my_network       // 指定容器网络
 ```
 
-#### `docker-compose.yaml`
+#### `docker-compose.yaml`示例连接到指定数据库示例
 ```
 services:
   phpmyadmin:
@@ -45,19 +45,24 @@ services:
     ports:
       - "7890:80"
     environment:
-      - UPLOAD_LIMIT=64M
-      - POST_MAX_SIZE=64M
-      - MEMORY_LIMIT=128M
-      - PMA_HOST=mysql
-      - PMA_PORT=3306
-      - PMA_USER=root
-      - PMA_PASSWORD=123456
+      # 文件上传和内存限制设置
+      - UPLOAD_LIMIT=64M       # 设置上传文件大小限制为 64MB
+      - POST_MAX_SIZE=64M      # 设置 POST 请求大小限制为 64MB
+      - MEMORY_LIMIT=128M      # 设置 PHP 内存限制为 128MB
+      
+      # 数据库连接设置
+      - PMA_HOST=mysql                    # MySQL 服务器的主机名，这里假设使用服务名 'mysql'
+      - PMA_PORT=3306                     # MySQL 服务器的端口号
+      - PMA_USER=acgfakauser              # 连接 MySQL 的用户名
+      - PMA_PASSWORD=acgfakapassword      # 连接 MySQL 的密码
+      - PMA_DATABASE=acgfakadb            # 默认连接的数据库名称
+    
     networks:
-      - my_network
+      - home_default  # 使用名为 home_default 的网络
 
 networks:
-  my_network:
-    external: true
+  home_default:
+    external: true  # 使用已存在的外部网络
 ```
 
 
