@@ -19,7 +19,7 @@ docker run -d --name mysql --network my_network -v ./data:/var/lib/mysql -e MYSQ
 ## 数据库管理
 
 ```
-docker run --name my-phpmyadmin -d -p 7890:80 phpmyadmin:latest
+docker run --name phpmyadmin -d -p 7890:80 phpmyadmin:latest
 ```
 
 环境变量：
