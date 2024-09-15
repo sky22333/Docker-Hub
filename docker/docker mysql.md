@@ -48,6 +48,10 @@ services:
       - UPLOAD_LIMIT=64M
       - POST_MAX_SIZE=64M
       - MEMORY_LIMIT=128M
+      - PMA_HOST=mysql          // 指定 phpMyAdmin 连接到的数据库主机地址。
+      - PMA_PORT=3306           // 指定 MySQL 数据库的端口号。
+      - PMA_USER=root           // 指定登录数据库的用户名。
+      - PMA_PASSWORD=123456     // 指定登录数据库的密码。
     networks:
       - my_network
 
