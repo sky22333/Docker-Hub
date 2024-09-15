@@ -105,4 +105,5 @@ networks:
 docker container exec backup-db /restore.sh ./backup/<your_sql_backup_gz_file>
 ```
 >恢复当前目录内的`./backup/<your_sql_backup_gz_file>`文件，需替换具体文件名称
+>
 >如果恢复成功，会输出`Restore succeeded`  否则会输出`Restore failed`
