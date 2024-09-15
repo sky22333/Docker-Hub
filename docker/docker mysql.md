@@ -74,3 +74,12 @@ docker inspect -f '{{.HostConfig.NetworkMode}}' 容器名称或ID
 
 ---
 
+### 定时自动备份工具
+```
+docker run -d --name backup-x --restart=always \
+  -p 9977:9977 \
+  -v ./backup-x:/app/backup-x-files \
+  jeessy/backup-x
+```
+
+[项目地址](https://github.com/jeessy2/backup-x)
