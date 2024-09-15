@@ -91,6 +91,13 @@ services:
     volumes:
       - ./backup:/backup          # 挂载本地目录用于保存备份
     restart: always
+
+    networks:
+      - home_default  # 连接到指定网络
+
+networks:
+  home_default:
+    external: true
 ```
 
 恢复备份的数据库
