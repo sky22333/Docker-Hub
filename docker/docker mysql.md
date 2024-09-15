@@ -97,3 +97,4 @@ services:
 ```
 docker container exec backup-db /restore.sh /backup/<your_sql_backup_gz_file>
 ```
+>如果恢复成功，会输出`Restore succeeded`  否则会输出`Restore failed`
