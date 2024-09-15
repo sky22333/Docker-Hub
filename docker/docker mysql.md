@@ -19,11 +19,11 @@ docker run -d --name mysql --network my_network -v /data:/var/lib/mysql -e MYSQL
 ## 数据库管理
 
 ```
-docker pull phpmyadmin/phpmyadmin
+docker pull phpmyadmin:latest
 ```
 
 ```
-docker run --name my-phpmyadmin -d -p 7890:80 phpmyadmin/phpmyadmin
+docker run --name my-phpmyadmin -d -p 7890:80 phpmyadmin:latest
 ```
 
 环境变量：
@@ -40,8 +40,8 @@ docker run --name my-phpmyadmin -d -p 7890:80 phpmyadmin/phpmyadmin
 ```
 services:
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: my-phpmyadmin
+    image: phpmyadmin:latest
+    container_name: phpmyadmin
     ports:
       - "7890:80"
     environment:
