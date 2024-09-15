@@ -51,18 +51,18 @@ services:
       - MEMORY_LIMIT=128M      # 设置 PHP 内存限制为 128MB
       
       # 数据库连接设置
-      - PMA_HOST=mysql                    # MySQL 服务器的主机名，这里假设使用服务名 'mysql'
-      - PMA_PORT=3306                     # MySQL 服务器的端口号
+      - PMA_HOST=mysql                    # MySQL 地址
+      - PMA_PORT=3306                     # MySQL 端口号
       - PMA_USER=acgfakauser              # 连接 MySQL 的用户名
       - PMA_PASSWORD=acgfakapassword      # 连接 MySQL 的密码
       - PMA_DATABASE=acgfakadb            # 默认连接的数据库名称
     
     networks:
-      - home_default  # 使用名为 home_default 的网络
+      - home_default  # 连接到指定网络
 
 networks:
   home_default:
-    external: true  # 使用已存在的外部网络
+    external: true
 ```
 
 
