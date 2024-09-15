@@ -19,10 +19,6 @@ docker run -d --name mysql --network my_network -v /data:/var/lib/mysql -e MYSQL
 ## 数据库管理
 
 ```
-docker pull phpmyadmin:latest
-```
-
-```
 docker run --name my-phpmyadmin -d -p 7890:80 phpmyadmin:latest
 ```
 
