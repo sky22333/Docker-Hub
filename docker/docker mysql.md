@@ -46,9 +46,9 @@ services:
       - "7890:80"
     environment:
       # 文件上传和内存限制设置
-      - UPLOAD_LIMIT=64M       # 设置上传文件大小限制为 64MB
-      - POST_MAX_SIZE=64M      # 设置 POST 请求大小限制为 64MB
-      - MEMORY_LIMIT=128M      # 设置 PHP 内存限制为 128MB
+      - UPLOAD_LIMIT=64M       # 设置上传文件大小限制
+      - POST_MAX_SIZE=64M      # 设置 POST 请求大小限制
+      - MEMORY_LIMIT=128M      # 设置 PHP 内存限制
       
       # 数据库连接设置
       - PMA_HOST=mysql                    # MySQL 地址
