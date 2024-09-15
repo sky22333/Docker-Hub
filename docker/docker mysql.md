@@ -29,6 +29,7 @@ docker run --name phpmyadmin -d -p 7890:80 phpmyadmin:latest
 -e PMA_PORT=3306           // 指定 MySQL 数据库的端口号。
 -e PMA_USER=root           // 指定登录数据库的用户名。
 -e PMA_PASSWORD=123456     // 指定登录数据库的密码。
+-e PMA_DATABASE=mysqldb    // 默认连接的数据库名称
 --network my_network       // 指定容器网络
 ```
 
