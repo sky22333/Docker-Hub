@@ -87,7 +87,7 @@ services:
       - MYSQL_PASS=your_db_password
       - MYSQL_DATABASE=your_db_name
       - INIT_BACKUP=1
-      - MAX_BACKUPS=30             # 保留的备份数量，旧的备份将被清理
+      - MAX_BACKUPS=10             # 保留的备份数量，旧的备份将被清理
       - CRON_TIME=0 3 * * *        # 每天凌晨3点执行备份
     volumes:
       - ./backup:/backup          # 挂载本地目录用于保存备份
