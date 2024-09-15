@@ -85,8 +85,8 @@ services:
       - MYSQL_PORT=3306
       - MYSQL_USER=your_db_user
       - MYSQL_PASS=your_db_password
-      - MYSQL_DB=your_db_name
-      - MAX_BACKUP_AGE=7           # 保留备份文件的天数，超过7天的备份将被自动删除
+      - MYSQL_DATABASE=your_db_name
+      - MAX_BACKUPS=7             # 保留备份文件的天数，超过7天的备份将被自动删除
       - CRON_TIME=0 3 * * *        # 每天凌晨3点执行备份
     volumes:
       - ./backup:/backup          # 挂载本地目录用于保存备份
