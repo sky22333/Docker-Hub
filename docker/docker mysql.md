@@ -36,6 +36,27 @@ docker run --name my-phpmyadmin -d -p 7890:80 phpmyadmin/phpmyadmin
 --network my_network       // 指定容器网络
 ```
 
+#### docker-compose.yaml
+```
+services:
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: my-phpmyadmin
+    ports:
+      - "7890:80"
+    environment:
+      - UPLOAD_LIMIT=64M
+      - POST_MAX_SIZE=64M
+      - MEMORY_LIMIT=128M
+    networks:
+      - my_network
+
+networks:
+  my_network:
+    external: true
+```
+
+
 ---
 
 #### 查看容器网络
@@ -47,7 +68,3 @@ docker inspect -f '{{.HostConfig.NetworkMode}}' 容器名称或ID
 
 ---
 
-#### redis
-```
-docker run -d -p 172.17.0.1:6379:6379 --name myredis redis:latest
-```
