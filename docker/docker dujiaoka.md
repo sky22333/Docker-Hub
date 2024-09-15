@@ -17,7 +17,7 @@ services:
       - ./data/mysql:/var/lib/mysql
 
   myredis:
-    image: redis
+    image: redis:latest
     container_name: redis
 
   dujiaoka:
