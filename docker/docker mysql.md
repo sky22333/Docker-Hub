@@ -107,6 +107,8 @@ docker container exec backup-db /restore.sh ./backup/<your_sql_backup_gz_file>
 >恢复当前目录内的`./backup/<your_sql_backup_gz_file>`文件，需替换具体文件名称
 >
 >如果恢复成功，会输出`Restore succeeded`  否则会输出`Restore failed`
+>
+>添加变量`- INIT_BACKUP=1`则在容器启动时立即创建备份
 
 
 [定时备份PostgresSQL数据库](https://github.com/prodrigestivill/docker-postgres-backup-local)
