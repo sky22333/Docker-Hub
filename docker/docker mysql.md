@@ -74,12 +74,22 @@ docker inspect -f '{{.HostConfig.NetworkMode}}' 容器名称或ID
 
 ---
 
-### 定时自动备份工具
+### 定时自动备份
 ```
-docker run -d --name backup-x --restart=always \
-  -p 9977:9977 \
-  -v ./backup-x:/app/backup-x-files \
-  jeessy/backup-x
+services:
+  backup-db:
+    image: fradelg/mysql-cron-backup
+    container_name: backup-db
+    environment:
+      - MYSQL_HOST=your_db_host
+      - MYSQL_PORT=3306
+      - MYSQL_USER=your_db_user
+      - MYSQL_PASS=your_db_password
+      - MYSQL_DB=your_db_name
+      - MAX_BACKUP_AGE=7           # 保留备份文件的天数，超过7天的备份将被自动删除
+      - CRON_TIME=0 3 * * *        # 每天凌晨3点执行备份
+    volumes:
+      - ./backup:/backup          # 挂载本地目录用于保存备份
+    restart: always
 ```
 
-[项目地址](https://github.com/jeessy2/backup-x)
