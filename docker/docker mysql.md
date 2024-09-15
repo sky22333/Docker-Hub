@@ -53,8 +53,8 @@ services:
       # 数据库连接设置
       - PMA_HOST=mysql                    # MySQL 地址
       - PMA_PORT=3306                     # MySQL 端口号
-      - PMA_USER=acgfakauser              # 连接 MySQL 的用户名
-      - PMA_PASSWORD=acgfakapassword      # 连接 MySQL 的密码
+      - PMA_USER=acgfakauser              # 连接 MySQL 的用户名(生产环境去掉这个变量)
+      - PMA_PASSWORD=acgfakapassword      # 连接 MySQL 的密码(生产环境去掉这个变量)
       - PMA_DATABASE=acgfakadb            # 默认连接的数据库名称
     
     networks:
