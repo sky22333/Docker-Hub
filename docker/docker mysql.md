@@ -1,4 +1,4 @@
-## Docker创建一个mysql 5.7数据库
+## Docker创建mysql数据库
 
 #### 监听容器IP
 ```
