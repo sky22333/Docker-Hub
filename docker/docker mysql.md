@@ -75,6 +75,7 @@ docker inspect -f '{{.HostConfig.NetworkMode}}' 容器名称或ID
 ---
 
 ### 定时自动备份
+支持`mysql`和`mariadb`数据库
 ```
 services:
   backup-db:
