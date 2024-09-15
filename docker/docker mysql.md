@@ -36,7 +36,7 @@ docker run --name my-phpmyadmin -d -p 7890:80 phpmyadmin:latest
 --network my_network       // 指定容器网络
 ```
 
-#### docker-compose.yaml
+#### `docker-compose.yaml`
 ```
 services:
   phpmyadmin:
