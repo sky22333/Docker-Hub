@@ -109,6 +109,8 @@ docker container exec backup-db /restore.sh ./backup/<your_sql_backup_gz_file>
 >如果恢复成功，会输出`Restore succeeded`  否则会输出`Restore failed`
 >
 >添加变量`- INIT_BACKUP=1`则在容器启动时立即创建备份
+>
+>如果要使用宿主机网络则移除网络配置，增加`network_mode: host`配置
 
 
 [定时备份PostgresSQL数据库](https://github.com/prodrigestivill/docker-postgres-backup-local)
