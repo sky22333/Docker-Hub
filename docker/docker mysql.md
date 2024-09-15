@@ -50,12 +50,10 @@ services:
       # 数据库连接设置
       - PMA_HOST=mysql                    # MySQL 地址
       - PMA_PORT=3306                     # MySQL 端口号
-      - PMA_USER=acgfakauser              # 连接 MySQL 的用户名(生产环境去掉这个变量)
-      - PMA_PASSWORD=acgfakapassword      # 连接 MySQL 的密码(生产环境去掉这个变量)
       - PMA_DATABASE=acgfakadb            # 默认连接的数据库名称
     
     networks:
-      - home_default  # 连接到指定网络
+      - home_default        # 连接到指定网络
 
 networks:
   home_default:
@@ -82,13 +80,13 @@ services:
     image: fradelg/mysql-cron-backup
     container_name: backup-db
     environment:
-      - MYSQL_HOST=your_db_host
-      - MYSQL_PORT=3306
-      - MYSQL_USER=your_db_user
-      - MYSQL_PASS=your_db_password
-      - MYSQL_DATABASE=your_db_name
+      - MYSQL_HOST=mysql            # 数据库地址
+      - MYSQL_PORT=3306             # 数据库端口
+      - MYSQL_USER=db_user          # 数据库用户名
+      - MYSQL_PASS=db_password      # 数据库密码
+      - MYSQL_DATABASE=db_name      # 数据库名称
       - MAX_BACKUPS=10             # 保留的备份数量，旧的备份将被清理
-      - CRON_TIME=0 3 * * *        # 每天凌晨3点执行备份
+      - CRON_TIME=0 3 * * *        # 每天凌晨3点自动执行备份
     volumes:
       - ./backup:/backup          # 挂载本地目录用于保存备份
     restart: always
