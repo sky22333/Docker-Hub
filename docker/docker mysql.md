@@ -93,3 +93,7 @@ services:
     restart: always
 ```
 
+恢复备份的数据库
+```
+docker container exec backup-db /restore.sh /backup/<your_sql_backup_gz_file>
+```
