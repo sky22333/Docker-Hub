@@ -60,6 +60,7 @@ sudo touch /home/appsettings.json /etc/TokenPay.db
 }
 ```
 
+>使用代理 `"WebProxy":"socks5://127.0.0.1:1080"`
 ## 运行
 ```
 docker run -d --restart always -p 5000:80 -v /home/appsettings.json:/app/appsettings.json -v /etc/TokenPay.db:/app/TokenPay.db dapiaoliang666/token-pay:latest
