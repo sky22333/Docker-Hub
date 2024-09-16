@@ -59,6 +59,8 @@ networks:
 
 如果要使用宿主机网络则移除网络配置，增加`network_mode: host`配置
 
+[文档](https://github.com/phpmyadmin/docker)
+
 ---
 
 #### 查看容器网络
