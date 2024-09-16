@@ -42,7 +42,6 @@ services:
     ports:
       - "7890:80"
     environment:
-      # 文件上传和内存限制设置
       - UPLOAD_LIMIT=512M            # 设置上传文件大小限制      
       # 数据库连接设置
       - PMA_HOST=mysql                    # MySQL 地址
