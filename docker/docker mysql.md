@@ -46,7 +46,7 @@ services:
       # 数据库连接设置
       - PMA_HOST=mysql                    # MySQL 地址
       - PMA_PORT=3306                     # MySQL 端口号
-      - PMA_DATABASE=acgfakadb            # 默认连接的数据库名称
+      - PMA_DATABASE=mysql                # 默认连接的数据库名称
     
     networks:
       - home_default        # 连接到指定网络
