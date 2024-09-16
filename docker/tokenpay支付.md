@@ -60,11 +60,12 @@ sudo touch /home/appsettings.json /etc/TokenPay.db
 }
 ```
 
->使用代理，配置后面追加代理配置
+>使用代理，添加配置
 ```
-  "ProxySettings": {
-    "WebProxy": "socks5://127.0.0.1:1080"
-  }
+"WebProxy":"socks5://127.0.0.1:1080"
+"Temegram":{
+  ",,,"
+}
 ```
 ## 运行
 ```
