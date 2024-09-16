@@ -55,7 +55,7 @@ networks:
   home_default:
     external: true
 ```
-
+进入面板使用root用户名登录，密码就是数据库root密码
 
 ---
 
