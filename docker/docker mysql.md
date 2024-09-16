@@ -111,5 +111,6 @@ docker container exec backup-db /restore.sh ./backup/<your_sql_backup_gz_file>
 >
 >如果要使用宿主机网络则移除网络配置，增加`network_mode: host`配置
 
+[文档](https://github.com/fradelg/docker-mysql-cron-backup)
 
 [定时备份PostgresSQL数据库](https://github.com/prodrigestivill/docker-postgres-backup-local)
