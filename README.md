@@ -144,7 +144,7 @@ docker-compose --version
 | 删除所有容器  | `docker container prune -f`  |   删除所有已停止容器         |
 | 停止所有容器  | `docker stop $(docker ps -aq)`  |   停止所有容器         |
 | `docker-compose`停止  | `docker compose down`  |   停止并删除        |
-| `docker-compose`重启  | `docker compose up -d --force-recreate`  |   重新创建容器并应用修改后的配置文件<br>不影响持久化数据<br>会丢失临时数据<br>***慎重使用***     |
+| `docker-compose`重新创建  | `docker compose up -d --force-recreate`  |   `慎重使用`重新创建容器并应用修改后的配置文件<br>不影响持久化数据<br>会丢失临时数据     |
 
 ---
 [官方仓库](https://hub.docker.com/)
