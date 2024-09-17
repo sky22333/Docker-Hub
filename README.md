@@ -144,7 +144,7 @@ docker-compose --version
 | 删除所有容器  | `docker container prune -f`  |   删除所有已停止容器         |
 | 停止所有容器  | `docker stop $(docker ps -aq)`  |   停止所有容器         |
 | 停止并删除  | `docker compose down`  |   停止并删除编排容器        |
-| 重新创建容器  | `docker compose up -d --force-recreate`  |   删除并重启编排容器   |
+| 重新创建容器  | `docker compose up -d --force-recreate`  |   强制删除并重启编排容器   |
 
 ---
 [官方仓库](https://hub.docker.com/)
