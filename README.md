@@ -143,8 +143,8 @@ docker-compose --version
 | 删除所有镜像  | `docker rmi -f $(docker images -aq)`  |   删除所有镜像         |
 | 删除所有容器  | `docker container prune -f`  |   删除所有已停止容器         |
 | 停止所有容器  | `docker stop $(docker ps -aq)`  |   停止所有容器         |
-| `docker-compose` <br>停止并删除  | `docker compose down`  |   停止并删除        |
-| `docker-compose` <br>重新创建容器  | `docker compose up -d --force-recreate`  |   `慎重使用`<br>重新创建容器并应用修改后的配置文件<br>不影响持久化数据<br>会丢失临时数据     |
+| 停止并删除  | `docker compose down`  |   停止并删除编排容器        |
+| 重新创建容器  | `docker compose up -d --force-recreate`  |   `慎重使用`<br>强制重启编排容器<br>不影响持久化数据<br>会丢失临时数据     |
 
 ---
 [官方仓库](https://hub.docker.com/)
