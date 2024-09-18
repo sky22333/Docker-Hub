@@ -10,7 +10,7 @@
 ```
 curl -fsSL https://get.docker.com | sh
 ```
->将以插件的形式自动安装`docker compose`    输入`docker compose version`查看版本
+>会以插件的形式自动安装`docker compose`    输入`docker compose version`查看版本
 
 国内安装脚本  [(说明)](https://linuxmirrors.cn/other/)
 
