@@ -3,7 +3,7 @@
 #### 创建相关文件
 
 ```
-mkdir /root/cms ; cd /root/cms && touch docker-compose.yml
+mkdir -p cms && cd cms && touch docker-compose.yml
 ```
 
 #### 编辑`docker-compose.yml`配置
