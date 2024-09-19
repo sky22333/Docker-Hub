@@ -19,7 +19,7 @@ services:
       - "8090:80"
     container_name: maccms
     volumes:
-      - ./maccms:/var/www/html
+      - ./data/maccms:/var/www/html
     networks:
       - maccms
 
@@ -33,7 +33,7 @@ services:
       - MYSQL_PASSWORD: maccms_password
       - MYSQL_ROOT_PASSWORD: maccms_password
     volumes:
-      - ./mysql:/var/lib/mysql
+      - ./data/mysql:/var/lib/mysql
     networks:
       - maccms
 
@@ -51,7 +51,7 @@ docker compose up -d
 #### 进入安装页面
 
 ```
-启动成功后，浏览器输入ip:8090端口就进入了系统安装界面
+启动成功后，浏览器输入IP:8090端口就进入了系统安装界面
 
 数据库地址：mysql
 数据库端口：3306
@@ -66,7 +66,7 @@ docker compose up -d
 
 #### 更换模板
 
-文件已经映射到本地，把模板文件放在`/root/cms/cms/template`目录
+文件已经映射到本地，把模板文件放在`./data/maccms/template`目录
 
 
 
