@@ -78,7 +78,6 @@ drush en redis -y
 - 安装并启用中文语言
 
 ```
-drush locale:import zh-hans
 drush pm:enable language interface_translation locale -y
 drush language:add zh-hans
 drush language:default zh-hans
