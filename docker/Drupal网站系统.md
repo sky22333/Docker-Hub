@@ -4,32 +4,34 @@
 services:
   drupal:
     image: drupal:latest
-    command: drupal
+    container_name: drupal
     ports:
       - "8080:80"
     depends_on:
-      - db
+      - mysql
       - redis
     environment:
-      DRUPAL_DB_HOST: db
+      DRUPAL_DB_HOST: mysql
       DRUPAL_DB_NAME: drupal
       DRUPAL_DB_USER: drupal
       DRUPAL_DB_PASSWORD: drupal_password
     volumes:
       - ./drupal:/var/www/html
-  db:
+
+  mysql:
     image: mysql:5.7
+    container_name: mysql
     environment:
       MYSQL_DATABASE: drupal
       MYSQL_USER: drupal
       MYSQL_PASSWORD: drupal_password
       MYSQL_ROOT_PASSWORD: root_password
     volumes:
-      - ./db:/var/lib/mysql
+      - ./mysql:/var/lib/mysql
 
   redis:
     image: redis:alpine
-    command: redis
+    container_name: redis
     volumes:
       - ./redis:/data
 ```
