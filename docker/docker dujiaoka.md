@@ -12,7 +12,10 @@ services:
     image: mysql:5.7
     container_name: mysql
     environment:
-      MYSQL_ROOT_PASSWORD: "123456"
+      MYSQL_DATABASE: dujiaoka
+      MYSQL_USER: dujiaoka
+      MYSQL_PASSWORD: dujiaoka_password
+      MYSQL_ROOT_PASSWORD: dujiaoka_password
     volumes:
       - ./data/mysql:/var/lib/mysql
 
@@ -38,8 +41,9 @@ services:
 
 数据库地址：mysql
 端口：3306
-用户名：root
-密码：123456
+数据库名称：dujiaoka
+用户名：dujiaoka
+密码：dujiaoka_password
 
 redis地址：redis
 ```
