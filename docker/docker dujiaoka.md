@@ -18,10 +18,14 @@ services:
       MYSQL_ROOT_PASSWORD: dujiaoka_password
     volumes:
       - ./data/mysql:/var/lib/mysql
+    networks:
+      - dujiaoka
 
   myredis:
     image: redis:alpine
     container_name: redis
+    networks:
+      - dujiaoka
 
   dujiaoka:
     image: jiangjuhong/dujiaoka:latest
@@ -33,7 +37,14 @@ services:
       - ADMIN_HTTPS=true
       - ADMIN_ROUTE_PREFIX=/admin
       - WEB_DOCUMENT_ROOT=/app/public
+    volumes:
+      - ./data/dujiaoka:/app
     restart: always
+    networks:
+      - dujiaoka
+
+networks:
+  dujiaoka:
 ```
 
 输入域名进入安装页面
