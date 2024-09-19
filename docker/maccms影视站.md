@@ -33,7 +33,7 @@ services:
       - MYSQL_PASSWORD: maccms_password
       - MYSQL_ROOT_PASSWORD: maccms_password
     volumes:
-      - ./data/mysql:/var/lib/mysql
+      - ./mysql:/var/lib/mysql
     networks:
       - maccms
 
