@@ -15,6 +15,7 @@ services:
       MYSQL_ROOT_PASSWORD: dujiaoka_password    # 数据库root密码
     volumes:
       - ./data/mysql:/var/lib/mysql             # 映射数据库文件
+    restart: always
     networks:
       - dujiaoka
 
