@@ -37,6 +37,7 @@ services:
       - ADMIN_HTTPS=true
       - ADMIN_ROUTE_PREFIX=/admin
       - WEB_DOCUMENT_ROOT=/app/public
+      - TZ=Asia/Shanghai
     volumes:
       - ./data/dujiaoka:/app
     restart: always
