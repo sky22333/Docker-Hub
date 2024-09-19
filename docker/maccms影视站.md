@@ -19,24 +19,26 @@ services:
       - "8090:80"
     container_name: maccms
     volumes:
-      - ./cms:/var/www/html
+      - ./maccms:/var/www/html
     networks:
-      - cms_network
+      - maccms
 
   mysql:
     image: mysql:5.7
     container_name: mysql
     restart: always
     environment:
-      - MYSQL_DATABASE=maccms
-      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE: maccms
+      - MYSQL_USER: maccms
+      - MYSQL_PASSWORD: maccms_password
+      - MYSQL_ROOT_PASSWORD: maccms_password
     volumes:
       - ./data/mysql:/var/lib/mysql
     networks:
-      - cms_network
+      - maccms
 
 networks:
-  cms_network:
+  maccms:
 ```
 
 
@@ -54,8 +56,8 @@ docker compose up -d
 数据库地址：mysql
 数据库端口：3306
 数据库名称：maccms
-数据库账号：root
-数据库密码：123456
+数据库账号：maccms
+数据库密码：maccms_password
 ```
 
 
