@@ -36,7 +36,7 @@ networks:
 ```
 docker exec -it v2board /bin/sh
 
-cd /usr/share/nginx/html/v2board && && rm -rf .env && sh /usr/share/nginx/html/v2board/init.sh
+cd /usr/share/nginx/html/v2board && rm -rf .env && sh /usr/share/nginx/html/v2board/init.sh
 ```
 
 
