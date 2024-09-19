@@ -9,12 +9,12 @@ services:
     image: mysql:5.7
     container_name: mysql
     environment:
-      MYSQL_DATABASE: dujiaoka
-      MYSQL_USER: dujiaoka
-      MYSQL_PASSWORD: dujiaoka_password
-      MYSQL_ROOT_PASSWORD: dujiaoka_password
+      MYSQL_DATABASE: dujiaoka                  # 数据库名称
+      MYSQL_USER: dujiaoka                      # 数据库用户名
+      MYSQL_PASSWORD: dujiaoka_password         # 数据库密码
+      MYSQL_ROOT_PASSWORD: dujiaoka_password    # 数据库root密码
     volumes:
-      - ./data/mysql:/var/lib/mysql
+      - ./data/mysql:/var/lib/mysql             # 映射数据库文件
     networks:
       - dujiaoka
 
@@ -30,13 +30,13 @@ services:
     ports:
       - "8111:80"
     environment:
-      - APP_URL=https://域名
+      - APP_URL=https://域名                     # 替换域名
       - ADMIN_HTTPS=true
       - ADMIN_ROUTE_PREFIX=/admin
       - WEB_DOCUMENT_ROOT=/app/public
       - TZ=Asia/Shanghai
     volumes:
-      - ./data/dujiaoka:/app
+      - ./data/dujiaoka:/app                    # 映射网站文件
     restart: always
     networks:
       - dujiaoka
