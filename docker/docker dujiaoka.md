@@ -21,7 +21,7 @@ services:
     networks:
       - dujiaoka
 
-  myredis:
+  redis:
     image: redis:alpine
     container_name: redis
     networks:
