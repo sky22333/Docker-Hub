@@ -67,17 +67,20 @@ redis地址：redis
 
 ---
 ---
+
+## 进入容器
+
+```
+docker exec -it dujiaoka /bin/bash
+```
+
 #### 重置密码
 在容器内执行`php artisan admin:reset-password`然后输入需要重置密码的用户名，然后输入新密码
 
 忘记管理员用户名可在数据库的`admin_users`表查看
 
-## 高阶操作
 
-```
-docker exec -it dujiaoka /bin/bash
-```
-#### 修改￥标识
+#### 修改`￥`标识
 
 首页`/app/resources/views/luna/static_pages/home.blade.php`
 
@@ -100,14 +103,9 @@ docker exec -it dujiaoka /bin/bash
 ```
 /app/public/assets
 ```
-
-#### 替换lnua主题背景示例
-
-上传图片到服务器的`home`目录，把上传的图片名称改为`background.png`。
-
-替换：
+主题背景路径
 ```
-docker cp /home/background.png dujiaoka:/app/public/assets/luna/img/background.png
+/app/public/assets/luna/img/
 ```
 
 #### 底部运行时间代码
