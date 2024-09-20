@@ -71,15 +71,24 @@ docker run -itd --network=host \
 
 ---
 
-### win系统
+### `docker-compose.yaml`
 ```
-docker run -itd \
-    -e XRAY_VMESS_AEAD_FORCED=false \
-    -v $PWD/db/:/etc/x-ui/ \
-    -v $PWD/cert/:/root/cert/ \
-    --add-host=host.docker.internal:host-gateway \
-    --name xui --restart=always \
-    dapiaoliang666/x-ui:latest
+services:
+  xui:
+    image: dapiaoliang666/x-ui:latest
+    container_name: xui
+    restart: always
+    environment:
+      - XRAY_VMESS_AEAD_FORCED=false
+    volumes:
+      - ./db/:/etc/x-ui/
+      - ./cert/:/root/cert/
+    ports:
+      - "54321:54321"
+      - "8080:8080"
+      - "80:80"
+      - "9988:9988"
+      - "19988:19988"
 ```
 
 
