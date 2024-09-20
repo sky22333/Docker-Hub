@@ -2,24 +2,39 @@
 
 #### 服务端（有公网IP）
 ```
-touch docker-compose.yaml
+touch docker-compose.yaml frps.toml
 ```
 
 ```
 services:
-  frps:
-    image: snowdreamtech/frps
-    container_name: frps
-    restart: always
-    environment:
-      - FRPS_BIND_PORT=7000           # frps 绑定的端口
-      - FRPS_DASHBOARD_PORT=7500      # Dashboard 监听的端口
-      - FRPS_DASHBOARD_USER=admin     # Dashboard 登录用户名
-      - FRPS_DASHBOARD_PWD=admin      # Dashboard 登录密码
-      - FRPS_TOKEN=your_token_here    # 用于客户端连接的身份验证令牌
-    ports:
-      - "7000:7000"
-      - "7500:7500"
+    frps:
+        restart: always
+        network_mode: host
+        volumes:
+            - './frps.toml:/etc/frp/frps.toml'
+        container_name: frps
+        image: snowdreamtech/frps
+```
+`frps.toml`配置
+```
+[common]
+#frp监听的端口，默认是7000，可以改成其他的
+bind_port = 7000
+#授权码，请改成更复杂的
+token = 52010  # 这个token之后在客户端会用到
+#http监听端口
+vhost_http_port = 6001
+#frp管理后台端口，请按自己需求更改
+dashboard_port = 7500
+#frp管理后台用户名和密码，请改成自己的
+dashboard_user = admin
+dashboard_pwd = admin
+enable_prometheus = true
+
+#frp日志配置
+log_file = /var/log/frps.log
+log_level = info
+log_max_days = 3
 ```
 
 #### 客户端（内网）
