@@ -55,7 +55,7 @@ services:
 ```
 # 客户端配置
 [common]
-server_addr = x.x.x.x
+server_addr = 服务端公网IP
 server_port = 7000
 token = 1314520asd
 
