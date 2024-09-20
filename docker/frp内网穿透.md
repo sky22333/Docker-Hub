@@ -71,7 +71,34 @@ type = tcp
 local_ip = 127.0.0.1
 local_port = 8080
 remote_port = 9998
+
+# SSH隧道
+[ssh]
+name = "ssh"
+type = "tcp"
+localIP = "127.0.0.1"
+localPort = 22
+remotePort = 2222
+
+# 本地文件对外访问
+[wenjian]
+name = "static"
+type = "tcp"
+# 服务端公网端口
+remotePort = 6000
+[proxies.plugin]
+type = "static_file"
+# 本地文件目录
+localPath = "/tmp/file"
+# 服务端访问文件的路径
+stripPrefix = "static"
+httpUser = "admin"
+httpPassword = "Password"
 ```
+- 公网web地址示例：`http://x.x.x.x:9999`
+- 公网文件地址示例：`http://x.x.x.x:6000/static`
+- SSH访问示例：`ssh -o Port=2222 root@x.x.x.x`
+
 
 #### win系统的docker客户端配置
 
