@@ -26,8 +26,8 @@ token = 1314520asd
 # frp管理后台端口
 dashboard_port = 7500
 # frp管理后台用户名和密码
-dashboard_user = admin
-dashboard_pwd = admin
+dashboard_user = admin123
+dashboard_pwd = admin321
 enable_prometheus = true
 
 # frp日志配置
@@ -66,6 +66,12 @@ type = tcp
 local_ip = 127.0.0.1
 local_port = 54321
 remote_port = 9999
+
+[web2]
+type = tcp
+local_ip = 127.0.0.1
+local_port = 8080
+remote_port = 9998
 ```
 
 #### win系统的docker客户端配置
@@ -82,4 +88,5 @@ services:
       - './frpc.toml:/etc/frp/frpc.toml'
     ports:
       - "9999:9999"
+      - "9998:9998"
 ```
