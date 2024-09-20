@@ -44,7 +44,7 @@ services:
       # 内网 TCP 服务代理配置
       - FRPC_MYSERVICE_TYPE=tcp
       - FRPC_MYSERVICE_LOCAL_IP=host.docker.internal
-      - FRPC_MYSERVICE_LOCAL_PORT=54321
+      - FRPC_MYSERVICE_LOCAL_PORT=54321   # 本地端口
       - FRPC_MYSERVICE_REMOTE_PORT=54321  # frps 服务器上用于访问您的服务的端口
     network_mode: "bridge"
 ```
