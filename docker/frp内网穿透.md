@@ -1,4 +1,4 @@
-### docker部署frp内网穿透
+### Docker部署frp内网穿透
 
 #### 服务端（有公网IP）
 ```
@@ -34,6 +34,8 @@ log_file = /var/log/frps.log
 log_level = info
 log_max_days = 3
 ```
+
+---
 
 #### 客户端（内网）
 ```
@@ -100,6 +102,7 @@ httpPassword = "Password"
 - 公网文件地址示例：`http://x.x.x.x:6000/static`
 - SSH访问示例：`ssh -o Port=2222 root@x.x.x.x`
 
+---
 
 #### win系统的docker客户端配置
 
