@@ -6,7 +6,7 @@ services:
     image: drupal:latest
     container_name: drupal
     ports:
-      - "8080:80"
+      - "8111:80"
     depends_on:
       - mysql
       - redis
@@ -15,11 +15,9 @@ services:
       DRUPAL_DB_NAME: drupal
       DRUPAL_DB_USER: drupal
       DRUPAL_DB_PASSWORD: drupal_password
-    volumes:
-      - ./drupal:/var/www/html
 
   mysql:
-    image: mysql:5.7
+    image: mysql:8.0
     container_name: mysql
     environment:
       MYSQL_DATABASE: drupal
@@ -32,8 +30,6 @@ services:
   redis:
     image: redis:alpine
     container_name: redis
-    volumes:
-      - ./redis:/data
 ```
 
 - 进入容器
