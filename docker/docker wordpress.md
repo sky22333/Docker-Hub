@@ -61,7 +61,7 @@ docker compose up -d
 
 
 
-### 修改docker中wordpress的上传限制。
+#### 修改docker中wordpress的上传限制。
 
 
 进入 wordpress 容器
@@ -100,9 +100,23 @@ docker restart wordpress
 ```
 
 ---
+
+#### 修改后台路径
+进入容器安装插件
+```
+wp plugin install wps-hide-login --activate
+```
+修改路径
+```
+wp option update wps-hide-login /自定义路径
+```
+
+
+
+
 ---
 
-### 启用redis缓存
+#### 启用redis缓存
 
 ```
 services:
