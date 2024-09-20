@@ -101,20 +101,6 @@ docker restart wordpress
 
 ---
 
-***修改后台路径***
-
-进入容器安装插件
-```
-wp plugin install wps-hide-login --activate
-```
-修改路径
-```
-wp option update wps-hide-login /自定义路径
-```
-
-
-
-
 ---
 
 #### 启用redis缓存
@@ -191,3 +177,9 @@ docker restart wordpress
 ```
 
 - 插件商城搜索安装插件：`Redis Object Cache` 并启用`redis`缓存
+
+- 修改后台路径插件`WPS Hide Login`
+- 备份插件`WPvivid`
+- 直播播放器插件`SRS Player`
+- 优化性能缓存插件`WP Fastest Cache`
+- 压缩图片和懒加载插件`Smush`
