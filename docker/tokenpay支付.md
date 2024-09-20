@@ -5,7 +5,7 @@
 mkdir -p tokenpay && cd tokenpay && touch appsettings.json TokenPay.db
 ```
 
-#### 写入`appsettings.json`配置
+#### 编辑`appsettings.json`配置
 ```
 {
   "Serilog": {
