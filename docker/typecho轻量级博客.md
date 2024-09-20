@@ -30,9 +30,6 @@ services:
       TYPECHO_DB_PASS: typechoADMIN
     volumes:
       - ./typecho-data:/var/www/html
-
-volumes:
-  mysql-data:
 ```
 
 `https://your-domain.com`替换为你的网址，提前反代好。
