@@ -70,7 +70,8 @@ remote_port = 9999
 
 #### win系统的docker客户端配置
 
-配置文件中`local_ip`的值改为`host.docker.internal`则可以访问宿主机的服务
+配置文件中`local_ip`的值改为`host.docker.internal`则可以访问宿主机的服务<br>
+修改`docker-compose`配置映射公网端口供服务端访问
 ```
 services:
   frpc:
