@@ -23,9 +23,8 @@ bind_port = 7000
 # 授权码
 token = 1314520asd
 
-# frp管理后台端口
+# frp后台管理信息（可以去掉）
 dashboard_port = 7500
-# frp管理后台用户名和密码
 dashboard_user = admin123
 dashboard_pwd = admin321
 enable_prometheus = true
