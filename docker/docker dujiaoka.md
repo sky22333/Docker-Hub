@@ -36,8 +36,6 @@ services:
       - ADMIN_ROUTE_PREFIX=/admin
       - WEB_DOCUMENT_ROOT=/app/public
       - TZ=Asia/Shanghai
-    volumes:
-      - ./data/dujiaoka:/app                    # 映射网站文件(方便迁移)
     restart: always
     networks:
       - dujiaoka
