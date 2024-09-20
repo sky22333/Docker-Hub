@@ -20,25 +20,18 @@ services:
     container_name: maccms
     volumes:
       - ./data/maccms:/var/www/html
-    networks:
-      - maccms
 
   mysql:
     image: mysql:5.7
     container_name: mysql
     restart: always
     environment:
-      - MYSQL_DATABASE: maccms
-      - MYSQL_USER: maccms
-      - MYSQL_PASSWORD: maccms_password
-      - MYSQL_ROOT_PASSWORD: maccms_password
+      - MYSQL_DATABASE=maccms
+      - MYSQL_USER=maccms
+      - MYSQL_PASSWORD=maccms_password
+      - MYSQL_ROOT_PASSWORD=maccms_password
     volumes:
       - ./data/mysql:/var/lib/mysql
-    networks:
-      - maccms
-
-networks:
-  maccms:
 ```
 
 
