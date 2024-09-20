@@ -39,25 +39,42 @@ log_max_days = 3
 
 #### 客户端（内网）
 ```
-touch docker-compose.yaml
+touch docker-compose.yaml frpc.toml
 ```
 
 ```
 services:
-  frpc:
-    image: snowdreamtech/frpc
-    container_name: frpc
-    restart: always
-    environment:
-      - FRPC_SERVER_ADDR=x.x.x.x      # frps 服务器的 IP 地址
-      - FRPC_SERVER_PORT=7000         # frps 服务器的端口
-      - FRPC_TOKEN=your_token_here    # 与 frps 服务器相同的身份验证令牌
-      - FRPC_USER=your_username       # 用户名，用于区分不同的 frpc 客户端
-      
-      # 内网 TCP 服务代理配置
-      - FRPC_MYSERVICE_TYPE=tcp
-      - FRPC_MYSERVICE_LOCAL_IP=host.docker.internal
-      - FRPC_MYSERVICE_LOCAL_PORT=54321   # 本地端口
-      - FRPC_MYSERVICE_REMOTE_PORT=54321  # frps 服务器上用于访问您的服务的端口
-    network_mode: "bridge"
+    frpc:
+        restart: always
+        network_mode: host
+        volumes:
+            - './frpc.toml:/etc/frp/frpc.toml'
+        container_name: frpc
+        image: snowdreamtech/frpc
+```
+
+`frpc.toml`配置
+```
+# 客户端配置
+[common]
+server_addr = x.x.x.x      # 服务端公网IP
+server_port = 7000         # 与服务端bind_port一致
+token = 52010              # 与服务端的token一致
+
+[ssh]
+type = tcp
+local_ip = 127.0.0.1
+local_port = 22
+remote_port = 6000         # 这个自定义，之后再ssh连接的时候要用
+
+[web]
+type = http
+local_ip = 127.0.0.1
+local_port = 8080
+custom_domains = 自定义域名my.test.com
+[web2]
+type = http
+local_ip = 127.0.0.1
+local_port = 80
+custom_domains = 自定义域名my.test.com
 ```
