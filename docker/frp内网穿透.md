@@ -17,10 +17,9 @@ services:
 ```
 `frps.toml`配置
 ```
+# 连接参数和客户端保持一致
 [common]
-# frp默认监听端口
 bind_port = 7000
-# 授权码
 token = 1314520asd
 
 # frp后台管理信息（可以去掉）
