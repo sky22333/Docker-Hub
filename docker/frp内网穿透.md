@@ -120,3 +120,11 @@ services:
       - "2222:2222"
       - "6000:6000"
 ```
+
+---
+
+[官方安装包](https://github.com/fatedier/frp/releases)
+
+服务端启动命令`./frps -c ./frps.toml`
+
+客户端启动命令`./frpc -c ./frpc.toml`
