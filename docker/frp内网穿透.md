@@ -47,20 +47,19 @@ services:
 客户端`frpc.ini`配置
 ```
 [common]
-# 服务端公网地址和端口
-server_addr = 8.8.8.8
-server_port = 5443
-token = 8ad3d1x42aaa78890
+server_addr = 8.8.8.8          # 服务端公网地址
+server_port = 5443             # 服务端端口
+token = 8ad3d1x42aaa78890      # token和服务端一致
 
 [ssh]
 type = tcp
 local_ip = 127.0.0.1
-local_port = 22            # 本地端口
-remote_port = 6000         # 服务端公网端口
+local_port = 22             # 本地端口
+remote_port = 6000          # 服务端公网端口
 
 [web]
 type = tcp
 local_ip = 127.0.0.1
-local_port = 80           # 本地端口
-remote_port = 8080        # 服务端公网端口
+local_port = 80            # 本地端口
+remote_port = 8080         # 服务端公网端口
 ```
