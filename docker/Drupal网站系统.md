@@ -32,7 +32,7 @@ services:
   redis:
     image: redis:alpine
     container_name: redis
-  restart: always
+    restart: always
 ```
 
 - 进入容器
