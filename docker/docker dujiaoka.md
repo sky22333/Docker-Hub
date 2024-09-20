@@ -59,7 +59,7 @@ redis地址：redis
 ## 进入容器
 
 ```
-docker exec -it dujiaoka /bin/bash
+docker exec -it dujiaoka /bin/sh
 ```
 
 #### 重置密码
