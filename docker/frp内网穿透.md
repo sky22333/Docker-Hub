@@ -41,11 +41,10 @@ services:
       - FRPC_TOKEN=your_token_here    # 与 frps 服务器相同的身份验证令牌
       - FRPC_USER=your_username       # 用户名，用于区分不同的 frpc 客户端
       
-      # 示例：SSH 服务转发
-      - FRPC_SSH_TYPE=tcp
-      - FRPC_SSH_LOCAL_IP=host.docker.internal  # 使用这个特殊 DNS 名称访问宿主机
-      - FRPC_SSH_LOCAL_PORT=22
-      - FRPC_SSH_REMOTE_PORT=6000     # 在 frps 服务器上暴露的远程端口
-    extra_hosts:
-      - "host.docker.internal:host-gateway"  # 允许容器访问宿主机
+      # 内网 TCP 服务代理配置
+      - FRPC_MYSERVICE_TYPE=tcp
+      - FRPC_MYSERVICE_LOCAL_IP=host.docker.internal
+      - FRPC_MYSERVICE_LOCAL_PORT=54321
+      - FRPC_MYSERVICE_REMOTE_PORT=54321  # frps 服务器上用于访问您的服务的端口
+    network_mode: "bridge"
 ```
