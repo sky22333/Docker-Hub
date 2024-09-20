@@ -102,6 +102,7 @@ docker restart wordpress
 ---
 
 ***修改后台路径***
+
 进入容器安装插件
 ```
 wp plugin install wps-hide-login --activate
