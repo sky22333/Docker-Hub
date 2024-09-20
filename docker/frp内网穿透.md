@@ -14,7 +14,7 @@ services:
     ports:
       - "7000:7000"                # 连接到客户端的端口
       - "7500:7500"                # 仪表板的端口
-    restart: unless-stopped
+    restart: always
 ```
 
 - 客户端（内网环境）
@@ -28,5 +28,5 @@ services:
       - FRP_SERVER_PORT=7000         # 服务端监听的端口
       - FRP_LOCAL_PORT=80            # 本地需要代理的服务端口
       - FRP_REMOTE_PORT=8080         # 暴露给外网的端口
-    restart: unless-stopped
+    restart: always
 ```
