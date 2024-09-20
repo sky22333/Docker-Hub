@@ -2,6 +2,10 @@
 
 #### 服务端（有公网IP）
 ```
+touch docker-compose.yaml frps.ini
+```
+
+```
 services:
     frps:
         restart: always
@@ -33,6 +37,10 @@ token = 8ad3d1x42aaa78890
 ```
 
 #### 客户端（内网）
+```
+touch docker-compose.yaml frpc.ini
+```
+
 ```
 services:
     frpc:
