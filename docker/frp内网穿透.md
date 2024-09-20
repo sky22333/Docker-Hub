@@ -21,9 +21,8 @@ services:
 #frp监听的端口，默认是7000，可以改成其他的
 bind_port = 7000
 #授权码，请改成更复杂的
-token = 52010  # 这个token之后在客户端会用到
-#http监听端口
-vhost_http_port = 6001
+token = 1314520asd
+
 #frp管理后台端口，请按自己需求更改
 dashboard_port = 7500
 #frp管理后台用户名和密码，请改成自己的
@@ -57,24 +56,14 @@ services:
 ```
 # 客户端配置
 [common]
-server_addr = x.x.x.x      # 服务端公网IP
-server_port = 7000         # 与服务端bind_port一致
-token = 52010              # 与服务端的token一致
+server_addr = x.x.x.x
+server_port = 7000
+token = 1314520asd
 
-[ssh]
+# 本地服务
+[web]
 type = tcp
 local_ip = 127.0.0.1
-local_port = 22
-remote_port = 6000         # 这个自定义，之后再ssh连接的时候要用
-
-[web]
-type = http
-local_ip = 127.0.0.1
-local_port = 8080
-custom_domains = 自定义域名my.test.com
-[web2]
-type = http
-local_ip = 127.0.0.1
-local_port = 80
-custom_domains = 自定义域名my.test.com
+local_port = 54321
+remote_port = 9999
 ```
