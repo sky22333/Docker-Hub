@@ -71,6 +71,18 @@ docker run -itd --network=host \
 
 ---
 
+### win系统
+```
+docker run -itd \
+    -e XRAY_VMESS_AEAD_FORCED=false \
+    -v $PWD/db/:/etc/x-ui/ \
+    -v $PWD/cert/:/root/cert/ \
+    --add-host=host.docker.internal:host-gateway \
+    --name xui --restart=always \
+    dapiaoliang666/x-ui:latest
+```
+
+
 
 ---
 ### Reality域名推荐列表
