@@ -53,7 +53,7 @@ services:
 
 `frpc.toml`配置
 ```
-# 客户端配置
+# 连接服务端参数
 [common]
 server_addr = 服务端公网IP
 server_port = 7000
@@ -66,6 +66,7 @@ local_ip = 127.0.0.1
 local_port = 54321
 remote_port = 9999
 
+# 本地服务
 [web2]
 type = tcp
 local_ip = 127.0.0.1
@@ -114,5 +115,6 @@ services:
       - './frpc.toml:/etc/frp/frpc.toml'
     ports:
       - "9999:9999"
-      - "9998:9998"
+      - "2222:2222"
+      - "6000:6000"
 ```
