@@ -67,3 +67,18 @@ local_ip = 127.0.0.1
 local_port = 54321
 remote_port = 9999
 ```
+
+#### win系统的docker客户端配置
+
+配置文件中`local_ip`的值改为`host.docker.internal`则可以访问宿主机的服务
+```
+services:
+  frpc:
+    restart: always
+    container_name: frpc
+    image: snowdreamtech/frpc
+    volumes:
+      - './frpc.toml:/etc/frp/frpc.toml'
+    ports:
+      - "9999:9999"
+```
