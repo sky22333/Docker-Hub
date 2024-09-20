@@ -14,7 +14,7 @@ mkdir wordpress && cd wordpress
 ```
 services:
   db:
-    image: mysql:8.0
+    image: mysql:5.7
     volumes:
       - ./data/mysql:/var/lib/mysql
     restart: always
@@ -107,7 +107,7 @@ docker restart wordpress
 ```
 services:
   db:
-    image: mysql:8.0
+    image: mysql:5.7
     volumes:
       - ./data/mysql:/var/lib/mysql
     restart: always
