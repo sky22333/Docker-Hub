@@ -18,19 +18,19 @@ services:
 `frps.toml`配置
 ```
 [common]
-#frp监听的端口，默认是7000，可以改成其他的
+# frp默认监听端口
 bind_port = 7000
-#授权码，请改成更复杂的
+# 授权码
 token = 1314520asd
 
-#frp管理后台端口，请按自己需求更改
+# frp管理后台端口
 dashboard_port = 7500
-#frp管理后台用户名和密码，请改成自己的
+# frp管理后台用户名和密码
 dashboard_user = admin
 dashboard_pwd = admin
 enable_prometheus = true
 
-#frp日志配置
+# frp日志配置
 log_file = /var/log/frps.log
 log_level = info
 log_max_days = 3
