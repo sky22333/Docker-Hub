@@ -1,5 +1,11 @@
 ### Docker部署frp内网穿透
 
+>快速启动
+>
+>`docker run --restart=always --network host -d -v ./frps.toml:/etc/frp/frps.toml --name frps snowdreamtech/frps`
+
+
+
 #### 服务端（有公网IP）
 ```
 touch docker-compose.yaml frps.toml
