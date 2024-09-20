@@ -15,6 +15,7 @@ services:
       DRUPAL_DB_NAME: drupal
       DRUPAL_DB_USER: drupal
       DRUPAL_DB_PASSWORD: drupal_password
+    restart: always
 
   mysql:
     image: mysql:8.0
@@ -26,10 +27,12 @@ services:
       MYSQL_ROOT_PASSWORD: root_password
     volumes:
       - ./mysql:/var/lib/mysql
+    restart: always
 
   redis:
     image: redis:alpine
     container_name: redis
+  restart: always
 ```
 
 - 进入容器
