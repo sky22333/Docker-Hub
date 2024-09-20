@@ -177,7 +177,7 @@ docker restart wordpress
 ```
 
 - 插件商城搜索安装插件：`Redis Object Cache` 并启用`redis`缓存
-
+---
 - 修改后台路径插件`WPS Hide Login`
 - 备份插件`WPvivid`
 - 直播播放器插件`SRS Player`
