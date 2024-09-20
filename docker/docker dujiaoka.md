@@ -16,14 +16,10 @@ services:
     volumes:
       - ./data/mysql:/var/lib/mysql             # 映射数据库文件
     restart: always
-    networks:
-      - dujiaoka
 
   redis:
     image: redis:alpine
     container_name: redis
-    networks:
-      - dujiaoka
 
   dujiaoka:
     image: jiangjuhong/dujiaoka:latest
@@ -37,11 +33,6 @@ services:
       - WEB_DOCUMENT_ROOT=/app/public
       - TZ=Asia/Shanghai
     restart: always
-    networks:
-      - dujiaoka
-
-networks:
-  dujiaoka:
 ```
 
 输入域名进入安装页面
