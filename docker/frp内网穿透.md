@@ -7,13 +7,13 @@ touch docker-compose.yaml frps.ini
 
 ```
 services:
-    frps:
-        restart: always
-        network_mode: host
-        volumes:
-            - './frps.ini:/etc/frp/frps.ini'
-        container_name: frps
-        image: snowdreamtech/frps
+  frps:
+    image: snowdreamtech/frps
+    container_name: frps
+    restart: always
+    network_mode: host
+    volumes:
+      - ./frps.ini:/etc/frp/frps.ini
 ```
 
 服务端`frps.ini`配置
@@ -43,13 +43,13 @@ touch docker-compose.yaml frpc.ini
 
 ```
 services:
-    frpc:
-        restart: always
-        network_mode: host
-        volumes:
-            - './frpc.ini:/etc/frp/frpc.ini'
-        container_name: frpc
-        image: snowdreamtech/frpc
+  frpc:
+    image: snowdreamtech/frpc
+    container_name: frpc
+    restart: always
+    network_mode: host
+    volumes:
+      - ./frpc.ini:/etc/frp/frpc.ini
 ```
 
 客户端`frpc.ini`配置
