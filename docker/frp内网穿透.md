@@ -13,14 +13,12 @@ services:
     restart: always
     environment:
       - FRPS_BIND_PORT=7000           # frps 绑定的端口
-      - FRPS_VHOST_HTTP_PORT=80       # HTTP 类型反向代理监听的端口
       - FRPS_DASHBOARD_PORT=7500      # Dashboard 监听的端口
       - FRPS_DASHBOARD_USER=admin     # Dashboard 登录用户名
       - FRPS_DASHBOARD_PWD=admin      # Dashboard 登录密码
       - FRPS_TOKEN=your_token_here    # 用于客户端连接的身份验证令牌
     ports:
       - "7000:7000"
-      - "80:80"
       - "7500:7500"
 ```
 
