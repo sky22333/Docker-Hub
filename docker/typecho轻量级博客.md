@@ -10,7 +10,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: typechoPASSWORD
       MYSQL_DATABASE: typecho
-      MYSQL_USER: typechoA
+      MYSQL_USER: typecho
       MYSQL_PASSWORD: typechoPASSWORD
     volumes:
       - ./mysql-data:/var/lib/mysql
