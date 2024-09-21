@@ -23,6 +23,9 @@ docker run --restart always --name openwrt -d --network opnet --privileged zzsrv
 
 - 进入容器根据自己实际情况修改网络配置
 ```
+docker exec -it openwrt /bin/sh
+```
+```
 vim /etc/config/network
 ```
 
