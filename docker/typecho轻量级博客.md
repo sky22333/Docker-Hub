@@ -16,13 +16,14 @@ services:
       - ./mysql-data:/var/lib/mysql
 
   typecho:
-    image: joyqi/typecho:nightly-php7.4-apache
+    image: joyqi/typecho:nightly-php8.2-apache
     restart: always
     depends_on:
       - mysql
     ports:
       - "8080:80"
     environment:
+      TIMEZONE: Asia/Shanghai
       TYPECHO_SITE_URL: https://your-domain.com
       TYPECHO_DB_HOST: mysql
       TYPECHO_DB_NAME: typechoADMIN
@@ -51,3 +52,5 @@ git clone 主题Git仓库地址
 ```
 docker cp 主题文件路径 typecho-server:/app/usr/themes
 ```
+
+[仓库地址](https://hub.docker.com/r/joyqi/typecho)
