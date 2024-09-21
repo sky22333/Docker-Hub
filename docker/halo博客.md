@@ -38,7 +38,7 @@ services:
       - --spring.r2dbc.username=halo
       - --spring.r2dbc.password=halo_password
       - --spring.sql.init.platform=mysql
-      - --halo.external-url=http://103.193.148.249:8090/
+      - --halo.external-url=http://公网IP:8090/
 
   mysql:
     image: mysql:5.7
