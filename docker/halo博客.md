@@ -12,7 +12,7 @@ docker run -it -d --name halo -p 8090:8090 -v ./halo2:/root/.halo2 halohub/halo:
 
 
 
-#### docker-compose.yaml
+### `docker-compose.yaml`部署
 
 ```
 services:
