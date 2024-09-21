@@ -8,10 +8,10 @@ services:
     image: mysql:5.7
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: typechoADMIN
-      MYSQL_DATABASE: typechoADMIN
-      MYSQL_USER: typechoADMIN
-      MYSQL_PASSWORD: typechoADMIN
+      MYSQL_ROOT_PASSWORD: typechoPASSWORD
+      MYSQL_DATABASE: typecho
+      MYSQL_USER: typechoA
+      MYSQL_PASSWORD: typechoPASSWORD
     volumes:
       - ./mysql-data:/var/lib/mysql
 
@@ -26,9 +26,9 @@ services:
       TIMEZONE: Asia/Shanghai
       TYPECHO_SITE_URL: https://your-domain.com
       TYPECHO_DB_HOST: mysql
-      TYPECHO_DB_NAME: typechoADMIN
-      TYPECHO_DB_USER: typechoADMIN
-      TYPECHO_DB_PASS: typechoADMIN
+      TYPECHO_DB_NAME: typecho
+      TYPECHO_DB_USER: typecho
+      TYPECHO_DB_PASS: typechoPASSWORD
     volumes:
       - ./typecho-data:/var/www/html
 ```
