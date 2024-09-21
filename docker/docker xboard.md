@@ -76,56 +76,25 @@ docker compose restart
 
 
 ## 迁移
-
-将数据库文件全部导出为sql
-
-另一个服务器搭建好后，进数据库清空数据表
-
-导入sql备份文件
-
-
-
-#### 复制SQL文件到MySQL容器
 ```
-docker cp /home/mysql.sql cd42b5b98103:/tmp/mysql.sql
-```
-#### 进入MySQL容器：
+# 1. 备份现有数据库
+mysqldump -u root -p --databases my_database > my_database_backup.sql
 
-```
-docker exec -it mysql /bin/bash
-```
-#### 登录到MySQL并删除所有表：
-```
+# 2. 登录 MySQL
 mysql -u root -p
-```
-#### 输入密码后，执行以下命令：
-```
-USE mysql;
-```
-```
--- 获取当前数据库中的所有表
-SET @tables = NULL;
-SELECT GROUP_CONCAT('`', table_name, '`') INTO @tables
-FROM information_schema.tables 
-WHERE table_schema = 'mysql';
 
--- 删除所有表
-SET @tables = IFNULL(@tables, 'dummy');
-SET @stmt = CONCAT('DROP TABLE IF EXISTS ', @tables);
-PREPARE stmt FROM @stmt;
-EXECUTE stmt;
-DEALLOCATE PREPARE stmt;
-```
+# 3. 删除现有数据库
+DROP DATABASE my_database;
 
-#### 退出MySQL交互界面
+# 4. 创建新数据库
+CREATE DATABASE my_database;
+
+# 5. 退出 MySQL
+exit;
+
+# 6. 恢复备份
+mysql -u root -p my_database < my_database_backup.sql
 ```
-EXIT;
-```
-#### 导入数据库
-```
-mysql -u root -p mysql < /tmp/mysql.sql
-```
-通过这些步骤，你将删除现有数据库中的所有表，然后导入新的SQL文件内容。这将确保数据被完全覆盖。
 
 然后进入数据库的`v2_settings`表，修改https配置，域名配置，路径配置，即可正常进入后台
 
