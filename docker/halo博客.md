@@ -27,6 +27,8 @@ services:
   halo:
     image: halohub/halo:2
     restart: always
+    depends_on:
+      - mysql
     ports:
       - "8090:8090"
     volumes:
