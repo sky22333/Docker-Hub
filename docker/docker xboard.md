@@ -77,22 +77,22 @@ docker compose restart
 
 ## 迁移
 ```
-# 1. 备份现有数据库
+# 备份现有数据库
 mysqldump -u root -p --databases my_database > my_database_backup.sql
 
-# 2. 登录 MySQL
+# 登录 MySQL
 mysql -u root -p
 
-# 3. 删除现有数据库
+# 删除现有数据库
 DROP DATABASE my_database;
 
-# 4. 创建新数据库
+# 创建新数据库
 CREATE DATABASE my_database;
 
-# 5. 退出 MySQL
+# 退出 MySQL
 exit;
 
-# 6. 恢复备份
+# 恢复备份
 mysql -u root -p my_database < my_database_backup.sql
 ```
 
