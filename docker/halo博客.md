@@ -33,21 +33,20 @@ services:
       - ./halo2:/root/.halo2
     command:
       - --spring.r2dbc.url=r2dbc:pool:mysql://mysql:3306/halo
-      - --spring.r2dbc.username=halo                      
+      - --spring.r2dbc.username=halo
       - --spring.r2dbc.password=halo_password
       - --spring.sql.init.platform=mysql
-      - --halo.external-url=http://IP:8090/
-      - --server.port=8090
+      - --halo.external-url=http://103.193.148.249:8090/
 
-    mysql:
-      image: mysql:5.7
-      container_name: mysql
-      environment:
-        MYSQL_DATABASE: halo                  # 数据库名称
-        MYSQL_USER: halo                      # 数据库用户名
-        MYSQL_PASSWORD: halo_password         # 数据库密码
-        MYSQL_ROOT_PASSWORD: halo_password    # 数据库root密码
-      volumes:
-        - ./data/mysql:/var/lib/mysql         # 映射数据库文件
-      restart: always
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    environment:
+      MYSQL_DATABASE: halo                  # 数据库名称
+      MYSQL_USER: halo                      # 数据库用户名
+      MYSQL_PASSWORD: halo_password         # 数据库密码
+      MYSQL_ROOT_PASSWORD: halo_password    # 数据库root密码
+    volumes:
+      - ./data/mysql:/var/lib/mysql         # 映射数据库文件
+    restart: always
 ```
