@@ -13,6 +13,13 @@ docker run -it -d --name halo -p 8090:8090 -v ./halo2:/root/.halo2 halohub/halo:
 
 ---
 
+***国内阿里云镜像***
+```
+registry.fit2cloud.com/halo/halo
+```
+
+---
+
 ### `docker-compose.yaml`部署
 
 ```
