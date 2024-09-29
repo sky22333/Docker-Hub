@@ -39,7 +39,7 @@ sudo certbot certonly --dns-cloudflare --dns-cloudflare-credentials ~/cloudflare
 ```
 sudo apt install python3-certbot-dns-aliyun -yq
 ```
-配置
+`cloudflare.ini`配置
 ```
 dns_aliyun_access_key = YOUR_ACCESS_KEY_ID
 dns_aliyun_secret_key = YOUR_ACCESS_KEY_SECRET
