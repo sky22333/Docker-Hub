@@ -1,5 +1,8 @@
 ## certbot申请域名证书
 
+---
+---
+
 ### HTTP方式
 **1：安装certbot**
 ```
@@ -39,6 +42,10 @@ dns_cloudflare_api_token = YOUR_API_TOKEN
 sudo certbot certonly --dns-cloudflare --dns-cloudflare-credentials ~/cloudflare.ini --non-interactive --agree-tos -d example.com
 ```
 
+
+---
+---
+
 ### 阿里云DNS方式
 
 1：进入`访问控制` -> `Access Keys`，创建一个`Access Key ID`和`Access Key Secret`
@@ -54,6 +61,7 @@ dns_aliyun_secret_key = YOUR_ACCESS_KEY_SECRET
 ```
 
 
+---
 ---
 ---
 
