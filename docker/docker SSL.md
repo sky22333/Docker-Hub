@@ -1,5 +1,5 @@
 # certbot申请域名证书
-#### 安装
+#### 安装certbot
 ```
 apt update && apt install certbot -yq
 ```
