@@ -16,7 +16,8 @@ sudo certbot renew --dry-run
 ```
 默认情况下，Certbot会将证书存储在`/etc/letsencrypt/live/example.com/`目录下
 
-
+---
+---
 
 ### 使用Cloudflare的DNS方式申请证书
 安装DNS插件
@@ -45,7 +46,8 @@ dns_aliyun_secret_key = YOUR_ACCESS_KEY_SECRET
 ```
 
 
-
+---
+---
 
 # docker一键申请
 
