@@ -21,7 +21,7 @@ sudo certbot renew --dry-run
 
 #### 使用Cloudflare的DNS方式申请证书
 
-`Cloudflare`进入`我的个人资料` -> `API令牌`，创建一个新的令牌，授予`Zone: DNS`权限。
+`Cloudflare`进入`我的个人资料` -> `API令牌`，创建一个新的令牌，权限为：`区域——DNS——编辑`，区域资源为：`包括——特定区域——选择域名`。
 
 安装DNS插件
 ```
