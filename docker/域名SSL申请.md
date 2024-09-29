@@ -87,6 +87,7 @@ services:
       STAGE: 'production'               # 生产环境
     volumes:
       - ./https-data:/var/lib/https-portal     # 证书存储文件
+    restart: always
 ```
 
 
@@ -108,6 +109,7 @@ services:
       # ALI_SECRET: 'ali-access-key-secret'        # 对于阿里云
     volumes:
       - ./https-data:/var/lib/https-portal         # 证书存储文件
+    restart: always
 ```
 
 - 强制续期证书：`FORCE_RENEW: 'true'`
