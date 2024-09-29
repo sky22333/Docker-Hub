@@ -1,6 +1,6 @@
 ## certbot申请域名证书
 
-### 使用80端口
+### HTTP方式
 **1：安装certbot**
 ```
 apt update && apt install certbot -yq
@@ -21,7 +21,7 @@ sudo certbot renew --dry-run
 ---
 ---
 
-### 使用Cloudflare的DNS方式申请证书
+### Cloudflare的DNS方式
 
 1：`Cloudflare`进入`我的个人资料` -> `API令牌`，创建一个新的令牌，权限为：`区域——DNS——编辑`，区域资源为：`包括——特定区域——选择域名`。
 
@@ -39,7 +39,7 @@ dns_cloudflare_api_token = YOUR_API_TOKEN
 sudo certbot certonly --dns-cloudflare --dns-cloudflare-credentials ~/cloudflare.ini --non-interactive --agree-tos -d example.com
 ```
 
-### 阿里云DNS
+### 阿里云DNS方式
 
 1：进入`访问控制` -> `Access Keys`，创建一个`Access Key ID`和`Access Key Secret`
 
