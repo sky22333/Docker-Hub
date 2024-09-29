@@ -3,7 +3,7 @@
 ```
 apt update && apt install certbot -yq
 ```
-###￥ 申请证书
+#### 申请证书
 临时占用80端口
 ```
 sudo certbot certonly --standalone --non-interactive --agree-tos -d example.com
@@ -24,7 +24,7 @@ sudo certbot renew --dry-run
 ```
 sudo apt install python3-certbot-dns-cloudflare -yq
 ```
-- 创建配置文件`cloudflare.ini`，配置文件填入`api_token`
+创建配置文件`cloudflare.ini`，配置文件填入`api_token`
 ```
 dns_cloudflare_api_token = YOUR_API_TOKEN
 ```
@@ -35,11 +35,11 @@ sudo certbot certonly --dns-cloudflare --dns-cloudflare-credentials ~/cloudflare
 ```
 
 ### 阿里云DNS
-- 安装插件
+安装插件
 ```
 sudo apt install python3-certbot-dns-aliyun -yq
 ```
-- 配置
+配置
 ```
 dns_aliyun_access_key = YOUR_ACCESS_KEY_ID
 dns_aliyun_secret_key = YOUR_ACCESS_KEY_SECRET
