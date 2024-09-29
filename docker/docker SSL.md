@@ -8,7 +8,7 @@ apt update && apt install certbot -yq
 ```
 sudo certbot certonly --standalone --non-interactive --email youremail@example.com --agree-tos -d example.com -d www.example.com
 ```
-替换`example.com`示例域名
+替换`example.com`示例域名，替换`youremail@example.com`示例邮箱
 
 ### 查看自动续期任务
 ```
