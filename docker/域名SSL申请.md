@@ -39,7 +39,7 @@ dns_cloudflare_api_token = YOUR_API_TOKEN
 
 4：申请
 ```
-sudo certbot certonly --dns-cloudflare --dns-cloudflare-credentials ~/cloudflare.ini --non-interactive --agree-tos -d example.com
+sudo certbot certonly --dns-cloudflare --dns-cloudflare-credentials ./cloudflare.ini --non-interactive --agree-tos -d example.com
 ```
 
 
@@ -54,61 +54,60 @@ sudo certbot certonly --dns-cloudflare --dns-cloudflare-credentials ~/cloudflare
 ```
 sudo apt install python3-certbot-dns-aliyun -yq
 ```
-3：`cloudflare.ini`配置
+3：配置`aliyun.ini`
 ```
 dns_aliyun_access_key = YOUR_ACCESS_KEY_ID
 dns_aliyun_secret_key = YOUR_ACCESS_KEY_SECRET
 ```
 
+4：申请
+```
+sudo certbot certonly --dns-aliyun --dns-aliyun-credentials ./aliyun.ini --non-interactive --agree-tos -d example.com
+```
+
+
+
+
 
 ---
 ---
 ---
 
-## docker一键申请
+## Docker-compose申请
 
 ```
 services:
   https-portal:
-    image: steveltn/https-portal:1
+    image: steveltn/https-portal
     ports:
       - '80:80'
       - '443:443'
     environment:
-      DOMAINS: 'example.com' # 你的域名
-      STAGE: 'production' # 生产环境
-      FORCE_RENEW: 'true' # 证书续订
+      DOMAINS: 'example.com'            # 你的域名
+      STAGE: 'production'               # 生产环境
     volumes:
-      - https-portal-data:/var/lib/https-portal
-      - /var:/var/lib/https-portal # 映射文件到宿主机
-
-volumes:
-  https-portal-data:
+      - ./https-data:/var/lib/https-portal     # 证书存储文件
 ```
 
 
-### dns方式申请
+- 强制续期证书：`FORCE_RENEW: 'true'`
+
+#### dns方式申请
 
 ```
 services:
   https-portal:
-    image: steveltn/https-portal:1
-    ports:
-      - '80:80'
-      - '443:443'
+    image: steveltn/https-portal
     environment:
-      DOMAINS: 'example.com' # 你的域名
+      DOMAINS: 'example.com'          # 你的域名
       STAGE: 'production'
-      FORCE_RENEW: 'true' # 证书续订
-      DNS_PROVIDER: 'cloudflare' # 或 'alidns'
-      CLOUDFLARE_EMAIL: 'your-email@example.com' # 对应于Cloudflare
-      CLOUDFLARE_API_KEY: 'your-cloudflare-api-token' # 对应于Cloudflare
-      # ALI_KEY: 'your-ali-access-key-id' # 对应于阿里云
-      # ALI_SECRET: 'your-ali-access-key-secret' # 对应于阿里云
+      DNS_PROVIDER: 'cloudflare'                   # 或 'alidns'
+      CLOUDFLARE_EMAIL: 'email@example.com'        # 对于Cloudflare
+      CLOUDFLARE_API_KEY: 'cloudflare-api-token'   # 对于Cloudflare
+      # ALI_KEY: 'ali-access-key-id'               # 对于阿里云
+      # ALI_SECRET: 'ali-access-key-secret'        # 对于阿里云
     volumes:
-      - https-portal-data:/var/lib/https-portal
-      - /var:/var/lib/https-portal # 映射文件到宿主机
-
-volumes:
-  https-portal-data:
+      - ./https-data:/var/lib/https-portal         # 证书存储文件
 ```
+
+- 强制续期证书：`FORCE_RENEW: 'true'`
