@@ -1,38 +1,50 @@
-# acme域名证书脚本
+# certbot申请域名证书
+### 安装
+```
+apt update && apt install certbot -yq
+```
+### 申请证书
+临时占用80端口
+```
+sudo certbot certonly --standalone -d example.com -d www.example.com
+```
+替换`example.com`示例域名
 
-[官方文档](https://github.com/acmesh-official/acme.sh/wiki/%E8%AF%B4%E6%98%8E)
-
-## 安装脚本
- **官方脚本：** 
+### 查看自动续期任务
 ```
-apt install socat curl -y
+sudo certbot renew --dry-run
 ```
-```
-curl https://get.acme.sh | sh
-```
-
-## 使用HTTP方式申请
-```
-~/.acme.sh/acme.sh --issue --standalone -d 你的域名 --server letsencrypt
-```
-切换CA机构
-```
-~/.acme.sh/acme.sh --issue --standalone -d 你的域名 --server https://acme.zerossl.com/v2/DV90
-```
+默认情况下，Certbot会将证书存储在`/etc/letsencrypt/live/example.com/`目录下
 
 
-## 安装证书(可选)
+
+### 使用Cloudflare的DNS方式申请证书
+安装DNS插件
 ```
-~/.acme.sh/acme.sh --install-cert -d 你的域名 --cert-file /etc/ssl/cert.pem --key-file /etc/ssl/key.pem --fullchain-file /etc/ssl/fullchain.pem
+sudo apt install python3-certbot-dns-cloudflare -yq
 ```
-可以在结尾添加`--reloadcmd "service nginx reload`直接配置到nginx
+### 创建配置文件`cloudflare.ini`，配置文件填入`api_token`
+```
+dns_cloudflare_api_token = YOUR_API_TOKEN
+```
+
+### 申请
+```
+sudo certbot certonly --dns-cloudflare --dns-cloudflare-credentials ~/cloudflare.ini -d example.com -d www.example.com
+```
+
+### 阿里云DNS
+安装插件
+```
+sudo apt install python3-certbot-dns-aliyun -yq
+```
+配置
+```
+dns_aliyun_access_key = YOUR_ACCESS_KEY_ID
+dns_aliyun_secret_key = YOUR_ACCESS_KEY_SECRET
+```
 
 
-### win系统申请证书
-
-[进入win系统acme官网](https://www.win-acme.com/)
-
-下载程序，执行exe文件，按照提示操作
 
 
 # docker一键申请
