@@ -8,13 +8,13 @@ apt update && apt install certbot -yq
 ```
 sudo certbot certonly --standalone --non-interactive --agree-tos -d example.com
 ```
-替换`example.com`示例域名
+替换`example.com`示例域名，可一次性申请多个域名
 
 #### 查看自动续期任务
 ```
 sudo certbot renew --dry-run
 ```
-默认情况下，Certbot会将证书存储在`/etc/letsencrypt/live/example.com/`目录下
+默认情况下，Certbot会将证书存储在`/etc/letsencrypt/live/`目录下
 
 ---
 ---
