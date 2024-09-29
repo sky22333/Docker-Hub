@@ -38,6 +38,9 @@ sudo certbot certonly --dns-cloudflare --dns-cloudflare-credentials ~/cloudflare
 ```
 
 ### 阿里云DNS
+
+进入`访问控制` -> `Access Keys`，创建一个`Access Key ID`和`Access Key Secret`
+
 安装插件
 ```
 sudo apt install python3-certbot-dns-aliyun -yq
