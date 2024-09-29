@@ -1,16 +1,18 @@
-# certbot申请域名证书
-#### 安装certbot
+## certbot申请域名证书
+
+### 使用80端口
+**1：安装certbot**
 ```
 apt update && apt install certbot -yq
 ```
-#### 申请证书
+**2：申请证书**
 临时占用80端口
 ```
 sudo certbot certonly --standalone --non-interactive --agree-tos -d example.com
 ```
 替换`example.com`示例域名，多个`-d`可为多个域名申请
 
-#### 查看自动续期任务
+**3：查看自动续期任务**
 ```
 sudo certbot renew --dry-run
 ```
@@ -19,33 +21,33 @@ sudo certbot renew --dry-run
 ---
 ---
 
-#### 使用Cloudflare的DNS方式申请证书
+### 使用Cloudflare的DNS方式申请证书
 
-`Cloudflare`进入`我的个人资料` -> `API令牌`，创建一个新的令牌，权限为：`区域——DNS——编辑`，区域资源为：`包括——特定区域——选择域名`。
+1：`Cloudflare`进入`我的个人资料` -> `API令牌`，创建一个新的令牌，权限为：`区域——DNS——编辑`，区域资源为：`包括——特定区域——选择域名`。
 
-安装DNS插件
+2：安装DNS插件
 ```
 sudo apt install python3-certbot-dns-cloudflare -yq
 ```
-创建配置文件`cloudflare.ini`，配置文件填入`api_token`
+3：创建配置文件`cloudflare.ini`，配置文件填入`api_token`
 ```
 dns_cloudflare_api_token = YOUR_API_TOKEN
 ```
 
-### 申请
+4：申请
 ```
 sudo certbot certonly --dns-cloudflare --dns-cloudflare-credentials ~/cloudflare.ini --non-interactive --agree-tos -d example.com
 ```
 
 ### 阿里云DNS
 
-进入`访问控制` -> `Access Keys`，创建一个`Access Key ID`和`Access Key Secret`
+1：进入`访问控制` -> `Access Keys`，创建一个`Access Key ID`和`Access Key Secret`
 
-安装插件
+2：安装插件
 ```
 sudo apt install python3-certbot-dns-aliyun -yq
 ```
-`cloudflare.ini`配置
+3：`cloudflare.ini`配置
 ```
 dns_aliyun_access_key = YOUR_ACCESS_KEY_ID
 dns_aliyun_secret_key = YOUR_ACCESS_KEY_SECRET
@@ -55,7 +57,7 @@ dns_aliyun_secret_key = YOUR_ACCESS_KEY_SECRET
 ---
 ---
 
-# docker一键申请
+## docker一键申请
 
 ```
 services:
