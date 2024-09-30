@@ -2,24 +2,40 @@
 
 先把MP4视频放入`/home/videos`目录下
 
-
 ```
-mkdir /home/videos && cd /home/videos
-```
-
-
-
-```
-docker run -d --restart always \
-  --network host \
-  -v /home/videos:/tmp/video \
-  linuxserver/ffmpeg \
-  -re -stream_loop -1 -i /tmp/video/视频文件名称.mp4 \
-  -c:v libx264 -preset veryfast -b:v 1500k \
-  -c:a aac -b:a 92k \
-  -f flv "推流地址"
+services:
+  ffmpeg:
+    image: linuxserver/ffmpeg
+    restart: always
+    network_mode: host
+    volumes:
+      - /home/videos:/video
+    command: >
+      -re -stream_loop -1 -i /video/视频文件名.mp4
+      -c:v libx264 -preset veryfast -b:v 1500k
+      -c:a aac -b:a 92k
+      -f flv "推流地址和推流码"
 ```
 
+
+
+
+
+---
+---
+
+### 拉流直播源并推流
+```
+services:
+  ffmpeg:
+    image: dapiaoliang666/ffmpeg
+    container_name: ffmpeg
+    network_mode: host
+    environment:
+      - SOURCE_URL=直播源URL
+      - STREAM_URL=推流地址和推流码
+    restart: always
+```
 
 ---
 
