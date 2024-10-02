@@ -1,6 +1,10 @@
 ## 自建Poste.io邮局系统
 
 ### 1：检查25端口是否能通
+
+```
+apt update && apt install telnet -y
+```
 ```
 telnet smtp.gmail.com 25
 ```
