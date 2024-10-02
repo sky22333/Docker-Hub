@@ -116,16 +116,4 @@ mysql -u root -p my_database < my_database_backup.sql
 
 
 
-### 邮件设置：
 
- [微软outlook邮箱教程](https://garden.1900.live/22-knowledge/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/windows/%E5%BC%80%E5%90%AF%E5%BE%AE%E8%BD%AF-outlook-%E9%82%AE%E7%AE%B1-pop-imap-smtp-%E6%9C%8D%E5%8A%A1%E5%92%8C%E8%8E%B7%E5%8F%96%E6%9C%8D%E5%8A%A1%E5%AF%86%E7%A0%81-%E6%8E%88%E6%9D%83%E7%A0%81)
-
-SMTP服务器地址：谷歌邮箱`smtp.gmail.com`， 163邮箱`smtp.163.com`， 雅虎邮箱`smtp.mail.yahoo.com`。
-
-SMTP 端口：465 (SSL)/587 (TLS)
-
-SMTP密码：谷歌搜索`Gmail邮箱获取SMTP密码教程`
-
-打开Gmail邮箱——点击设置——点击查看所有设置——点击转发和 POP/IMAP——启用 IMAP——点击保存更改——点击继续
-
-点击管理你的google账号——点击安全性——点击两步验证——开启两步验证——点开两步验证——拉到最下面——点击应用专用密码——应用选择其他——自定义一个名称——点击生成
