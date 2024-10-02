@@ -38,7 +38,7 @@ services:
     image: analogic/poste.io
     container_name: mailer
     restart: always
-    hostname: mail.example.com  # 容器内主机名
+    hostname: mail.example.com  # 容器内主机名替换你的域名
     network_mode: host
     environment:
       - TZ=Asia/Shanghai  # 时区设置
