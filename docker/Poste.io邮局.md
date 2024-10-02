@@ -28,6 +28,8 @@ Escape character is '^]'.
 | TXT    | s20241002362._domainkey   | k=rsa; p=MIIBIjA.............xXX            | 仅 DNS   |  自动      |
 
 > 最后一条`TXT`记录需要部署完成后进面板查看名称和内容。
+>
+> 替换`example.com`为你的域名
 
 ### 3：`docker-compose.yaml`启动
 ```
