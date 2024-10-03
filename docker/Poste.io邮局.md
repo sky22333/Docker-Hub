@@ -77,7 +77,47 @@ services:
 
 
 ---
+### poste.io批量创建邮箱脚本
+```
+#!/bin/bash
 
+# Poste.io 容器ID或名称
+CONTAINER_ID="mailer"
+
+# 邮箱的@后缀，也就是根域名
+DOMAIN="example.com"
+
+# 所有邮箱账户的统一密码
+PASSWORD="asd123456"
+
+# 如果域名不存在，则创建域名
+echo "创建域名 $DOMAIN (如果不存在)"
+docker exec $CONTAINER_ID poste domain:create $DOMAIN
+
+# 创建邮箱账户
+for i in {100..200}
+do
+    EMAIL="$i@$DOMAIN"
+    echo "正在创建邮箱: $EMAIL"
+    docker exec $CONTAINER_ID poste email:create $EMAIL $PASSWORD
+    
+    # 检查上一个命令的退出状态
+    if [ $? -eq 0 ]; then
+        echo "成功创建邮箱 $EMAIL"
+    else
+        echo "创建邮箱 $EMAIL 失败"
+    fi
+    
+    # 可选：添加小延迟以避免对服务器造成过大压力
+    sleep 1
+done
+
+echo "邮箱创建过程完成。"
+```
+
+
+
+---
 
 ### 其他邮箱
 
