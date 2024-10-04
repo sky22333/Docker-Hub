@@ -93,10 +93,6 @@ docker run -d \
 
 
 
-#### [官方地址](https://github.com/LightCountry/TokenPay)
-
-
-
 ## `v2board`对接`TokenPay`
 
 ### 1. 将插件复制到`v2board`对应目录
@@ -209,6 +205,8 @@ class TokenPay {
 
 
 ### 原版部署
+
+- [官方地址](https://github.com/LightCountry/TokenPay)
 
 - `docker-compose.yaml`
 
