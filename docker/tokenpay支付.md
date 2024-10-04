@@ -282,8 +282,8 @@ else
         .card {
             background-color: rgba(248, 248, 248, 0.8);
             border-radius: 1rem;
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
-            padding: 0.2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            padding: 0.8rem;
             backdrop-filter: blur(15px);
             transition: all 0.3s ease;
         }
