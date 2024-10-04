@@ -497,9 +497,36 @@ else
             popup.classList.add('show');
             setTimeout(() => {
                 popup.classList.remove('show');
-            }, 2000);
+            }, 1000);
         }
-    </script>
+        $(() => {
+            timer();
+            Time = setInterval(Check, 1000);
+        })
+        function Check() {
+            var RedirectUrl = "@(Model?.RedirectUrl)";
+                $.get("/Check/@(Model?.Id)")
+                    .then(x => {
+                        if (x === 'Pending') {
+                            console.log('待支付')
+                        } else if (x === 'Expired') {
+                            clearInterval(Time)
+                            console.log('订单过期')
+                            location.reload();
+                        } else if (x === 'Paid') {
+                            clearInterval(Time)
+                            console.log('已支付')
+                            setTimeout(() => {
+                                if (RedirectUrl) {
+                                    location = RedirectUrl
+                                } else {
+                                    alert("已支付")
+                                }
+                            }, 0)
+                        }
+                    })
+            }
+        </script>
     }
 }
 ```
