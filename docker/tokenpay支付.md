@@ -255,6 +255,7 @@ else
     <style>
         /* 全局样式 */
         :root {
+            --bs-gutter-x: 0.2rem;
             --primary-color: rgba(0, 0, 0, 0.7);
             --secondary-color: rgba(107, 70, 193, 0.9);
             --accent-color: rgba(0, 0, 0, 0.9);
@@ -281,8 +282,8 @@ else
         .card {
             background-color: rgba(248, 248, 248, 0.8);
             border-radius: 1rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            padding: 1rem;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+            padding: 0.2rem;
             backdrop-filter: blur(15px);
             transition: all 0.3s ease;
         }
