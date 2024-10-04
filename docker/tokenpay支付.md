@@ -266,9 +266,8 @@ else
         }
 
         blockquote, dd, dl, figure, h1, h2, h3, h4, h5, h6, hr, p, pre {
-		  margin: revert; 
-	   }
-
+            margin: revert;
+        }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -282,20 +281,15 @@ else
         .card {
             background-color: rgba(248, 248, 248, 0.8);
             border-radius: 1rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            padding: 0.8rem;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+            padding: 0.2rem;
             backdrop-filter: blur(15px);
             transition: all 0.3s ease;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
         .title {
             font-size: 1.5rem;
-            color: rgb(0, 0, 0, 0.5)
+            color: rgb(0, 0, 0, 0.5);
             text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
         }
 
@@ -337,6 +331,93 @@ else
         .center {
             text-align: center;
         }
+
+        .my-4 {
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* 新增和修改的样式 */
+        .copyable-container {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 0.5rem;
+            cursor: pointer;
+            position: relative;
+            padding: 0.5rem;
+        }
+
+        .copyable-content {
+            border: 2px dashed rgba(0, 0, 0, 0.9);
+            border-radius: 0.5rem;
+            padding: 0.2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .copyable-content::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: repeating-linear-gradient(
+                45deg,
+                rgba(0, 0, 0, 0.9),
+                rgba(0, 0, 0, 0.3) 10px,
+                transparent 10px,
+                transparent 20px
+            );
+            animation: snake 20s linear infinite;
+            pointer-events: none;
+        }
+
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .popup.show {
+            opacity: 1;
+        }
+
+        /* 使用 Razor 代码块来包装 keyframes */
+        @{
+		    <text>
+		        @@keyframes snake {
+		            0% {
+		                background-position: 0 0;
+		                background: repeating-linear-gradient(
+		                    45deg,
+		                    rgba(0, 0, 0, 0.06), /* 透明度 */
+		                    rgba(0, 0, 0, 0.1) 10px,
+		                    transparent 10px,
+		                    transparent 20px
+		                );
+		            }
+		            100% {
+		                background-position: 400px 0;
+		                background: repeating-linear-gradient(
+		                    45deg,
+		                    rgba(0, 0, 0, 0.06), /* 透明度 */
+		                    rgba(0, 0, 0, 0.1) 10px,
+		                    transparent 10px,
+		                    transparent 20px
+		                );
+		            }
+		        }
+		    </text>
+		}
     </style>
 
     <div class="container mx-auto px-2 h-screen flex flex-col">
@@ -344,32 +425,34 @@ else
             <h1 class="title text-center animate__animated animate__bounceIn">支付详情</h1>
             <p class="text-center mb-4">您正在支付 <span class="text-black">@Model.Currency.ToBlockchainName(chain)</span> 的 <span class="text-black">@Model.Currency.ToCurrency(chain,true)</span></p>
 
-            <div class="flex justify-center mb-4">
-                <div class="input-group relative w-full max-w-md">
-                    <input type="text" id="Token" value="@Model.ToAddress" readonly class="form-control p-2 border-2 rounded" placeholder=" ">
-                    <button class="btn btn-primary absolute right-0 top-0 bottom-0 rounded-r" data-clipboard-target="#Token">复制</button>
-                </div>
-            </div>
-
-            <div class="timer text-center mb-4 animate__animated animate__pulse animate__infinite">
+            <div class="timer text-center mb-4 animate__animated animate__pulse animate__infinite time">
                 剩余时间：<span class="text-black"><span id="day_show"></span><span id="hour_show"></span><span id="minute_show"></span><span id="second_show"></span></span>
             </div>
 
             <p class="warning text-center">请仔细核对币种和金额！</p>
 
-			<div class="text-center my-4 flex flex-col items-center">
-			    <p class="text-black font-bold">区块链：<span class="text-red-500">@Model.Currency.ToBlockchainName(chain)</span> 币种：<span class="text-red-500">@Model.Currency.ToCurrency(chain)</span></p>
-			    <img src="data:image/png;base64,@ViewData["QrCode"]" class="qr-code border border-gray-300 my-2" alt="收款地址" width="200" height="200">
-			    <p class="text-black font-bold text-sm mt-2">@Model.ToAddress</p>
-			</div>
-
+            <div class="text-center my-4 flex flex-col items-center">
+                <p class="text-black font-bold">区块链：<span class="text-red-500">@Model.Currency.ToBlockchainName(chain)</span> 币种：<span class="text-red-500">@Model.Currency.ToCurrency(chain)</span></p>
+                <img src="data:image/png;base64,@ViewData["QrCode"]" class="qr-code border border-gray-300 my-2" alt="收款地址" width="200" height="200">
+                <div class="copyable-container" onclick="copyToClipboard('@Model.ToAddress', '地址已复制')">
+                    <div class="copyable-content">
+                        <span class="text-black font-bold text-sm">@Model.ToAddress</span>
+                    </div>
+                </div>
+            </div>
 
             <div class="text-center">
-                <p class="text-black">支付金额：<span class="text-black">@Model.Amount @Model.Currency.ToCurrency(chain)</span> <button class="btn btn-primary btn-sm" data-clipboard-text="@Model.Amount">复制</button></p>
+                <p class="text-black">支付金额：
+                    <span class="copyable-container" onclick="copyToClipboard('@Model.Amount', '金额已复制')">
+                        <span class="copyable-content text-black">@Model.Amount @Model.Currency.ToCurrency(chain)</span>
+                    </span>
+                </p>
                 <p class="text-black">订单编号：<span class="text-black">@Model.OutOrderId</span></p>
             </div>
         </div>
     </div>
+
+    <div id="popup" class="popup">复制成功</div>
 
     @section Scripts {
     <script>
@@ -378,31 +461,44 @@ else
         function timer() {
             window.setInterval(function () {
                 var intDiff = (EndTime - new Date(new Date().toISOString().replace('T',' ').replace('Z',''))) / 1000;
-                if (intDiff <= 0) return;
-                $(".timer").removeClass("invisible");
-                var day = 0,
-                    hour = 0,
-                    minute = 0,
-                    second = 0;
-                if (intDiff > 0) {
-                    day = Math.floor(intDiff / (60 * 60 * 24));
-                    hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
-                    minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
-                    second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+                if (intDiff <= 0) {
+                    clearInterval(Time);
+                    alert("支付时间已到，请重新发起支付。");
+                    window.location.href = "/Order/Error";
+                } else {
+                    var day = 0, hour = 0, minute = 0, second = 0;
+                    if (intDiff > 0) {
+                        day = Math.floor(intDiff / (60 * 60 * 24));
+                        hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+                        minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+                        second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+                    }
+                    if (minute <= 9) minute = '0' + minute;
+                    if (second <= 9) second = '0' + second;
+                    document.getElementById('day_show').innerHTML = day + "天";
+                    document.getElementById('hour_show').innerHTML = hour + "时";
+                    document.getElementById('minute_show').innerHTML = minute + "分";
+                    document.getElementById('second_show').innerHTML = second + "秒";
                 }
-                if (minute <= 9) minute = '0' + minute;
-                if (second <= 9) second = '0' + second;
-                if (day)
-                    $('#day_show').html(day + "天");
-                if (hour)
-                    $('#hour_show').html('<s id="h"></s>' + hour + '时');
-                if (minute)
-                    $('#minute_show').html('<s></s>' + minute + '分');
-                if (second)
-                    $('#second_show').html('<s></s>' + second + '秒');
             }, 1000);
         }
         timer();
+
+        function copyToClipboard(value, message) {
+            const el = document.createElement('textarea');
+            el.value = value;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+
+            const popup = document.getElementById('popup');
+            popup.textContent = message;
+            popup.classList.add('show');
+            setTimeout(() => {
+                popup.classList.remove('show');
+            }, 2000);
+        }
     </script>
     }
 }
