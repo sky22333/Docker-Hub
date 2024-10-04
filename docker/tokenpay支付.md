@@ -250,7 +250,6 @@ services:
 }
 else
 {
-    <!-- 引入 Tailwind -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <style>
         /* 全局样式 */
@@ -399,8 +398,8 @@ else
 		                background-position: 0 0;
 		                background: repeating-linear-gradient(
 		                    45deg,
-		                    rgba(0, 0, 0, 0.06), /* 透明度 */
-		                    rgba(0, 0, 0, 0.1) 10px,
+		                    rgba(0, 0, 0, 0.05), /* 透明度 */
+		                    rgba(0, 0, 0, 0.05) 10px,
 		                    transparent 10px,
 		                    transparent 20px
 		                );
@@ -409,8 +408,8 @@ else
 		                background-position: 400px 0;
 		                background: repeating-linear-gradient(
 		                    45deg,
-		                    rgba(0, 0, 0, 0.06), /* 透明度 */
-		                    rgba(0, 0, 0, 0.1) 10px,
+		                    rgba(0, 0, 0, 0.05), /* 透明度 */
+		                    rgba(0, 0, 0, 0.05) 10px,
 		                    transparent 10px,
 		                    transparent 20px
 		                );
