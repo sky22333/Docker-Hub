@@ -204,3 +204,205 @@ class TokenPay {
     }
 }
 ```
+
+
+
+
+### 原版部署
+
+- `docker-compose.yaml`
+
+```
+services:
+  token-pay:
+    build: .
+    restart: always
+    ports:
+      - "5000:8080"
+    volumes:
+      - ./appsettings.json:/app/appsettings.json
+      - ./TokenPay.db:/app/TokenPay.db
+      - ./Pay.cshtml:/app/Views/Home/Pay.cshtml
+```
+
+
+- `Pay.cshtml`美化代码
+
+```
+@{
+    ViewData["Title"] = "支付页";
+    var Now = DateTime.Now.ToUniversalTime();
+    var ExpireTime = ViewData.ContainsKey("ExpireTime") ? Convert.ToDateTime(ViewData["ExpireTime"]).ToUniversalTime() : Now;
+}
+@using TokenPay.Domains;
+@using TokenPay.Extensions;
+@using TokenPay.Models.EthModel;
+@model TokenPay.Domains.TokenOrders;
+@inject List<EVMChain> chain;
+
+@if (Model == null)
+{
+    <div class="row align-items-center h-100">
+        <div class="text-center">
+            <h1 class="display-4">订单不存在！</h1>
+        </div>
+    </div>
+}
+else
+{
+    <!-- 引入 Tailwind -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* 全局样式 */
+        :root {
+            --primary-color: rgba(0, 0, 0, 0.7);
+            --secondary-color: rgba(107, 70, 193, 0.9);
+            --accent-color: rgba(0, 0, 0, 0.9);
+            --text-color: rgba(31, 41, 55, 0.9);
+            --gradient-color-1: rgba(255, 255, 255, 0.1);
+            --gradient-color-2: rgba(233, 233, 233, 0.2);
+            --gradient-color-3: rgba(200, 200, 200, 0.3);
+        }
+
+        blockquote, dd, dl, figure, h1, h2, h3, h4, h5, h6, hr, p, pre {
+		  margin: revert; 
+	   }
+
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            background: linear-gradient(-45deg, var(--gradient-color-1), var(--gradient-color-2), var(--gradient-color-3));
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            min-height: 100vh;
+        }
+
+        .card {
+            background-color: rgba(248, 248, 248, 0.8);
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+            backdrop-filter: blur(15px);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .title {
+            font-size: 1.5rem;
+            color: rgb(0, 0, 0, 0.5)
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            transition: all 0.3s ease;
+            padding: 0.2rem 0.6rem;
+            border: none;
+            border-radius: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .timer {
+            font-size: 1.5rem;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .warning {
+            color: rgb(0, 0, 0);
+            animation: pulse 2s infinite;
+        }
+
+        .qr-code {
+            border-radius: 1rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            margin: 1rem 0;
+        }
+
+        .text-black {
+            color: black !important;
+        }
+
+        .center {
+            text-align: center;
+        }
+    </style>
+
+    <div class="container mx-auto px-2 h-screen flex flex-col">
+        <div class="card animate__animated animate__fadeIn flex-grow h-auto">
+            <h1 class="title text-center animate__animated animate__bounceIn">支付详情</h1>
+            <p class="text-center mb-4">您正在支付 <span class="text-black">@Model.Currency.ToBlockchainName(chain)</span> 的 <span class="text-black">@Model.Currency.ToCurrency(chain,true)</span></p>
+
+            <div class="flex justify-center mb-4">
+                <div class="input-group relative w-full max-w-md">
+                    <input type="text" id="Token" value="@Model.ToAddress" readonly class="form-control p-2 border-2 rounded" placeholder=" ">
+                    <button class="btn btn-primary absolute right-0 top-0 bottom-0 rounded-r" data-clipboard-target="#Token">复制</button>
+                </div>
+            </div>
+
+            <div class="timer text-center mb-4 animate__animated animate__pulse animate__infinite">
+                剩余时间：<span class="text-black"><span id="day_show"></span><span id="hour_show"></span><span id="minute_show"></span><span id="second_show"></span></span>
+            </div>
+
+            <p class="warning text-center">请仔细核对币种和金额！</p>
+
+			<div class="text-center my-4 flex flex-col items-center">
+			    <p class="text-black font-bold">区块链：<span class="text-red-500">@Model.Currency.ToBlockchainName(chain)</span> 币种：<span class="text-red-500">@Model.Currency.ToCurrency(chain)</span></p>
+			    <img src="data:image/png;base64,@ViewData["QrCode"]" class="qr-code border border-gray-300 my-2" alt="收款地址" width="200" height="200">
+			    <p class="text-black font-bold text-sm mt-2">@Model.ToAddress</p>
+			</div>
+
+
+            <div class="text-center">
+                <p class="text-black">支付金额：<span class="text-black">@Model.Amount @Model.Currency.ToCurrency(chain)</span> <button class="btn btn-primary btn-sm" data-clipboard-text="@Model.Amount">复制</button></p>
+                <p class="text-black">订单编号：<span class="text-black">@Model.OutOrderId</span></p>
+            </div>
+        </div>
+    </div>
+
+    @section Scripts {
+    <script>
+        let Time;
+        var EndTime = new Date('@ExpireTime.ToUniversalTime().ToString("yyyy/MM/dd HH:mm:ss")');
+        function timer() {
+            window.setInterval(function () {
+                var intDiff = (EndTime - new Date(new Date().toISOString().replace('T',' ').replace('Z',''))) / 1000;
+                if (intDiff <= 0) return;
+                $(".timer").removeClass("invisible");
+                var day = 0,
+                    hour = 0,
+                    minute = 0,
+                    second = 0;
+                if (intDiff > 0) {
+                    day = Math.floor(intDiff / (60 * 60 * 24));
+                    hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+                    minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+                    second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+                }
+                if (minute <= 9) minute = '0' + minute;
+                if (second <= 9) second = '0' + second;
+                if (day)
+                    $('#day_show').html(day + "天");
+                if (hour)
+                    $('#hour_show').html('<s id="h"></s>' + hour + '时');
+                if (minute)
+                    $('#minute_show').html('<s></s>' + minute + '分');
+                if (second)
+                    $('#second_show').html('<s></s>' + second + '秒');
+            }, 1000);
+        }
+        timer();
+    </script>
+    }
+}
+```
