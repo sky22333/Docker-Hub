@@ -1,6 +1,6 @@
 ### docker版ffmpeg无人值守推流直播：
 
-先把MP4视频放入`/home/videos`目录下
+先把MP4视频放入同目录下
 
 ```
 services:
@@ -9,7 +9,7 @@ services:
     restart: always
     network_mode: host
     volumes:
-      - /home/videos:/video
+      - ./:/video
     command: >
       -re -stream_loop -1 -i /video/视频文件名.mp4
       -c:v libx264 -preset veryfast -b:v 1500k
