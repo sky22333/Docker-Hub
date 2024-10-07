@@ -4,6 +4,9 @@
 
 [自建Docker镜像加速](https://github.com/sky22333/Docker-Hub/tree/main/registry-mirror) 支持多种仓库
 
+我的另一个开源项目，拉取镜像并自动打包为离线包，方便内网环境使用，[项目地址。
+](https://github.com/sky22333/download)
+
 ### 安装Docker（如果安装困难可以选择手动安装）
 官方安装脚本：
 
