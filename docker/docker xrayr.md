@@ -45,7 +45,7 @@ mkdir -p /etc/XrayR && cd /etc/XrayR
 
 解压文件
 ```
-unzip /etc/XrayR-linux-64.zip
+unzip XrayR-linux-64.zip
 ```
 
 编辑节点配置`/etc/XrayR/config.yml`
