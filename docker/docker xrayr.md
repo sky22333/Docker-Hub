@@ -3,10 +3,6 @@
 ```  
 mkdir -p /etc/XrayR && touch /etc/XrayR/config.yml && cd /etc/XrayR
 ```
-
-```
-docker pull cloudorz/xrayr:latest
-```
 ```
 docker run --restart=always --name xrayr -d -v /etc/XrayR/config.yml:/etc/XrayR/config.yml --network=host cloudorz/xrayr:latest
 ```
@@ -15,7 +11,9 @@ docker run --restart=always --name xrayr -d -v /etc/XrayR/config.yml:/etc/XrayR/
 
 [配置文件教程地址](https://xrayr-project.github.io/XrayR-doc/xrayr-pei-zhi-wen-jian-shuo-ming/config.html)
 
-
+---
+---
+---
 
 
 ###  脚本安装xrayR：
@@ -26,11 +24,13 @@ wget -N https://raw.githubusercontent.com/XrayR-project/XrayR-release/master/ins
 ```
 wget -N https://raw.githubusercontent.com/wyx2685/V2bX-script/master/install.sh && bash install.sh
 ```
+配置文件路径： `/etc/XrayR`
 
 
 ---
+---
+---
 
-配置文件路径： `/etc/XrayR`
 
 ###  手动安装：
 
@@ -86,9 +86,12 @@ sudo systemctl enable xrayr.service
 sudo systemctl status xrayr.service
 ```
 
-
-
 ---
+---
+---
+
+## 配置
+
 ws传输配置，域名可留空，可更换伪装域名用来优选cf
 ```
 {
@@ -99,12 +102,12 @@ ws传输配置，域名可留空，可更换伪装域名用来优选cf
 }
 ```
 
-# 二级代理
+### 二级代理
 `config.yml`配置中的`RouteConfigPath`和`OutboundConfigPath`注释去掉
 
-## 配置`route.json`
+### 配置`route.json`
 
-#### 路由规则
+### 路由规则
 ```
 {
   "domainStrategy": "IPOnDemand",
@@ -167,7 +170,7 @@ ws传输配置，域名可留空，可更换伪装域名用来优选cf
 }
 ```
 
-## 配置`custom_outbound.json`
+### 配置`custom_outbound.json`
 
 ```
 [
