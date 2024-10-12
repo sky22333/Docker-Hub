@@ -48,8 +48,6 @@ mkdir -p /etc/XrayR && cd /etc/XrayR
 unzip XrayR-linux-64.zip
 ```
 
-编辑节点配置`/etc/XrayR/config.yml`
-
 创建系统服务
 ```
 sudo nano /etc/systemd/system/xrayr.service
