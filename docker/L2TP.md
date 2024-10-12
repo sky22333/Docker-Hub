@@ -1,4 +1,4 @@
-### Docker部署`softethervpn`的`L2TP`协议
+### Docker部署`L2TP`
 ```
 services:
   softethervpn:
@@ -20,8 +20,9 @@ services:
       - /lib/modules:/lib/modules  # 挂载模块以支持功能
 ```
 
+---
 
-### open VPN
+### Docker部署`OpenVPN`
 ```
 services:
   openvpn:
