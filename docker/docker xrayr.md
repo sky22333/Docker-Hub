@@ -20,11 +20,12 @@ docker run --restart=always --name xrayr -d -v /etc/XrayR/config.yml:/etc/XrayR/
 ```
 wget -N https://raw.githubusercontent.com/XrayR-project/XrayR-release/master/install.sh && bash install.sh
 ```
+> 配置文件路径： `/etc/XrayR`
+
 ### v2bx脚本（支持hy2，vless）
 ```
 wget -N https://raw.githubusercontent.com/wyx2685/V2bX-script/master/install.sh && bash install.sh
 ```
-配置文件路径： `/etc/XrayR`
 
 
 ---
