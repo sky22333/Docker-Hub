@@ -12,7 +12,7 @@ root
 root
 ```
 
-[官方文档](https://synctv.wiki/#/zh-cn/quickstart)
+[官方地址](https://github.com/synctv-org/synctv)
 
 
 
