@@ -50,25 +50,45 @@ unzip XrayR-linux-64.zip
 
 编辑节点配置`/etc/XrayR/config.yml`
 
+创建系统服务
+```
+sudo nano /etc/systemd/system/xrayr.service
+```
+```
+[Unit]
+Description=XrayR Service
+After=network.target nss-lookup.target
+Wants=network.target
 
-后台运行
-```
-nohup ./XrayR --config config.yml &
-```
-查看日志
-```
-tail -f nohup.out
+[Service]
+User=root
+Group=root
+Type=simple
+LimitAS=infinity
+LimitRSS=infinity
+LimitCORE=infinity
+LimitNOFILE=999999
+WorkingDirectory=/etc/XrayR/
+ExecStart=/etc/XrayR/XrayR --config /etc/XrayR/config.yml
+Restart=on-failure
+RestartSec=10
 
-cat /etc/nohup.out
+[Install]
+WantedBy=multi-user.target
 ```
-查看进程ID
+
 ```
-ps aux | grep XrayR
+加载服务
+sudo systemctl daemon-reload
+启动服务
+sudo systemctl start xrayr.service
+设置服务开机自启
+sudo systemctl enable xrayr.service
+检查服务状态
+sudo systemctl status xrayr.service
 ```
-停止xrayr
-```
-sudo kill -9 [PID]
-```
+
+
 
 ---
 ws传输配置，域名可留空，可更换伪装域名用来优选cf
