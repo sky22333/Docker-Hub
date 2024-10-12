@@ -6,10 +6,10 @@ services:
     container_name: vpn
     restart: always
     ports:
-      - "500:500/udp"
-      - "4500:4500/udp"
-      - "1701:1701/tcp"
-      - "1194:1194/udp"
+      - "500:500/udp"         # IPsec/IKE 使用的端口
+      - "4500:4500/udp"       # IPsec NAT-T 使用的端口
+      - "1701:1701/tcp"       # L2TP 使用的端口
+      - "1194:1194/udp"       # OpenVPN 使用的端口（如果启用）
     environment:
       - PSK=yM5XdQXECfR6Xbg7      # 预共享密钥
       - USERNAME=admin            # VPN 用户名
