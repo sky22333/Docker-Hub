@@ -5,7 +5,11 @@ services:
     image: siomiz/softethervpn
     container_name: vpn
     restart: always
-    network_mode: host
+    ports:
+      - "500:500/udp"
+      - "4500:4500/udp"
+      - "1701:1701/tcp"
+      - "1194:1194/udp"
     environment:
       - PSK=yM5XdQXECfR6Xbg7      # 预共享密钥
       - USERNAME=admin            # VPN 用户名
@@ -15,6 +19,8 @@ services:
     volumes:
       - /lib/modules:/lib/modules  # 挂载模块以支持功能
 ```
+
+> 或者可以直接使用host网络模式：`network_mode: host`
 
 ---
 
