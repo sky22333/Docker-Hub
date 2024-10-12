@@ -226,11 +226,11 @@ ConnectionConfig:
   DownlinkOnly: 4 # 在上行关闭后连接关闭的时间限制，单位：秒
   BufferSize: 64 # 每个连接的内部缓存大小，单位：KB
 Nodes:
-  - PanelType: "SSpanel" # 面板类型: SSpanel、NewV2board、PMpanel、Proxypanel、V2RaySocks、GoV2Panel、BunPanel
+  - PanelType: "NewV2board" # 面板类型: SSpanel、NewV2board、PMpanel、Proxypanel、V2RaySocks、GoV2Panel、BunPanel
     ApiConfig:
-      ApiHost: "http://127.0.0.1:667" # API 主机地址
-      ApiKey: "123" # API 密钥
-      NodeID: 41 # 节点ID
+      ApiHost: "https://xxxxxx.com" # 面板主机地址
+      ApiKey: "123abcd" # API 密钥
+      NodeID: 3 # 节点ID
       NodeType: V2ray # 节点类型: V2ray、Vmess、Vless、Shadowsocks、Trojan、Shadowsocks-Plugin
       Timeout: 30 # API 请求的超时时间
       EnableVless: false # 是否启用 Vless（仅适用于 V2ray 类型）
