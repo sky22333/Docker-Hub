@@ -112,16 +112,12 @@ services:
 
 ---
 
+自签证书
 ```
-生成私钥
 openssl genrsa -out server.key 2048
+openssl req -new -x509 -key server.key -out server.crt -days 365 \
+    -subj "/C=CN/ST=Beijing/L=Beijing/O=MyCompany/OU=IT/CN=localhost"
 ```
-```
-生成自签证书
-openssl req -new -x509 -key server.key -out server.crt -days 365
-```
-
-在运行此命令时，系统会提示你输入一些信息（如国家、组织、通用名称等）。通用名称（Common Name）通常设置为你要使用的域名或 IP 地址。
 
 ---
 
