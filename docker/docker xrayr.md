@@ -41,7 +41,7 @@ wget -N https://raw.githubusercontent.com/wyx2685/V2bX-script/master/install.sh 
 ```
 mkdir -p /etc/XrayR && cd /etc/XrayR
 ```
-将文件上传到`/etc/XrayR`目录
+将文件上传到`/etc/XrayR`目录下
 
 解压文件
 ```
