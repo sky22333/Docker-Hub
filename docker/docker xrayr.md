@@ -80,8 +80,8 @@ WantedBy=multi-user.target
 ```
 加载服务
 sudo systemctl daemon-reload
-启动服务
-sudo systemctl start xrayr.service
+重启服务
+sudo systemctl restart xrayr.service
 设置服务开机自启
 sudo systemctl enable xrayr.service
 检查服务状态
