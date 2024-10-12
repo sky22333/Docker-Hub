@@ -104,7 +104,7 @@ ws传输配置，域名可留空，可更换伪装域名用来优选cf
 ```
 
 ### 二级代理
-`config.yml`配置中的`RouteConfigPath`和`OutboundConfigPath`注释去掉
+`config.yml`配置中添加路由和出站配置路径
 
 ### 配置`route.json`
 
