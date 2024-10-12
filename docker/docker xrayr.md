@@ -50,7 +50,7 @@ unzip XrayR-linux-64.zip
 
 创建系统服务
 ```
-sudo nano /etc/systemd/system/xrayr.service
+sudo vim /etc/systemd/system/xrayr.service
 ```
 ```
 [Unit]
