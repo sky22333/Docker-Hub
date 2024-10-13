@@ -50,29 +50,25 @@ services:
 ### Docker部署`OpenVPN`
 ```
 services:
-  openvpn:
-    image: kylemanna/openvpn
-    container_name: openvpn
-    restart: always
+  openvpn-as:
+    image: openvpn/openvpn-as
+    container_name: openvpn-as
+    cap_add:
+      - NET_ADMIN
     ports:
-      - "1194:1194/udp"                     # 可以替换为tcp
-    environment:
-      OVPN_SERVER: "udp://123.123.123.123"    # 替换为您的服务器地址
-      OVPN_NETWORK: "10.8.0.0/24"              # VPN 网络地址
-      OVPN_DNS: "8.8.8.8"
-      OVPN_PWD: "your_password"             # 用户密码（如果需要）
+      - 943:943
+      - 443:443
+      - 1194:1194/udp
     volumes:
-      - ./openvpn:/etc/openvpn
+      - ./:/openvpn
+    restart: always
 ```
 
-- 初始化 OpenVPN
-```
-# 生成配置
-docker run -v $(pwd)/openvpn:/etc/openvpn --rm kylemanna/openvpn ovpn_genconfig -u udp://123.123.123.123
+- 管理 OpenVPN
 
-# 初始化 PKI
-docker run -v $(pwd)/openvpn:/etc/openvpn --rm -it kylemanna/openvpn ovpn_initpki
-```
+地址：`https://IP:943/admin`，默认用户为`openvpn`，密码可以在 docker 日志中找到（第一次初始运行时）
+
+为了确保您的设备可以正确连接到您的 VPN，请转到配置 -> 网络设置 -> 将`主机名或 IP 地址`部分更改为您的域名或公网 IP 地址。
 
 ---
 
