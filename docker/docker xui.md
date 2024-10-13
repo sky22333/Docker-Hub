@@ -105,7 +105,8 @@ d1.awsstatic.com
 images-na.ssl-images-amazon.com
 m.media-amazon.com
 player.live-video.net
-one-piece.com
+icloud.com
+www.icloud.com
 lol.secure.dyn.riotcdn.net
 www.lovelive-anime.jp
 www.swift.com
