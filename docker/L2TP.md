@@ -44,40 +44,6 @@ services:
     restart: always
 ```
 
-
----
-
-### Docker部署`OpenVPN`
-
-```
-services:
-  openvpn:
-    image: kylemanna/openvpn
-    container_name: openvpn
-    ports:
-      - "1194:1194/udp"
-    volumes:
-      - ./data:/etc/openvpn # 挂载 PKI 数据
-    environment:
-      - OPENVPN_CONFIG=default
-    cap_add:
-      - NET_ADMIN
-    restart: always
-```
-
-初始化 PKI 数据：
-```
-docker compose exec openvpn ovpn_genconfig -u udp://your-domain-or-ip:1194
-docker compose exec openvpn ovpn_initpki
-```
-
-
-将客户端配置导出到宿主机当前目录：
-```
-docker compose exec openvpn ovpn_getclient client1 > client1.ovpn
-```
-在客户端上使用 OpenVPN 客户端软件，并加载 client1.ovpn 文件以连接到 VPN。
-
 ---
 
 ### WireGuard VPN
