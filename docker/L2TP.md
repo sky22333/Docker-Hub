@@ -80,7 +80,7 @@ docker exec -it openvpn-as /bin/bash
 sacli --user "openvpn" --new_pass "ASDqwer789332" SetLocalPassword
 ```
 
-为了确保您的设备可以正确连接到您的 VPN，请转到配置 -> 网络设置 -> 将`主机名或 IP 地址`部分更改为您的域名或公网 IP 地址。
+转到配置 -> `网络设置` -> 将`主机名或 IP 地址`部分更改为您的域名或公网 IP 地址。
 
 ---
 
