@@ -46,6 +46,7 @@ services:
 ```
 docker logs vpn
 ```
+更多配置信息在`data`目录
 
 [连接教程](https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/docs/ikev2-howto-zh.md#android)
 
