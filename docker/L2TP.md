@@ -42,6 +42,8 @@ services:
 docker logs ikev2
 ```
 
+[连接教程](https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/docs/ikev2-howto-zh.md#android)
+
 ---
 
 ### WireGuard VPN
