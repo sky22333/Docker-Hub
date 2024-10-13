@@ -65,20 +65,13 @@ services:
     restart: always
 ```
 
-首先启动 OpenVPN 服务并初始化 PKI 数据：
+初始化 PKI 数据：
 ```
-docker compose up -d
 docker compose exec openvpn ovpn_genconfig -u udp://your-domain-or-ip:1194
 docker compose exec openvpn ovpn_initpki
 ```
 
-完成 PKI 初始化后，您可以启动 OpenVPN 服务：
-```
-docker-compose up -d
-```
-```
-docker compose exec openvpn easyrsa build-client-full client1 nopass
-```
+
 将客户端配置导出到本地：
 ```
 docker compose exec openvpn ovpn_getclient client1 > client1.ovpn
