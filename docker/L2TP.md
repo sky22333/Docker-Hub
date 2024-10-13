@@ -90,6 +90,13 @@ docker compose exec openvpn ovpn_getclient client1 > client1.ovpn
 ---
 
 ### WireGuard VPN
+
+
+生成密码哈希
+```
+docker run -it ghcr.io/wg-easy/wg-easy wgpw 'YOUR_PASSWORD'
+```
+启动
 ```
 services:
   wg-easy:
@@ -113,6 +120,5 @@ services:
       - ./wireguard:/etc/wireguard
 ```
 
-[在线生成密码哈希值](https://uutool.cn/php-password/)
 
 [官方文档](https://github.com/wg-easy/wg-easy)
