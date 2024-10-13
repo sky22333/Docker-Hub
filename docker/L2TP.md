@@ -3,7 +3,7 @@
 services:
   softethervpn:
     image: siomiz/softethervpn
-    container_name: vpn
+    container_name: l2tp
     restart: always
     ports:
       - "500:500/udp"         # IPsec/IKE 使用的端口
@@ -25,23 +25,21 @@ services:
 ### Docker部署`IKEv2 VPN`
 ```
 services:
-  vpn:
-    image: mberner/strongswan
-    container_name: strongswan
-    cap_add:
-      - NET_ADMIN
-    environment:
-      - VPN_DOMAIN=your_public_ip       # 使用你的公网IP
-      - VPN_NETWORK=10.10.10.0/24       # VPN的内网网络段
-      - VPN_INTERFACE=eth0              # VPN服务器使用的网卡接口
-      - VPN_LOCAL_IP=10.10.10.1         # VPN服务器的本地IP
-      - VPN_PSK=your_preshared_key      # 设置IPsec预共享密钥
+  ipsec-vpn-server:
+    image: hwdsl2/ipsec-vpn-server
+    container_name: ipsec
+    restart: always
+    volumes:
+      - ./data:/etc/ipsec.d
+      - /lib/modules:/lib/modules:ro
     ports:
       - "500:500/udp"
       - "4500:4500/udp"
-    volumes:
-      - /lib/modules:/lib/modules:ro
-    restart: always
+    privileged: true
+```
+查看连接信息
+```
+docker logs ipsec
 ```
 
 ---
