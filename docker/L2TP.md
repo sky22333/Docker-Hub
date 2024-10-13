@@ -94,7 +94,7 @@ docker compose exec openvpn ovpn_getclient client1 > client1.ovpn
 
 生成密码哈希
 ```
-docker run -it ghcr.io/wg-easy/wg-easy wgpw 'YOUR_PASSWORD'
+docker run -it ghcr.io/wg-easy/wg-easy wgpw 'admin7890'
 ```
 启动
 ```
