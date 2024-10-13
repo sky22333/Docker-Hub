@@ -85,6 +85,8 @@ sudo systemctl restart xrayr.service
 sudo systemctl enable xrayr.service
 检查服务状态
 sudo systemctl status xrayr.service
+查看日志
+journalctl -u xrayr.service
 ```
 
 ---
