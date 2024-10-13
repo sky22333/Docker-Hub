@@ -93,9 +93,6 @@ docker compose exec openvpn ovpn_getclient client1 > client1.ovpn
 ```
 services:
   wg-easy:
-    environment:
-      - LANG=zh
-      - WG_HOST=raspberrypi.local
     image: ghcr.io/wg-easy/wg-easy
     container_name: wg-easy
     volumes:
@@ -110,6 +107,9 @@ services:
     sysctls:
       - net.ipv4.ip_forward=1
       - net.ipv4.conf.all.src_valid_mark=1
+    environment:
+      - LANG=zh
+      - WG_HOST=raspberrypi.local
 ```
 
 [官方文档](https://github.com/wg-easy/wg-easy)
