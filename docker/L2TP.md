@@ -96,6 +96,9 @@ docker compose exec openvpn ovpn_getclient client1 > client1.ovpn
 ```
 docker run -it ghcr.io/wg-easy/wg-easy wgpw 'admin7890'
 ```
+
+请将哈希值的`$`替换为`$$`
+
 启动
 ```
 services:
