@@ -22,7 +22,7 @@ services:
 > 或者可以直接使用host网络模式：`network_mode: host`
 
 ---
-### Docker部署`IKEv2 VPN`
+### Docker部署`IKEv2和L2TP`
 ```
 services:
   ipsec-vpn-server:
