@@ -3,7 +3,7 @@
 services:
   softether-vpn:
     image: siomiz/softethervpn
-    container_name: vpn
+    container_name: softethervpn
     restart: always
     ports:
       - "443:443"       # SSTP使用的端口
