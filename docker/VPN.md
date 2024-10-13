@@ -34,14 +34,14 @@ services:
     image: hwdsl2/ipsec-vpn-server
     container_name: vpn
     restart: always
-    volumes:
-      - ./data:/etc/ipsec.d
-      - /lib/modules:/lib/modules:ro
     ports:
       - "500:500/udp"
       - "4500:4500/udp"
       - "1701:1701/udp"
     privileged: true
+    volumes:
+      - ./data:/etc/ipsec.d
+      - /lib/modules:/lib/modules:ro
 ```
 查看连接信息
 ```
