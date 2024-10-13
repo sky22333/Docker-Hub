@@ -66,9 +66,11 @@ services:
 
 - 管理 OpenVPN
 
-地址：`https://IP:943/admin`
+面板地址：`https://IP:943/admin`
+
+日志
 ```
-docker logs -f openvpn-as
+docker logs openvpn-as
 ```
 
 设置密码
