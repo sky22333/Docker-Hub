@@ -25,21 +25,22 @@ services:
 ### Docker部署`IKEv2 VPN`
 ```
 services:
-  strongswan:
-    image: strongswan/strongswan
+  vpn:
+    image: mberner/strongswan
     container_name: strongswan
+    cap_add:
+      - NET_ADMIN
     environment:
-      - VPN_DOMAIN=your_domain             # IP地址
-      - VPN_IPSEC_PSK=your_psk             # 预共享密钥
-      - VPN_USER=your_username             # VPN用户名
-      - VPN_PASSWORD=your_password         # VPN密码
-    volumes:
-      - ./etc/ipsec.d:/etc/ipsec.d
+      - VPN_DOMAIN=your_public_ip       # 使用你的公网IP
+      - VPN_NETWORK=10.10.10.0/24       # VPN的内网网络段
+      - VPN_INTERFACE=eth0              # VPN服务器使用的网卡接口
+      - VPN_LOCAL_IP=10.10.10.1         # VPN服务器的本地IP
+      - VPN_PSK=your_preshared_key      # 设置IPsec预共享密钥
     ports:
       - "500:500/udp"
       - "4500:4500/udp"
-    cap_add:
-      - NET_ADMIN
+    volumes:
+      - /lib/modules:/lib/modules:ro
     restart: always
 ```
 
