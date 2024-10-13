@@ -72,12 +72,10 @@ docker compose exec openvpn ovpn_initpki
 ```
 
 
-将客户端配置导出到本地：
+将客户端配置导出到宿主机当前目录：
 ```
 docker compose exec openvpn ovpn_getclient client1 > client1.ovpn
 ```
-这将创建一个名为 client1.ovpn 的文件，您可以将其下载到您的客户端设备。
-
 在客户端上使用 OpenVPN 客户端软件，并加载 client1.ovpn 文件以连接到 VPN。
 
 ---
