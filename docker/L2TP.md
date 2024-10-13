@@ -111,22 +111,16 @@ services:
     environment:
       - LANG=en
       - WG_HOST=主机IP或者域名
-      - PASSWORD_HASH=$$2a$$12$$NnCFwJocyq7SbRSYd74NzeVOL2wAB1H0iFx/mTQg3xJ8pmgkCUr.W   # 面板密码的哈希值
+      - PASSWORD_HASH=面板密码的哈希值
     volumes:
       - ./wireguard:/etc/wireguard
 ```
 
-生成密码哈希
-```
-docker exec -it wg-easy wgpw 'admin7890'
-```
+[在线生成密码哈希](https://uutool.cn/php-password/)
 
-请将哈希值的`$`替换为`$$`填入变量中
+需要将哈希值的`$`替换为`$$`才是正确的
 
-重启
-```
-docker compose up -d
-```
+
 
 
 
