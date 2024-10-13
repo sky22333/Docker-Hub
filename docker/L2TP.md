@@ -47,42 +47,42 @@ services:
 
 ---
 
-### Docker部署`OpenVPN`
+Docker部署`OpenVPN`
+
 ```
 services:
-  openvpn-as:
-    image: openvpn/openvpn-as
-    container_name: openvpn-as
+  openvpn:
+    image: kylemanna/openvpn
+    container_name: openvpn
+    ports:
+      - "1194:1194/udp"
+    volumes:
+      - ./data:/etc/openvpn # 挂载 PKI 数据
+    environment:
+      - OPENVPN_CONFIG=default
     cap_add:
       - NET_ADMIN
-    ports:
-      - 943:943
-      - 443:443
-      - 1194:1194/udp
-    volumes:
-      - ./:/openvpn
     restart: always
 ```
 
-- 管理 OpenVPN
-
-面板地址：`https://公网IP:943/admin`
-
-日志
+首先启动 OpenVPN 服务并初始化 PKI 数据：
 ```
-docker logs openvpn-as
+docker compose up -d openvpn
+docker compose exec openvpn ovpn_genconfig -u udp://your-domain-or-ip:1194
+docker compose exec openvpn ovpn_initpki
 ```
 
-设置密码
-
+完成 PKI 初始化后，您可以启动 OpenVPN 服务：
 ```
-docker exec -it openvpn-as /bin/bash
+docker-compose up -d
 ```
 ```
-sacli --user "openvpn" --new_pass "ASDqwer789332" SetLocalPassword
+docker compose exec openvpn easyrsa build-client-full client1 nopass
 ```
+将客户端配置导出到本地：
+```
+docker compose exec openvpn ovpn_getclient client1 > client1.ovpn
+```
+这将创建一个名为 client1.ovpn 的文件，您可以将其下载到您的客户端设备。
 
-转到配置 -> `网络设置` -> 将`主机名或 IP 地址`部分更改为您的域名或公网 IP 地址。
-
----
-
+在客户端上使用 OpenVPN 客户端软件，并加载 client1.ovpn 文件以连接到 VPN。
