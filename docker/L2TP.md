@@ -27,7 +27,7 @@ services:
 services:
   ipsec-vpn-server:
     image: hwdsl2/ipsec-vpn-server
-    container_name: ipsec
+    container_name: ikev2
     restart: always
     volumes:
       - ./data:/etc/ipsec.d
@@ -39,7 +39,7 @@ services:
 ```
 查看连接信息
 ```
-docker logs ipsec
+docker logs ikev2
 ```
 
 ---
