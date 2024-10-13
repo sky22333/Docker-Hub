@@ -1,25 +1,30 @@
-### Docker部署`L2TP`
+### Docker部署
 ```
 services:
-  softethervpn:
+  softether-vpn:
     image: siomiz/softethervpn
-    container_name: l2tp
+    container_name: vpn
     restart: always
     ports:
-      - "500:500/udp"         # IPsec/IKE 使用的端口
-      - "4500:4500/udp"       # IPsec NAT-T 使用的端口
-      - "1701:1701/udp"       # L2TP 使用的端口
+      - "443:443"       # SSTP使用的端口
+      - "1194:1194/udp" # OpenVPN使用的端口
+      - "500:500/udp"   # IPsec/IKE使用的端口
+      - "4500:4500/udp" # IPsec NAT-T使用的端口
+      - "1701:1701/udp" # L2TP使用的端口
     environment:
-      - PSK=yM5XdQXECfR6Xbg7      # 预共享密钥
-      - USERNAME=admin            # VPN 用户名
-      - PASSWORD=admin7890        # VPN 密码
+      - PSK=yM5XdQXECfR6Xbg7      # 预共享密钥，用于IPsec连接
+      - USERNAME=admin            # VPN用户名
+      - PASSWORD=admin7890        # VPN密码
+      - OPENVPN_ENABLE=1          # 启用OpenVPN
+      - SSTP_ENABLE=1             # 启用SSTP
     cap_add:
       - NET_ADMIN
     volumes:
-      - /lib/modules:/lib/modules  # 挂载模块以支持功能
+      - /lib/modules:/lib/modules
 ```
 
 > 或者可以直接使用host网络模式：`network_mode: host`
+> 部分协议不需要可以去掉
 
 ---
 ### Docker部署`IKEv2和L2TP`
@@ -84,27 +89,4 @@ services:
 
 ---
 
-### 更多配置
-```
-services:
-  softether-vpn:
-    image: siomiz/softethervpn
-    container_name: softether-vpn
-    restart: always
-    ports:
-      - "443:443"       # SSTP使用的端口
-      - "1194:1194/udp" # OpenVPN使用的端口
-      - "500:500/udp"   # IPsec/IKE使用的端口
-      - "4500:4500/udp" # IPsec NAT-T使用的端口
-      - "1701:1701/udp" # L2TP使用的端口
-    environment:
-      - PSK=yM5XdQXECfR6Xbg7      # 预共享密钥，用于IPsec连接
-      - USERNAME=admin            # VPN用户名
-      - PASSWORD=admin7890        # VPN密码
-      - OPENVPN_ENABLE=1          # 启用OpenVPN
-      - SSTP_ENABLE=1             # 启用SSTP
-    cap_add:
-      - NET_ADMIN
-    volumes:
-      - /lib/modules:/lib/modules
-```
+
