@@ -67,7 +67,7 @@ services:
 
 首先启动 OpenVPN 服务并初始化 PKI 数据：
 ```
-docker compose up -d openvpn
+docker compose up -d
 docker compose exec openvpn ovpn_genconfig -u udp://your-domain-or-ip:1194
 docker compose exec openvpn ovpn_initpki
 ```
