@@ -109,7 +109,7 @@ services:
       - net.ipv4.conf.all.src_valid_mark=1
     environment:
       - LANG=en
-      - WG_HOST=主机IP
+      - WG_HOST=主机IP或者域名
 ```
 
 [官方文档](https://github.com/wg-easy/wg-easy)
