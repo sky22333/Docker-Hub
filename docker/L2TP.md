@@ -86,3 +86,30 @@ docker compose exec openvpn ovpn_getclient client1 > client1.ovpn
 这将创建一个名为 client1.ovpn 的文件，您可以将其下载到您的客户端设备。
 
 在客户端上使用 OpenVPN 客户端软件，并加载 client1.ovpn 文件以连接到 VPN。
+
+---
+
+### WireGuard VPN
+```
+services:
+  wg-easy:
+    environment:
+      - LANG=zh
+      - WG_HOST=raspberrypi.local
+    image: ghcr.io/wg-easy/wg-easy
+    container_name: wg-easy
+    volumes:
+      - ./wireguard:/etc/wireguard
+    ports:
+      - "51820:51820/udp"  # 映射 WireGuard 的 UDP 端口
+      - "51821:51821/tcp"  # 映射 Web 界面的 TCP 端口
+    restart: always
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    sysctls:
+      - net.ipv4.ip_forward=1
+      - net.ipv4.conf.all.src_valid_mark=1
+```
+
+[官方文档](https://github.com/wg-easy/wg-easy)
