@@ -78,7 +78,33 @@ services:
 需要将哈希值的`$`替换为`$$`才是正确的
 
 
-
-
-
 [官方文档](https://github.com/wg-easy/wg-easy)
+
+
+
+---
+
+### 更多配置
+```
+services:
+  softether-vpn:
+    image: siomiz/softethervpn
+    container_name: softether-vpn
+    restart: always
+    ports:
+      - "443:443"       # SSTP使用的端口
+      - "1194:1194/udp" # OpenVPN使用的端口
+      - "500:500/udp"   # IPsec/IKE使用的端口
+      - "4500:4500/udp" # IPsec NAT-T使用的端口
+      - "1701:1701/udp" # L2TP使用的端口
+    environment:
+      - PSK=yM5XdQXECfR6Xbg7      # 预共享密钥，用于IPsec连接
+      - USERNAME=admin            # VPN用户名
+      - PASSWORD=admin7890        # VPN密码
+      - OPENVPN_ENABLE=1          # 启用OpenVPN
+      - SSTP_ENABLE=1             # 启用SSTP
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - /lib/modules:/lib/modules
+```
