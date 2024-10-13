@@ -95,8 +95,6 @@ services:
   wg-easy:
     image: ghcr.io/wg-easy/wg-easy
     container_name: wg-easy
-    volumes:
-      - ./wireguard:/etc/wireguard
     ports:
       - "51820:51820/udp"  # 映射 WireGuard 的 UDP 端口
       - "51821:51821/tcp"  # 映射 Web 界面的 TCP 端口
@@ -110,6 +108,11 @@ services:
     environment:
       - LANG=en
       - WG_HOST=主机IP或者域名
+      - PASSWORD_HASH=面板密码的哈希值（可选）
+    volumes:
+      - ./wireguard:/etc/wireguard
 ```
+
+[在线生成密码哈希值](https://uutool.cn/php-password/)
 
 [官方文档](https://github.com/wg-easy/wg-easy)
