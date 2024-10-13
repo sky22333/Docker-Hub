@@ -40,6 +40,7 @@ services:
     ports:
       - "500:500/udp"
       - "4500:4500/udp"
+      - "1701:1701/udp"
     privileged: true
 ```
 查看连接信息
