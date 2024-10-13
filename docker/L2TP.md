@@ -66,7 +66,7 @@ services:
 
 - 管理 OpenVPN
 
-面板地址：`https://IP:943/admin`
+面板地址：`https://公网IP:943/admin`
 
 日志
 ```
