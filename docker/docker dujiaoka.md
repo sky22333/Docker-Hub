@@ -56,6 +56,12 @@ redis地址：redis
 ---
 ---
 
+### 支付配置
+易支付对接地址示例：`http://xxxxx.com/submit.php`
+
+epusdt对接示例：`http://127.0.0.1:8000/api/v1/order/create-transaction`，同一台服务器可以填本地IP
+
+
 ## 进入容器
 
 ```
