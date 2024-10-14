@@ -77,6 +77,10 @@ docker exec -it dujiaoka /bin/sh
 
 #### 修改`￥`标识
 
+`resources/views/hyper/static_pages/buy.blade.php`第`55`行
+
+`app/Http/Controllers/Pay/StripeController.php`第`215`行
+
 首页`/app/resources/views/lang/static_pages/home.blade.php`
 
 商品页`/app/resources/views/lang/static_pages/buy.blade.php`
