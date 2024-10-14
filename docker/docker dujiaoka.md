@@ -90,6 +90,9 @@ if (!empty($email)) {
 
 `resources/views/unicorn/static_pages/buy.blade.php`文件第`63`行，去掉`required`代码
 
+在数据库中找到`email`字段，找到`NULL`或`NOT NULL`的选项。将其更改为`NULL`
+
+
 #### 底部版权路径
 ```
 /app/resources/views/luna/layouts/_footer.blade.php
