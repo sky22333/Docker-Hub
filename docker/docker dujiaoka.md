@@ -87,9 +87,9 @@ docker exec -it dujiaoka /bin/sh
 
 #### 下单邮箱改为不用必填
 
-`app/Service/OrderService.php`文件第`62`行，将`required`改为`nullable`
+1：`app/Service/OrderService.php`文件第`62`行，将`required`改为`nullable`
 
-`app/Http/Controllers/Home/OrderController.php`第`77`行删除，替换为以下代码
+2：`app/Http/Controllers/Home/OrderController.php`第`77`行删除，替换为以下代码
 
 > 如果`$email`为空，生成一个随机邮箱
 ```
@@ -101,7 +101,7 @@ if (empty($email)) {
 $this->orderProcessService->setEmail($email);
 ```
 
-`resources/views/unicorn/static_pages/buy.blade.php`文件第`63`行，去掉`required`代码，`luna`在`126`行，`hyper`则需要删除第`176`行的整个判断。
+3：`resources/views/unicorn/static_pages/buy.blade.php`文件第`63`行，去掉`required`代码，`luna`在`126`行，`hyper`则需要删除第`176`行的整个判断。
 
 ---
 
