@@ -67,6 +67,7 @@ docker exec -it dujiaoka /bin/sh
 
 忘记管理员用户名可在数据库的`admin_users`表查看
 
+---
 
 #### 修改`￥`标识
 
@@ -75,6 +76,8 @@ docker exec -it dujiaoka /bin/sh
 商品页`/app/resources/views/luna/static_pages/buy.blade.php`
 
 订单页`/app/resources/lang/zh_CN/dujiaoka.php`
+
+---
 
 #### 邮箱改为不用必填
 
@@ -92,6 +95,7 @@ if (!empty($email)) {
 
 数据库里`orders`表的页面中，点击上方的`结构`标签，找到`email`，点击右边修改，默认值选择`NULL`，勾选`空`，点击保存即可。
 
+---
 
 #### 底部版权路径
 ```
@@ -110,6 +114,8 @@ if (!empty($email)) {
 ```
 /app/public/assets/luna/img/
 ```
+
+---
 
 #### 底部运行时间代码
 ```
