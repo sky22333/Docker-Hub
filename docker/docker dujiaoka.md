@@ -88,6 +88,7 @@ if (!empty($email)) {
 }
 ```
 
+`resources/views/unicorn/static_pages/buy.blade.php`文件第`63`行，去掉`required`代码
 
 #### 底部版权路径
 ```
