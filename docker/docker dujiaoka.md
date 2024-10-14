@@ -80,6 +80,14 @@ docker exec -it dujiaoka /bin/sh
 
 `app/Service/OrderService.php`文件第`62`行，将`required`改为`nullable`
 
+`app/Http/Controllers/Home/OrderController.php`第`77`行删除，替换为以下代码
+```
+$email = $request->input('email');
+if (!empty($email)) {
+	$this->orderProcessService->setEmail($email);
+}
+```
+
 
 #### 底部版权路径
 ```
