@@ -101,8 +101,6 @@ $this->orderProcessService->setEmail($email);
 
 `resources/views/unicorn/static_pages/buy.blade.php`文件第`63`行，去掉`required`代码，`luna`在`126`行，`hyper`则需要删除第`176`行的整个判断。
 
-数据库里`orders`表的页面中，点击上方的`结构`标签，找到`email`，点击右边修改，默认值选择`NULL`，勾选`空`，点击保存即可。
-
 ---
 
 #### 底部版权路径
