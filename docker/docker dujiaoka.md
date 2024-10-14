@@ -76,6 +76,9 @@ docker exec -it dujiaoka /bin/sh
 
 订单页`/app/resources/lang/zh_CN/dujiaoka.php`
 
+#### 邮箱改为不用必填
+
+`app/Service/OrderService.php`文件第`62`行，将`required`改为`nullable`
 
 
 #### 底部版权路径
