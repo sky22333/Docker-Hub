@@ -90,7 +90,7 @@ if (!empty($email)) {
 
 `resources/views/unicorn/static_pages/buy.blade.php`文件第`63`行，去掉`required`代码
 
-在数据库中找到`email`字段，找到`NULL`或`NOT NULL`的选项。将其更改为`NULL`
+数据库里`orders`表的页面中，点击上方的`结构”`标签，找到`email`，点击右边修改，默认值选择`NULL`，勾选`空`，点击保存即可。
 
 
 #### 底部版权路径
