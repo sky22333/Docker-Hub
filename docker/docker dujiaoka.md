@@ -96,7 +96,7 @@ docker exec -it dujiaoka /bin/sh
 $email = $request->input('email');
 if (empty($email)) {
     $randomString = bin2hex(random_bytes(5));
-    $email = $randomString . uniqid() . '@example.com';
+    $email = $randomString . uniqid() . '@aa.com';
 }
 $this->orderProcessService->setEmail($email);
 ```
