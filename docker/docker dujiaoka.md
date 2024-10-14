@@ -77,9 +77,9 @@ docker exec -it dujiaoka /bin/sh
 
 #### 修改`￥`标识
 
-首页`/app/resources/views/luna/static_pages/home.blade.php`
+首页`/app/resources/views/lang/static_pages/home.blade.php`
 
-商品页`/app/resources/views/luna/static_pages/buy.blade.php`
+商品页`/app/resources/views/lang/static_pages/buy.blade.php`
 
 订单页`/app/resources/lang/zh_CN/dujiaoka.php`
 
@@ -107,7 +107,7 @@ $this->orderProcessService->setEmail($email);
 
 #### 底部版权路径
 ```
-/app/resources/views/luna/layouts/_footer.blade.php
+resources/views/unicorn/layouts/_footer.blade.php
 ```
 
 #### 主题路径
