@@ -94,7 +94,8 @@ docker exec -it dujiaoka /bin/sh
 $email = $request->input('email');
 // 如果$email为空，生成一个随机邮箱
 if (empty($email)) {
-    $email = 'user' . uniqid() . '@example.com';
+    $randomString = bin2hex(random_bytes(5));
+    $email = $randomString . uniqid() . '@example.com';
 }
 $this->orderProcessService->setEmail($email);
 ```
