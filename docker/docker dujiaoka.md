@@ -91,7 +91,7 @@ docker exec -it dujiaoka /bin/sh
 
 `app/Http/Controllers/Home/OrderController.php`第`77`行删除，替换为以下代码
 
-// 如果$email为空，生成一个随机邮箱
+> 如果`$email`为空，生成一个随机邮箱
 ```
 $email = $request->input('email');
 if (empty($email)) {
