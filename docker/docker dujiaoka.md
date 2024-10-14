@@ -90,9 +90,10 @@ docker exec -it dujiaoka /bin/sh
 `app/Service/OrderService.php`文件第`62`行，将`required`改为`nullable`
 
 `app/Http/Controllers/Home/OrderController.php`第`77`行删除，替换为以下代码
+
+// 如果$email为空，生成一个随机邮箱
 ```
 $email = $request->input('email');
-// 如果$email为空，生成一个随机邮箱
 if (empty($email)) {
     $randomString = bin2hex(random_bytes(5));
     $email = $randomString . uniqid() . '@example.com';
