@@ -75,7 +75,7 @@ docker exec -it dujiaoka /bin/sh
 
 ---
 
-#### 修改`￥`标识
+#### 修改`¥`标识
 
 `resources/views/hyper/static_pages/buy.blade.php`第`55`行
 
