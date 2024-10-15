@@ -79,7 +79,7 @@ docker exec -it dujiaoka /bin/sh
 
 hyper：`resources/lang/zh_CN/hyper.php`
 
-`app/Http/Controllers/Pay/StripeController.php`第`215`行
+unicorn：`resources/lang/zh_CN/dujiaoka.php`第`91`行
 
 首页`/app/resources/views/lang/static_pages/home.blade.php`
 
