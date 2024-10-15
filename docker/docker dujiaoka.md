@@ -77,7 +77,7 @@ docker exec -it dujiaoka /bin/sh
 
 #### 修改`¥`标识
 
-hyper：`resources/lang/zh_CN/hyper.php`
+hyper：`resources/lang/zh_CN/hyper.php`第`11`行
 
 unicorn：`resources/lang/zh_CN/dujiaoka.php`第`91`行
 
