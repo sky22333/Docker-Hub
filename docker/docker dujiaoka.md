@@ -107,6 +107,8 @@ $this->orderProcessService->setEmail($email);
 
 3：`resources/views/unicorn/static_pages/buy.blade.php`文件第`63`行，去掉`required`代码，`luna`在`126`行，`hyper`则需要删除第`176`行的整个判断。
 
+> 如果要留空则需要数据库修改`email`表结构。
+
 ---
 
 #### 底部版权路径
