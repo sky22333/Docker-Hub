@@ -62,6 +62,9 @@ redis地址：redis
 epusdt对接示例：`http://127.0.0.1:8000/api/v1/order/create-transaction`，同一台服务器可以填本地IP
 
 
+> 易支付改不跳支付方式：`app/Http/Controllers/Pay/YipayController.php`去掉第`19`行。
+
+
 ## 进入容器
 
 ```
