@@ -231,8 +231,7 @@ services:
 ```
 @{
     ViewData["Title"] = "支付页";
-    var Now = DateTime.Now.ToUniversalTime();
-    var ExpireTime = ViewData.ContainsKey("ExpireTime") ? Convert.ToDateTime(ViewData["ExpireTime"]).ToUniversalTime() : Now;
+    var ExpireTime = ViewData.ContainsKey("ExpireTime") ? Convert.ToDateTime(ViewData["ExpireTime"]).ToUniversalTime().ToString("o") : DateTime.UtcNow.ToString("o");
 }
 @using TokenPay.Domains;
 @using TokenPay.Extensions;
@@ -392,31 +391,31 @@ else
 
         /* 使用 Razor 代码块来包装 keyframes */
         @{
-		    <text>
-		        @@keyframes snake {
-		            0% {
-		                background-position: 0 0;
-		                background: repeating-linear-gradient(
-		                    45deg,
-		                    rgba(0, 0, 0, 0.05), /* 透明度 */
-		                    rgba(0, 0, 0, 0.05) 10px,
-		                    transparent 10px,
-		                    transparent 20px
-		                );
-		            }
-		            100% {
-		                background-position: 400px 0;
-		                background: repeating-linear-gradient(
-		                    45deg,
-		                    rgba(0, 0, 0, 0.05), /* 透明度 */
-		                    rgba(0, 0, 0, 0.05) 10px,
-		                    transparent 10px,
-		                    transparent 20px
-		                );
-		            }
-		        }
-		    </text>
-		}
+            <text>
+                @@keyframes snake {
+                    0% {
+                        background-position: 0 0;
+                        background: repeating-linear-gradient(
+                            45deg,
+                            rgba(0, 0, 0, 0.05),
+                            rgba(0, 0, 0, 0.05) 10px,
+                            transparent 10px,
+                            transparent 20px
+                        );
+                    }
+                    100% {
+                        background-position: 400px 0;
+                        background: repeating-linear-gradient(
+                            45deg,
+                            rgba(0, 0, 0, 0.05),
+                            rgba(0, 0, 0, 0.05) 10px,
+                            transparent 10px,
+                            transparent 20px
+                        );
+                    }
+                }
+            </text>
+        }
     </style>
 
     <div class="container mx-auto px-2 h-screen flex flex-col">
@@ -425,7 +424,7 @@ else
             <p class="text-center mb-4">您正在支付 <span class="text-black">@Model.Currency.ToBlockchainName(chain)</span> 的 <span class="text-black">@Model.Currency.ToCurrency(chain,true)</span></p>
 
             <div class="timer text-center mb-4 animate__animated animate__pulse animate__infinite time">
-                剩余时间：<span class="text-black"><span id="day_show"></span><span id="hour_show"></span><span id="minute_show"></span><span id="second_show"></span></span>
+                剩余时间：<span class="text-black" id="remaining-time"></span>
             </div>
 
             <p class="warning text-center">请仔细核对币种和金额！</p>
@@ -455,33 +454,29 @@ else
 
     @section Scripts {
     <script>
-        let Time;
-        var EndTime = new Date('@ExpireTime.ToUniversalTime().ToString("yyyy/MM/dd HH:mm:ss")');
-        function timer() {
-            window.setInterval(function () {
-                var intDiff = (EndTime - new Date(new Date().toISOString().replace('T',' ').replace('Z',''))) / 1000;
-                if (intDiff <= 0) {
-                    clearInterval(Time);
-                    alert("支付时间已到，请重新发起支付。");
-                    window.location.href = "/Order/Error";
-                } else {
-                    var day = 0, hour = 0, minute = 0, second = 0;
-                    if (intDiff > 0) {
-                        day = Math.floor(intDiff / (60 * 60 * 24));
-                        hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
-                        minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
-                        second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
-                    }
-                    if (minute <= 9) minute = '0' + minute;
-                    if (second <= 9) second = '0' + second;
-                    document.getElementById('day_show').innerHTML = day + "天";
-                    document.getElementById('hour_show').innerHTML = hour + "时";
-                    document.getElementById('minute_show').innerHTML = minute + "分";
-                    document.getElementById('second_show').innerHTML = second + "秒";
-                }
-            }, 1000);
+        let timer;
+        const endTime = new Date('@ExpireTime');
+
+        function updateRemainingTime() {
+            const now = new Date();
+            const timeDiff = endTime - now;
+
+            if (timeDiff <= 0) {
+                clearInterval(timer);
+                document.getElementById('remaining-time').textContent = '已过期';
+                alert("支付时间已过期！请重新发起支付。");
+                window.location.href = "/Order/Error";
+                return;
+            }
+
+            const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+            document.getElementById('remaining-time').textContent = 
+                `${days}天 ${hours.toString().padStart(2, '0')}时 ${minutes.toString().padStart(2, '0')}分 ${seconds.toString().padStart(2, '0')}秒`;
         }
-        timer();
 
         function copyToClipboard(value, message) {
             const el = document.createElement('textarea');
@@ -498,34 +493,44 @@ else
                 popup.classList.remove('show');
             }, 1000);
         }
-        $(() => {
-            timer();
-            Time = setInterval(Check, 1000);
-        })
+
+        let checkTimer;
+        function startCheck() {
+            checkTimer = setInterval(Check, 1000);
+        }
+
         function Check() {
             var RedirectUrl = "@(Model?.RedirectUrl)";
-                $.get("/Check/@(Model?.Id)")
-                    .then(x => {
-                        if (x === 'Pending') {
-                            console.log('待支付')
-                        } else if (x === 'Expired') {
-                            clearInterval(Time)
-                            console.log('订单过期')
-                            location.reload();
-                        } else if (x === 'Paid') {
-                            clearInterval(Time)
-                            console.log('已支付')
-                            setTimeout(() => {
-                                if (RedirectUrl) {
-                                    location = RedirectUrl
-                                } else {
-                                    alert("已支付")
-                                }
-                            }, 0)
-                        }
-                    })
-            }
-        </script>
+            $.get("/Check/@(Model?.Id)")
+                .then(x => {
+                    if (x === 'Pending') {
+                        console.log('待支付');
+                    } else if (x === 'Expired') {
+                        clearInterval(checkTimer);
+                        clearInterval(timer);
+                        console.log('订单过期');
+                        location.reload();
+                    } else if (x === 'Paid') {
+                        clearInterval(checkTimer);
+                        clearInterval(timer);
+                        console.log('已支付');
+                        setTimeout(() => {
+                            if (RedirectUrl) {
+                                location = RedirectUrl;
+                            } else {
+                                alert("已支付");
+                            }
+                        }, 0);
+                    }
+                });
+        }
+
+        $(() => {
+            updateRemainingTime();
+            timer = setInterval(updateRemainingTime, 1000);
+            startCheck();
+        });
+    </script>
     }
 }
 ```
