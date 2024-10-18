@@ -464,8 +464,6 @@ else
             if (timeDiff <= 0) {
                 clearInterval(timer);
                 document.getElementById('remaining-time').textContent = '已过期';
-                alert("支付时间已过期！请重新发起支付。");
-                window.location.href = "/Order/Error";
                 return;
             }
 
