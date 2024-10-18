@@ -222,6 +222,8 @@ services:
       - ./TokenPay.db:/app/TokenPay.db
       - ./Pay.cshtml:/app/Views/Home/Pay.cshtml
 ```
+> `- ./EVMChains.json:/app/EVMChains.json` 更多区块链添加此文件映射进去
+
 
 
 - `Pay.cshtml`美化代码
