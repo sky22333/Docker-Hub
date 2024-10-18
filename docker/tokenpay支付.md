@@ -421,7 +421,6 @@ else
     <div class="container mx-auto px-2 h-screen flex flex-col">
         <div class="card animate__animated animate__fadeIn flex-grow h-auto">
             <h1 class="title text-center animate__animated animate__bounceIn">支付详情</h1>
-            <p class="text-center mb-4">您正在支付 <span class="text-black">@Model.Currency.ToBlockchainName(chain)</span> 的 <span class="text-black">@Model.Currency.ToCurrency(chain,true)</span></p>
 
             <div class="timer text-center mb-4 animate__animated animate__pulse animate__infinite time">
                 剩余时间：<span class="text-black" id="remaining-time"></span>
