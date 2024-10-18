@@ -475,7 +475,7 @@ else
             const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
 
             document.getElementById('remaining-time').textContent = 
-                `${days}天 ${hours.toString().padStart(2, '0')}时 ${minutes.toString().padStart(2, '0')}分 ${seconds.toString().padStart(2, '0')}秒`;
+                `${minutes.toString().padStart(2, '0')}分 ${seconds.toString().padStart(2, '0')}秒`;
         }
 
         function copyToClipboard(value, message) {
