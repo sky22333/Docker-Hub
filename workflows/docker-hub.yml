@@ -1,5 +1,5 @@
 # Docker hub构建镜像示例，请替换密钥和用户名，手动触发，自动推送
-name: Docker hub镜像构建
+name: Docker-hub镜像构建
 
 on:
   workflow_dispatch:
@@ -7,7 +7,7 @@ on:
       version:
         description: 'Version number'
         required: true
-        default: '1.0'
+        default: 'latest'
 
 jobs:
   build:
@@ -45,6 +45,6 @@ jobs:
         with:
           context: .
           push: true
-          platforms: linux/amd64,linux/arm64/v8,linux/386
+          platforms: linux/amd64,linux/arm64
           tags: ${{ github.repository }}:${{ github.event.inputs.version }}, ${{ github.repository }}:latest
           labels: ${{ steps.meta.outputs.labels }}
