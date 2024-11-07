@@ -44,13 +44,20 @@ docker compose up -d
 指定镜像链接，环境变量：
 `VERSION: "https://example.com/win.iso"`
 
-直接映射镜像文件：
+映射镜像文件：
 ```
 volumes:
-  - /home/user/example.iso:/custom.iso
+  - /home/example.iso:/custom.iso
 ``` 
 
+文件映射：
+```
+volumes:
+  -  /home:/data
+```
+打开`文件资源管理器`，点击`网络`部分，找到名为`host.lan`的计算机。双击它，有个名为`Data`的文件夹，映射的文件在此目录。
 
+---
 
 项目地址：https://github.com/dockur/windows
 
