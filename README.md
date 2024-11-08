@@ -2,7 +2,7 @@
 
 国内从 Docker Hub 拉取镜像有时会遇到困难，此时可以配置镜像加速器。
 
-[自建Docker镜像加速](https://github.com/sky22333/Docker-Hub/tree/main/registry-mirror) 支持多种仓库
+[自建Docker镜像加速](https://github.com/sky22333/docker-proxy) 支持多种仓库
 
 我的另一个开源项目，拉取镜像并自动打包为离线包，方便内网环境使用，[项目地址。
 ](https://github.com/sky22333/download)
