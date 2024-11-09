@@ -349,3 +349,20 @@ example.com {
     }
 }
 ```
+
+
+#### 反代`github`
+```
+example.com {
+    reverse_proxy https://github.com {
+        header_up Host github.com
+        header_up X-Real-IP {remote}
+        header_up X-Forwarded-For {remote}
+        header_up X-Forwarded-Proto {scheme}
+    }
+
+    tls {
+        protocols tls1.2 tls1.3
+    }
+}
+```
