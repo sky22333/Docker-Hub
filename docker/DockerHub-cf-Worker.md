@@ -319,7 +319,7 @@ EOF</code><button class="copy-button" onclick="copyCode(this)">复制</button></
 
 #### `Caddyfile`配置
 ```
-你的域名 {
+example.com {
     reverse_proxy https://registry-1.docker.io {
         header_up Host registry-1.docker.io
         header_up X-Real-IP {remote}
