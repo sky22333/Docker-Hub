@@ -315,100 +315,22 @@ EOF</code><button class="copy-button" onclick="copyCode(this)">复制</button></
 
 
 ---
-### 使用nginx反代加速docker hub
+### 使用caddy反代加速docker hub
 
-
-#### 安装nginx
+#### `Caddyfile`配置
 ```
-sudo apt update && sudo apt install -y nginx && sudo systemctl stop nginx
-```
-
-申请证书后并放入下面的配置
-
-
-#### `/etc/nginx/nginx.conf`配置
-```
-user www-data;
-worker_processes auto;
-pid /run/nginx.pid;
-include /etc/nginx/modules-enabled/*.conf;
-
-events {
-    worker_connections 4096;
-}
-
-http {
-    include /etc/nginx/mime.types;
-    default_type application/octet-stream;
-
-    log_format main '$remote_addr - $remote_user [$time_local] "$request" '
-                      '$status $body_bytes_sent "$http_referer" '
-                      '"$http_user_agent" "$http_x_forwarded_for"';
-
-    access_log /var/log/nginx/access.log main;
-
-    sendfile on;
-    tcp_nopush on;
-    tcp_nodelay on;
-    keepalive_timeout 65;
-    types_hash_max_size 2048;
-
-    include /etc/nginx/conf.d/*.conf;
-    include /etc/nginx/sites-enabled/*;
-
-    server {
-        listen 80;
-        server_name 你的域名;
-
-        location / {
-            return 301 https://$host$request_uri;
-        }
+你的域名 {
+    reverse_proxy https://registry-1.docker.io {
+        header_up Host registry-1.docker.io
+        header_up X-Real-IP {remote}
+        header_up X-Forwarded-For {remote}
+        header_up X-Forwarded-Proto {scheme}
     }
 
-    server {
-        listen 443 ssl;
-        server_name 你的域名;
-
-        ssl_certificate /root/.acme.sh/你的域名_ecc/fullchain.cer;
-        ssl_certificate_key /root/.acme.sh/你的域名_ecc/你的域名.key;
-
-        ssl_session_timeout 24h;
-        ssl_ciphers 'ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256';
-        ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
-
-        location / {
-            proxy_pass https://registry-1.docker.io;
-            proxy_set_header Host registry-1.docker.io;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Proto $scheme;
-
-            proxy_buffering off;
-            proxy_set_header Authorization $http_authorization;
-            proxy_pass_header Authorization;
-
-            proxy_intercept_errors on;
-            recursive_error_pages on;
-            error_page 301 302 307 = @handle_redirect;
-        }
-
-        location @handle_redirect {
-            resolver 1.1.1.1;
-            set $saved_redirect_location $upstream_http_location;
-            proxy_pass $saved_redirect_location;
-        }
+    tls {
+        protocols tls1.2 tls1.3
     }
 }
 ```
 
-#### 启动nginx
-```
-sudo nginx -s reload
-```
-没有报错就说明配置已经生效
 
-
-设置开机自启
-```
-sudo systemctl enable nginx
-```
