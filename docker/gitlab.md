@@ -1,6 +1,8 @@
 ### Docker部署自托管gitlab
 
-官方镜像是基于`debian:slim`基础镜像构建
+官方镜像是基于`ubuntu:22.04`基础镜像构建
+
+[官方文档](https://gitlab.com/gitlab-org/omnibus-gitlab)
 
 ```
 services:
