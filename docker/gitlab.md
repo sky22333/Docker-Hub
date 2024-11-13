@@ -40,3 +40,8 @@ https://example.com {
     }
 }
 ```
+
+
+默认用户名为：`root`
+
+默认密码在`/gitlab-config/initial_root_password`文件里
