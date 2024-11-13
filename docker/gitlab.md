@@ -2,7 +2,7 @@
 
 官方镜像是基于`ubuntu:22.04`基础镜像构建
 
-[官方文档](https://gitlab.com/gitlab-org/omnibus-gitlab)
+[官方仓库](https://gitlab.com/gitlab-org/omnibus-gitlab)
 
 ```
 services:
