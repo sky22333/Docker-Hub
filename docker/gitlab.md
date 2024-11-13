@@ -4,6 +4,7 @@
 
 [官方仓库](https://gitlab.com/gitlab-org/omnibus-gitlab)
 
+`docker-compose.yml`配置
 ```
 services:
   gitlab:
@@ -48,6 +49,6 @@ https://example.com {
 
 默认用户名为：`root`
 
-默认密码在`./gitlab-config/initial_root_password`文件里
+默认密码在`./gitlab-config/initial_root_password`文件里查看
 
 更多个性化配置在`./gitlab-config/gitlab.rb`文件里修改
