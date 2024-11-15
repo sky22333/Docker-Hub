@@ -319,19 +319,32 @@ EOF</code><button class="copy-button" onclick="copyCode(this)">复制</button></
 
 #### `Caddyfile`配置
 ```
-example.com {
-    reverse_proxy https://registry-1.docker.io {
-        header_up Host registry-1.docker.io
-        header_up X-Real-IP {remote}
-        header_up X-Forwarded-For {remote}
-        header_up X-Forwarded-Proto {scheme}
-    }
+hub.example.com {
+	reverse_proxy https://registry-1.docker.io {
+		header_up Host {http.reverse_proxy.upstream.hostport}
+		header_down WWW-Authenticate "https://auth.docker.io" "https://auth.hub.example.com"
+		header_down Location "https://production.cloudflare.docker.com" "https://production.hub.example.com"
+	}
+}
 
-    tls {
-        protocols tls1.2 tls1.3
-    }
+auth.hub.example.com {
+	reverse_proxy https://auth.docker.io {
+		header_up Host {http.reverse_proxy.upstream.hostport}
+	}
+}
+
+production.hub.example.com {
+	reverse_proxy https://production.cloudflare.docker.com {
+		header_up Host {http.reverse_proxy.upstream.hostport}
+	}
 }
 ```
+
+> 需要解析三个域名`hub.example.com`，`auth.hub.example.com`，`production.hub.example.com`
+
+> 拉取镜像用`hub.example.com`
+
+
 
 
 #### 反代`ghcr.io`
