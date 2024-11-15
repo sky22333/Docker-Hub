@@ -342,6 +342,8 @@ production.hub.example.com {
 
 > 需要解析三个域名`hub.example.com`，`auth.hub.example.com`，`production.hub.example.com`
 
+> 推荐后面两个使用`CNAME`解析到第一个域名，这样后面更改解析的时候更方便一些，或者直接泛解析
+
 > 拉取镜像用`hub.example.com`
 
 
