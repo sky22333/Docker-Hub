@@ -352,15 +352,9 @@ production.hub.example.com {
 #### 反代`ghcr.io`
 ```
 example.com {
-    reverse_proxy https://ghcr.io {
-        header_up Host ghcr.io
-        header_up X-Real-IP {remote}
-        header_up X-Forwarded-For {remote}
-        header_up X-Forwarded-Proto {scheme}
-    }
-
-    tls {
-        protocols tls1.2 tls1.3
+    reverse_proxy {
+        to https://pkg-containers.githubusercontent.com
+        header_up Host {upstream_hostport}
     }
 }
 ```
