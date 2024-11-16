@@ -24,6 +24,7 @@ sudo update-ca-certificates
 
 [透明代理配置教程](https://docs.mitmproxy.org/stable/howto-transparent/)
 
+[普通命令代理](https://github.com/mzz2017/gg/blob/main/README_zh.md)
 
 ```
 # 开启系统级流量重定向
