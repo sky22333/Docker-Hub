@@ -67,7 +67,7 @@ iptables -t nat -F
 
 `netsh winhttp set proxy 127.0.0.1:8080`
 
-2.验证代理设置：
+2. 验证代理设置：
 
 `netsh winhttp show proxy`
 
