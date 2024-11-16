@@ -97,29 +97,6 @@ iptables -t nat -F
 
 ## 5. 测试代理
 1. 打开浏览器访问任意网站，查看 `mitmproxy` 控制台是否显示日志。
-2. 使用 `curl` 测试：
-    ```bash
-    curl -x http://127.0.0.1:8080 https://example.com
-    ```
-
-
-
-
-
-```
-设置系统代理
-打开 设置 -> 网络和 Internet -> 代理。
-启用 手动代理设置：
-服务器地址：127.0.0.1
-端口：8080
-保存设置。
-
-命令行配置代理：
-通过PowerShell设置全局代理：
-netsh winhttp set proxy 127.0.0.1:8080
-验证代理设置：
-netsh winhttp show proxy
-```
 
 ## 常见问题
 - **证书未信任**：确保证书已正确安装并信任。可以尝试重新启动系统以确保证书生效。
