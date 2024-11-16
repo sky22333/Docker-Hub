@@ -22,6 +22,7 @@ sudo update-ca-certificates
 
 打开面板查看流量日志
 
+[透明代理配置教程](https://docs.mitmproxy.org/stable/howto-transparent/)
 
 ---
 
