@@ -398,9 +398,24 @@ hub.example.com {
 #### 反代`ghcr.io`
 ```
 example.com {
-    reverse_proxy {
-        to https://pkg-containers.githubusercontent.com
-        header_up Host {upstream_hostport}
+    handle /v2/* {
+        reverse_proxy https://ghcr.io {
+            header_up Host {http.reverse_proxy.upstream.hostport}
+            header_down WWW-Authenticate "https://ghcr.io" "https://{http.request.host}"
+            header_down Location "https://pkg-containers.githubusercontent.com" "https://{http.request.host}"
+        }
+    }
+
+    handle /token* {
+        reverse_proxy https://ghcr.io {
+            header_up Host {http.reverse_proxy.upstream.hostport}
+        }
+    }
+
+    handle /* {
+        reverse_proxy https://pkg-containers.githubusercontent.com {
+            header_up Host {http.reverse_proxy.upstream.hostport}
+        }
     }
 }
 ```
