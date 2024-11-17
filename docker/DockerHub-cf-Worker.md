@@ -94,6 +94,9 @@ export default {
 }
 ```
 
+<details>
+<summary>前端黑色风格</summary>
+
 #### 点击左侧按钮创建一个`docker.html`文件并放入以下代码—暗黑样式
 ```
 <!DOCTYPE html>
@@ -223,15 +226,18 @@ docker pull {{host}}/library/mysql:5.7</code><button class="copy-button" onclick
 </body>
 </html>
 ```
+
 接下来，点击右上角的 部署，稍等片刻
 
 最后，返回面板，在 设置，触发器 处设置一个自己的域名，一切就大功告成了
 不建议使用自带的 workers.dev 的域名，被墙了
 
+</details>
 
 ---
+
 <details>
-<summary>主页样式二——白色样式</summary>
+<summary>前端白色风格</summary>
 
 #### 主页样式二
 ```
