@@ -277,8 +277,8 @@ sudo vim /etc/systemd/system/docker.service.d/http-proxy.conf
 #### 在文件中添加代理
 ```
 [Service]
-Environment="HTTP_PROXY=socks5://user:pass@127.0.0.1:1080"
-Environment="HTTPS_PROXY=socks5://user:pass@127.0.0.1:1080"
+Environment="HTTP_PROXY=http://127.0.0.1:1080"
+Environment="HTTPS_PROXY=http://127.0.0.1:1080"
 ```
 #### 重启Docker
 ```
