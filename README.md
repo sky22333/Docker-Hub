@@ -21,6 +21,12 @@ curl -fsSL https://get.docker.com | sh
 bash <(curl -sSL https://gitee.com/SuperManito/LinuxMirrors/raw/main/DockerInstallation.sh)
 ```
 
+或者
+```
+curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
+```
+
+
 <details>
   <summary>手动安装Docker</summary>
   
