@@ -4,19 +4,31 @@
 #### 使用链接登录
 ```
 docker run -d \
-  --name=tailscale \
-  --restart=always \
-  --network=host \
+  --name tailscale \
   --privileged \
+  --network host \
+  --restart always \
   -v $(pwd)/tailscale:/var/lib/tailscale \
-  tailscale/tailscale \
-  tailscaled --no-auth-key
+  tailscale/tailscale:latest \
+  tailscaled --state=/var/lib/tailscale/tailscaled.state
 ```
 
-生成认证链接，在浏览器中登录：
+进入容器：
 ```
-docker exec -it tailscale tailscale up
+docker exec -it tailscale sh
 ```
+生成登录链接：
+```
+tailscale up
+```
+
+或者使用密钥连接：
+```
+tailscale up --auth-key=<你的AuthKey>
+```
+
+
+
 
 
 #### 指定密钥运行
@@ -33,7 +45,11 @@ services:
     restart: always
     volumes:
       - ./tailscale:/var/lib/tailscale
-    command: ["tailscaled", "--auth-key=<你的AuthKey>"]
+    command:
+      - tailscaled
+      - --state=/var/lib/tailscale/tailscaled.state
+      - --tun=tailscale0
+      - --auth-key=你的AuthKey
 ```
 
 
