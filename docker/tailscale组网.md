@@ -35,3 +35,9 @@ services:
       - ./tailscale:/var/lib/tailscale
     command: ["tailscaled", "--auth-key=<你的AuthKey>"]
 ```
+
+
+
+---
+
+[官网](https://tailscale.com/)
