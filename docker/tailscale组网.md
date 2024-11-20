@@ -57,3 +57,13 @@ services:
 ---
 
 [官网](https://tailscale.com/)
+
+---
+
+
+
+### CF-`Zero Trust`-`Tunnels`免费内网穿透
+
+```
+docker run -d --network host cloudflare/cloudflared:latest tunnel --no-autoupdate run --token 你的密钥
+```
