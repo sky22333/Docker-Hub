@@ -67,3 +67,15 @@ services:
 ```
 docker run -d --network host cloudflare/cloudflared:latest tunnel --no-autoupdate run --token 你的密钥
 ```
+
+
+
+`docker-compose.yml`
+```
+services:
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: cf
+    restart: always
+    command: tunnel --no-autoupdate run --token 你的密钥
+```
