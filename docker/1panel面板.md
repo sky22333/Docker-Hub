@@ -38,6 +38,7 @@ docker run -d \
   - `/var/lib/docker/volumes:/var/lib/docker/volumes` 存储卷映射
 ***
 
+[官方仓库](https://github.com/okxlin/docker-1panel)
 
 
 ### Docker-compose方式安装
