@@ -1,4 +1,4 @@
-# github镜像自动构建和推送示例
+# github镜像自动构建和推送示例，手动触发
 name: ghcr镜像构建
 on:
   workflow_dispatch:
