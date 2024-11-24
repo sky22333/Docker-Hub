@@ -156,7 +156,7 @@ networks:
 define('WP_REDIS_HOST', 'redis');
 define('WP_CACHE', true);
 
-// 确保添加在这个代码前面
+// 确保添加在这个代码上面
 /* That's all, stop editing! Happy blogging. */
 ```
 
