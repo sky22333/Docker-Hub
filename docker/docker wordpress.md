@@ -1,4 +1,4 @@
-###  docker-compose部署wordpress
+###  Docker-compose部署wordpress
 
 
 
@@ -103,7 +103,7 @@ docker restart wordpress
 
 ---
 
-#### 启用redis缓存的示例
+### 启用redis缓存的示例
 
 ```
 services:
