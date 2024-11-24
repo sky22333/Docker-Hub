@@ -103,7 +103,7 @@ docker restart wordpress
 
 ---
 
-#### 启用redis缓存
+#### 启用redis缓存的示例
 
 ```
 services:
