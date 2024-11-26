@@ -21,7 +21,7 @@ curl -fsSL https://get.docker.com | sh
 bash <(curl -sSL https://gitee.com/SuperManito/LinuxMirrors/raw/main/DockerInstallation.sh)
 ```
 
-或者
+或者阿里云安装源
 ```
 curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
 ```
@@ -88,28 +88,10 @@ docker -v
 
 
 <details>
-  <summary>安装Docker Compose</summary>
+  <summary>手动安装Docker-compose</summary>
   
-  ###  下载 Docker Compose:
 
-
-
-运行以下命令来下载 Docker Compose：
-
-```
-curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-```
-添加可执行权限:
-```
-chmod +x /usr/local/bin/docker-compose
-```
-验证安装:
-```
-docker-compose --version
-```
-
----
-### 国内环境手动安装Docker Compose
+### 国内环境手动安装Docker-compose
 
 [手动下载文件](https://github.com/docker/compose/releases) 上传到服务器的`/usr/local/bin`目录
 
@@ -333,7 +315,7 @@ sudo rm -rf /etc/docker /var/lib/docker
 ---
 ## Docker最新稳定加速源列表
 
-> 企业自建的镜像加速，一般不会被和谐
+> 企业自建的镜像加速，很稳定
 
 提供者 | 镜像加速地址 | 说明 | 加速类型
 --- | --- | --- | ---
