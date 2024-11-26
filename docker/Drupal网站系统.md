@@ -48,7 +48,7 @@ composer require drush/drush drupal/redis
 echo 'export PATH="/var/www/html/vendor/bin:$PATH"' >> ~/.bashrc
 source ~/.bashrc
 ```
-- 容器内使用命令添加配置
+- 容器内使用命令添加配置（全部复制执行）
 ```
 echo "
 $settings['redis.connection']['interface'] = 'PhpRedis';  // 使用 PHP 的 Redis 扩展
