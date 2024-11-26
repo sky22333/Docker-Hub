@@ -64,3 +64,40 @@ docker logs cloudreve
 
 ---
 > [官方文档](https://docs.cloudreve.org/manage/db-script)
+
+
+
+---
+
+### `nextcloud`网盘系统
+
+```
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: nextcloud_password
+      MYSQL_DATABASE: nextcloud
+      MYSQL_USER: nextcloud
+      MYSQL_PASSWORD: nextcloud_password
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+    restart: always
+
+  nextcloud:
+    image: nextcloud
+    container_name: nextcloud
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nextcloud:/var/www/html  # 文件存储目录
+    environment:
+      MYSQL_PASSWORD: nextcloud_password
+      MYSQL_DATABASE: nextcloud
+      MYSQL_USER: nextcloud
+      MYSQL_HOST: mysql
+    depends_on:
+      - mysql
+    restart: always
+```
