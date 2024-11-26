@@ -21,14 +21,14 @@ curl -fsSL https://get.docker.com | sh
 bash <(curl -sSL https://gitee.com/SuperManito/LinuxMirrors/raw/main/DockerInstallation.sh)
 ```
 
-或者阿里云安装源
+或者使用阿里云安装源
 ```
 curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
 ```
 
 
 <details>
-  <summary>手动安装Docker</summary>
+  <summary>手动离线安装Docker</summary>
   
 ####  下载 Docker:
 
@@ -88,7 +88,7 @@ docker -v
 
 
 <details>
-  <summary>手动安装Docker-compose</summary>
+  <summary>手动离线安装Docker-compose</summary>
   
 
 ### 国内环境手动安装Docker-compose
