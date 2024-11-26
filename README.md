@@ -93,7 +93,7 @@ docker -v
 
 ### 国内环境手动安装Docker-compose
 
-[手动下载文件](https://github.com/docker/compose/releases) 上传到服务器的`/usr/local/bin`目录
+[点这里手动下载文件](https://github.com/docker/compose/releases) 上传到服务器的`/usr/local/bin`目录
 
 重命名为docker-compose
 ```
@@ -107,6 +107,19 @@ chmod +x /usr/local/bin/docker-compose
 ```
 docker-compose --version
 ```
+
+
+###  注意：
+由于是以二进制文件安装的`docker-compose`，所以运行命令有所变化，运行示例
+```
+docker-compose up -d
+```
+
+区别在于中间的`-`，官方安装脚本是以插件形式安装的`docker-compose`，所以中间不需要`-`
+
+
+
+
 
 ---
 
