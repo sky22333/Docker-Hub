@@ -135,4 +135,4 @@ https://cdn.jsdelivr.net/gh/sky22333/shell@main/nezha/install.sh
 ---
 
 [官方项目地址](https://github.com/naiba/nezha)
-> 官方已经更新了v1版本，此教程的镜像和脚本为个人备份的`v0.20.13`版本
+> 官方已经更新了v1版本，v0的镜像和脚本是我个人备份，不是官方的。
