@@ -7,7 +7,7 @@ services:
     image: ghcr.io/nezhahq/nezha
     restart: always
     ports:
-      - "8080:8008"
+      - "8008:8008"
     volumes:
       - ./data:/dashboard/data
 ```
@@ -15,9 +15,9 @@ services:
 `caddy`反代配置
 ```
 example.com {
-    reverse_proxy /proto.NezhaService/* h2c://127.0.0.1:8080
+    reverse_proxy /proto.NezhaService/* h2c://127.0.0.1:8008
     
-    reverse_proxy /* 127.0.0.1:8080
+    reverse_proxy /* 127.0.0.1:8008
 }
 ```
 
