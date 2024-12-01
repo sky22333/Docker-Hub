@@ -15,7 +15,7 @@ services:
 `caddy`反代配置
 ```
 example.com {
-    reverse_proxy /proto.NezhaService/* grpc://127.0.0.1:8080
+    reverse_proxy /proto.NezhaService/* h2c://127.0.0.1:8080
     
     reverse_proxy /* 127.0.0.1:8080
 }
