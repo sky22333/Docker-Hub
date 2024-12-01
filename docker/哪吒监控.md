@@ -100,7 +100,7 @@ grpc.example.com {
 ```
 https://cdn.jsdelivr.net/gh/sky22333/shell@main/nezha/install.sh
 ```
-然后接着去vps安装即可
+然后接着去被控机安装即可
 
 ---
 
