@@ -1,5 +1,35 @@
 ### Docker部署哪吒监控
-> v0版本
+
+### v1版本
+```
+services:
+  dashboard:
+    image: ghcr.io/nezhahq/nezha
+    restart: always
+    ports:
+      - "8080:8008"
+    volumes:
+      - ./data:/dashboard/data
+```
+
+`caddy`反代配置
+```
+example.com {
+    reverse_proxy /proto.NezhaService/* grpc://127.0.0.1:8080
+    
+    reverse_proxy /* 127.0.0.1:8080
+}
+```
+
+
+
+后台地址 `/dashboard`
+默认用户名密码 `admin/admin`
+
+
+---
+
+### v0版本
 
 创建相关文件：
 ```
