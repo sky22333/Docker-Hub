@@ -36,7 +36,7 @@ tailscale netcheck
 ```
 tailscale status
 ```
-如果看到`relay "tok"`则说明使用了公共中继连接
+如果看到`relay "tok"`则说明使用了公共中继连接，`tok`代表日本公共节点
 
 
 #### 指定密钥运行
