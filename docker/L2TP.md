@@ -53,6 +53,12 @@ docker logs vpn
 
 [故障排查](https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/docs/clients-zh.md#ikev1-%E6%95%85%E9%9A%9C%E6%8E%92%E9%99%A4)
 
+如果无法连接，可以按`win+R`快捷键，输入`cmd`打开命令行窗口，执行以下命令添加注册表
+```
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PolicyAgent" /v AssumeUDPEncapsulationContextOnSendRule /t REG_DWORD /d 2 /f
+```
+> 此命令的作用：强制启用`IPsec VPN`在发送时使用`UDP`封装，这种配置通常用于`VPN`需要通过`NAT`路由器或防火墙时，确保隧道的稳定和正确性。
+
 ---
 
 ### WireGuard VPN
