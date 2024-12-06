@@ -36,7 +36,7 @@ tailscale netcheck
 ```
 tailscale status
 ```
-如果没有看到`via DERP`说明Tailscale成功地建立了点对点连接。
+如果看到`relay "tok"`则说明使用了公共中继连接
 
 
 #### 指定密钥运行
