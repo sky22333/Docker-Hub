@@ -49,6 +49,8 @@ docker logs vpn
 ```
 更多配置信息在`data`目录
 
+---
+
 [连接教程](https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/docs/ikev2-howto-zh.md#android)
 
 [故障排查](https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/docs/clients-zh.md#ikev1-%E6%95%85%E9%9A%9C%E6%8E%92%E9%99%A4)
@@ -59,6 +61,7 @@ reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PolicyAgent" /v As
 ```
 > 此命令的作用：强制启用`IPsec VPN`在发送时使用`UDP`封装，这种配置通常用于`VPN`需要通过`NAT`路由器或防火墙时，确保隧道的稳定和正确性。
 
+---
 
 IOS端使用：
 
