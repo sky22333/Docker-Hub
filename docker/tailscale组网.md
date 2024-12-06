@@ -21,14 +21,22 @@ docker exec -it tailscale sh
 ```
 tailscale up
 ```
+查看公共节点网络
+```
+tailscale netcheck
+```
+
 
 或者使用密钥连接：
 ```
 tailscale up --auth-key=<你的AuthKey>
 ```
 
-
-
+查看是否点对点直连
+```
+tailscale status
+```
+没有看到`via DERP`说明Tailscale成功地建立了点对点连接。
 
 
 #### 指定密钥运行
