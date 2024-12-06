@@ -59,6 +59,16 @@ reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PolicyAgent" /v As
 ```
 > 此命令的作用：强制启用`IPsec VPN`在发送时使用`UDP`封装，这种配置通常用于`VPN`需要通过`NAT`路由器或防火墙时，确保隧道的稳定和正确性。
 
+
+IOS端使用：
+
+在服务器上下载后缀为`.mobileconfig`的配置文件——>通过app把文件上传到iPhone——>找到对应的配置文件——>点击配置文件——>点击用其他应用打开——>存储到`文件`——>点击存储
+
+点击设置——>点击通用——>找到VPN与设备管理——>点击含有服务器IP的配置文件——>点击安装——>输入密码——>再次点击安装——>点击安装——>点击完成
+
+点击设置——>点击VPN——>选择对应服务器IP的VPN——>点击连接
+
+
 ---
 
 ### WireGuard VPN
