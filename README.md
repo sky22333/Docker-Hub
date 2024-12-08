@@ -154,58 +154,6 @@ docker-compose up -d
 
 [官方文档](https://docs.docker.com/build/building/packaging/)
 
----
-
-### vim编辑器
-
-安装：`apt update` `apt install curl wget git zip vim -y`或者`apk add vim`
-
-常用命令：
-
-| 功能    | 命令 | 说明 |
-|-------------|-------------------|----------------|
-| 退出并保存  | `:wq`      |   命令模式中执行         |
-| 只退出不保存  | `:q!`      |    命令模式中执行      |
-| 清空所有内容  | `:%d`      |   命令模式中执行        |
-| 粘贴时保持代码格式  | `:set paste`      |   执行后按`i`进入编辑模式             |
-| 进入编辑模式  | `i`      | 命令模式中执行          |
-| 退出编辑模式  | `esc`      |  编辑模式中执行         |
-| 更改编码适配中文 | `:set encoding=utf-8`       |  执行后按`i`进入编辑模式              |
-| 跳转到指定行号          | `:行号`          | 在命令模式中执行      |
-| 撤销上一次修改          | `u`              | 命令模式中执行 |
-| 选择整行          | `v`              | 上下键选择多行 |
-| 删除          | `d`              | 删除所选 |
-| 光标删除          | `x`              | 删除光标覆盖的内容（向后） |
-| 全局替换文本         | `:%s/旧内容/新内容/g`              | 命令模式中执行 |
-
-
-
----
-### nano编辑器
-| **功能**            | **快捷键**                   | **说明**                                  |
-|---------------------|------------------------------|-------------------------------------------|
-| **移动光标**        |                              |                                           |
-| 行首                | `Ctrl + A`                   | 移动到行首                                |
-| 行尾                | `Ctrl + E`                   | 移动到行尾                                |
-| 指定行列            | `Ctrl + _`                   | 移动到指定行和列                          |
-| **文件操作**        |                              |                                           |
-| 保存文件            | `Ctrl + O`                   | 保存文件，按 Enter 确认                   |
-| 退出 `nano`         | `Ctrl + X`                   | 退出编辑器，`y`为保存，`n`为不保存                  |
-| 另存为              | `Ctrl + O`                   | 输入新文件名保存                          |
-| **编辑操作**        |                              |                                           |
-| 剪切所选          | `Ctrl + K`                   | 剪切（删除）所选                                |
-| 快速选中        | `Ctrl + Shift + ↓`                   | 按一次为一行，按住不动快速多行       |
-| 删除当前行          | `Ctrl + K`                   | 删除当前行                                |
-| 撤销操作            | `Ctrl + _`                   | 撤销上一步操作                            |
-| 重做操作            | `Ctrl + E`                   | 重做上一步操作                            |
-| **搜索与替换**      |                              |                                           |
-| 搜索                | `Ctrl + W`                   | 搜索指定文本                              |
-| 反向搜索            | `Ctrl + W` + `Ctrl + R`      | 进行反向搜索                              |
-| 搜索并替换          | `Ctrl + \`                   | 搜索并替换文本                            |
-| **行操作**          |                              |                                           |
-| 显示行号            | `Ctrl + C`                   | 显示当前光标位置                          |
-
-
 
 ---
 ## 配置加速地址
@@ -339,3 +287,77 @@ sudo rm -rf /etc/docker /var/lib/docker
 ## 参考链接
 
 + https://docs.docker.com/registry/recipes/mirror/
+
+
+### `biuldx`命令介绍
+
+| 功能                         | 命令示例                                                                                                                                      | 说明                                                                                   |
+|------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------|
+| **跨平台构建（Multi-platform builds）** | `docker buildx build --platform linux/amd64,linux/arm64 -t myimage .`                                                                        | 在一个命令中构建适用于多个平台的镜像，支持构建不同架构的镜像（如 `amd64` 和 `arm64`）。   |
+| **并行构建（Concurrent Builds）**    | `docker buildx build --platform linux/amd64,linux/arm64 -t myapp .`                                                                          | 并行构建多个平台版本的镜像，提高构建效率，减少构建时间。                               |
+| **多阶段构建（Multi-stage builds）**   | 在 Dockerfile 中使用：<br>```Dockerfile<br>FROM node:14 AS builder<br>WORKDIR /app<br>COPY . .<br>RUN npm install<br><br>FROM nginx:alpine<br>COPY --from=builder /app/dist /usr/share/nginx/html<br>``` | 通过多个构建阶段优化镜像，通常用于减小镜像体积、分离构建环境与运行环境。               |
+| **远程构建（Remote builds）**       | ```bash<br>docker buildx create --use --name mybuilder --driver docker-container<br>docker buildx build .<br>```                                    | 使用远程构建节点（如云主机、远程 Docker 主机）进行构建，分散构建负载，提高效率。       |
+| **导出构建结果（Export Build Results）** | `docker buildx build --output type=docker,name=myimage:latest .`                                                                              | 将构建结果导出为指定格式的文件，如 `.tar` 文件，便于分发、存档或加载到其他环境中。     |
+| **使用缓存来加速构建（Cache Usage）**  | `docker buildx build --build-arg BUILDKIT_INLINE_CACHE=1 -t myimage .`                                                                       | 启用 BuildKit 缓存，避免重复构建相同的层，显著提高构建效率。                           |
+| **自定义构建输出（Custom Output）**   | `docker buildx build --output type=local,dest=/path/to/output .`                                                                              | 将构建结果导出到指定路径，支持输出到本地目录、Docker 镜像仓库或其他目标。              |
+| **只构建并推送（Build and Push）**    | `docker buildx build --push -t myimage .`                                                                                                    | 在构建镜像后自动推送到 Docker Registry 或自定义的镜像仓库。                           |
+| **构建并缓存镜像（Build and Cache）** | `docker buildx build --cache-to=type=local,dest=/tmp/cache --cache-from=type=local,src=/tmp/cache -t myimage .`                                 | 使用指定的缓存路径来缓存构建层，避免每次构建都从头开始。                              |
+| **限制构建资源（Resource Limits）**  | `docker buildx build --build-arg CPU_LIMIT=2 --build-arg MEMORY_LIMIT=4g -t myimage .`                                                      | 限制构建过程使用的 CPU 和内存资源，确保在资源紧张的环境中运行。                       |
+| **构建多镜像（Build Multiple Images）** | `docker buildx build --tag myimage:v1 --tag myimage:v2 .`                                                                                  | 使用不同的标签（tag）在一次构建中构建多个镜像版本。                                   |
+| **Dockerfile 语法检查（Dockerfile Linting）** | `docker buildx build --file Dockerfile.lint .`                                                                                               | 通过语法检查 Dockerfile，确保没有语法错误或不推荐的写法。                              |
+| **并行构建多个镜像（Parallel Image Builds）** | `docker buildx build --tag myapp:latest --tag myapp:v2 --platform linux/amd64,linux/arm64 .`                                                  | 并行构建多个标签和多个平台的镜像，适用于多版本、多架构的镜像构建。                   |
+
+
+---
+
+
+---
+
+### vim编辑器
+
+安装：`apt update` `apt install curl wget git zip vim -y`或者`apk add vim`
+
+常用命令：
+
+| 功能    | 命令 | 说明 |
+|-------------|-------------------|----------------|
+| 退出并保存  | `:wq`      |   命令模式中执行         |
+| 只退出不保存  | `:q!`      |    命令模式中执行      |
+| 清空所有内容  | `:%d`      |   命令模式中执行        |
+| 粘贴时保持代码格式  | `:set paste`      |   执行后按`i`进入编辑模式             |
+| 进入编辑模式  | `i`      | 命令模式中执行          |
+| 退出编辑模式  | `esc`      |  编辑模式中执行         |
+| 更改编码适配中文 | `:set encoding=utf-8`       |  执行后按`i`进入编辑模式              |
+| 跳转到指定行号          | `:行号`          | 在命令模式中执行      |
+| 撤销上一次修改          | `u`              | 命令模式中执行 |
+| 选择整行          | `v`              | 上下键选择多行 |
+| 删除          | `d`              | 删除所选 |
+| 光标删除          | `x`              | 删除光标覆盖的内容（向后） |
+| 全局替换文本         | `:%s/旧内容/新内容/g`              | 命令模式中执行 |
+
+
+
+---
+### nano编辑器
+| **功能**            | **快捷键**                   | **说明**                                  |
+|---------------------|------------------------------|-------------------------------------------|
+| **移动光标**        |                              |                                           |
+| 行首                | `Ctrl + A`                   | 移动到行首                                |
+| 行尾                | `Ctrl + E`                   | 移动到行尾                                |
+| 指定行列            | `Ctrl + _`                   | 移动到指定行和列                          |
+| **文件操作**        |                              |                                           |
+| 保存文件            | `Ctrl + O`                   | 保存文件，按 Enter 确认                   |
+| 退出 `nano`         | `Ctrl + X`                   | 退出编辑器，`y`为保存，`n`为不保存                  |
+| 另存为              | `Ctrl + O`                   | 输入新文件名保存                          |
+| **编辑操作**        |                              |                                           |
+| 剪切所选          | `Ctrl + K`                   | 剪切（删除）所选                                |
+| 快速选中        | `Ctrl + Shift + ↓`                   | 按一次为一行，按住不动快速多行       |
+| 删除当前行          | `Ctrl + K`                   | 删除当前行                                |
+| 撤销操作            | `Ctrl + _`                   | 撤销上一步操作                            |
+| 重做操作            | `Ctrl + E`                   | 重做上一步操作                            |
+| **搜索与替换**      |                              |                                           |
+| 搜索                | `Ctrl + W`                   | 搜索指定文本                              |
+| 反向搜索            | `Ctrl + W` + `Ctrl + R`      | 进行反向搜索                              |
+| 搜索并替换          | `Ctrl + \`                   | 搜索并替换文本                            |
+| **行操作**          |                              |                                           |
+| 显示行号            | `Ctrl + C`                   | 显示当前光标位置                          |
