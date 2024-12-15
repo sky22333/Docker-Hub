@@ -13,7 +13,7 @@ sudo systemctl restart sshd
 
 ---
 
-- 客户端命令
+- 本地客户端
 ```
 ssh -R 80:localhost:8080 root@服务器地址 -p 22
 ```
