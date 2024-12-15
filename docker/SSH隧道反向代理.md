@@ -2,6 +2,8 @@
 
 适用于简单SSH隧道内网穿透
 
+### 服务端
+
 - 修改`/etc/ssh/sshd_config`文件允许远程转发
 ```
 AllowTcpForwarding yes
@@ -14,7 +16,8 @@ sudo systemctl restart sshd
 
 ---
 
-- 本地客户端
+### 客户端
+- 前台运行
 ```
 ssh -R 80:localhost:8080 root@服务器地址 -p 22
 ```
