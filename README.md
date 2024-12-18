@@ -278,6 +278,7 @@ sudo rm -rf /etc/docker /var/lib/docker
 --- | --- | --- | ---
 [耗子面板](https://hub.rat.dev/) | `https://hub.rat.dev` | 无限制 | Docker Hub
 [1panel](https://1panel.cn/docs/user_manual/containers/setting/) | `https://docker.1panel.live` | 无限制 | Docker Hub
+[1panel](https://1panel.cn/docs/user_manual/containers/setting/) | `https://proxy.1panel.live` | 无限制 | Docker Hub
 [rainbond](https://docker.rainbond.cc) | `https://docker.rainbond.cc` | 无限制 | Docker Hub
 [毫秒镜像](https://docker.1ms.run) | `https://docker.1ms.run` | 国内CDN & 有黑名单 | Docker Hub
 [DaoCloud](https://github.com/DaoCloud/public-image-mirror) | `https://docker.m.daocloud.io` |白名单和限流 | Docker Hub
