@@ -272,8 +272,6 @@ sudo rm -rf /etc/docker /var/lib/docker
 ---
 ## Docker最新稳定加速源列表
 
-> 企业自建的镜像加速，很稳定
-
 提供者 | 镜像加速地址 | 说明 | 加速类型
 --- | --- | --- | ---
 [耗子面板](https://hub.rat.dev/) | `https://hub.rat.dev` | 无限制 | Docker Hub
