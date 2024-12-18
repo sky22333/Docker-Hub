@@ -281,7 +281,7 @@ sudo rm -rf /etc/docker /var/lib/docker
 [rainbond](https://docker.rainbond.cc) | `https://docker.rainbond.cc` | 无限制 | Docker Hub
 [毫秒镜像](https://docker.1ms.run) | `https://docker.1ms.run` | 国内CDN & 有黑名单 | Docker Hub
 [DaoCloud](https://github.com/DaoCloud/public-image-mirror) | `https://docker.m.daocloud.io` |白名单和限流 | Docker Hub
-[阿里云](https://cr.console.aliyun.com/) | `https://xxx.mirror.aliyuncs.com` | 需登录分配 | 镜像太旧
+[华为云](https://console.huaweicloud.com/swr/#/swr/dashboard) | `https://xxxxx.mirror.swr.myhuaweicloud.com` | 需登录分配 | Docker Hub
 [南京大学](https://doc.nju.edu.cn/) | `https://ghcr.nju.edu.cn` | 国内CDN & ghcr加速 | ghcr.io
 [飞牛NAS](https://www.fnnas.com/) | `https://docker.ketches.cn` | 国内CDN & 暂无限制 | Docker Hub
 
