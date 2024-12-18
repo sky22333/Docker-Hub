@@ -122,12 +122,18 @@ Copy-Item -Path '~\scoop\shims\start-v2raya.cmd' -Destination '~\AppData\Roaming
 
 ---
 
-## 国内Debian / Ubuntu切换apt源教程
+## 国内Debian / Ubuntu切换系统源教程
 
 
 国内Gitee一键换源脚本
 ```
 bash <(curl -sSL https://gitee.com/SuperManito/LinuxMirrors/raw/main/ChangeMirrors.sh)
+```
+
+
+海外切换官方源
+```
+bash <(curl -sSL https://raw.githubusercontent.com/SuperManito/LinuxMirrors/main/ChangeMirrors.sh) --use-official-source true
 ```
 
 
