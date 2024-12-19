@@ -184,7 +184,7 @@ sudo systemctl restart docker
 ```
 
 
-#### 如果您当前有正在运行的容器不方便重启Docker服务，则不用设置环境也可以直接使用，用法示例：
+#### 如果不方便重启Docker服务，也可以不用设置全局加速地址，拉取镜像时增加加速地址即可，示例：
 ```
 docker pull docker.1panel.live/library/mysql:5.7
 ```
