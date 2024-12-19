@@ -191,9 +191,31 @@ docker pull docker.1panel.live/library/mysql:5.7
 说明：`library`是一个特殊的命名空间，它代表的是官方镜像。如果是某个用户的镜像就把`library`替换为镜像的用户名。
 
 
+### Docker Desktop 配置
+
+对于电脑的`Docker Desktop`用户，点击右上角`设置`，找到`Docker Engine`然后修改配置，修改后的示例：
+```
+{
+  "builder": {
+    "gc": {
+      "defaultKeepStorage": "20GB",
+      "enabled": true
+    }
+  },
+  "experimental": false,
+  "registry-mirrors": [
+    "https://docker.1ms.run",
+    "https://hub.rat.dev",
+    "https://docker.1panel.live"
+  ]
+}
+```
+然后点击右下角的`Apply & restart`保存并重启即可。
+
+
 ### 检查加速是否生效
 
-查看docker系统信息 `docker info`，如果从结果中看到了如下内容，说明配置成功。
+查看docker系统信息 `docker info`，如果从结果中看到了你配置的加速地址，说明配置成功。
 
 ```console
 Registry Mirrors:
@@ -201,7 +223,6 @@ Registry Mirrors:
  https://docker.1panel.live
 ```
 
-对于 Mac 和 Windows 用户，直接在 Docker Desktop 系统设置中，配置 registry-mirrors 即可。
 
 ---
 ## 使用代理拉取镜像
