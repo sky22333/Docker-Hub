@@ -283,6 +283,20 @@ docker images
 
 例如：`time docker pull node:latest`
 
+
+## 为Docker启用IPV6
+
+创建或修改`/etc/docker/daemon.json`文件
+
+增加如下配置：
+```
+{
+  "ipv6": true,
+  "fixed-cidr-v6": "2001:db8:1::/64"
+}
+```
+重启：`sudo systemctl restart docker`
+
 ## 卸载Docker
 ```
 sudo systemctl stop docker
