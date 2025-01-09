@@ -9,16 +9,15 @@ mkdir epusdt && cd epusdt && touch docker-compose.yml epusdt.conf epusdt.sql
 #### docker-compose.yml
 
 ```
-version: "3.8"
 services:
   db:
     image: mariadb:focal
     restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=admin520
+      - MYSQL_ROOT_PASSWORD=admin7890
       - MYSQL_DATABASE=epusdt
       - MYSQL_USER=epusdt
-      - MYSQL_PASSWORD=admin520
+      - MYSQL_PASSWORD=admin7890
     volumes:
       - ./mysql:/var/lib/mysql
 
@@ -51,7 +50,7 @@ epusdt端口为`8333`
 ```
 app_name=epusdt
 #下面配置你的域名，收银台会需要
-app_uri=https://dujiaoka.com
+app_uri=https://epusdt.com
 #是否开启debug，默认false
 app_debug=false
 #http服务监听端口
@@ -72,8 +71,7 @@ max_backups=3
 mysql_host=db
 mysql_port=3306
 mysql_user=epusdt
-mysql_passwd=admin520
-# 请修改 epusdt 数据库密码
+mysql_passwd=admin7890
 mysql_database=epusdt
 mysql_table_prefix=
 mysql_max_idle_conns=10
@@ -108,7 +106,7 @@ api_auth_token=
 #订单过期时间(单位分钟)
 order_expiration_time=10
 
-#强制汇率(设置此参数后每笔交易将按照此汇率计算，例如:6.4)
+#强制汇率(设置此参数后每笔交易将按照此汇率计算，例如:7.5)
 forced_usdt_rate=
 ```
 
@@ -180,7 +178,7 @@ create index wallet_address_token_index
 #### 首次启动
 
 ```
-docker-compose up -d
+docker compose up -d
 ```
 
 #### 初始化数据库
@@ -189,13 +187,13 @@ docker-compose up -d
 如下图执行后无任何显示代表成功,否则将会报错.
 
 ```
-docker exec -i epusdt-db-1 sh -c 'exec mysql -uepusdt -p数据库密码 epusdt' < epusdt.sql
+docker exec -i epusdt-db-1 sh -c 'exec mysql -uepusdt -padmin7890 epusdt' < epusdt.sql
 ```
 
 #### 重启服务
 
 ```
-docker-compose restart
+docker compose restart
 ```
 
 #### 检查服务
@@ -227,30 +225,21 @@ docker logs -f epusdt-epusdt-1
 ---
 ---
 
-### 另一个版本的epusdt（快速部署）
-[项目地址](https://github.com/v03413/bepusdt)
+### 另一个版本的bepusdt（快速部署）
 
-`docker-compose.yaml`
 ```
-services:
-  bepusdt:
-    image: v03413/bepusdt:latest
-    restart: always
-    ports:
-      - "8999:8080"
-    environment:
-      - TG_BOT_TOKEN=机器人token
-      - TG_BOT_ADMIN_ID=TG账户ID
-      - AUTH_TOKEN=认证token
-      - APP_URI=支付域名需带前缀
+docker run -d \
+  --name bepusdt \
+  --restart always \
+  -p 7000:7000 \
+  -e TG_BOT_TOKEN=机器人token \
+  -e TG_BOT_ADMIN_ID=TG账户ID \
+  -e AUTH_TOKEN=认证token \
+  ghcr.io/sky22333/bepusdt:latest
 ```
-```
-docker compose up -d
-```
+
 ---
 订单页页脚项目链接
-
-文件路径：`bepusdt/templates/checkout-counter.html`  62行`Powered by`
 
 ---
 ---
