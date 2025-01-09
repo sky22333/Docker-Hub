@@ -2,7 +2,7 @@
 
 #### 创建配置文件
 ```
-mkdir -p tokenpay && cd tokenpay && touch appsettings.json TokenPay.db
+mkdir -p tokenpay && cd tokenpay && touch appsettings.json TokenPay.db docker-compose.yaml
 ```
 
 #### 编辑`appsettings.json`配置
@@ -19,7 +19,7 @@ mkdir -p tokenpay && cd tokenpay && touch appsettings.json TokenPay.db
   },
   "AllowedHosts": "*",
   "ConnectionStrings": {
-    "DB": "Data Source=|DataDirectory|TokenPay.db; Pooling=true;"
+    "DB": "Data Source=TokenPay.db;"
   },
   "TRON-PRO-API-KEY": "xxxxxx-xxxx-xxxx-xxxxxxxxxxxx", // 避免接口请求频繁被限制，此处申请 https://www.trongrid.io/dashboard/keys
   "BaseCurrency": "CNY", //默认货币，支持 CNY、USD、EUR、GBP、AUD、HKD、TWD、SGD
@@ -32,30 +32,37 @@ mkdir -p tokenpay && cd tokenpay && touch appsettings.json TokenPay.db
   "ExpireTime": 1800, //单位秒
   "UseDynamicAddress": false, //是否使用动态地址，设为false时，与EPUSDT表现类似；设为true时，为每个下单用户分配单独的收款地址
   "Address": { // UseDynamicAddress设为false时在此配置TRON收款地址，EVM可以替代所有ETH系列的收款地址，支持单独配置某条链的收款地址
-    "TRON": [ "TLxxxxxxxxxxxxxxxxxxx" ],
-    "EVM": [ "0x9966xxxxxxxxxxxxxxxx" ]
+    "TRON": [ "TLUF41C386Cxxxxxxxxxxxxxxxxxxxx" ],
+    "EVM": [ "0x9966aA2xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" ]
   },
   "OnlyConfirmed": false, //默认仅查询已确认的数据，如果想要回调更快，可以设置为false
   "NotifyTimeOut": 3, //异步通知超时时间
   "ApiToken": "666666", //异步通知密钥，请务必修改此密钥为随机字符串，脸滚键盘即可
-  "WebSiteUrl": "http://token-pay.xxxxx.com", //配置服务器外网域名
-  "Collection": {
-    "Enable": false,
-    "UseEnergy": true,
+  "WebSiteUrl": "http://tokenpay.xxxxx.com", //配置服务器外网域名
+  "Collection": { //需要 UseDynamicAddress 为 true 才有使用归集功能的意义，静态地址收款TokenPay无法归集
+    "Enable": false, //是否启用归集功能，false 表示关闭，true 表示启用
+    "UseEnergy": true, //是否租用能量归集，降低归集成本，false 表示直接燃烧trx转账
+    "ForceCheckAllAddress": false, //强制检查所有地址的余额
     "RetainUSDT": true, //归集USDT时是否保留0.000001，用于降低用户下次支付的成本
     "CheckTime": 1, //归集任务运行间隔，默认1小时运行一次，单位：小时
     "MinUSDT": 0.1, //只归集USDT余额大于此金额的地址
-    "NeedEnergy": 31895, //归集USDT所需能量
-    "EnergyPrice": 420, //波场当前能量单价
-    "Address": "TLxxxxxxxxxxxxxxxxxxx" //归集收款地址
+    "NeedEnergy": 65000, //归集USDT所需能量，此配置项通常不需要修改，发生变化时会在GitHub更新
+    "EnergyPrice": 210, //波场当前能量单价，此配置项通常不需要修改，发生变化时会在GitHub更新
+    "Address": "TLUF41C386Cxxxxxxxxxxxxxxxxxxxx" //归集收款地址，配置你自己的收款地址
   },
   "Telegram": {
-    "AdminUserId": 12345678, // 你的账号ID，查询机器人https://t.me/getidsbot
+    "AdminUserId": 12345678, // 你的TG账号ID，可在 https://t.me/creationdatebot 获取ID
     "BotToken": "1234567890:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" //从https://t.me/BotFather 创建机器人时，会给你BotToken
   },
   "RateMove": { //汇率微调，支持设置正负数，仅支持两位小数
     "TRX_CNY": 0,
     "USDT_CNY": 0
+  },
+  "DynamicAddressConfig": {
+    "AmountMove": false, //使用动态地址收款时启用动态金额，支持非准确金额支付，用于优化中心化钱包或交易所提币扣除手续费后金额不匹配的情况，可自行决定是否开启，默认false表示不启用
+    "TRX": [ 0, 2 ], //表示下浮0，上浮2，如果实际支付金额为100TRX，根据此配置，用户支付金额在100-102TRX订单都会成功
+    "USDT": [ 1, 2 ], //表示下浮1，上浮2，如果实际支付金额为100USDT，根据此配置，用户支付金额在99-102USDT订单都会成功
+    "ETH": [ 0.1, 0.15 ] //表示下浮0.1，上浮0.1，如果实际支付金额为0.5ETH，根据此配置，用户支付金额在0.4-0.65ETH订单都会成功
   }
 }
 ```
@@ -71,10 +78,10 @@ mkdir -p tokenpay && cd tokenpay && touch appsettings.json TokenPay.db
 ```
 docker run -d \
   --restart always \
-  -p 5000:80 \
+  -p 5000:8080 \
   -v ./appsettings.json:/app/appsettings.json \
   -v ./TokenPay.db:/app/TokenPay.db \
-  dapiaoliang666/token-pay:latest
+  dapiaoliang666/tokenpay
 ```
 
 然后将外网域名反代到`5000`端口
