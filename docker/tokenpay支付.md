@@ -37,8 +37,8 @@ mkdir -p tokenpay && cd tokenpay && touch appsettings.json TokenPay.db docker-co
   },
   "OnlyConfirmed": false, //默认仅查询已确认的数据，如果想要回调更快，可以设置为false
   "NotifyTimeOut": 3, //异步通知超时时间
-  "ApiToken": "666666", //异步通知密钥，请务必修改此密钥为随机字符串，脸滚键盘即可
-  "WebSiteUrl": "http://tokenpay.xxxxx.com", //配置服务器外网域名
+  "ApiToken": "78907890", //异步通知密钥，请务必修改此密钥为随机字符串，脸滚键盘即可
+  "WebSiteUrl": "https://tokenpay.xxxxx.com", //配置服务器外网域名
   "Collection": { //需要 UseDynamicAddress 为 true 才有使用归集功能的意义，静态地址收款TokenPay无法归集
     "Enable": false, //是否启用归集功能，false 表示关闭，true 表示启用
     "UseEnergy": true, //是否租用能量归集，降低归集成本，false 表示直接燃烧trx转账
