@@ -74,14 +74,17 @@ mkdir -p tokenpay && cd tokenpay && touch appsettings.json TokenPay.db docker-co
   ",,,"
 }
 ```
-## 运行
+## `docker-compose.yml`
 ```
-docker run -d \
-  --restart always \
-  -p 5000:8080 \
-  -v ./appsettings.json:/app/appsettings.json \
-  -v ./TokenPay.db:/app/TokenPay.db \
-  dapiaoliang666/tokenpay
+services:
+  tokenpay:
+    image: dapiaoliang666/tokenpay
+    restart: always
+    ports:
+      - "5000:8080"
+    volumes:
+      - ./appsettings.json:/app/appsettings.json
+      - ./TokenPay.db:/app/TokenPay.db
 ```
 
 然后将外网域名反代到`5000`端口
