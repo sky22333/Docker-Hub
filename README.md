@@ -330,7 +330,7 @@ sudo rm -rf /etc/docker /var/lib/docker
 | 功能                         | 命令示例                                                                                                                                      | 说明                                                                                   |
 |------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------|
 |  跨平台构建  | `docker buildx build --platform linux/amd64,linux/arm64 -t myimage .`                                                                        | 在一个命令中构建适用于多个平台的镜像，支持构建不同架构的镜像（如 `amd64` 和 `arm64`）。   |
-|  并行构建（ | `docker buildx build --platform linux/amd64,linux/arm64 -t myapp .`                                                                          | 并行构建多个平台版本的镜像，提高构建效率，减少构建时间。                               |
+|  并行构建 | `docker buildx build --platform linux/amd64,linux/arm64 -t myapp .`                                                                          | 并行构建多个平台版本的镜像，提高构建效率，减少构建时间。                               |
 |  多阶段构建  | 在 Dockerfile 中使用 | 通过多个构建阶段优化镜像，通常用于减小镜像体积、分离构建环境与运行环境。               |
 |  远程构建   | ```bash<br>docker buildx create --use --name mybuilder --driver docker-container<br>docker buildx build .<br>```                                    | 使用远程构建节点（如云主机、远程 Docker 主机）进行构建，分散构建负载，提高效率。       |
 |  导出构建结果| `docker buildx build --output type=docker,name=myimage:latest .`                                                                              | 将构建结果导出为指定格式的文件，如 `.tar` 文件，便于分发、存档或加载到其他环境中。     |
