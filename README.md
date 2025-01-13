@@ -112,48 +112,9 @@ docker-compose up -d
 
 区别在于中间的`-`，官方安装脚本是以插件形式安装的`docker-compose`，所以中间不需要`-`
 
-
-
-
-
 ---
 
 </details>
-
-##  Docker常用命令:
-
-| 功能    | 命令 | 说明 |
-|-------------|-------------------|----------------|
-| 编译镜像  | `docker build -t 镜像名 .`      |   先`docker login`登录docker hub        |
-| 推送镜像  | `docker push 用户名/镜像名`      |   需先标记镜像 `docker tag 53321f173e 用户名/镜像名`        |
-| 查看容器  | `docker ps`      |   `-a`查看包括已停止的容器         |
-| 容器资源占用  | `docker stats`      |   查看所有容器资源占用         |
-| 容器详细信息  | `docker inspect`      |  挂载看`Mounts`网络看`Networks`       |
-| 进入容器内部  | `docker exec -it 容器名 /bin/sh`      |   结尾使用`/bash`也行        |
-| 创建容器网络  | `docker network create my-network`      |   `my-network`为网络名称        |
-| 容器加入网络  | `docker network connect my-network 容器名`      |   替换容器名或ID        |
-| 宿主机网络  | `network_mode: host`      |   `docker-compose`使用        |
-| 宿主机网络  | `--network host`      |   `docker run`使用        |
-| 查看网络  | `docker network inspect my-network`      |   查看`my-network`网络中的容器        |
-| 停止容器  | `docker stop`      |   `docker stop 容器名或ID`             |
-| 启动容器  | `docker start`      | `docker start 容器名或ID`           |
-| 重启容器  | `docker restart`      |  `docker restart 容器名或ID`          |
-| 删除容器 | `docker rm`       |  `docker rm 容器名或ID`              |
-| 查看镜像 | `docker images`   | `docker images 镜像名或ID`            |
-| 删除镜像  | `docker rmi -f`   |  `docker rmi -f 镜像名或ID`          |
-| 清除资源  | `docker system prune`   |  清除所有未使用资源`容器 网络 镜像 缓存`    |
-| 删除所有镜像  | `docker rmi -f $(docker images -aq)`  |   删除所有镜像         |
-| 删除所有容器  | `docker container prune -f`  |   删除所有已停止容器         |
-| 停止所有容器  | `docker stop $(docker ps -aq)`  |   停止所有容器         |
-| 停止并删除  | `docker compose down`  |   停止并删除编排容器        |
-| 重新创建容器  | `docker compose up -d --force-recreate`  |   强制删除并重启编排容器   |
-| 复制文件  | `docker cp dujiaoka:/app/data.yaml /hemo`  |   从容器复制到宿主机        |
-| 复制文件  | `docker cp /home/data.yaml dujiaoka:/app`  |   从宿主机复制到容器   |
-
----
-[官方仓库](https://hub.docker.com/)
-
-[官方文档](https://docs.docker.com/build/building/packaging/)
 
 
 ---
@@ -319,6 +280,46 @@ sudo rm -rf /etc/docker /var/lib/docker
 
 + https://docs.docker.com/registry/recipes/mirror/
 + https://status.1panel.top/status/docker
+
+
+
+##  Docker常用命令:
+
+| 功能    | 命令 | 说明 |
+|-------------|-------------------|----------------|
+| 编译镜像  | `docker build -t 镜像名 .`      |   先`docker login`登录docker hub        |
+| 推送镜像  | `docker push 用户名/镜像名`      |   需先标记镜像 `docker tag 53321f173e 用户名/镜像名`        |
+| 查看容器  | `docker ps`      |   `-a`查看包括已停止的容器         |
+| 容器资源占用  | `docker stats`      |   查看所有容器资源占用         |
+| 容器详细信息  | `docker inspect`      |  挂载看`Mounts`网络看`Networks`       |
+| 进入容器内部  | `docker exec -it 容器名 /bin/sh`      |   结尾使用`/bash`也行        |
+| 创建容器网络  | `docker network create my-network`      |   `my-network`为网络名称        |
+| 容器加入网络  | `docker network connect my-network 容器名`      |   替换容器名或ID        |
+| 宿主机网络  | `network_mode: host`      |   `docker-compose`使用        |
+| 宿主机网络  | `--network host`      |   `docker run`使用        |
+| 查看网络  | `docker network inspect my-network`      |   查看`my-network`网络中的容器        |
+| 停止容器  | `docker stop`      |   `docker stop 容器名或ID`             |
+| 启动容器  | `docker start`      | `docker start 容器名或ID`           |
+| 重启容器  | `docker restart`      |  `docker restart 容器名或ID`          |
+| 删除容器 | `docker rm`       |  `docker rm 容器名或ID`              |
+| 查看镜像 | `docker images`   | `docker images 镜像名或ID`            |
+| 删除镜像  | `docker rmi -f`   |  `docker rmi -f 镜像名或ID`          |
+| 清除资源  | `docker system prune`   |  清除所有未使用资源`容器 网络 镜像 缓存`    |
+| 删除所有镜像  | `docker rmi -f $(docker images -aq)`  |   删除所有镜像         |
+| 删除所有容器  | `docker container prune -f`  |   删除所有已停止容器         |
+| 停止所有容器  | `docker stop $(docker ps -aq)`  |   停止所有容器         |
+| 停止并删除  | `docker compose down`  |   停止并删除编排容器        |
+| 重新创建容器  | `docker compose up -d --force-recreate`  |   强制删除并重启编排容器   |
+| 复制文件  | `docker cp dujiaoka:/app/data.yaml /hemo`  |   从容器复制到宿主机        |
+| 复制文件  | `docker cp /home/data.yaml dujiaoka:/app`  |   从宿主机复制到容器   |
+
+---
+[官方仓库](https://hub.docker.com/)
+
+[官方文档](https://docs.docker.com/build/building/packaging/)
+
+---
+
 
 
 ### `biuldx`命令介绍
