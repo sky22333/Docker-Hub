@@ -251,31 +251,28 @@ sudo systemctl restart docker
 sudo systemctl show --property=Environment docker
 ```
 ---
-## 备用方法：直接传送镜像
-国外服务器拉取镜像后打包压缩到本地，然后传输到国内服务器，`mysql`为例
-#### A服务器压缩保存Docker镜像
-```
-docker save mysql > mysql.tar
-```
-#### 传送到B服务器
-```
-scp mysql.tar root@192.168.12.23:/home
-```
-然后输入B服务器root密码
 
-#### B服务器加载Docker镜像
+## 备用方法：打包镜像到本地
+
+
+1：压缩保存镜像到本地
 
 ```
-cd /home
+docker save 镜像名 > 镜像名.tar
 ```
 
+2：手动上传到另一个服务器
+
+3：另一个服务器解压镜像
+
 ```
-docker load < mysql.tar
+docker load < 镜像名.tar
 ```
-查看镜像
+4：查看镜像
 ```
 docker images
 ```
+
 ---
 
 ## Docker Hub 镜像测速
