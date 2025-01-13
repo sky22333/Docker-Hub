@@ -132,6 +132,8 @@ docker-compose up -d
 | 进入容器内部  | `docker exec -it 容器名 /bin/sh`      |   结尾使用`/bash`也行        |
 | 创建容器网络  | `docker network create my-network`      |   `my-network`为网络名称        |
 | 容器加入网络  | `docker network connect my-network 容器名`      |   替换容器名或ID        |
+| 宿主机网络  | `network_mode: host`      |   `docker-compose`使用        |
+| 宿主机网络  | `--network host`      |   `docker run`使用        |
 | 查看网络  | `docker network inspect my-network`      |   查看`my-network`网络中的容器        |
 | 停止容器  | `docker stop`      |   `docker stop 容器名或ID`             |
 | 启动容器  | `docker start`      | `docker start 容器名或ID`           |
