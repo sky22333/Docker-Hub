@@ -7,8 +7,8 @@ docker run -itd -e XRAY_VMESS_AEAD_FORCED=false -v $PWD/db/:/etc/x-ui/ -v $PWD/c
 ```
 docker run -itd \
     -e XRAY_VMESS_AEAD_FORCED=false \
-    -v $PWD/db/:/etc/x-ui/ \
-    -v $PWD/cert/:/root/cert/ \
+    -v ./db/:/etc/x-ui/ \
+    -v ./cert/:/root/cert/ \
     --network host \
     --name xui --restart=always \
     dapiaoliang666/x-ui:latest
@@ -62,8 +62,8 @@ bash <(curl -Ls https://raw.githubusercontent.com/admin8800/x-ui/main/install.sh
 原版镜像
 ```
 docker run -itd --network=host \
-    -v $PWD/db/:/etc/x-ui/ \
-    -v $PWD/cert/:/root/cert/ \
+    -v ./db/:/etc/x-ui/ \
+    -v ./cert/:/root/cert/ \
     --name x-ui --restart=always \
     enwaiax/x-ui:latest
 ```
