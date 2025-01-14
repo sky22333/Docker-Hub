@@ -1,8 +1,9 @@
 ###  docker部署3xui
+快捷命令
 ```
 docker run -itd -e XRAY_VMESS_AEAD_FORCED=false -v $PWD/db/:/etc/x-ui/ -v $PWD/cert/:/root/cert/ --network host --name xui --restart=always dapiaoliang666/x-ui:latest
 ```
-
+或者
 ```
 docker run -itd \
     -e XRAY_VMESS_AEAD_FORCED=false \
