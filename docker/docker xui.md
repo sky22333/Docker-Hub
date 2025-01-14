@@ -1,6 +1,7 @@
 ###  docker部署3xui
-> `docker run -itd -e XRAY_VMESS_AEAD_FORCED=false -v $PWD/db/:/etc/x-ui/ -v $PWD/cert/:/root/cert/ --network host --name xui --restart=always dapiaoliang666/x-ui:latest
-`
+```
+docker run -itd -e XRAY_VMESS_AEAD_FORCED=false -v $PWD/db/:/etc/x-ui/ -v $PWD/cert/:/root/cert/ --network host --name xui --restart=always dapiaoliang666/x-ui:latest
+```
 
 ```
 docker run -itd \
@@ -53,15 +54,20 @@ bash <(curl -Ls https://raw.githubusercontent.com/admin8800/x-ui/main/install.sh
 
 ---
 
-###  FranzKafkaYu/x-ui版本
+###  更多x-ui版本
 
+[Docker镜像地址](https://hub.docker.com/r/enwaiax/x-ui)
+
+原版镜像
 ```
 docker run -itd --network=host \
     -v $PWD/db/:/etc/x-ui/ \
     -v $PWD/cert/:/root/cert/ \
     --name x-ui --restart=always \
-    enwaiax/x-ui:alpha-zh
+    enwaiax/x-ui:latest
 ```
+
+可以使用`3x-ui`标签，3x-ui面板默认端口`2053`
 
 
 ```
