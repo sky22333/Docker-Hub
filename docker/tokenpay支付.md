@@ -238,6 +238,10 @@ services:
 
 - `Pay.cshtml`美化代码
 
+<details>
+  <summary>美化代码</summary>
+
+
 ```
 @{
     ViewData["Title"] = "支付页";
@@ -541,6 +545,9 @@ else
     }
 }
 ```
+
+</details>
+
 
 ### 多链配置
 映射文件
