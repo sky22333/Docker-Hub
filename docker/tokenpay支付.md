@@ -541,3 +541,81 @@ else
     }
 }
 ```
+
+### 多链配置
+映射文件
+```
+- ./EVMChains.json:/app/EVMChains.json
+```
+
+
+配置示例
+```
+{
+  "EVMChains": [
+    {
+      "Enable": true, // false 表示不启用此区块链， true 表示启用
+      "ChainName": "以太坊",
+      "ChainNameEN": "ETH",
+      "BaseCoin": "ETH",
+      "Decimals": 18,
+      "ScanHost": "https://etherscan.io",
+      "ApiHost": "https://api.etherscan.io",
+      "ApiKey": "QX14KU6F15HXY1XR6DJ7QNQHM9V711AM62", // 此处申请 https://etherscan.io/myapikey
+      "ERC20Name": "ERC20",
+      "ERC20": [
+        {
+          "Name": "USDT",
+          "ContractAddress": "0xdAC17F958D2ee523a2206206994597C13D831ec7"
+        },
+        {
+          "Name": "USDC",
+          "ContractAddress": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+        }
+      ]
+    },
+    {
+      "Enable": true, // false 表示不启用此区块链， true 表示启用
+      "ChainName": "币安智能链",
+      "ChainNameEN": "BSC",
+      "BaseCoin": "BNB",
+      "Decimals": 18,
+      "ScanHost": "https://www.bscscan.com",
+      "ApiHost": "https://api.bscscan.com",
+      "ApiKey": "BF3NV71B3U3ZZ1xxxxxxxxxxxxxxxx", // 此处申请 https://bscscan.com/myapikey
+      "ERC20Name": "BEP20",
+      "ERC20": [
+        {
+          "Name": "USDT",
+          "ContractAddress": "0x55d398326f99xxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        },
+        {
+          "Name": "USDC",
+          "ContractAddress": "0x8AC76a51cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        }
+      ]
+    },
+    {
+      "Enable": true, // false 表示不启用此区块链， true 表示启用
+      "ChainName": "Polygon",
+      "ChainNameEN": "Polygon",
+      "BaseCoin": "POL",
+      "Decimals": 18,
+      "ScanHost": "https://polygonscan.com",
+      "ApiHost": "https://api.polygonscan.com",
+      "ApiKey": "SPDX3KXIB81Zxxxxxxxxxxxxxxxxxxx", // 此处申请 https://polygonscan.com/myapikey
+      "ERC20Name": "ERC20",
+      "ERC20": [
+        {
+          "Name": "USDT",
+          "ContractAddress": "0xc2132D05D3xxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        },
+        {
+          "Name": "USDC",
+          "ContractAddress": "0x3c499c542xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        }
+      ]
+    }
+  ]
+}
+```
