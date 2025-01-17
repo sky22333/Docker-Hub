@@ -561,16 +561,16 @@ else
       "Decimals": 18,
       "ScanHost": "https://etherscan.io",
       "ApiHost": "https://api.etherscan.io",
-      "ApiKey": "QX14KU6F15HXY1XR6DJ7QNQHM9V711AM62", // 此处申请 https://etherscan.io/myapikey
+      "ApiKey": "QX14KU6F15xxxxxxxxxxxxxxxxxxxxxx", // 此处申请 https://etherscan.io/myapikey
       "ERC20Name": "ERC20",
       "ERC20": [
         {
           "Name": "USDT",
-          "ContractAddress": "0xdAC17F958D2ee523a2206206994597C13D831ec7"
+          "ContractAddress": "0xdAC17F958Dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
         },
         {
           "Name": "USDC",
-          "ContractAddress": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+          "ContractAddress": "0xa0b86991c6218xxxxxxxxxxxxxxxxxxxxxxxxxxxx"
         }
       ]
     },
