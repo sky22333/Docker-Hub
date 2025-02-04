@@ -7,7 +7,6 @@
 services:
   mysql:
     image: mysql:5.7
-    container_name: mysql
     environment:
       MYSQL_DATABASE: dujiaoka                  # 数据库名称
       MYSQL_USER: dujiaoka                      # 数据库用户名
@@ -19,7 +18,7 @@ services:
 
   redis:
     image: redis:alpine
-    container_name: redis
+    restart: always
 
   dujiaoka:
     image: jiangjuhong/dujiaoka:latest
