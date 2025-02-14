@@ -19,7 +19,10 @@ public/theme
 ```
 app/Payments
 ```
-
+修改支付回调返回的URL
+```
+app/Services/PaymentService.php
+```
 客户端适配参考目录
 ```
 app/Http/Controllers/Client/Protocols
