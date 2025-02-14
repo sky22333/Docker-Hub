@@ -12,6 +12,7 @@ mkdir epusdt && cd epusdt && touch docker-compose.yml epusdt.conf epusdt.sql
 services:
   db:
     image: mariadb:focal
+    container_name: mariadb
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=admin7890
@@ -24,25 +25,21 @@ services:
   redis:
     image: redis:alpine
     restart: always
-    volumes:
-      - ./redis:/data
 
   epusdt:
     image: stilleshan/epusdt
+    container_name: epusdt
     restart: always
     volumes:
       - ./epusdt.conf:/app/.env
     ports:
-      - 8333:8000
+      - 8000:8000
 ```
 
-修改`MYSQL_ROOT_PASSWORD`数据库root密码
-
-修改`MYSQL_PASSWORD`数据库用户密码
 
 用户名和数据库名不用修改
 
-epusdt端口为`8333`
+epusdt端口为`8000`
 
 
 #### epusdt.conf
@@ -100,7 +97,7 @@ tg_proxy=
 #管理员TG的id
 tg_manage=
 
-#api接口认证token
+#对接的认证token
 api_auth_token=
 
 #订单过期时间(单位分钟)
@@ -109,20 +106,14 @@ order_expiration_time=10
 #强制汇率(设置此参数后每笔交易将按照此汇率计算，例如:7.5)
 forced_usdt_rate=
 ```
-
-
+备注：
+```
 修改第 3 行`app_uri`为上文为epusdt准备的独立域名
-
-修改第 24 行`mysql_passwd`为上节MYSQL_PASSWORD的用户密码(注意:非 root 密码)
-
+修改第 24 行`mysql_passwd`为上节MYSQL_PASSWORD的用户密码
 修改第 55 行`api_auth_token=`创建一个强密码用于支付设置中使用.
-
-注意:因为本项目是独立部署到 docker compose 内,所以第 21,33 行已经修改为db,redis,不能使用 127.0.0.1.
-
 修改第 48 行`tg_bot_token=`为上文创建的 Telegram Bot 的Token
-
 修改第 52 行`tg_manage=`改为你的TG的ID
-
+```
 
 #### epusdt.sql
 
@@ -187,7 +178,7 @@ docker compose up -d
 如下图执行后无任何显示代表成功,否则将会报错.
 
 ```
-docker exec -i epusdt-db-1 sh -c 'exec mysql -uepusdt -padmin7890 epusdt' < epusdt.sql
+docker exec -i mariadb sh -c 'exec mysql -uepusdt -padmin7890 epusdt' < epusdt.sql
 ```
 
 #### 重启服务
@@ -199,7 +190,7 @@ docker compose restart
 #### 检查服务
 
 ```
-docker logs -f epusdt-epusdt-1
+docker logs epusdt
 ```
 
 查看epusdt服务出现`http server started on [::]:8000`则表示成功.
@@ -209,10 +200,7 @@ docker logs -f epusdt-epusdt-1
 
 #### 配置反代域名
 
-仅需要将usdt 域名反代到 `8333`
-
-访问域名显示`hello epusdt, https://github.com/assimon/epusdt`表示成功
-
+仅需要将usdt 域名反代到 `8000`
 
 #### 独角数卡配置支付
 
