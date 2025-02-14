@@ -268,12 +268,12 @@ class EpusdtPay {
         return [
             'epusdt_pay_url' => [
                 'label' => 'API 地址',
-                'description' => '您的 EpusdtPay API 接口地址(例如: https://epusdt-pay.xxx.com)',
+                'description' => '您的 Epusdt 地址(例如: https://example.com)',
                 'type' => 'input',
             ],
             'epusdt_pay_apitoken' => [
                 'label' => 'API Token',
-                'description' => '您的 EpusdtPay API Token',
+                'description' => '您的 Epusdt Token',
                 'type' => 'input',
             ]
         ];
