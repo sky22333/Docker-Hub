@@ -1,4 +1,4 @@
-### `Laravel`框架镜像打包模板
+### `PHP-Laravel`框架镜像打包模板
 
 - 配置基于`BeikeShop`商城项目
 - 源码基于[官网下载页](https://beikeshop.cn/download)的`v1.5.6`版本
