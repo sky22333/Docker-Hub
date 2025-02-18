@@ -48,4 +48,4 @@ services:
 
 ### `webdevops/php-nginx`镜像环境变量文档
 
-[文档地址](https://dockerfile.readthedocs.io/en/latest/content/DockerImages/dockerfiles/php-nginx.html)
+- [文档地址](https://dockerfile.readthedocs.io/en/latest/content/DockerImages/dockerfiles/php-nginx.html)
