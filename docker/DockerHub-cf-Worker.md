@@ -7,35 +7,27 @@
 ```
 import HTML from './docker.html';
 
-// 定义上游 Docker Registry 地址（固定地址）
 const DOCKER_REGISTRY = 'https://registry-1.docker.io'
 
-/**
- * 注册 fetch 事件监听器，Worker 接收到请求后调用 handleRequest 函数处理
- */
 addEventListener('fetch', event => {
-  // 遇到异常时，透传请求
   event.passThroughOnException()
   event.respondWith(handleRequest(event.request))
 })
 
-/**
- * 主请求处理函数，根据 URL 的不同路径分发到对应的处理逻辑
- *
- * @param {Request} request - 当前请求对象
- * @returns {Promise<Response>} - 返回响应对象
- */
 async function handleRequest(request) {
-  // 解析请求 URL
   const url = new URL(request.url)
-  // 获取访问时使用的域名（动态获取，不再使用固定 PROXY_REGISTRY）
   const host = url.host
   const path = url.pathname
 
-  // 1. 如果是根路径请求，重定向到 Docker 官网
-  if (path === '/') {
-    return Response.redirect('https://www.docker.com', 301)
-  }
+  try {
+    // 1. 根路径请求时，返回 HTML 页面
+    if (path === '/') {
+      return new Response(HTML, {
+        headers: {
+          'content-type': 'text/html;charset=UTF-8',
+        },
+      })
+    }
 
   // 2. 对 /v2/ 请求返回认证挑战信息
   if (path === '/v2/') {
