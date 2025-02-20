@@ -1,4 +1,4 @@
-### 工作流默认变量`GITHUB_TOKEN`的提权语法
+### 工作流默认用户变量`GITHUB_TOKEN`的提权语法
 > 开启工作流的仓库文件路径`.github/workflows/xxxxx.yml`
 
 | 资源类别           | 类别说明              | 权限   | 权限说明                                                                                          | 配置语法示例                                                                                       |
