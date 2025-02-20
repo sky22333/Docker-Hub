@@ -1,5 +1,5 @@
-# Docker hub构建镜像示例，请替换密钥和用户名，手动触发，自动推送
-name: Docker-hub镜像构建
+# Docker hub构建并推送示例，请替换用户名和密钥，手动触发，自动推送
+name: Docker-hub构建并推送
 
 on:
   workflow_dispatch:
