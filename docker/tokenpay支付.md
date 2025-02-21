@@ -51,7 +51,7 @@ mkdir -p tokenpay && cd tokenpay && touch appsettings.json TokenPay.db docker-co
     "Address": "TLUF41C386Cxxxxxxxxxxxxxxxxxxxx" //归集收款地址，配置你自己的收款地址
   },
   "Telegram": {
-    "AdminUserId": 12345678, // 你的TG账号ID，可在 https://t.me/creationdatebot 获取ID
+    "AdminUserId": 12345678, // 你的TG账号ID，可在 https://t.me/creationdatebot 获取ID，可以改成群组ID
     "BotToken": "1234567890:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" //从https://t.me/BotFather 创建机器人时，会给你BotToken
   },
   "RateMove": { //汇率微调，支持设置正负数，仅支持两位小数
