@@ -14,6 +14,8 @@ services:
       - ./new-api:/data
 ```
 
+- 初始管理员账户：`root` `123456`
+
 或者
 
 ```
