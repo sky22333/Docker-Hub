@@ -211,6 +211,15 @@ sudo systemctl restart docker
 ```
 sudo systemctl show --property=Environment docker
 ```
+#### 本地代理转发到服务器
+
+使用SSH转发把本地的10808端口流量转发给远程服务器
+```
+ssh -R 1080:127.0.0.1:10808 root@服务器地址 -N
+```
+`-N` 仅连接不打开对话框
+
+
 ---
 
 ## 备用方法：打包镜像到本地
