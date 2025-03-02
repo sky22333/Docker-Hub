@@ -28,6 +28,26 @@ app/Services/PaymentService.php
 app/Http/Controllers/Client/Protocols
 ```
 
+
+已购买用户不显示订阅套餐：
+```
+app/Services/PlanService.php
+```
+注释过滤部分
+```
+public function getAvailablePlans(): `Collection`
+    {
+        return Plan::where('show', true)
+            ->where('sell', true)
+            ->orderBy('sort')
+            ->get();
+//            ->filter(function ($plan) {
+//                return $this->hasCapacity($plan);
+//            });
+    }
+```
+
+
 订阅下发文件目录
 ```
 /www/resources/rules/custom.clash.yaml
