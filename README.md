@@ -319,7 +319,7 @@ sudo rm -rf /etc/docker /var/lib/docker
 | 停止所有容器  | `docker stop $(docker ps -aq)`  |   停止所有容器         |
 | 停止并删除  | `docker compose down`  |   停止并删除编排容器        |
 | 重新创建容器  | `docker compose up -d --force-recreate`  |   强制删除并重启编排容器   |
-| 复制文件  | `docker cp dujiaoka:/app/data.yaml /hemo`  |   从容器复制到宿主机        |
+| 复制文件  | `docker cp dujiaoka:/app/data.yaml /home`  |   从容器复制到宿主机        |
 | 复制文件  | `docker cp /home/data.yaml dujiaoka:/app`  |   从宿主机复制到容器   |
 
 ---
