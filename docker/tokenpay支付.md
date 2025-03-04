@@ -418,20 +418,18 @@ else
                 `${minutes.toString().padStart(2, '0')}分 ${seconds.toString().padStart(2, '0')}秒`;
         }
 
-        function copyToClipboard(value, message) {
-            const el = document.createElement('textarea');
-            el.value = value;
-            document.body.appendChild(el);
-            el.select();
-            document.execCommand('copy');
-            document.body.removeChild(el);
-
-            const popup = document.getElementById('popup');
-            popup.textContent = message;
-            popup.classList.add('show');
-            setTimeout(() => {
-                popup.classList.remove('show');
-            }, 1000);
+        async function copyToClipboard(value, message) {
+            try {
+                await navigator.clipboard.writeText(value);
+                const popup = document.getElementById('popup');
+                popup.textContent = message;
+                popup.classList.add('show');
+                setTimeout(() => {
+                    popup.classList.remove('show');
+                }, 1000);
+            } catch (err) {
+                console.error('复制失败: ', err);
+            }
         }
 
         let checkTimer;
