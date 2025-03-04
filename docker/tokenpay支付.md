@@ -262,205 +262,139 @@ else
 {
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <style>
-        /* 全局样式 */
-        :root {
-            --bs-gutter-x: 0.2rem;
-            --primary-color: rgba(0, 0, 0, 0.7);
-            --secondary-color: rgba(107, 70, 193, 0.9);
-            --accent-color: rgba(0, 0, 0, 0.9);
-            --text-color: rgba(31, 41, 55, 0.9);
-            --gradient-color-1: rgba(255, 255, 255, 0.1);
-            --gradient-color-2: rgba(233, 233, 233, 0.2);
-            --gradient-color-3: rgba(200, 200, 200, 0.3);
-        }
-
-        blockquote, dd, dl, figure, h1, h2, h3, h4, h5, h6, hr, p, pre {
-            margin: revert;
-        }
-
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: var(--text-color);
-            background: linear-gradient(-45deg, var(--gradient-color-1), var(--gradient-color-2), var(--gradient-color-3));
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            background: linear-gradient(to bottom right, #e0e7ff, #fae8ff, #f5f3ff);
             min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 1rem;
         }
 
-        .card {
-            background-color: rgba(248, 248, 248, 0.8);
-            border-radius: 1rem;
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
-            padding: 0.2rem;
+        .custom-card {
+            background-color: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(15px);
-            transition: all 0.3s ease;
-        }
-
-        .title {
-            font-size: 1.5rem;
-            color: rgb(0, 0, 0, 0.5);
-            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
-        }
-
-        .btn-primary {
-            background-color: var(--primary-color);
-            color: white;
-            transition: all 0.3s ease;
-            padding: 0.2rem 0.6rem;
-            border: none;
-            border-radius: 0.5rem;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--secondary-color);
-        }
-
-        .timer {
-            font-size: 1.5rem;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .warning {
-            color: rgb(0, 0, 0);
-            animation: pulse 2s infinite;
-        }
-
-        .qr-code {
             border-radius: 1rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            margin: 1rem 0;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+        }
+        .w-full {
+		width: 200%;
+	   }
+
+        .custom-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: rgb(55, 65, 81);
+            text-align: center;
+            margin-bottom: 1rem;
         }
 
-        .text-black {
-            color: black !important;
+        .custom-timer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgb(79, 70, 229);
+            margin-bottom: 1rem;
         }
 
-        .center {
+        .custom-warning {
+            background-color: rgba(254, 243, 199, 1);
+            border: 1px solid rgba(253, 230, 138, 1);
+            color: rgba(180, 83, 9, 1);
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .custom-copyable {
+            background-color: rgba(249, 250, 251, 1);
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.2s;
             text-align: center;
         }
 
-        .my-4 {
-            margin-top: 0.5rem;
-            margin-bottom: 0.5rem;
+        .custom-copyable:hover {
+            background-color: rgba(243, 244, 246, 1);
         }
 
-        /* 新增和修改的样式 */
-        .copyable-container {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 0.5rem;
-            cursor: pointer;
-            position: relative;
-            padding: 0.5rem;
-        }
+	   .custom-copyable span {
+	       text-align: center;
+	       margin: 0 auto;
+	       width: 100%;
+	       display: block;
+	   }
 
-        .copyable-content {
-            border: 2px dashed rgba(0, 0, 0, 0.9);
-            border-radius: 0.5rem;
-            padding: 0.2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .copyable-content::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: repeating-linear-gradient(
-                45deg,
-                rgba(0, 0, 0, 0.9),
-                rgba(0, 0, 0, 0.3) 10px,
-                transparent 10px,
-                transparent 20px
-            );
-            animation: snake 20s linear infinite;
-            pointer-events: none;
-        }
-
-        .popup {
+	   .custom-copyable .text-sm.truncate {
+		   max-width: 100%;
+		   margin: 0 auto;
+		   overflow: hidden;
+		   text-overflow: ellipsis;
+		   white-space: nowrap;
+	   }
+        .custom-popup {
             position: fixed;
-            top: 50%;
+            bottom: 1rem;
             left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgba(0, 0, 0, 0.8);
+            transform: translateX(-50%);
+            background-color: rgba(31, 41, 55, 0.9);
             color: white;
-            padding: 1rem 2rem;
-            border-radius: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
             opacity: 0;
             transition: opacity 0.3s ease;
         }
 
-        .popup.show {
+        .custom-popup.show {
             opacity: 1;
-        }
-
-        /* 使用 Razor 代码块来包装 keyframes */
-        @{
-            <text>
-                @@keyframes snake {
-                    0% {
-                        background-position: 0 0;
-                        background: repeating-linear-gradient(
-                            45deg,
-                            rgba(0, 0, 0, 0.05),
-                            rgba(0, 0, 0, 0.05) 10px,
-                            transparent 10px,
-                            transparent 20px
-                        );
-                    }
-                    100% {
-                        background-position: 400px 0;
-                        background: repeating-linear-gradient(
-                            45deg,
-                            rgba(0, 0, 0, 0.05),
-                            rgba(0, 0, 0, 0.05) 10px,
-                            transparent 10px,
-                            transparent 20px
-                        );
-                    }
-                }
-            </text>
         }
     </style>
 
-    <div class="container mx-auto px-2 h-screen flex flex-col">
-        <div class="card animate__animated animate__fadeIn flex-grow h-auto">
-            <h1 class="title text-center animate__animated animate__bounceIn">支付详情</h1>
+    <div class="container mx-auto px-4 h-screen flex items-center justify-center">
+        <div class="w-full max-w-md custom-card">
+            <h1 class="custom-title">支付详情</h1>
 
-            <div class="timer text-center mb-4 animate__animated animate__pulse animate__infinite time">
-                剩余时间：<span class="text-black" id="remaining-time"></span>
+            <div class="custom-timer text-center mb-4">
+                剩余时间：<span id="remaining-time"></span>
             </div>
 
-            <p class="warning text-center">请仔细核对币种和金额！</p>
+            <div class="custom-warning">请仔细核对币种和金额！</div>
 
-            <div class="text-center my-4 flex flex-col items-center">
-                <p class="text-black font-bold">区块链：<span class="text-red-500">@Model.Currency.ToBlockchainName(chain)</span> 币种：<span class="text-red-500">@Model.Currency.ToCurrency(chain)</span></p>
-                <img src="data:image/png;base64,@ViewData["QrCode"]" class="qr-code border border-gray-300 my-2" alt="收款地址" width="200" height="200">
-                <div class="copyable-container" onclick="copyToClipboard('@Model.ToAddress', '地址已复制')">
-                    <div class="copyable-content">
-                        <span class="text-black font-bold text-sm">@Model.ToAddress</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="text-center">
-                <p class="text-black">支付金额：
-                    <span class="copyable-container" onclick="copyToClipboard('@Model.Amount', '金额已复制')">
-                        <span class="copyable-content text-black">@Model.Amount @Model.Currency.ToCurrency(chain)</span>
-                    </span>
+            <div class="text-center space-y-4">
+                <p class="font-bold">
+                    区块链：<span class="text-red-500">@Model.Currency.ToBlockchainName(chain)</span> 
+                    币种：<span class="text-red-500">@Model.Currency.ToCurrency(chain)</span>
                 </p>
-                <p class="text-black">订单编号：<span class="text-black">@Model.OutOrderId</span></p>
+
+                <img src="data:image/png;base64,@ViewData["QrCode"]" class="mx-auto rounded-lg shadow-md" alt="收款地址" width="200" height="200">
+                
+                <div class="custom-copyable" onclick="copyToClipboard('@Model.ToAddress', '地址已复制')">
+                    <span class="text-sm truncate">@Model.ToAddress</span>
+                </div>
+
+                <div class="custom-copyable" onclick="copyToClipboard('@Model.Amount', '金额已复制')">
+                    <span>支付金额：@Model.Amount @Model.Currency.ToCurrency(chain)</span>
+                </div>
+
+                <p>订单编号：<span>@Model.OutOrderId</span></p>
             </div>
         </div>
-    </div>
 
-    <div id="popup" class="popup">复制成功</div>
+        <div id="popup" class="custom-popup">复制成功</div>
+    </div>
 
     @section Scripts {
     <script>
@@ -477,8 +411,6 @@ else
                 return;
             }
 
-            const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
 
