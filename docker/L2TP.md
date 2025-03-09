@@ -3,7 +3,7 @@
 services:
   softether-vpn:
     image: siomiz/softethervpn
-    container_name: softethervpn
+    container_name: softether
     restart: always
     ports:
       - "443:443"       # SSTP使用的端口
@@ -32,7 +32,7 @@ services:
 services:
   ipsec-vpn-server:
     image: hwdsl2/ipsec-vpn-server
-    container_name: vpn
+    container_name: l2tp
     restart: always
     ports:
       - "500:500/udp"
