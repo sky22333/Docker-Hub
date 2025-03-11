@@ -117,6 +117,36 @@ services:
       - /var/run/tailscale/tailscaled.sock:/var/run/tailscale/tailscaled.sock
 ```
 
+[修改Tailscale的配置文件](https://login.tailscale.com/admin/acls/file) 添加如下内容
+```
+        "derpMap": {
+                "OmitDefaultRegions": true,
+                // OmitDefaultRegions 忽略官方的中继节点
+                "Regions": {
+                        // 这里的 901 从 900 开始随便取数字
+                        "901": {
+                                // RegionID 和上面的相等
+                                "RegionID": 901,
+                                // RegionCode 名称
+                                "RegionCode": "Vultr-SG",
+                                "Nodes": [
+                                        {
+                                                // Name 保持 1不动
+                                                "Name":     "1",
+                                                // 这个也和 RegionID 一样
+                                                "RegionID": 901,
+                                                // 域名
+                                                "HostName": "<你的域名>",
+                                                // 端口号
+                                                "DERPPort": 443,
+                                        },
+                                ],
+                        },
+                },
+        },
+```
+
+
 | 变量名           | 必需 | 描述 | 默认值 |
 |----------------|------|------|--------|
 | DERP_DOMAIN   | 是   | derper 服务器主机名 | your-hostname.com |
@@ -126,11 +156,6 @@ services:
 | DERP_STUN     | 否   | 是否同时运行 STUN 服务器 | true |
 | DERP_HTTP_PORT| 否   | 提供 HTTP 服务的端口。设置为 -1 禁用 | 80 |
 | DERP_VERIFY_CLIENTS | 否 | 是否通过本地 tailscaled 实例验证此 DERP 服务器的客户端 | false |
-
-
-
-
-
 
 
 
