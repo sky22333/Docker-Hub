@@ -89,10 +89,33 @@ services:
       - "443:443"
       - "3478:3478/udp"
     volumes:
-      - ./certs:/app/certs
+      - ./certs:/app/certs # 证书持久化存储
       - /var/run/tailscale/tailscaled.sock:/var/run/tailscale/tailscaled.sock
 ```
 
+手动配置证书
+```
+services:
+  derper:
+    image: fredliang/derper:latest
+    container_name: derper
+    restart: unless-stopped
+    environment:
+      - DERP_DOMAIN=derper.your-domain.com  # 替换为您的域名
+      - DERP_CERT_MODE=manual
+      - DERP_CERT_DIR=/app/certs
+      - DERP_STUN=true
+      - DERP_HTTP_PORT=80
+      - DERP_ADDR=:443
+      - DERP_VERIFY_CLIENTS=true  # 通过本地 tailscaled 实例验证客户端
+    ports:
+      - "80:80"
+      - "443:443"
+      - "3478:3478/udp"
+    volumes:
+      - ./certs:/app/certs # 手动挂载证书
+      - /var/run/tailscale/tailscaled.sock:/var/run/tailscale/tailscaled.sock
+```
 
 | 变量名           | 必需 | 描述 | 默认值 |
 |----------------|------|------|--------|
