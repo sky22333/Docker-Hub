@@ -90,8 +90,7 @@ services:
       - "3478:3478/udp"
     volumes:
       - ./certs:/app/certs
-      - /var/run/tailscale:/var/run/tailscale
-    network_mode: "host"
+      - /var/run/tailscale/tailscaled.sock:/var/run/tailscale/tailscaled.sock
 ```
 
 
