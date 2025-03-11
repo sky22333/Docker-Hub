@@ -59,6 +59,56 @@ services:
       - --tun=tailscale0
       - --auth-key=你的AuthKey
 ```
+#### 宿主机部署
+```
+sudo apt install tailscale -y
+
+sudo tailscale up
+
+sudo systemctl status tailscaled
+```
+
+#### 自建`derper`
+
+自动申请证书
+```
+services:
+  derper:
+    image: fredliang/derper:latest
+    container_name: derper
+    restart: unless-stopped
+    environment:
+      - DERP_DOMAIN=derper.your-domain.com  # 替换为您的域名
+      - DERP_CERT_MODE=letsencrypt
+      - DERP_STUN=true
+      - DERP_HTTP_PORT=80
+      - DERP_ADDR=:443
+      - DERP_VERIFY_CLIENTS=true  # 本地 tailscaled 实例验证客户端，只允许自己使用
+    ports:
+      - "80:80"
+      - "443:443"
+      - "3478:3478/udp"
+    volumes:
+      - ./certs:/app/certs
+      - /var/run/tailscale:/var/run/tailscale
+    network_mode: "host"
+```
+
+
+| 变量名           | 必需 | 描述 | 默认值 |
+|----------------|------|------|--------|
+| DERP_DOMAIN   | 是   | derper 服务器主机名 | your-hostname.com |
+| DERP_CERT_DIR | 否   | 存储证书的目录 (如果地址端口是 :443) | /app/certs |
+| DERP_CERT_MODE| 否   | 获取证书的模式。可选项: manual, letsencrypt | letsencrypt |
+| DERP_ADDR     | 否   | 服务器监听地址 | :443 |
+| DERP_STUN     | 否   | 是否同时运行 STUN 服务器 | true |
+| DERP_HTTP_PORT| 否   | 提供 HTTP 服务的端口。设置为 -1 禁用 | 80 |
+| DERP_VERIFY_CLIENTS | 否 | 是否通过本地 tailscaled 实例验证此 DERP 服务器的客户端 | false |
+
+
+
+
+
 
 
 
