@@ -1,10 +1,12 @@
 ###  docker安装
 创建配置文件，并用下面的命令启动
-```  
-mkdir -p /etc/XrayR && touch /etc/XrayR/config.yml && cd /etc/XrayR
 ```
-```
-docker run --restart=always --name xrayr -d -v /etc/XrayR/config.yml:/etc/XrayR/config.yml --network=host cloudorz/xrayr:latest
+docker run -d \
+  --restart=always \
+  --name xrayr \
+  --network=host \
+  -v ./config.yml:/etc/XrayR/config.yml \
+  cloudorz/xrayr:latest
 ```
 
 
