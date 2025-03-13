@@ -1,5 +1,7 @@
 ### Docker部署彩虹聚合DNS系统
 
+[项目地址](https://github.com/netcccyun/dnsmgr)
+
 创建`mysql/conf/my.cnf`配置
 ```
 [mysqld]
