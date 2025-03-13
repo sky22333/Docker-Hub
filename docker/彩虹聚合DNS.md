@@ -2,7 +2,7 @@
 
 [项目地址](https://github.com/netcccyun/dnsmgr)
 
-创建`mysql/conf/my.cnf`配置
+创建`mysql/my.cnf`配置
 ```
 [mysqld]
 sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
@@ -26,7 +26,7 @@ services:
     container_name: mysql
     restart: always
     volumes:
-      - ./mysql/conf/my.cnf:/etc/mysql/my.cnf
+      - ./mysql/my.cnf:/etc/mysql/my.cnf
       - ./mysql/data:/var/lib/mysql
     environment:
       - MYSQL_DATABASE=dnsmgr
