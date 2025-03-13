@@ -1,37 +1,24 @@
 ###  docker部署3xui
-快捷命令
-```
-docker run -itd -e XRAY_VMESS_AEAD_FORCED=false -v ./db/:/etc/x-ui/ -v ./cert/:/root/cert/ --network host --name xui --restart=always dapiaoliang666/x-ui:latest
-```
-或者
+
 ```
 docker run -itd \
-    -e XRAY_VMESS_AEAD_FORCED=false \
-    -v ./db/:/etc/x-ui/ \
-    -v ./cert/:/root/cert/ \
-    --network host \
-    --name xui --restart=always \
-    dapiaoliang666/x-ui:latest
+   -e XRAY_VMESS_AEAD_FORCED=false \
+   -v $PWD/db/:/etc/x-ui/ \
+   -v $PWD/cert/:/root/cert/ \
+   --network=host \
+   --restart=always \
+   --name 3x-ui \
+   xiangnile/3x-ui
 ```
 
 ```
-端口：54321
+端口：2053
 用户名：admin
 密码：admin
 ```
 
 面板数据在`root/db`目录下
 
-查看用户名和密码
-
-```
-/app/x-ui setting -show
-```
-
-重置面板：
-```
-/app/x-ui setting -reset
-```
 
 #### 127.0.0.1:62789监听失败是因为服务器没有配置本地环回地址
 查看
@@ -46,7 +33,7 @@ sudo ip addr add 127.0.0.1/8 dev lo
 ---
 ### 脚本
 ```
-bash <(curl -Ls https://raw.githubusercontent.com/admin8800/x-ui/main/install.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/admin8800/3x-ui/main/install.sh)
 ```
 
 ---
@@ -84,7 +71,7 @@ docker run -itd --network=host \
 ```
 services:
   xui:
-    image: dapiaoliang666/x-ui:latest
+    image: xiangnile/3x-ui
     container_name: xui
     restart: always
     environment:
@@ -93,7 +80,7 @@ services:
       - ./db/:/etc/x-ui/
       - ./cert/:/root/cert/
     ports:
-      - "54321:54321"
+      - "2053:2053"
       - "8080:8080"
       - "80:80"
       - "9988:9988"
