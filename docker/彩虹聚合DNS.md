@@ -35,13 +35,3 @@ services:
       - MYSQL_ROOT_PASSWORD=dnsmgr123456
       - TZ=Asia/Shanghai
 ```
-
-
-登陆mysql容器创建数据库
-```
-docker exec -it mysql sh
-mysql -uroot -pdnsmgr123456
-create database dnsmgr;
-```
-
-然后再访问页面初始化站点
