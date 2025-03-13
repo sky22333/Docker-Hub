@@ -78,7 +78,7 @@ mkdir -p tokenpay && cd tokenpay && touch appsettings.json TokenPay.db docker-co
 ```
 services:
   tokenpay:
-    image: dapiaoliang666/tokenpay
+    image: xiangnile/tokenpay
     restart: always
     ports:
       - "5000:8080"
