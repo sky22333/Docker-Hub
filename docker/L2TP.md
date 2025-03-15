@@ -45,7 +45,7 @@ services:
 ```
 查看连接信息
 ```
-docker logs vpn
+docker logs l2tp
 ```
 更多配置信息在`data`目录
 
