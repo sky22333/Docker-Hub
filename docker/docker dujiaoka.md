@@ -1,5 +1,5 @@
 # docker快速部署独角数卡
-
+- [安装时不支持post方法去掉`do-`可解决](https://github.com/sky22333/dujiaoka/blob/da5f055e9afa8cc7920e1f3b52674351ff0c5f25/routes/common/web.php#L41)
 - 先把域名反代到`8111`端口并开启HTTPS
 
 **Docker-compose配置：**
