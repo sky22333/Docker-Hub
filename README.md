@@ -307,7 +307,7 @@ sudo rm -rf /etc/docker /var/lib/docker
 | 宿主机网络  | `network_mode: host`      |   `docker-compose`使用        |
 | 宿主机网络  | `--network host`      |   `docker run`使用        |
 | 查看网络  | `docker network inspect my-network`      |   查看`my-network`网络中的容器        |
-| 查看变动  | `docker diff 容器名`      |   查看容器里的文件变动        |
+| 查看变动  | `docker diff 容器名`      |   查看容器里的文件变化        |
 | 停止容器  | `docker stop`      |   `docker stop 容器名或ID`             |
 | 启动容器  | `docker start`      | `docker start 容器名或ID`           |
 | 重启容器  | `docker restart`      |  `docker restart 容器名或ID`          |
