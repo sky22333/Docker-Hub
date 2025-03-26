@@ -183,3 +183,20 @@ docker restart wordpress
 - 直播播放器插件`SRS Player`
 - 优化性能缓存插件`WP Fastest Cache`
 - 压缩图片和懒加载插件`Smush`
+
+
+---
+
+### woocommerce汉化
+
+[woocommerce汉化插件下载](https://translate.wordpress.org/locale/zh-cn/default/wp-plugins/woocommerce/) 
+
+1：选择第一个稳定版本
+
+2：滚动到页面底部，导出为机器对象消息目录 `.mo`文件
+
+3：将导出的文件重命名为`woocommerce-zh_CN.mo`
+
+4：然后上传到`wp-content/languages/plugins/`文件夹
+
+> 或者：在`wp-content\languages`下面新建`woocommerce`目录，然后把`woocommercer-zh_CN.mo`文件放进去
