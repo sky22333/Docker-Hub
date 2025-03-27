@@ -52,7 +52,7 @@ services:
       MYSQL_USER: blog                  # 数据库用户名
       MYSQL_PASSWORD: blog123456        # 数据库密码
     volumes:
-      - ./sql:/docker-entrypoint-initdb.d  # 挂载 SQL 文件目录，自动执行
+      - ./sql:/docker-entrypoint-initdb.d  # 挂载SQL文件目录，自动执行sql脚本，如果有多个则按照数字或者字母顺序依次执行
     restart: always
 
   redis:
