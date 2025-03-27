@@ -25,7 +25,7 @@ COPY ./blogjava ./blogjava
 WORKDIR /app/blogjava
 RUN mvn clean package -DskipTests
 
-# 最终运行阶段 - 使用 Caddy 镜像
+# 最终运行阶段 - 使用Caddy镜像运行前后端
 FROM caddy:2.9-alpine
 
 RUN apk update && \
