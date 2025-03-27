@@ -1,6 +1,8 @@
 ### 前后端分离java项目构建示例
 
 `Dockerfile`
+
+> JDK 1.8 `maven:3.8-openjdk-8`
 ```
 # 前端构建
 FROM node:20 AS frontend-build
