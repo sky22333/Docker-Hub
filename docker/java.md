@@ -36,9 +36,6 @@ COPY --from=frontend-build /app/blogui/dist /usr/share/caddy/html
 COPY --from=backend-build /app/blogjava/target/blogjava.jar /usr/share/caddy/
 COPY ./Caddyfile /etc/caddy/Caddyfile
 
-ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
-ENV PATH=$JAVA_HOME/bin:$PATH
-
 CMD ["sh", "-c", "java -jar /usr/share/caddy/blogjava.jar & caddy run --config /etc/caddy/Caddyfile"]
 ```
 
