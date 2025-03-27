@@ -45,7 +45,7 @@ CMD ["sh", "-c", "java -jar /usr/share/caddy/blogjava.jar & caddy run --config /
 ```
 services:
   mysql:
-    image: mysql:8
+    image: mysql:8.0
     environment:
       MYSQL_ROOT_PASSWORD: blog123456   # 数据库root密码
       MYSQL_DATABASE: blog              # 数据库名称
