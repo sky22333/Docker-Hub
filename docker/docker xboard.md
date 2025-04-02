@@ -137,16 +137,4 @@ mysql -u root -p my_database < my_database_backup.sql
 
 3.cloudflare turnstile 增加Turnstile站点获取密钥。然后更改管理后台密钥
 
-### 增加落地页
 
-[在这里](https://github.com/cedar2025/Xboard/blob/3ccebfcff18dbee38a7c2701d12567e2a39b6854/routes/web.php#L28)增加首页路由判断
-
-```
-    // 判断是否为首页访问，并返回静态页面
-    $staticHomePath = public_path('static/index.html'); // 静态首页文件路径
-    if (file_exists($staticHomePath)) {
-        // 如果静态文件存在则返回该静态文件内容
-        return response()->file($staticHomePath);
-    }
-```
-然后`public`目录下放入`static`文件资源
