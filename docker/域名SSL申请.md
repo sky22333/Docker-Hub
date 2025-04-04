@@ -11,7 +11,7 @@ apt update && apt install certbot -yq
 **2：申请证书**
 临时占用80端口
 ```
-sudo certbot certonly --standalone --non-interactive --agree-tos -d example.com
+sudo certbot certonly --standalone --non-interactive --agree-tos --email 123youremail@gmail.com -d example.com
 ```
 替换`example.com`示例域名，多个`-d`可为多个域名申请
 
