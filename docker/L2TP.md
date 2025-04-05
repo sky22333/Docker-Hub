@@ -26,28 +26,6 @@ services:
 > 或者可以直接使用host网络模式：`network_mode: host`
 > 部分协议不需要可以去掉
 
----
-### Docker部署`IKEv2和L2TP`
-```
-services:
-  ipsec-vpn-server:
-    image: hwdsl2/ipsec-vpn-server
-    container_name: l2tp
-    restart: always
-    ports:
-      - "500:500/udp"
-      - "4500:4500/udp"
-      - "1701:1701/udp"
-    privileged: true
-    volumes:
-      - ./data:/etc/ipsec.d
-      - /lib/modules:/lib/modules:ro
-```
-查看连接信息
-```
-docker logs l2tp
-```
-更多配置信息在`data`目录
 
 ---
 
