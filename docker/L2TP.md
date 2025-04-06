@@ -12,7 +12,7 @@ services:
       - "4500:4500/udp" # IPsec NAT-T使用的端口
       - "1701:1701/udp" # L2TP使用的端口
     environment:
-      - PSK=yM5XdQXECfR6Xbg7      # 预共享密钥，用于IPsec连接
+      - PSK=adminl2tpAAA          # 预共享密钥，用于IPsec连接
       - USERNAME=admin            # VPN用户名
       - PASSWORD=admin7890        # VPN密码
       - OPENVPN_ENABLE=1          # 启用OpenVPN
@@ -27,17 +27,45 @@ services:
 > 部分协议不需要可以去掉
 
 
+
+多用户配置
+```
+services:
+  softether-vpn:
+    image: siomiz/softethervpn
+    container_name: l2tp
+    restart: always
+    ports:
+      - "500:500/udp"
+      - "4500:4500/udp"
+      - "1701:1701/udp"
+    environment:
+      - PSK=adminl2tpAAA      # 预共享密钥
+      - USERS=user1:password1;user2:password2;user3:password3  # 多用户配置
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - /lib/modules:/lib/modules
+```
+
+
 ---
+**电脑内置l2tp协议连接方法：**
 
-[连接教程](https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/docs/ikev2-howto-zh.md#android)
+1：搜索防火墙和网络保护，打开高级设置，打开出站规则，放行l2tp出站
 
-[故障排查](https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/docs/clients-zh.md#ikev1-%E6%95%85%E9%9A%9C%E6%8E%92%E9%99%A4)
+2：电脑开始菜单搜索服务，打开服务后，查找`ipsec policy agent`设置启动类型为`自动`，系统默认是手动并且禁用的。
 
-如果无法连接，以管理员身份打开命令行，执行以下命令添加注册表，然后重启电脑
+3：修改系统注册表。Win+R 运行，输入`regedit`后，打开系统注册表，注册表编辑器中，找到并单击以下注册表子项：
 ```
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PolicyAgent" /v AssumeUDPEncapsulationContextOnSendRule /t REG_DWORD /d 2 /f
+HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Rasman\Parameters
 ```
-> 此命令的作用：强制启用`IPsec VPN`在发送时使用`UDP`封装，这种配置通常用于`VPN`需要通过`NAT`路由器或防火墙时，确保隧道的稳定和正确性。
+4：然后找到子项`allowL2TPweakcryphto`，双击修改值为`1`。
+
+5：然后在空白处新建，选择DWORD(32)值(D)，名称为：`ProhibitIpSec`，设置值为1。
+
+6：以上步骤均完成后，重启计算机。
+
 
 ---
 
