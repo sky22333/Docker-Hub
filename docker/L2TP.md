@@ -62,7 +62,7 @@ HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Rasman\Parameters
 ```
 4：然后找到子项`allowL2TPweakcryphto`，双击修改值为`1`。
 
-5：然后在空白处新建，选择DWORD(32)值(D)，名称为：`ProhibitIpSec`，设置值为1。
+5：然后在空白处新建，选择DWORD(32)值(D)，名称为：`ProhibitIpSec`，设置值为`1`。
 
 6：以上步骤均完成后，重启计算机。
 
