@@ -2,7 +2,7 @@
 ```
 services:
   softether-vpn:
-    image: siomiz/softethervpn:4.38-alpine
+    image: siomiz/softethervpn:alpine
     container_name: softether
     restart: always
     ports:
