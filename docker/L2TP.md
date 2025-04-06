@@ -28,7 +28,7 @@ services:
 
 
 
-多用户配置
+**L2TP多用户配置**
 ```
 services:
   softether-vpn:
