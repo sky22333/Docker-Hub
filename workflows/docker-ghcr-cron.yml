@@ -1,0 +1,50 @@
+name: ghcr镜像构建
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version number'
+        required: true
+        default: 'latest'
+  schedule:
+    # 每周一凌晨 2 点自动运行
+    - cron: '0 2 * * 1'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Cache Docker layers
+        uses: actions/cache@v4
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
+            
+      - name: Log in to GitHub Docker Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Set version from input
+        run: echo "VERSION=${{ github.event.inputs.version }}" >> $GITHUB_ENV
+      - name: Build and push Docker image
+        run: |
+          docker buildx build --push \
+            --file ./Dockerfile \
+            --platform linux/amd64 \
+            --tag ghcr.io/${{ github.repository }}:${{ env.VERSION }} \
+            --tag ghcr.io/${{ github.repository }}:latest \
+            --build-arg VERSION=${{ env.VERSION }} .
+        env:
+          GHCR_PUBLIC: true

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub代理加速</title>
+    <link rel="icon" href="./favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f2f1f4;
+            font-family: 'Microsoft YaHei', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+        }
+        .card {
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        .card-header {
+            background-color: #313e4d;
+            color: white;
+            font-weight: 600;
+        }
+        .btn-primary {
+            background-color: #04426e;
+            border-color: #010408;
+        }
+        .btn-primary:hover {
+            background-color: #17a2b8;
+            border-color: #075173;
+        }
+        .btn-info {
+            background-color: #04426e;
+            border-color: #17a2b8;
+            color: white;
+        }
+        .btn-info:hover {
+            background-color: #138496;
+            border-color: #138496;
+            color: white;
+        }
+        @media (max-width: 576px) {
+            .card-body {
+                padding: 1rem;
+            }
+        }
+        .github-link {
+            font-size: 2rem;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+        .github-link:hover {
+            color: #341c7e;
+        }
+    </style>
+</head>
+<body>
+    <div class="container my-5">
+        <h1 class="text-center mb-4">GitHub代理加速</h1>
+        
+        <div class="card">
+            <h5 class="card-header">加速GitHub脚本</h5>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="githubScript" class="form-label">输入你原本的GitHub脚本命令：</label>
+                    <input type="text" class="form-control" id="githubScript" placeholder="">
+                </div>
+                <button class="btn btn-primary mb-3" onclick="convertScript()">转换脚本</button>
+                
+                <div class="mb-3">
+                    <label class="form-label">转换后的命令（单层资源）</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="result2" readonly>
+                        <button class="btn btn-info" onclick="copyResult2()">复制</button>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">转换后的命令（嵌套脚本）</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="result1" readonly>
+                        <button class="btn btn-info" onclick="copyResult1()">复制</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h5 class="card-header">加速GitHub文件</h5>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="githubRes" class="form-label">输入GitHub文件链接</label>
+                    <input type="text" class="form-control" id="githubRes" placeholder="">
+                </div>
+                <button class="btn btn-primary mb-3" onclick="convertRes()">转换链接</button>
+                
+                <div class="mb-3">
+                    <label class="form-label">转换后的链接</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="resAfterGhproxy" readonly>
+                        <button class="btn btn-info" onclick="fetchRes()">下载</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h5 class="card-header">高级设置</h5>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="ghproxy" class="form-label">可以替换其他的加速地址，但可能不兼容。</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="ghproxy" value="https://git.52013120.xyz/">
+                        <button class="btn btn-secondary" onclick="getLocalUrl()">默认</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+	<div class="text-center mt-4">
+		<a href="https://github.com/sky22333" target="_blank" class="btn btn-light rounded mt-2" title="本站GitHub主页">
+			<i class="fab fa-github"></i> <span>本站GitHub主页</span>
+		</a>
+		<a href="./gh.html" target="_blank" class="btn btn-light rounded mt-2" title="Github镜像批量测速">
+			<i class="fa-solid fa-gauge"></i> <span>Github镜像测速</span>
+		</a>
+	</div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const defaultProxy = "https://git.52013120.xyz/";
+
+        function convertScript() {
+            let inputStr = document.querySelector("#githubScript").value;
+            if (inputStr == "") {
+                return;
+            }
+
+            let ghproxy = document.querySelector("#ghproxy").value;
+            let perlcmdbegin = ' | perl -pe "$(curl -L ';
+            let perlcmdend = ')"';
+            let perlrule = ghproxy + 'perl-pe-para';
+
+            inputStr = inputStr.replace(/ git/g, ' https://git');
+
+            let regex1 = /(bash.*?)(https?:\/\/.*?)(\).*)/s;
+
+            let replacement1 = '$1' + ghproxy + '$2' + perlcmdbegin + perlrule + perlcmdend + '$3';
+            let resultStr1 = inputStr.replace(regex1, replacement1);
+            if (resultStr1 !== inputStr) {
+                document.querySelector("#result1").value = resultStr1;
+            }
+
+            let replacement2 = '$1' + ghproxy + '$2' + ' | perl -pe "s#(http.*?git[^/]*?/)#' + ghproxy + '\\1#g"' + '$3';
+            let resultStr2 = inputStr.replace(regex1, replacement2);
+            if (resultStr2 !== inputStr) {
+                document.querySelector("#result2").value = resultStr2;
+            }
+
+            let regex2 = /(wget.*?)(https?:\/\/.*)(&&[^&]*[ /])(.*?sh)/s;
+            let replacement3 = '$1' + ghproxy + '$2' + '&& perl -i -pe "s#(http.*?git[^/]*?/)#' + ghproxy + '\\1#g" ' + '$4 $3$4';
+            resultStr2 = inputStr.replace(regex2, replacement3);
+            if (resultStr2 !== inputStr) {
+                document.querySelector("#result2").value = resultStr2;
+            }
+
+            regex2 = /^(curl.*?)(https?:\/\/.*)(&&[^&]*[ /])(.*?sh)/s;
+            replacement3 = '$1' + ghproxy + '$2' + '&& perl -i -pe "s#(http.*?git[^/]*?/)#' + ghproxy + '\\1#g" ' + '$4 $3$4';
+            resultStr2 = inputStr.replace(regex2, replacement3);
+            if (resultStr2 !== inputStr) {
+                document.querySelector("#result2").value = resultStr2;
+            }
+        }
+
+        function copyResult1() {
+            let resultStr = document.querySelector("#result1").value;
+            navigator.clipboard.writeText(resultStr);
+        }
+
+        function copyResult2() {
+            let resultStr = document.querySelector("#result2").value;
+            navigator.clipboard.writeText(resultStr);
+        }
+
+        function getLocalUrl() {
+            let currentProxy = document.querySelector("#ghproxy").value;
+            if (currentProxy !== defaultProxy) {
+                if (confirm("是否要恢复默认代理地址？")) {
+                    document.querySelector("#ghproxy").value = defaultProxy;
+                }
+            } else {
+                alert("当前已经在使用默认代理地址。");
+            }
+        }
+
+        function convertRes() {
+            let inputStr = document.querySelector("#githubRes").value;
+            if (inputStr == "") {
+                return;
+            }
+
+            let ghproxy = document.querySelector("#ghproxy").value;
+
+            inputStr = inputStr.replace(/ git/g, ' https://git');
+            let resultStr = ghproxy + inputStr;
+
+            document.querySelector("#resAfterGhproxy").value = resultStr;
+        }
+
+        function fetchRes() {
+            window.open(document.querySelector("#resAfterGhproxy").value);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector("#ghproxy").value = defaultProxy;
+        });
+    </script>
+</body>
+</html>
