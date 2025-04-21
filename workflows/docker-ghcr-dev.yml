@@ -1,0 +1,49 @@
+# github镜像自动构建和推送示例，手动触发，可选分支
+name: dev分支镜像构建
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: '镜像标签'
+        required: true
+        default: 'dev'  # 默认设置为 dev 标签
+      branch:
+        description: '选择分支'
+        required: true
+        default: 'dev'  # 默认构建 dev 分支
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.branch }}  # 使用输入的分支
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+            
+      - name: Log in to GitHub Docker Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Set version from input
+        run: echo "VERSION=${{ github.event.inputs.version }}" >> $GITHUB_ENV
+
+      - name: Build and push Docker image
+        run: |
+          docker buildx build --push \
+            --platform linux/amd64 \
+            --tag ghcr.io/${{ github.repository }}:${{ env.VERSION }} \
+            --build-arg VERSION=${{ env.VERSION }} \
+            .
+        # 这里结尾的点代表仓库的根目录，如果需要更改子目录则更改这里即可，例如：./node
+        env:
+          GHCR_PUBLIC: true
