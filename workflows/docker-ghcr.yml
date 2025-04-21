@@ -37,7 +37,6 @@ jobs:
             --file ./Dockerfile \
             --platform linux/amd64,linux/arm64 \
             --tag ghcr.io/${{ github.repository }}:${{ env.VERSION }} \
-            --tag ghcr.io/${{ github.repository }}:latest \
             --build-arg VERSION=${{ env.VERSION }} \
             .
         env:
