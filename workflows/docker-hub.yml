@@ -44,6 +44,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
+          # 这里的点代表仓库的根目录，如果需要更改子目录则更改这里即可，例如：./node
           context: .
           push: true
           # 注意你的基础镜像有没有下列架构

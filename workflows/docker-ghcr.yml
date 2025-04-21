@@ -34,10 +34,10 @@ jobs:
       - name: Build and push Docker image
         run: |
           docker buildx build --push \
-            --file ./Dockerfile \
             --platform linux/amd64,linux/arm64 \
             --tag ghcr.io/${{ github.repository }}:${{ env.VERSION }} \
             --build-arg VERSION=${{ env.VERSION }} \
             .
+        # 这里结尾的点代表仓库的根目录，如果需要更改子目录则更改这里即可，例如：./node
         env:
           GHCR_PUBLIC: true
