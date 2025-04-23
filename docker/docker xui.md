@@ -120,13 +120,6 @@ www.visa.com.sg
 www.okcupid.com
 www.udemy.com
 visa.cn
-time.cloudflare.com
-
-# 私人维护-分钟级优选
-speed.marisalnc.com
-cloudflare.182682.xyz
-115155.xyz
-cdn.2020111.xyz
 ```
 
 
