@@ -77,7 +77,7 @@ services:
 
 
 ---
-### poste.io批量创建邮箱脚本
+### 通过poste.io的CLI命令批量创建邮箱脚本
 ```
 #!/bin/bash
 
@@ -94,7 +94,7 @@ PASSWORD="asd123456"
 echo "创建域名 $DOMAIN (如果不存在)"
 docker exec $CONTAINER_ID poste domain:create $DOMAIN
 
-# 创建邮箱账户
+# 使用for循环的方式创建邮箱账户，邮箱前缀从100开始到200结束，也就是总共100个邮箱
 for i in {100..200}
 do
     EMAIL="$i@$DOMAIN"
@@ -114,6 +114,40 @@ done
 
 echo "邮箱创建过程完成。"
 ```
+
+
+### 🔧 `Poste.io` 常用 API 接口汇总
+
+| 操作类型       | HTTP 方法 | 接口地址                      | 请求头                                        | 请求体参数                                                                 | 返回格式 |
+|----------------|-----------|-------------------------------|-----------------------------------------------|-----------------------------------------------------------------------------|-----------|
+| 登录获取 Token | `POST`    | `/admin/api/login`           | `Content-Type: application/json`             | `{ "username": "admin@domain.com", "password": "yourpassword" }`           | JSON，返回 `token` |
+| 获取所有用户   | `GET`     | `/admin/api/mailusers`       | `Authorization: Bearer <token>`              | 无                                                                          | JSON      |
+| 添加邮箱用户   | `POST`    | `/admin/api/mailusers`       | `Authorization: Bearer <token>`<br>`Content-Type: application/json` | `{ "name": "test@domain.com", "password": "12345678" }`                     | JSON      |
+| 删除邮箱用户   | `DELETE`  | `/admin/api/mailusers/{user-id}` | `Authorization: Bearer <token>`          | 无                                                                          | JSON      |
+| 添加别名       | `POST`    | `/admin/api/aliases`         | `Authorization: Bearer <token>`              | `{ "address": "alias@domain.com", "goto": ["user@domain.com"] }`           | JSON      |
+| 添加域名       | `POST`    | `/admin/api/domains`         | `Authorization: Bearer <token>`              | `{ "domain": "domain.com" }`                                               | JSON      |
+| 删除域名       | `DELETE`  | `/admin/api/domains/{domain-id}` | `Authorization: Bearer <token>`          | 无                                                                          | JSON      |
+
+
+
+
+### 🧾 `Poste.io` CLI 命令汇总（使用 docker exec 方式，方便脚本批量操作）
+
+| 操作类型       | 命令                                         | 示例                                                       | 说明                   |
+|----------------|----------------------------------------------|------------------------------------------------------------|------------------------|
+| 域名相关操作   | `docker exec poste domain:create <domain>`   | `docker exec poste domain:create example.com`               | 创建新域名             |
+|                | `docker exec poste domain:delete <domain>`   | `docker exec poste domain:delete example.com`               | 删除指定域名           |
+|                | `docker exec poste domain:list`             | `docker exec poste domain:list`                             | 列出所有域名           |
+| 用户相关操作   | `docker exec poste user:create <email> <password>`  | `docker exec poste user:create user@example.com pass1234`   | 创建新邮箱用户         |
+|                | `docker exec poste user:delete <email>`      | `docker exec poste user:delete user@example.com`            | 删除邮箱用户           |
+|                | `docker exec poste user:list`                | `docker exec poste user:list`                               | 列出所有邮箱用户       |
+| 别名相关操作   | `docker exec poste alias:create <alias@domain> <goto@domain>` | `docker exec poste alias:create alias@example.com user@example.com` | 创建邮箱别名           |
+|                | `docker exec poste alias:delete <alias@domain>`  | `docker exec poste alias:delete alias@example.com`          | 删除邮箱别名           |
+|                | `docker exec poste alias:list`               | `docker exec poste alias:list`                              | 列出所有邮箱别名       |
+| 配置备份与恢复 | `docker exec poste config:backup`            | `docker exec poste config:backup`                           | 创建配置备份           |
+|                | `docker exec poste config:restore /data/backup.tar.gz`  | `docker exec poste config:restore /data/backup.tar.gz`       | 恢复配置备份           |
+| 查看帮助       | `docker exec poste help`                     | `docker exec poste help`                                    | 查看所有命令和帮助信息 |
+
 
 
 
