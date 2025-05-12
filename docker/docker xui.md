@@ -16,8 +16,30 @@ docker run -itd \
 用户名：admin
 密码：admin
 ```
-
 面板数据在`root/db`目录下
+
+#### 容器里的命令
+查看面板信息
+```
+/app/x-ui setting -show true
+```
+修改用户名和密码
+```
+/app/x-ui setting -username 用户名 -password 密码
+```
+修改面板路径
+```
+/app/x-ui setting -webBasePath "admin"
+```
+修改面板端口
+```
+/app/x-ui setting -port 端口
+```
+修改后需要重启容器
+```
+docker restart 3x-ui
+```
+
 
 
 #### 127.0.0.1:62789监听失败是因为服务器没有配置本地环回地址
