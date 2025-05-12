@@ -48,6 +48,10 @@ docker run -itd \
 docker restart 3x-ui
 ```
 
+#### 将容器里的脚本基本功能改为可用(容器里执行)
+```
+mkdir -p /etc/systemd/system && touch /etc/systemd/system/x-ui.service && echo -e '#!/bin/sh\n[ "$1" = "is-enabled" ] && echo enabled || echo "   Active: active (running)"' > /usr/bin/systemctl && chmod +x /usr/bin/systemctl && sed -i 's|/usr/local/x-ui/x-ui|/app/x-ui|g' /usr/bin/x-ui && sed -i '/^[[:space:]]*restart[[:space:]]*$/s/^.*$/pkill -f x-ui/' /usr/bin/x-ui
+```
 
 
 #### 127.0.0.1:62789监听失败是因为服务器没有配置本地环回地址
