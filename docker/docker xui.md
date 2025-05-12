@@ -35,7 +35,11 @@ docker run -itd \
 ```
 /app/x-ui setting -port 端口
 ```
-修改后需要重启容器
+清除安全令牌
+```
+/app/x-ui setting -remove_secret
+```
+重启容器
 ```
 docker restart 3x-ui
 ```
