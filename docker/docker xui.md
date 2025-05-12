@@ -39,6 +39,10 @@ docker run -itd \
 ```
 /app/x-ui setting -remove_secret
 ```
+重置面板所有设置为默认值（用户名和密码除外）
+```
+/app/x-ui setting -reset
+```
 重启容器
 ```
 docker restart 3x-ui
