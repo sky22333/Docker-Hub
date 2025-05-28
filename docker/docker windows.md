@@ -16,7 +16,7 @@ services:
     image: dockurr/windows
     container_name: win
     environment:
-      VERSION: "win11"
+      VERSION: "11"
       LANGUAGE: "Chinese"
       CPU_CORES: "4"
       RAM_SIZE: "8G"
