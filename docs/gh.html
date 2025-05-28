@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -271,6 +271,27 @@
             font-size: 13px;
         }
 
+        .loading-message {
+            text-align: center;
+            color: #64748b;
+            font-size: 14px;
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 12px;
+            margin-bottom: 24px;
+        }
+
+        .error-message {
+            text-align: center;
+            color: #dc2626;
+            font-size: 14px;
+            padding: 20px;
+            background: #fef2f2;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            border-left: 3px solid #dc2626;
+        }
+
         @media (max-width: 640px) {
             .main-content {
                 padding: 24px;
@@ -351,7 +372,8 @@
 <body>
     <main class="main-content">
         <h1 class="title">GitHub 文件加速</h1>
-        <form id="url-form">
+        <div id="loading-status" class="loading-message">正在加载列表...</div>
+        <form id="url-form" style="display: none;">
             <div class="mk-side-form">
                 <input type="url" name="url" id="url-input" placeholder="请贴入 GitHub 的完整链接" required>
                 <button type="submit" id="download-button">下载</button>
@@ -367,14 +389,14 @@
                 <button type="button" id="mirror-check-button" class="mirror-check-button">节点检测</button>
             </div>
         </form>
-        <div class="warning-box">
+        <div class="warning-box" style="display: none;">
             <strong>重要提示：</strong>
             <font color="blue">公益服务，请勿滥用。</font>当前页面加速源来自网络收集整合。
         </div>
         <div id="mirror-results" class="mirror-results">
             <!-- 节点测速结果将这里动态添加 -->
         </div>
-        <div id="content-tips" class="markdown-content">
+        <div id="content-tips" class="markdown-content" style="display: none;">
             <h3>使用说明</h3>
             <ol>
                 <li>支持GitHub文件、Releases、archive、gist、raw.githubusercontent.com文件下载</li>
@@ -391,79 +413,21 @@
             <h3>终端命令行示例</h3>
             <h4>git clone</h4>
             <div class="code-block">
-                <pre><code>git clone <font color="blue">https://ghproxy.cn</font>/https://github.com/microsoft/vscode.git</code></pre>
+                <pre><code>git clone <font color="blue">https://gh-proxy.com</font>/https://github.com/microsoft/vscode.git</code></pre>
             </div>
             <h4>wget</h4>
             <div class="code-block">
-                <pre><code>wget <font color="blue">https://ghproxy.cn</font>/https://github.com/microsoft/vscode/archive/refs/tags/1.82.3.zip</code></pre>
+                <pre><code>wget <font color="blue">https://gh-proxy.com</font>/https://github.com/microsoft/vscode/archive/refs/tags/1.82.3.zip</code></pre>
             </div>
             <h4>curl</h4>
             <div class="code-block">
-                <pre><code>curl -O <font color="blue">https://ghproxy.cn</font>/https://github.com/microsoft/vscode/archive/refs/tags/1.82.3.zip</code></pre>
+                <pre><code>curl -O <font color="blue">https://gh-proxy.com</font>/https://github.com/microsoft/vscode/archive/refs/tags/1.82.3.zip</code></pre>
             </div>
         </div>
     </main>
 
     <script>
-        const nodes = [
-            { value: "https://gh-proxy.com", text: "gh-proxy.com" },
-            { value: "https://gh.llkk.cc", text: "gh.llkk.cc" },
-            { value: "https://github.moeyy.xyz", text: "github.moeyy.xyz" },
-            { value: "https://ghproxy.net", text: "ghproxy.net" },
-            { value: "https://gitproxy.click", text: "gitproxy.click" },
-            { value: "https://gh.chaoyi996.com", text: "gh.chaoyi996.com" },
-            { value: "https://gh.sixyin.com", text: "gh.sixyin.com" },
-            { value: "https://ghproxy.imciel.com", text: "ghproxy.imciel.com" },
-            { value: "https://gh.idayer.com", text: "gh.idayer.com" },
-            { value: "https://gh-proxy.llyke.com", text: "gh-proxy.llyke.com" },
-            { value: "https://githubapi.jjchizha.com", text: "githubapi.jjchizha.com" },
-            { value: "https://gh.monlor.com", text: "gh.monlor.com" },
-            { value: "https://g.blfrp.cn", text: "g.blfrp.cn" },
-            { value: "https://hub.gitmirror.com", text: "hub.gitmirror.com" },
-            { value: "https://ghp.keleyaa.com", text: "ghp.keleyaa.com" },
-            { value: "https://ghp.p3terx.com", text: "ghp.p3terx.com" },
-            { value: "https://gh.tryxd.cn", text: "gh.tryxd.cn" },
-            { value: "https://ghp.miaostay.com", text: "ghp.miaostay.com" },
-            { value: "https://gh.xx9527.cn", text: "gh.xx9527.cn" },
-            { value: "https://gh.qninq.cn", text: "gh.qninq.cn" },
-            { value: "https://gitproxy.mrhjx.cn", text: "gitproxy.mrhjx.cn" },
-            { value: "https://github.limoruirui.com", text: "github.limoruirui.com" },
-            { value: "https://mirror.ghproxy.com", text: "mirror.ghproxy.com" },
-            { value: "https://mirrors.chenby.cn", text: "mirrors.chenby.cn" },
-            { value: "https://ghproxy.xiaopa.cc", text: "ghproxy.xiaopa.cc" },
-            { value: "https://ghpr.cc", text: "ghpr.cc" },
-            { value: "https://ghproxy.1888866.xyz", text: "ghproxy.1888866.xyz" },
-            { value: "https://gh.zwy.me", text: "gh.zwy.me" },
-            { value: "https://cf.ghproxy.cc", text: "cf.ghproxy.cc" },
-            { value: "https://git.886.be", text: "git.886.be" },
-            { value: "https://gh.xxooo.cf", text: "gh.xxooo.cf" },
-            { value: "https://gh.tt.ma", text: "gh.tt.ma" },
-            { value: "https://git.speed-ssr.tech", text: "git.speed-ssr.tech" },
-            { value: "https://gh.noki.icu", text: "gh.noki.icu" },
-            { value: "https://gh-proxy.ygxz.in", text: "gh-proxy.ygxz.in" },
-            { value: "https://gh.catmak.name", text: "gh.catmak.name" },
-            { value: "https://github.xxlab.tech", text: "github.xxlab.tech" },
-            { value: "https://ql.133.info", text: "ql.133.info" },
-            { value: "https://liqiu.love", text: "liqiu.love" },
-            { value: "https://gh.pylas.xyz", text: "gh.pylas.xyz" },
-            { value: "https://ghp.arslantu.xyz", text: "ghp.arslantu.xyz" },
-            { value: "https://cdn.moran233.xyz", text: "cdn.moran233.xyz" },
-            { value: "https://gh.zhaojun.im", text: "gh.zhaojun.im" },
-            { value: "https://gp.zkitefly.eu.org", text: "gp.zkitefly.eu.org" },
-            { value: "https://firewall.lxstd.org", text: "firewall.lxstd.org" },
-            { value: "https://github.ednovas.xyz", text: "github.ednovas.xyz" },
-            { value: "https://proxy.yaoyaoling.net", text: "proxy.yaoyaoling.net" },
-            { value: "https://git.669966.xyz", text: "git.669966.xyz" },
-            { value: "https://ghproxy.1888866.xyz", text: "ghproxy.1888866.xyz" },
-            { value: "https://git.40609891.xyz", text: "git.40609891.xyz" },
-            { value: "https://gh.jasonzeng.dev", text: "gh.jasonzeng.dev" },
-            { value: "https://gh.222322.xyz", text: "gh.222322.xyz" },
-            { value: "https://ghproxy.cianogame.top", text: "ghproxy.cianogame.top" },
-            { value: "https://gh.ddlc.top", text: "gh.ddlc.top" },
-            { value: "https://gh.nxnow.top", text: "gh.nxnow.top" },
-            { value: "https://github.7boe.top", text: "github.7boe.top" },
-            { value: "https://ghproxy.cnproxy.top", text: "ghproxy.cnproxy.top" },
-        ];
+        let nodes = []; // 从域名数组中加载
 
         const mirrorCheckButton = document.getElementById('mirror-check-button');
         const progressContainer = document.createElement('div');
@@ -483,6 +447,48 @@
         const nodeSelector = document.getElementById('nodeSelector');
         const urlInput = document.getElementById('url-input');
         const copyButton = document.getElementById('copy-button');
+        const loadingStatus = document.getElementById('loading-status');
+        const urlForm = document.getElementById('url-form');
+        const warningBox = document.querySelector('.warning-box');
+        const contentTips = document.getElementById('content-tips');
+
+        // 从文件加载域名列表
+        const loadNodesFromFile = async () => {
+            try {
+                const response = await fetch('./gh.txt');
+                if (!response.ok) {
+                    throw new Error(`无法加载域名文件: ${response.status}`);
+                }
+                const text = await response.text();
+                const urls = text.split('\n')
+                    .map(line => line.trim())
+                    .filter(line => line && line.startsWith('http'));
+                
+                if (urls.length === 0) {
+                    throw new Error('域名文件中没有找到有效的 URL');
+                }
+
+                nodes = urls.map(url => ({
+                    value: url,
+                    text: url.replace(/^https?:\/\//, '')
+                }));
+
+                loadingStatus.style.display = 'none';
+                urlForm.style.display = 'block';
+                warningBox.style.display = 'block';
+                contentTips.style.display = 'block';
+                initializeNodeSelector();
+            } catch (error) {
+                console.error('加载节点列表失败:', error);
+                loadingStatus.innerHTML = `
+                    <div class="error-message">
+                        加载代理节点列表失败: ${error.message}<br>
+                        请确保域名文件存在且格式正确
+                    </div>
+                `;
+                loadingStatus.className = 'error-message';
+            }
+        };
 
         const initializeNodeSelector = () => {
             nodeSelector.innerHTML = '';
@@ -516,6 +522,11 @@
         };
 
         const runMirrorCheck = async () => {
+            if (nodes.length === 0) {
+                alert('节点列表未加载，请刷新页面重试');
+                return;
+            }
+
             progressContainer.style.display = 'block';
             mirrorResults.innerHTML = '';
             let completed = 0;
@@ -537,8 +548,10 @@
             }
         };
 
+        // 页面加载完成后自动加载节点列表
         document.addEventListener('DOMContentLoaded', function () {
-            initializeNodeSelector();
+            loadNodesFromFile();
+            
             document.getElementById('url-form').addEventListener('submit', function (e) {
                 e.preventDefault();
                 const url = urlInput.value;
