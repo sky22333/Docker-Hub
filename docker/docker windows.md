@@ -25,6 +25,7 @@ services:
       PASSWORD: "密码"
     devices:
       - /dev/kvm
+      - /dev/net/tun
     cap_add:
       - NET_ADMIN
     ports:
