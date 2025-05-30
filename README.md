@@ -278,6 +278,7 @@ sudo rm -rf /etc/docker /var/lib/docker
 提供者 | 镜像加速地址 | 说明 | 加速类型
 --- | --- | --- | ---
 [1panel](https://1panel.cn/docs/user_manual/containers/setting/) | `https://docker.1panel.live` | 无限制 | Docker Hub
+[轩辕镜像](https://docker.xuanyuan.me/) | `https://docker.xuanyuan.me` | 无限制 | Docker Hub
 [毫秒镜像](https://docker.1ms.run) | `https://docker.1ms.run` | 有黑名单&可选国内CDN | Docker Hub
 [DaoCloud](https://github.com/DaoCloud/public-image-mirror) | `https://docker.m.daocloud.io` |白名单和限流 | Docker Hub
 [华为云](https://console.huaweicloud.com/swr/#/swr/dashboard) | `https://***.mirror.swr.myhuaweicloud.com` | 需登录分配 | Docker Hub
