@@ -30,6 +30,9 @@ services:
     image: stilleshan/epusdt
     container_name: epusdt
     restart: always
+    depends_on:
+      - db
+      - redis
     volumes:
       - ./epusdt.conf:/app/.env
     ports:
