@@ -64,9 +64,9 @@ max_backups=3
 # mysql配置
 mysql_host=db
 mysql_port=3306
+mysql_database=epusdt
 mysql_user=epusdt
 mysql_passwd=epusdt7890
-mysql_database=epusdt
 mysql_table_prefix=
 mysql_max_idle_conns=10
 mysql_max_open_conns=100
