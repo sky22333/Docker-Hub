@@ -33,6 +33,8 @@ services:
     image: stilleshan/epusdt
     container_name: epusdt
     restart: always
+    ports:
+      - 8000:8000
     depends_on:
       - db
       - redis
@@ -40,8 +42,6 @@ services:
       - TZ=Asia/Shanghai
     volumes:
       - ./epusdt.conf:/app/.env
-    ports:
-      - 8000:8000
 ```
 
 #### epusdt.conf
