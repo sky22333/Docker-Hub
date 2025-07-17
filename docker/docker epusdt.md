@@ -191,6 +191,7 @@ docker run -d \
   --name bepusdt \
   --restart always \
   -p 7000:7000 \
+  -e TZ=Asia/Shanghai \
   -e TG_BOT_TOKEN=机器人token \
   -e TG_BOT_ADMIN_ID=TG账户ID \
   -e AUTH_TOKEN=认证token \
