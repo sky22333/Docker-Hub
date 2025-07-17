@@ -21,6 +21,7 @@ services:
       - MYSQL_PASSWORD=epusdt7890
     volumes:
       - ./epusdt.sql:/docker-entrypoint-initdb.d/epusdt.sql
+      - ./mysql:/var/lib/mysql
 
   redis:
     image: redis:alpine
