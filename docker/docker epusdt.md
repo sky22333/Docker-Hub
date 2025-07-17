@@ -151,7 +151,7 @@ create index wallet_address_token_index
 此配置勿动！
 
 
-#### 首次启动
+#### 运行
 
 ```
 docker compose up -d
