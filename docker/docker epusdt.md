@@ -15,6 +15,7 @@ services:
     container_name: mariadb
     restart: always
     environment:
+      - TZ=Asia/Shanghai
       - MYSQL_ROOT_PASSWORD=epusdt7890
       - MYSQL_DATABASE=epusdt
       - MYSQL_USER=epusdt
@@ -25,6 +26,8 @@ services:
   redis:
     image: redis:alpine
     restart: always
+    environment:
+      - TZ=Asia/Shanghai
 
   epusdt:
     image: stilleshan/epusdt
@@ -33,6 +36,8 @@ services:
     depends_on:
       - db
       - redis
+    environment:
+      - TZ=Asia/Shanghai
     volumes:
       - ./epusdt.conf:/app/.env
     ports:
@@ -99,7 +104,7 @@ api_auth_token=
 #订单过期时间(单位分钟)
 order_expiration_time=10
 
-#强制汇率(设置此参数后每笔交易将按照此汇率计算，例如:7.2)
+#强制汇率(例如:7.2)
 forced_usdt_rate=
 ```
 
