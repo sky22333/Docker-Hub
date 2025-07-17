@@ -1,9 +1,9 @@
-## docker部署sudt支付
+## Docker部署epusdt
 
 ### 创建配置文件
 
 ```
-mkdir epusdt && cd epusdt && touch docker-compose.yml epusdt.conf epusdt.sql
+mkdir -p epusdt && cd epusdt && touch docker-compose.yml epusdt.conf epusdt.sql
 ```
 
 #### docker-compose.yml
@@ -15,12 +15,12 @@ services:
     container_name: mariadb
     restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=admin7890
+      - MYSQL_ROOT_PASSWORD=epusdt7890
       - MYSQL_DATABASE=epusdt
       - MYSQL_USER=epusdt
-      - MYSQL_PASSWORD=admin7890
+      - MYSQL_PASSWORD=epusdt7890
     volumes:
-      - ./mysql:/var/lib/mysql
+      - ./epusdt.sql:/docker-entrypoint-initdb.d/epusdt.sql
 
   redis:
     image: redis:alpine
@@ -36,29 +36,23 @@ services:
       - 8000:8000
 ```
 
-
-用户名和数据库名不用修改
-
-epusdt端口为`8000`
-
-
 #### epusdt.conf
 
 ```
 app_name=epusdt
-#下面配置你的域名，收银台会需要
+# 下面配置你的域名，收银台会需要
 app_uri=https://epusdt.com
-#是否开启debug，默认false
+# 是否开启debug，默认false
 app_debug=false
-#http服务监听端口
+# http服务监听端口
 http_listen=:8000
 
-#静态资源文件目录
+# 静态资源文件目录
 static_path=/static
-#缓存路径
+# 缓存路径
 runtime_root_path=/runtime
 
-#日志配置
+# 日志配置
 log_save_path=/logs
 log_max_size=32
 log_max_age=7
@@ -68,7 +62,7 @@ max_backups=3
 mysql_host=db
 mysql_port=3306
 mysql_user=epusdt
-mysql_passwd=admin7890
+mysql_passwd=epusdt7890
 mysql_database=epusdt
 mysql_table_prefix=
 mysql_max_idle_conns=10
@@ -90,29 +84,20 @@ queue_level_critical=6
 queue_level_default=3
 queue_level_low=1
 
-#机器人Apitoken
+# TG机器人token
 tg_bot_token=
-#telegram代理url(大陆地区服务器可使用一台国外服务器做反代tg的url)，如果运行的本来就是境外服务器，则无需填写
+# TG代理url（国内服务器才需要配置）
 tg_proxy=
-#管理员TG的id
+# TG管理员账号的id
 tg_manage=
-
-#对接的认证token
+# 对接的认证token
 api_auth_token=
 
 #订单过期时间(单位分钟)
 order_expiration_time=10
 
-#强制汇率(设置此参数后每笔交易将按照此汇率计算，例如:7.5)
+#强制汇率(设置此参数后每笔交易将按照此汇率计算，例如:7.2)
 forced_usdt_rate=
-```
-备注：
-```
-修改第 3 行`app_uri`为上文为epusdt准备的独立域名
-修改第 24 行`mysql_passwd`为上节MYSQL_PASSWORD的用户密码
-修改第 55 行`api_auth_token=`创建一个强密码用于支付设置中使用.
-修改第 48 行`tg_bot_token=`为上文创建的 Telegram Bot 的Token
-修改第 52 行`tg_manage=`改为你的TG的ID
 ```
 
 #### epusdt.sql
@@ -172,20 +157,6 @@ create index wallet_address_token_index
 docker compose up -d
 ```
 
-#### 初始化数据库
-
-将下述命令中的`数据库`的密码改为你的数据库密码，注意需要保留前缀`-p`不能有空格。
-如下图执行后无任何显示代表成功,否则将会报错.
-
-```
-docker exec -i mariadb sh -c 'exec mysql -uepusdt -padmin7890 epusdt' < epusdt.sql
-```
-
-#### 重启服务
-
-```
-docker compose restart
-```
 
 #### 检查服务
 
@@ -195,12 +166,9 @@ docker logs epusdt
 
 查看epusdt服务出现`http server started on [::]:8000`则表示成功.
 
-(可选)如果报错需要重新部署请删除数据库`rm -rf ./mysql/*`
 
+然后配置反代域名到 `8000`
 
-#### 配置反代域名
-
-仅需要将usdt 域名反代到 `8000`
 
 #### 独角数卡配置支付
 
@@ -226,11 +194,6 @@ docker run -d \
   ghcr.io/sky22333/bepusdt:latest
 ```
 
----
-订单页页脚项目链接
-
----
----
 ---
 
 ### v2board接口
