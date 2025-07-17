@@ -26,7 +26,7 @@ WORKDIR /app/blogjava
 RUN mvn clean package -DskipTests
 
 # 最终运行阶段 - 使用Caddy镜像运行前后端
-FROM caddy:2.9-alpine
+FROM caddy:alpine
 
 RUN apk update && \
     apk add --no-cache openjdk17 && \
