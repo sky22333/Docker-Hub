@@ -253,6 +253,9 @@ docker images
 
 
 ## 修改客户端并发数加快下载速度
+
+`/etc/docker/daemon.json`
+
 ```
 {
   "registry-mirrors": [
@@ -270,7 +273,10 @@ docker images
   }
 }
 ```
-
+```
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+```
 
 ## 为Docker启用IPV6
 
