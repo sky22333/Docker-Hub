@@ -252,6 +252,26 @@ docker images
 例如：`time docker pull node:latest`
 
 
+## 修改客户端并发数加快下载速度
+```
+{
+  "registry-mirrors": [
+    "https://docker.1ms.run"
+  ],
+  "max-concurrent-downloads": 10,
+  "max-concurrent-uploads": 10,
+  "max-download-attempts": 5,
+  "default-ulimits": {
+    "nofile": {
+      "Hard": 64000,
+      "Name": "nofile",
+      "Soft": 64000
+    }
+  }
+}
+```
+
+
 ## 为Docker启用IPV6
 
 创建或修改`/etc/docker/daemon.json`文件
