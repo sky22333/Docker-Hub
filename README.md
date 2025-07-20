@@ -435,3 +435,10 @@ sudo rm -rf /etc/docker /var/lib/docker
 | 搜索并替换          | `Ctrl + \`                   | 搜索并替换文本                            |
 | **行操作**          |                              |                                           |
 | 显示行号            | `Ctrl + C`                   | 显示当前光标位置                          |
+
+
+---
+
+
+## Stargazers over time
+[![Stargazers over time](https://starchart.cc/sky22333/Docker-Hub.svg?variant=adaptive)](https://starchart.cc/sky22333/Docker-Hub)
