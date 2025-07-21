@@ -357,6 +357,22 @@ sudo rm -rf /etc/docker /var/lib/docker
 
 ---
 
+### `Docker bake`命令介绍
+
+详情见：[Docker-bake](./docker/Docker-bake.md)
+
+它的特点和优势：
+
+- 支持多阶段（multi-target）构建，同时构建多个镜像目标
+
+- 支持多平台交叉编译构建，比如 linux/amd64、linux/arm64 等
+
+- 支持定义依赖关系，构建顺序自动管理
+
+- 配合 BuildKit，速度快且资源利用率高
+
+- 支持使用简单的 JSON 或 HCL 文件配置，清晰明了
+
 
 
 ### `biuldx`命令介绍
