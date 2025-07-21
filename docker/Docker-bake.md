@@ -7,7 +7,7 @@ docker bake 是 Docker 官方在 BuildKit 里提供的一个高级构建命令
 
 ### `docker bake`命令
 
-执行`docker bake`命令，会自动寻找当前目录的`docker-bake.hcl`定义的构建步骤来自动构建
+执行`docker bake`命令，会自动寻找当前目录的`docker-bake.hcl`文件来自动构建
 
 
 ### 配置文件解释
