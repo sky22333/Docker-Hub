@@ -20,7 +20,7 @@ group "default" {
   targets = ["hello1", "hello2"]
 }
 
-# 定义第一个构建目标 hello-amd64
+# 定义第一个构建目标 hello1
 target "hello1" {
   context = "."               # 构建上下文，当前目录（包含 Dockerfile）
   dockerfile = "Dockerfile"  # 指定 Dockerfile 文件路径
@@ -28,7 +28,7 @@ target "hello1" {
   platforms = ["linux/amd64"]  # 构建平台为 linux amd64 架构
 }
 
-# 定义第二个构建目标 hello-arm64
+# 定义第二个构建目标 hello2
 target "hello2" {
   context = "."               # 构建上下文，当前目录（包含 Dockerfile）
   dockerfile = "Dockerfile"  # 指定 Dockerfile 文件路径
@@ -75,7 +75,7 @@ target "php" {
   dockerfile = "Dockerfile.php"  # 第一个 Dockerfile
   tags = ["hello/alpine:latest"]
   platforms = ["linux/amd64", "linux/arm64"]
-  push = true
+  push = true # 动推送到仓库
 }
 
 target "nginx" {
@@ -83,7 +83,7 @@ target "nginx" {
   dockerfile = "Dockerfile.nginx"       # 第二个 Dockerfile 文件
   tags = ["hello/ubuntu:latest"]
   platforms = ["linux/amd64", "linux/arm64"]
-  push = true
+  push = true # 动推送到仓库
 }
 ```
 
