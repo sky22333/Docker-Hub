@@ -62,8 +62,9 @@ target "hello" {
 }
 ```
 
-3：`docker-bake.hcl`同时构建多个任务
+3：`docker-bake.hcl`同时构建多个任务，并自动推送到仓库
 
+需要事先`docker login`登录仓库
 ```
 group "default" {
   targets = ["php", "nginx"]
