@@ -12,7 +12,7 @@ docker bake 是 Docker 官方在 BuildKit 里提供的一个高级构建命令
 
 ### 配置文件解释
 
-1：`docker-bake.hcl`构建多架构镜像
+1：`docker-bake.hcl`仅构建多架构镜像，并且每个架构的镜像分开
 ```
 # 定义一个构建组，组名叫 default
 # 这个组包含两个目标：hello1 和 hello2
