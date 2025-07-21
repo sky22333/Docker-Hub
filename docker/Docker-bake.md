@@ -38,6 +38,7 @@ target "hello2" {
 ```
 
 2：`docker-bake.hcl`构建完成后自动推送到仓库
+
 需要事先`docker login`登录仓库
 ```
 # 定义构建组 default，只包含一个多平台目标 hello
