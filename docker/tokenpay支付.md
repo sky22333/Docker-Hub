@@ -121,6 +121,8 @@ services:
 
 然后修改文件权限`chown www:www TokenPay.php && chmod 775 TokenPay.php`
 
+v2b同理
+
 ```
 <?php
 
