@@ -117,7 +117,9 @@ services:
 
 ### 插件代码
 
-创建文件`TokenPay.php`复制到`v2board`支付目录
+创建文件`TokenPay.php`复制到`xboard`支付目录`/www/app/Payments`
+
+然后修改文件权限`chown www:www TokenPay.php && chmod 775 TokenPay.php`
 
 ```
 <?php
