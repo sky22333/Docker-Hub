@@ -201,10 +201,14 @@ docker run -d \
 
 ---
 
-### v2board接口
+### xboard接口
 
 
-创建文件`EpusdtPay.php`写入以下配置，然后放到支付插件目录。
+创建文件`EpusdtPay.php`写入以下配置，然后放到支付插件目录`/www/app/Payments`。
+
+然后修改文件权限`chown www:www TokenPay.php && chmod 775 TokenPay.php`
+
+v2b同理
 
 ```
 <?php
