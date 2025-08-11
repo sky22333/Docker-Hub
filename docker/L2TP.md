@@ -47,7 +47,10 @@ services:
     volumes:
       - /lib/modules:/lib/modules
 ```
+
 **mihomo**
+
+l2tp 容器必须使用host网络模式：`network_mode: host`
 ```
 mixed-port: 7890
 allow-lan: true
