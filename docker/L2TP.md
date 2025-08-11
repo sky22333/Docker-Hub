@@ -47,7 +47,52 @@ services:
     volumes:
       - /lib/modules:/lib/modules
 ```
+**mihomo**
+```
+mixed-port: 7890
+allow-lan: true
+mode: rule
+log-level: info
+external-controller: 127.0.0.1:9090
 
+tun:
+  enable: true
+  stack: system
+  auto-route: true
+  auto-detect-interface: true
+
+
+dns:
+  enable: true
+  listen: 0.0.0.0:53
+  enhanced-mode: fake-ip
+  nameserver:
+    - 8.8.8.8
+    - 1.1.1.1
+
+proxies:
+  - name: anytls-out
+    type: anytls
+    server: 192.168.2.1 # 服务端地址
+    port: 10002 # 节点端口
+    password: "vDsdasdda4S8WVPdRI12312o9890890" # 协议认证密码
+    idle-session-check-interval: 30
+    idle-session-timeout: 30
+    min-idle-session: 0
+    tls: true
+    udp: true
+    skip-cert-verify: true # 跳过证书认证
+    servername: www.bing.com # 你的域名
+
+proxy-groups:
+  - name: "PROXY"
+    type: select
+    proxies:
+      - anytls-out
+
+rules:
+  - MATCH,PROXY
+```
 
 ---
 **电脑内置l2tp协议连接方法：**
