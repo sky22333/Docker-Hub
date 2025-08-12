@@ -92,3 +92,48 @@ target "nginx" {
 ```
 docker bake --file my-bake.hcl
 ```
+
+
+### 利用Docker bake批量并发拉取镜像
+
+`Dockerfile`：
+```Dockerfile
+ARG BASE_IMAGE=scratch
+FROM ${BASE_IMAGE}
+```
+
+
+`docker-bake.hcl`：
+```
+group "default" {
+  targets = ["nginx", "alpine", "redis"]
+}
+
+target "nginx" {
+  context = "."
+  dockerfile = "Dockerfile"
+  args = {
+    BASE_IMAGE = "nginx:latest"
+  }
+}
+
+target "alpine" {
+  context = "."
+  dockerfile = "Dockerfile"
+  args = {
+    BASE_IMAGE = "alpine:latest"
+  }
+}
+
+target "redis" {
+  context = "."
+  dockerfile = "Dockerfile"
+  args = {
+    BASE_IMAGE = "redis:latest"
+  }
+}
+```
+执行拉取命令
+```
+docker buildx bake
+```
