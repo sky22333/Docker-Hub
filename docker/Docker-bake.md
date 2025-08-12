@@ -106,31 +106,77 @@ FROM ${BASE_IMAGE}
 `docker-bake.hcl`：
 ```
 group "default" {
-  targets = ["nginx", "alpine", "redis"]
+  targets = ["nginx", "alpine", "redis", "mysql", "caddy", "busybox", "python", "node", "golang", "httpd"]
 }
 
 target "nginx" {
   context = "."
   dockerfile = "Dockerfile"
-  args = {
-    BASE_IMAGE = "nginx:latest"
-  }
+  args = { BASE_IMAGE = "nginx:latest" }
+  tags = ["nginx:latest"]
 }
 
 target "alpine" {
   context = "."
   dockerfile = "Dockerfile"
-  args = {
-    BASE_IMAGE = "alpine:latest"
-  }
+  args = { BASE_IMAGE = "alpine:latest" }
+  tags = ["alpine:latest"]
 }
 
 target "redis" {
   context = "."
   dockerfile = "Dockerfile"
-  args = {
-    BASE_IMAGE = "redis:latest"
-  }
+  args = { BASE_IMAGE = "redis:latest" }
+  tags = ["redis:latest"]
+}
+
+target "mysql" {
+  context = "."
+  dockerfile = "Dockerfile"
+  args = { BASE_IMAGE = "mysql:latest" }
+  tags = ["mysql:latest"]
+}
+
+target "caddy" {
+  context = "."
+  dockerfile = "Dockerfile"
+  args = { BASE_IMAGE = "caddy:latest" }
+  tags = ["caddy:latest"]
+}
+
+target "busybox" {
+  context = "."
+  dockerfile = "Dockerfile"
+  args = { BASE_IMAGE = "busybox:latest" }
+  tags = ["busybox:latest"]
+}
+
+target "python" {
+  context = "."
+  dockerfile = "Dockerfile"
+  args = { BASE_IMAGE = "python:3.11-slim" }
+  tags = ["python:3.11-slim"]
+}
+
+target "node" {
+  context = "."
+  dockerfile = "Dockerfile"
+  args = { BASE_IMAGE = "node:18-alpine" }
+  tags = ["node:18-alpine"]
+}
+
+target "golang" {
+  context = "."
+  dockerfile = "Dockerfile"
+  args = { BASE_IMAGE = "golang:1.21-alpine" }
+  tags = ["golang:1.21-alpine"]
+}
+
+target "httpd" {
+  context = "."
+  dockerfile = "Dockerfile"
+  args = { BASE_IMAGE = "httpd:latest" }
+  tags = ["httpd:latest"]
 }
 ```
 执行拉取命令
