@@ -53,7 +53,7 @@ services:
 l2tp 容器必须使用host网络模式：`network_mode: host`
 ```
 mixed-port: 7890
-allow-lan: true
+allow-lan: false
 mode: rule
 log-level: info
 external-controller: 127.0.0.1:9090
