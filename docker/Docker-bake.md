@@ -181,5 +181,5 @@ target "httpd" {
 ```
 执行拉取命令
 ```
-docker buildx bake
+docker buildx bake --load
 ```
