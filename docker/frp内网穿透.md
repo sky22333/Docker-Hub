@@ -61,7 +61,7 @@ name = "ssh"
 type = "tcp"
 localIP = "127.0.0.1"
 localPort = 22            # 本地服务端口
-remotePort = 6000         # 让frpc暴露的公网端口
+remotePort = 6000         # 让frps暴露的公网端口
 ```
 
 ---
