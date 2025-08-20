@@ -88,5 +88,8 @@ A记录，将mail.baidu.com解析到服务器IP上
 ```
 文章作者：StephenJose_Dai
 
-原始链接：https://daishenghui.club/2025/06/12/categories/Linux/Linux部署企业级邮件服务器/
+原始链接：https://daishenghui.club/2025/06/12/categories/Linux/Linux部署企业级邮件服务器
+
+文章转载许可协议： "署名-非商用-相同方式共享 3.0" 转载请保留原文链接及作者。
 ```
+
