@@ -8,14 +8,13 @@
     <meta name="keywords" content="Sonder,git,github,proxy,github proxy,github代理,github加速,github下载,github下载加速,github文件加速,代理加速,加速下载" />
     <meta name="language" content="zh-CN">
     <title>GitHub文件加速</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         @import url('https://font.sec.miui.com/font/css?family=MiSans:400,700:MiSans');
 
         body {
             font-family: 'MiSans', system-ui, -apple-system, sans-serif;
-            background: url('./bj.svg') no-repeat center center fixed;
-            background-size: cover;
+            background: #f8fafc;
             color: #334155;
             margin: 0;
             min-height: 100vh;
@@ -25,7 +24,7 @@
         }
 
         * {
-            font-family: 'MiSans', system-ui, -apple-system, sans-serif;
+            font-family: inherit;
         }
 
         .main-content {
@@ -69,7 +68,7 @@
             box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
         }
 
-        #download-button, #copy-button, .mirror-check-button {
+        .btn-primary {
             padding: 8px 16px;
             border-radius: 8px;
             font-size: 13px;
@@ -83,15 +82,9 @@
             cursor: pointer;
         }
 
-        #download-button:hover, #copy-button:hover, .mirror-check-button:hover {
+        .btn-primary:hover {
             transform: translateY(-1px);
             filter: brightness(1.2);
-        }
-
-        #copy-button {
-            background: #555c5c;
-            border: none;
-            outline: none;
         }
 
         .channel-container {
@@ -133,21 +126,6 @@
             box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
         }
 
-        .mirror-check-button {
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: 500;
-            transition: all 0.2s ease;
-            white-space: nowrap;
-            background: #555c5c;
-            color: white;
-        }
-
-        .mirror-check-button:hover {
-            transform: translateY(-1px);
-            filter: brightness(1.05);
-        }
 
         .warning-box {
             background: #fff7ed;
@@ -291,6 +269,23 @@
             margin-bottom: 24px;
             border-left: 3px solid #dc2626;
         }
+        .feedback-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #ffffff;
+            color: #000000;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: background-color 0.2s ease;
+        }
+
+        .feedback-button:hover {
+            background-color: #f2f2f2;
+        }
 
         @media (max-width: 640px) {
             .main-content {
@@ -313,10 +308,7 @@
                 gap: 8px;
             }
 
-            .mirror-result span {
-                text-align: left;
-            }
-
+            .mirror-result span,
             .mirror-result .time,
             .mirror-result .status-success,
             .mirror-result .status-fail {
@@ -338,7 +330,7 @@
 
         .code-block pre {
             margin: 0;
-            font-family: 'MiSans', monospace;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
         }
 
         .code-block code {
@@ -347,26 +339,6 @@
             word-wrap: break-word;
         }
 
-        .back-button {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 500;
-            background: transparent;
-            color: #333;
-            border: 1px solid rgba(51, 51, 51, 0.5);
-            outline: none;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .back-button:hover {
-            transform: translateY(-1px);
-            background: rgba(0, 0, 0, 0.05);
-        }
     </style>
 </head>
 <body>
@@ -376,8 +348,8 @@
         <form id="url-form" style="display: none;">
             <div class="mk-side-form">
                 <input type="url" name="url" id="url-input" placeholder="请贴入 GitHub 的完整链接" required>
-                <button type="submit" id="download-button">下载</button>
-                <button type="button" id="copy-button">复制</button>
+                <button type="submit" id="download-button" class="btn-primary">下载</button>
+                <button type="button" id="copy-button" class="btn-primary">复制</button>
             </div>
             <div class="channel-container">
                 <div class="label">加速源：</div>
@@ -386,12 +358,13 @@
                         <!-- 选项将由 JavaScript 动态生成 -->
                     </select>
                 </div>
-                <button type="button" id="mirror-check-button" class="mirror-check-button">节点检测</button>
+                <button type="button" id="mirror-check-button" class="btn-primary">节点检测</button>
             </div>
         </form>
+        <a href="liuyan" class="feedback-button">留言反馈</a>
         <div class="warning-box" style="display: none;">
             <strong>重要提示：</strong>
-            <font color="blue">公益服务，请勿滥用。</font>当前页面加速源来自网络收集整合。
+            <font color="red">公益服务，请勿滥用。</font>当前页面加速源来自网络收集整合，感谢各位热心网友的贡献。<br>
         </div>
         <div id="mirror-results" class="mirror-results">
             <!-- 节点测速结果将这里动态添加 -->
@@ -399,35 +372,39 @@
         <div id="content-tips" class="markdown-content" style="display: none;">
             <h3>使用说明</h3>
             <ol>
-                <li>支持GitHub文件、Releases、archive、gist、raw.githubusercontent.com文件下载</li>
+                <li>支持GitHub文件、Releases、archive、raw文件下载</li>
                 <li>输入GitHub文件的完整链接，然后点击下载，或者复制。</li>
-                <li>输入的GitHub链接需要带https，不支持项目文件夹的下载</li>
+                <li>输入的GitHub链接需要带https，支持git clone等终端命令</li>
             </ol>
-            <h3>页面合法输入示例</h3>
-            <ul>
-                <li>Raw 文件：<code>https://raw.githubusercontent.com/microsoft/vscode/main/LICENSE.txt</code></li>
-                <li>分支源码：<code>https://github.com/microsoft/vscode/archive/refs/heads/main.zip</code></li>
-                <li>Releases 文件：<code>https://github.com/github/gh-ost/releases/download/v1.1.6/gh-ost</code></li>
-                <li>Releases 源码：<code>https://github.com/microsoft/vscode/archive/refs/tags/1.82.3.zip</code></li>
-            </ul>
             <h3>终端命令行示例</h3>
             <h4>git clone</h4>
             <div class="code-block">
-                <pre><code>git clone <font color="blue">https://gh-proxy.com</font>/https://github.com/microsoft/vscode.git</code></pre>
+                <pre><code>git clone <font color="blue">https://gh-proxy.com/</font>https://github.com/containers/podman.git</code></pre>
             </div>
             <h4>wget</h4>
             <div class="code-block">
-                <pre><code>wget <font color="blue">https://gh-proxy.com</font>/https://github.com/microsoft/vscode/archive/refs/tags/1.82.3.zip</code></pre>
+                <pre><code>wget <font color="blue">https://gh-proxy.com/</font>https://github.com/containers/podman/archive/refs/tags/v5.6.0.zip</code></pre>
             </div>
             <h4>curl</h4>
             <div class="code-block">
-                <pre><code>curl -O <font color="blue">https://gh-proxy.com</font>/https://github.com/microsoft/vscode/archive/refs/tags/1.82.3.zip</code></pre>
+                <pre><code>curl -LO <font color="blue">https://gh-proxy.com/</font>https://github.com/containers/podman/archive/refs/tags/v5.6.0.zip</code></pre>
             </div>
         </div>
     </main>
 
     <script>
         let nodes = []; // 从域名数组中加载
+
+        // GitHub链接验证和处理函数
+        const validateAndProcessGitHubUrl = (url) => {
+            if (url.toLowerCase().indexOf("github".toLowerCase()) < 0) {
+                return { isValid: false, error: "当前页面仅用于加速下载来自 GitHub 的资源！" };
+            }
+            let channelSelect = nodeSelector.value;
+            if (!channelSelect.endsWith('/')) channelSelect += '/';
+            const fullUrl = channelSelect + url;
+            return { isValid: true, fullUrl };
+        };
 
         const mirrorCheckButton = document.getElementById('mirror-check-button');
         const progressContainer = document.createElement('div');
@@ -455,7 +432,7 @@
         // 从文件加载域名列表
         const loadNodesFromFile = async () => {
             try {
-                const response = await fetch('./gh.txt');
+                const response = await fetch('gh.txt');
                 if (!response.ok) {
                     throw new Error(`无法加载域名文件: ${response.status}`);
                 }
@@ -503,7 +480,15 @@
         const testMirror = async (mirror) => {
             const start = Date.now();
             try {
-                const response = await fetch(`${mirror}/https://raw.githubusercontent.com/microsoft/vscode/main/LICENSE.txt?t=${Date.now()}`);
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 1500);
+                
+                const response = await fetch(`${mirror}/https://raw.githubusercontent.com/microsoft/vscode/main/LICENSE.txt?t=${Date.now()}`, {
+                    signal: controller.signal
+                });
+                
+                clearTimeout(timeoutId);
+                
                 if (response.ok) {
                     const time = Date.now() - start;
                     return { mirror, time, success: true };
@@ -529,22 +514,34 @@
 
             progressContainer.style.display = 'block';
             mirrorResults.innerHTML = '';
-            let completed = 0;
             const total = nodes.length;
+            const batchSize = 5;
+            let completed = 0;
 
-            for (const mirror of nodes) {
-                const result = await testMirror(mirror.value);
-                const resultDiv = document.createElement('div');
-                resultDiv.className = 'mirror-result';
-                resultDiv.innerHTML = `
-                    <span>${result.mirror}</span>
-                    <span class="time">${result.time ? `${result.time}ms` : 'N/A'}</span>
-                    <span class="${result.success ? 'status-success' : 'status-fail'}">${result.success ? '成功' : '失败'}</span>
-                    ${result.success ? `<button class="select-node-btn" data-mirror="${result.mirror}">选择此节点</button>` : ''}
-                `;
-                mirrorResults.appendChild(resultDiv);
-                completed++;
-                updateProgress(completed, total);
+            for (let i = 0; i < nodes.length; i += batchSize) {
+                const batch = nodes.slice(i, i + batchSize);
+                const batchPromises = batch.map(mirror => testMirror(mirror.value));
+                const batchResults = await Promise.allSettled(batchPromises);
+                
+                batchResults.forEach((result, batchIndex) => {
+                    const mirrorData = result.status === 'fulfilled' ? result.value : { 
+                        mirror: batch[batchIndex].value, 
+                        time: null, 
+                        success: false 
+                    };
+                    
+                    const resultDiv = document.createElement('div');
+                    resultDiv.className = 'mirror-result';
+                    resultDiv.innerHTML = `
+                        <span>${mirrorData.mirror}</span>
+                        <span class="time">${mirrorData.time ? `${mirrorData.time}ms` : 'N/A'}</span>
+                        <span class="${mirrorData.success ? 'status-success' : 'status-fail'}">${mirrorData.success ? '成功' : '失败'}</span>
+                        ${mirrorData.success ? `<button class="select-node-btn" data-mirror="${mirrorData.mirror}">选择此节点</button>` : ''}
+                    `;
+                    mirrorResults.appendChild(resultDiv);
+                    completed++;
+                    updateProgress(completed, total);
+                });
             }
         };
 
@@ -555,13 +552,11 @@
             document.getElementById('url-form').addEventListener('submit', function (e) {
                 e.preventDefault();
                 const url = urlInput.value;
-                if (url.toLowerCase().indexOf("github".toLowerCase()) < 0) {
-                    alert("当前页面仅用于加速下载来自 GitHub 的资源！");
+                const result = validateAndProcessGitHubUrl(url);
+                if (!result.isValid) {
+                    alert(result.error);
                 } else {
-                    let channelSelect = nodeSelector.value;
-                    if (!channelSelect.endsWith('/')) channelSelect += '/';
-                    const fullUrl = channelSelect + url;
-                    window.open(fullUrl);
+                    window.open(result.fullUrl);
                 }
             });
         });
@@ -577,13 +572,11 @@
 
         copyButton.addEventListener('click', function () {
             const url = urlInput.value;
-            if (url.toLowerCase().indexOf("github".toLowerCase()) < 0) {
+            const result = validateAndProcessGitHubUrl(url);
+            if (!result.isValid) {
                 alert("请输入有效的 GitHub 完整链接！");
             } else {
-                let channelSelect = nodeSelector.value;
-                if (!channelSelect.endsWith('/')) channelSelect += '/';
-                const fullUrl = channelSelect + url;
-                navigator.clipboard.writeText(fullUrl).then(() => {
+                navigator.clipboard.writeText(result.fullUrl).then(() => {
                     alert("完整链接已复制到剪贴板！");
                 });
             }
