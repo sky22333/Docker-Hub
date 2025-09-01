@@ -576,6 +576,90 @@ async function handleRequest(request) {
     'application/xml'
   ];
 
+  // 脚本文件扩展名列表
+  const SCRIPT_EXTENSIONS = ['.sh', '.ps1'];
+
+  // GitHub URL正则表达式（用于脚本内容替换）
+  const GITHUB_URL_REGEX = /https?:\/\/(?:github\.com|raw\.githubusercontent\.com|raw\.github\.com|gist\.githubusercontent\.com|gist\.github\.com|api\.github\.com)[^\s'"]+/g;
+
+  // 检查是否为脚本文件请求
+  function isScriptFile(url) {
+    try {
+      const urlObj = new URL(url);
+      const pathname = urlObj.pathname.toLowerCase();
+      return SCRIPT_EXTENSIONS.some(ext => pathname.endsWith(ext));
+    } catch {
+      return false;
+    }
+  }
+
+  // 处理脚本文件内容，替换其中的GitHub URL
+  async function processScriptContent(response, proxyHost) {
+    try {
+      const content = await response.text();
+      
+      // 如果内容为空或过大（>10MB），直接返回
+      if (!content || content.length === 0) {
+        return new Response('', { status: response.status, headers: response.headers });
+      }
+      
+      if (content.length > 10 * 1024 * 1024) {
+        return new Response(content, { status: response.status, headers: response.headers });
+      }
+      
+      // 如果内容中不包含GitHub相关URL，直接返回
+      if (!content.includes('github.com') && !content.includes('githubusercontent.com')) {
+        return new Response(content, { status: response.status, headers: response.headers });
+      }
+      
+      // 替换GitHub URL为代理URL
+      const processedContent = content.replace(GITHUB_URL_REGEX, (url) => {
+        return transformGitHubURL(url, proxyHost);
+      });
+      
+      // 创建新的响应
+      const newHeaders = new Headers(response.headers);
+      newHeaders.set('Content-Length', new TextEncoder().encode(processedContent).length.toString());
+      
+      return new Response(processedContent, {
+        status: response.status,
+        statusText: response.statusText,
+        headers: newHeaders
+      });
+    } catch (error) {
+      console.log(`Script processing error: ${error.message}`);
+      // 如果处理失败，返回原始响应
+      return response;
+    }
+  }
+
+  // 转换GitHub URL为代理URL
+  function transformGitHubURL(url, proxyHost) {
+    try {
+      // 如果URL已经包含代理域名，直接返回
+      if (url.includes(proxyHost)) {
+        return url;
+      }
+      
+      // 确保URL以https://开头
+      let normalizedUrl = url;
+      if (normalizedUrl.startsWith('http://')) {
+        normalizedUrl = 'https' + normalizedUrl.substring(4);
+      } else if (!normalizedUrl.startsWith('https://') && !normalizedUrl.startsWith('//')) {
+        normalizedUrl = 'https://' + normalizedUrl;
+      }
+      
+      // 清理代理主机名
+      let cleanHost = proxyHost.replace(/^https?:\/\//, '').replace(/\/$/, '');
+      
+      // 返回代理URL
+      return `https://${cleanHost}/${normalizedUrl}`;
+    } catch (error) {
+      console.log(`URL transform error: ${error.message}`);
+      return url; // 如果转换失败，返回原URL
+    }
+  }
+
   // 检查 Content-Type 的函数
   async function checkContentType(targetUrl) {
     try {
@@ -900,6 +984,19 @@ async function handleRequest(request) {
           }
         }
       }
+    }
+
+    // 检查是否为脚本文件请求，如果是则处理内容替换
+    if (request.method === 'GET' && !isDockerRequest && response.ok && isScriptFile(targetUrl)) {
+      console.log(`Script file detected: ${targetUrl}`);
+      const proxyHost = new URL(request.url).host;
+      const processedResponse = await processScriptContent(response, proxyHost);
+      
+      // 添加 CORS 头
+      processedResponse.headers.set('Access-Control-Allow-Origin', '*');
+      processedResponse.headers.set('Access-Control-Allow-Methods', 'GET, HEAD, POST, OPTIONS');
+      
+      return processedResponse;
     }
 
     // 复制响应并添加 CORS 头
