@@ -270,6 +270,7 @@ const HOMEPAGE_HTML = `
       </div>
     </div>
 
+
     <footer class="mt-6 text-center">
       <a href="https://github.com/fscarmen2/Cloudflare-Accel" class="github-icon inline-block text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors" title="GitHub Repository">
         ${GITHUB_SVG}
@@ -420,6 +421,8 @@ const HOMEPAGE_HTML = `
         showToast('手动复制失败: ' + err.message, true);
       });
     }
+
+
   </script>
 </body>
 </html>
@@ -466,6 +469,79 @@ function getEmptyBodySHA256() {
   return 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855';
 }
 
+// Git smart HTTP 请求处理函数
+async function handleGitRequest(request, targetUrl) {
+  console.log(`Processing Git request: ${targetUrl}`);
+  
+  try {
+    const urlObj = new URL(targetUrl);
+    const targetDomain = urlObj.hostname;
+    
+    // 检查域名是否在允许列表中
+    if (!ALLOWED_HOSTS.includes(targetDomain)) {
+      console.log(`Blocked: Git domain ${targetDomain} not in allowed list`);
+      return new Response(`Error: Invalid target domain for Git request.\n`, { status: 400 });
+    }
+    
+    // 处理 .git 结尾的仓库URL，添加 /info/refs?service=git-upload-pack
+    let finalTargetUrl = targetUrl;
+    if (targetUrl.endsWith('.git') || targetUrl.endsWith('.git/')) {
+      // 确保URL以.git结尾（不带斜杠）
+      const baseUrl = targetUrl.replace(/\.git\/?$/, '.git');
+      // 对于Git clone，添加info/refs端点
+      finalTargetUrl = `${baseUrl}/info/refs?service=git-upload-pack`;
+      console.log(`Converted .git URL to: ${finalTargetUrl}`);
+    }
+    
+    // 构建请求头
+    const newRequestHeaders = new Headers(request.headers);
+    newRequestHeaders.set('Host', targetDomain);
+    
+    // Git smart HTTP 请求通常需要特定的 User-Agent
+    if (!newRequestHeaders.has('User-Agent')) {
+      newRequestHeaders.set('User-Agent', 'git/2.0');
+    }
+    
+    // 对于 POST 请求（git-upload-pack），需要保持 Content-Type
+    if (request.method === 'POST') {
+      const contentType = request.headers.get('Content-Type');
+      if (contentType && contentType.includes('application/x-git-upload-pack-request')) {
+        newRequestHeaders.set('Content-Type', contentType);
+      }
+    }
+    
+    console.log(`Proxying Git request to: ${finalTargetUrl}`);
+    
+    // 发起请求
+    const response = await fetch(finalTargetUrl, {
+      method: request.method,
+      headers: newRequestHeaders,
+      body: request.body,
+      redirect: 'manual'
+    });
+    
+    console.log(`Git response: ${response.status} ${response.statusText}`);
+    
+    // 创建响应并添加必要的头部
+    const newResponse = new Response(response.body, {
+      status: response.status,
+      statusText: response.statusText,
+      headers: response.headers
+    });
+    
+    // 添加 CORS 头部
+    newResponse.headers.set('Access-Control-Allow-Origin', '*');
+    newResponse.headers.set('Access-Control-Allow-Methods', 'GET, HEAD, POST, OPTIONS');
+    newResponse.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization, User-Agent');
+    
+    return newResponse;
+    
+  } catch (error) {
+    console.log(`Git request error: ${error.message}`);
+    return new Response(`Error processing Git request: ${error.message}\n`, { status: 500 });
+  }
+}
+
 async function handleRequest(request) {
   const url = new URL(request.url);
   let path = url.pathname;
@@ -479,6 +555,17 @@ async function handleRequest(request) {
       status: 200,
       headers: { 'Content-Type': 'text/html' }
     });
+  }
+
+  // Git clone 支持 - 检查是否为 Git smart HTTP 请求
+  const gitFullPath = path.startsWith('/') ? path.substring(1) : path;
+  if (gitFullPath.startsWith('https://') || gitFullPath.startsWith('http://')) {
+    // 扩展的Git模式：支持 .git 结尾的仓库URL 和 Git smart HTTP 端点
+    const gitPattern = /github\.com\/.+?\/.+?(?:\.git\/?$|\/(?:info|git-).*)/i;
+    if (gitPattern.test(gitFullPath)) {
+      console.log(`Git request detected: ${gitFullPath}`);
+      return handleGitRequest(request, gitFullPath);
+    }
   }
 
   // 定义不允许的 Content-Type
