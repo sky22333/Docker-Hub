@@ -14,6 +14,7 @@ const ALLOWED_HOSTS = [
   'github.com',
   'api.github.com',
   'raw.githubusercontent.com',
+  'release-assets.githubusercontent.com',
   'gist.github.com',
   'gist.githubusercontent.com'
 ];
@@ -741,7 +742,7 @@ async function handleRequest(request) {
     if (isDockerRequest && (response.status === 307 || response.status === 302)) {
       const redirectUrl = response.headers.get('Location');
       if (redirectUrl) {
-        console.log(`Redirect detected: ${redirectUrl}`);
+        console.log(`Docker redirect detected: ${redirectUrl}`);
         const EMPTY_BODY_SHA256 = getEmptyBodySHA256();
         const redirectHeaders = new Headers(request.headers);
         redirectHeaders.set('Host', new URL(redirectUrl).hostname);
@@ -763,14 +764,51 @@ async function handleRequest(request) {
           redirect: 'manual'
         });
         response = await fetch(redirectRequest);
-        console.log(`Redirect response: ${response.status} ${response.statusText}`);
+        console.log(`Docker redirect response: ${response.status} ${response.statusText}`);
 
         if (!response.ok) {
-          console.log('Redirect request failed, returning original redirect response');
+          console.log('Docker redirect request failed, returning original redirect response');
           return new Response(response.body, {
             status: response.status,
             headers: response.headers
           });
+        }
+      }
+    }
+
+    // 处理 GitHub releases 重定向
+    if (!isDockerRequest && (response.status === 307 || response.status === 302)) {
+      const redirectUrl = response.headers.get('Location');
+      if (redirectUrl) {
+        const redirectHostname = new URL(redirectUrl).hostname;
+        // 只处理 GitHub 相关的重定向
+        if (redirectHostname === 'release-assets.githubusercontent.com' || 
+            redirectHostname === 'objects.githubusercontent.com' ||
+            redirectHostname === 'raw.githubusercontent.com') {
+          console.log(`GitHub redirect detected: ${redirectUrl}`);
+          const redirectHeaders = new Headers(request.headers);
+          redirectHeaders.set('Host', redirectHostname);
+          
+          if (response.headers.get('Authorization')) {
+            redirectHeaders.set('Authorization', response.headers.get('Authorization'));
+          }
+
+          const redirectRequest = new Request(redirectUrl, {
+            method: request.method,
+            headers: redirectHeaders,
+            body: request.body,
+            redirect: 'manual'
+          });
+          response = await fetch(redirectRequest);
+          console.log(`GitHub redirect response: ${response.status} ${response.statusText}`);
+
+          if (!response.ok) {
+            console.log('GitHub redirect request failed, returning original redirect response');
+            return new Response(response.body, {
+              status: response.status,
+              headers: response.headers
+            });
+          }
         }
       }
     }
