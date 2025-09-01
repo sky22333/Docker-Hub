@@ -15,6 +15,7 @@ const ALLOWED_HOSTS = [
   'api.github.com',
   'raw.githubusercontent.com',
   'release-assets.githubusercontent.com',
+  'codeload.github.com',
   'gist.github.com',
   'gist.githubusercontent.com'
 ];
@@ -782,9 +783,10 @@ async function handleRequest(request) {
       if (redirectUrl) {
         const redirectHostname = new URL(redirectUrl).hostname;
         // 只处理 GitHub 相关的重定向
-        if (redirectHostname === 'release-assets.githubusercontent.com' || 
-            redirectHostname === 'objects.githubusercontent.com' ||
-            redirectHostname === 'raw.githubusercontent.com') {
+         if (redirectHostname === 'release-assets.githubusercontent.com' || 
+             redirectHostname === 'objects.githubusercontent.com' ||
+             redirectHostname === 'raw.githubusercontent.com' ||
+             redirectHostname === 'codeload.github.com') {
           console.log(`GitHub redirect detected: ${redirectUrl}`);
           const redirectHeaders = new Headers(request.headers);
           redirectHeaders.set('Host', redirectHostname);
