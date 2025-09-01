@@ -224,7 +224,7 @@ const HOMEPAGE_HTML = `
     <!-- GitHub 链接转换 -->
     <div class="section-box">
       <h2 class="text-xl font-semibold mb-2">⚡ GitHub 文件加速</h2>
-      <p class="text-gray-600 dark:text-gray-300 mb-4">输入 GitHub 文件链接，自动转换为加速链接。也可以直接在链接前加上本站域名使用。</p>
+      <p class="text-gray-600 dark:text-gray-300 mb-4">输入 GitHub 文件链接，自动转换为加速链接。也可以直接在链接前加上本站域名使用。注意git clone不能带协议头。</p>
       <div class="flex gap-2 mb-2">
         <input
           id="github-url"
