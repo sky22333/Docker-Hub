@@ -608,6 +608,12 @@ async function handleRequest(request) {
     }
   }
 
+  // GitHub 链接处理：将 /blob/ 替换为 /raw/ 并转换域名
+  if (targetDomain === 'github.com' && targetPath.includes('/blob/')) {
+    targetPath = targetPath.replace('/blob/', '/');
+    targetDomain = 'raw.githubusercontent.com';
+  }
+
   // 构建目标 URL
   let targetUrl;
   if (isDockerRequest) {
@@ -621,8 +627,8 @@ async function handleRequest(request) {
     targetUrl = `https://${targetDomain}/${targetPath}`;
   }
 
-  // 对于非 Docker 请求，检查 Content-Type 以避免代理网页
-  if (!isDockerRequest && request.method === 'GET') {
+  // 对于所有请求，检查 Content-Type 以避免代理网页
+  if (request.method === 'GET') {
     const isBlockedContent = await checkContentType(targetUrl);
     if (isBlockedContent) {
       return new Response(
