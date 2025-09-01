@@ -457,14 +457,7 @@ function isAmazonS3(url) {
   }
 }
 
-// 计算请求体的 SHA256 哈希值
-async function calculateSHA256(message) {
-  const encoder = new TextEncoder();
-  const data = encoder.encode(message);
-  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-  const hashArray = Array.from(new Uint8Array(hashBuffer));
-  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-}
+
 
 // 获取空请求体的 SHA256 哈希值
 function getEmptyBodySHA256() {
@@ -793,7 +786,7 @@ async function handleRequest(request) {
 }
 
 export default {
-  async fetch(request, env, ctx) {
+  async fetch(request) {
     return handleRequest(request);
-  }
+  },
 };
