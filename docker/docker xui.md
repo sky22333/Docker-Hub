@@ -18,6 +18,22 @@ docker run -itd \
 ```
 面板数据在`root/db`目录下
 
+### `docker-compose.yml`
+```
+services:
+  xui:
+    image: xiangnile/3x-ui
+    container_name: xui
+    restart: always
+    network_mode: host
+    environment:
+      XRAY_VMESS_AEAD_FORCED: "false"
+    volumes:
+      - ./db:/etc/x-ui
+      - ./cert:/root/cert
+```
+
+
 #### 容器里的命令
 查看面板信息
 ```
@@ -48,12 +64,6 @@ docker run -itd \
 docker restart 3x-ui
 ```
 
-#### 将容器里的脚本基本功能改为可用(容器里执行)
-```
-mkdir -p /etc/systemd/system && touch /etc/systemd/system/x-ui.service && echo -e '#!/bin/sh\n[ "$1" = "is-enabled" ] && echo enabled || echo "   Active: active (running)"' > /usr/bin/systemctl && chmod +x /usr/bin/systemctl && sed -i 's|/usr/local/x-ui/x-ui|/app/x-ui|g' /usr/bin/x-ui && sed -i '/^[[:space:]]*restart[[:space:]]*$/s/^.*$/pkill -f x-ui/' /usr/bin/x-ui
-```
-
-
 #### 127.0.0.1:62789监听失败是因为服务器没有配置本地环回地址
 查看
 ```
@@ -72,70 +82,34 @@ bash <(curl -Ls https://raw.githubusercontent.com/admin8800/3x-ui/main/install.s
 
 ---
 
-
-###  官方3x-ui
+###  官方最新3x-ui
 ```
-docker run -itd \
- -e XRAY_VMESS_AEAD_FORCED=false \
- -e XUI_ENABLE_FAIL2BAN=true \
- -v $PWD/db/:/etc/x-ui/ \
- -v $PWD/cert/:/root/cert/ \
- --network=host \
- --restart=unless-stopped \
- --name 3x-ui \
- ghcr.io/mhsanaei/3x-ui
-```
-
----
-
----
-
-###  更多x-ui版本
-
-[Docker镜像地址](https://hub.docker.com/r/enwaiax/x-ui)
-
-原版镜像
-```
-docker run -itd --network=host \
-    -v ./db/:/etc/x-ui/ \
-    -v ./cert/:/root/cert/ \
-    --name x-ui --restart=always \
-    enwaiax/x-ui:latest
+docker run -dit \
+  --name 3x-ui \
+  --network host \
+  --restart unless-stopped \
+  -e XRAY_VMESS_AEAD_FORCED=false \
+  -e XUI_ENABLE_FAIL2BAN=true \
+  -v "$(pwd)/db:/etc/x-ui" \
+  -v "$(pwd)/cert:/root/cert" \
+  ghcr.io/mhsanaei/3x-ui
 ```
 
-可以使用`3x-ui`标签，3x-ui面板默认端口`2053`
-
-
-```
-默认信息
-端口： 54321
-用户名： admin
-密码： admin
-```
-
----
-
-### `docker-compose.yaml`
+### `docker-compose.yml`
 ```
 services:
   xui:
-    image: xiangnile/3x-ui
-    container_name: xui
-    restart: always
+    image: ghcr.io/mhsanaei/3x-ui
+    container_name: 3x-ui
+    restart: unless-stopped
+    network_mode: host
     environment:
-      - XRAY_VMESS_AEAD_FORCED=false
+      XRAY_VMESS_AEAD_FORCED: "false"
+      XUI_ENABLE_FAIL2BAN: "true"
     volumes:
-      - ./db/:/etc/x-ui/
-      - ./cert/:/root/cert/
-    ports:
-      - "2053:2053"
-      - "8080:8080"
-      - "80:80"
-      - "9988:9988"
-      - "19988:19988"
+      - ./db:/etc/x-ui
+      - ./cert:/root/cert
 ```
-
-
 
 ---
 ### Reality域名推荐列表
@@ -159,7 +133,6 @@ www.tesla.com
 swift.com
 ```
 
-
 ### cf优选域名推荐列表
 ```
 # 稳定大厂域名
@@ -169,8 +142,6 @@ www.okcupid.com
 www.udemy.com
 visa.cn
 ```
-
-
 
 ### 反向代理连接内网家宽
 
