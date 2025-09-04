@@ -72,6 +72,20 @@ bash <(curl -Ls https://raw.githubusercontent.com/admin8800/3x-ui/main/install.s
 
 ---
 
+
+###  官方3x-ui
+```
+docker run -itd \
+ -e XRAY_VMESS_AEAD_FORCED=false \
+ -e XUI_ENABLE_FAIL2BAN=true \
+ -v $PWD/db/:/etc/x-ui/ \
+ -v $PWD/cert/:/root/cert/ \
+ --network=host \
+ --restart=unless-stopped \
+ --name 3x-ui \
+ ghcr.io/mhsanaei/3x-ui
+```
+
 ---
 
 ---
