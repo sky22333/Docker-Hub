@@ -355,6 +355,8 @@ sudo rm -rf /etc/docker /var/lib/docker
 
 [官方文档](https://docs.docker.com/build/building/packaging/)
 
+容器数据路径：`/var/lib/docker/containers/<container-id>`
+
 ---
 
 ### `Docker bake`命令介绍
