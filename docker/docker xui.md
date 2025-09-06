@@ -111,6 +111,32 @@ services:
       - ./cert:/root/cert
 ```
 
+
+### s-ui
+```
+docker run -itd \
+  --name s-ui \
+  --restart unless-stopped \
+  --network host \
+  -v $(pwd)/db:/app/db \
+  -v $(pwd)/cert:/app/cert \
+  alireza7/s-ui
+```
+
+`docker-compose.yml`
+```
+services:
+  s-ui:
+    image: alireza7/s-ui
+    container_name: s-ui
+    volumes:
+      - "./db:/app/db"
+      - "./cert:/app/cert"
+    tty: true
+    restart: unless-stopped
+    network_mode: "host"
+```
+
 ---
 ### Reality域名推荐列表
 ```
