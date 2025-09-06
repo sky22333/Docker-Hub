@@ -112,7 +112,7 @@ services:
 ```
 
 
-### s-ui
+### s-ui面板sing-box
 ```
 docker run -itd \
   --name s-ui \
