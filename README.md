@@ -141,12 +141,13 @@ sudo systemctl restart docker
 ```
 
 
-#### 如果不方便重启Docker服务，也可以不用设置全局加速地址，拉取镜像时增加加速地址即可，示例：
+#### 临时加速拉取
 ```
 docker pull docker.1panel.live/library/mysql:5.7
 ```
 说明：`library`是一个特殊的命名空间，它代表的是官方镜像。如果是某个用户的镜像就把`library`替换为镜像的用户名。
 
+部分镜像加速已自动处理，可忽略。
 
 ### Docker Desktop 配置
 
