@@ -126,8 +126,8 @@ sudo mkdir -p /etc/docker
 sudo tee /etc/docker/daemon.json <<EOF
 {
     "registry-mirrors": [
+        "https://docker.xuanyuan.me",
         "https://docker.1ms.run",
-        "https://hub.rat.dev",
         "https://docker.1panel.live"
     ]
 }
@@ -161,8 +161,8 @@ docker pull docker.1panel.live/library/mysql:5.7
   },
   "experimental": false,
   "registry-mirrors": [
+    "https://docker.xuanyuan.me",
     "https://docker.1ms.run",
-    "https://hub.rat.dev",
     "https://docker.1panel.live"
   ]
 }
