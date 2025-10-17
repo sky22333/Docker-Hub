@@ -130,11 +130,11 @@ services:
     image: alireza7/s-ui
     container_name: s-ui
     volumes:
-      - "./db:/app/db"
-      - "./cert:/app/cert"
+      - ./db:/app/db
+      - ./cert:/app/cert
     tty: true
     restart: unless-stopped
-    network_mode: "host"
+    network_mode: host
 ```
 
 ---
