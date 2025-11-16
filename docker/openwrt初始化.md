@@ -148,4 +148,6 @@ cd C:\Users\admin\Downloads
 
 3：打开VirtualBox，新建虚拟机，OS选择`Linux`，然后选择`Other Linux`，然后指定虚拟硬盘，选择`使用已有的虚拟硬盘文件`，选择`immortalwrt.vdi`文件，然后点击完成，然后设置里找到网络，选择`Host-Only`网络启动，勾选`Virtual Cable Connected`
 
+> 如果你电脑是插网线的，则虚拟机可以直接选择桥接网卡，连wifi的不行
+
 4：浏览器进入`192.168.56.2`，密码是下面脚本中设置的`root`
