@@ -6,6 +6,7 @@
 ```
 luci-app-openclash luci-theme-argon luci-app-homeproxy luci-i18n-homeproxy-zh-cn luci-app-ttyd luci-i18n-ttyd-zh-cn
 ```
+ImmortalWrt软件包查询（替换版本号）：https://downloads.immortalwrt.org/releases/24.10.4/packages/x86_64/luci/index.json
 
 ## 初始化构建脚本
 ```
