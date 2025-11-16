@@ -1,6 +1,6 @@
 ## immortalwrt初始化构建脚本
 
-https://firmware-selector.immortalwrt.org/
+在线编译地址：https://firmware-selector.immortalwrt.org
 
 ## 必备软件
 ```
