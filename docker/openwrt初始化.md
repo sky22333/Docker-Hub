@@ -127,18 +127,19 @@ fi
 echo "All done!"
 ```
 
-### VirtualBox虚拟机运行immortalwrt文档
+## VirtualBox虚拟机运行immortalwrt文档
 
 1：选择`x86/64`型号，编译后，下载`COMBINED (EXT4)`格式的镜像，并解压到下载目录
 
 LAN口 IP地址记得改成`192.168.56.2`
 
 2：打开CMD终端
-进入镜像文件目录
+
+- 进入镜像文件目录
 ```
 cd C:\Users\admin\Downloads
 ```
-将镜像转换成VDI格式
+- 将镜像转换成VDI格式
 ```
 "C:\Program Files\Oracle\VirtualBox\VBoxManage.exe" convertfromraw immortalwrt-24.10.4-f726c678216d-x86-64-generic-ext4-combined.img immortalwrt.vdi --format VDI
 ```
