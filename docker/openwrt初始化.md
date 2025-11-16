@@ -126,3 +126,23 @@ fi
 
 echo "All done!"
 ```
+
+### VirtualBox虚拟机运行immortalwrt文档
+
+1：选择`x86/64`型号，编译后，下载`COMBINED (EXT4)`格式的镜像，并解压到下载目录
+
+LAN口 IP地址记得改成`192.168.56.2`
+
+2：打开CMD终端
+进入镜像文件目录
+```
+cd C:\Users\admin\Downloads
+```
+将镜像转换成VDI格式
+```
+"C:\Program Files\Oracle\VirtualBox\VBoxManage.exe" convertfromraw immortalwrt-24.10.4-f726c678216d-x86-64-generic-ext4-combined.img immortalwrt.vdi --format VDI
+```
+
+3：打开VirtualBox，新建虚拟机，OS选择`Linux`，然后选择`Other Linux`，然后指定虚拟硬盘，选择`使用已有的虚拟硬盘文件`，选择`immortalwrt.vdi`文件，然后点击完成，然后设置里找到网络，选择`Host-Only`网络启动，勾选`Virtual Cable Connected`
+
+4：浏览器进入`192.168.56.2`，密码是下面脚本中设置的`root`
