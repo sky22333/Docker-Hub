@@ -8,7 +8,7 @@ https://firmware-selector.immortalwrt.org/
 # 所有输出记录到日志
 exec >/tmp/setup.log 2>&1
 
-# 必装软件：luci-app-openclash luci-theme-argon luci-app-homeproxy luci-i18n-homeproxy-zh-cn
+# 必装软件：luci-app-openclash luci-theme-argon luci-app-homeproxy luci-i18n-homeproxy-zh-cn luci-app-ttyd luci-i18n-ttyd-zh-cn
 
 ###########################################################
 #                  自 定 义 配 置 区 域
@@ -21,7 +21,7 @@ luci_theme="argon"
 root_password="root"
 
 ### LAN 的 IPv4 地址（例如 192.168.2.1）
-lan_ip_address="10.0.0.1"
+lan_ip_address="192.168.2.1"
 
 ### LAN 的子网掩码（例如 255.255.255.0）
 # lan_netmask="255.255.255.0"
