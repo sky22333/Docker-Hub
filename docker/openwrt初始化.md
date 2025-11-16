@@ -1,4 +1,4 @@
-## immortalwrt初始化构建脚本
+## immortalwrt
 
 在线编译地址：https://firmware-selector.immortalwrt.org
 
@@ -7,7 +7,7 @@
 luci-app-openclash luci-theme-argon luci-app-homeproxy luci-i18n-homeproxy-zh-cn luci-app-ttyd luci-i18n-ttyd-zh-cn
 ```
 
-## 脚本
+## 初始化构建脚本
 ```
 #!/bin/sh
 exec >/tmp/setup.log 2>&1
