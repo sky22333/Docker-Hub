@@ -8,7 +8,7 @@ https://firmware-selector.immortalwrt.org/
 # 所有输出记录到日志
 exec >/tmp/setup.log 2>&1
 
-# 必装软件：luci-app-openclash luci-theme-argon luci-app-homeproxy
+# 必装软件：luci-app-openclash luci-theme-argon luci-app-homeproxy luci-i18n-homeproxy-zh-cn
 
 ###########################################################
 #                  自 定 义 配 置 区 域
