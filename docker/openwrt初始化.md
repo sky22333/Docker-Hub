@@ -20,8 +20,8 @@ luci_theme="argon"
 ### 路由器 root 密码（为空则不修改）
 root_password="root"
 
-### LAN 的 IPv4 地址（例如 192.168.2.2）
-lan_ip_address="192.168.2.2"
+### LAN 的 IPv4 地址（例如 192.168.2.1）
+lan_ip_address="10.0.0.1"
 
 ### LAN 的子网掩码（例如 255.255.255.0）
 # lan_netmask="255.255.255.0"
