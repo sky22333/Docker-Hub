@@ -165,6 +165,8 @@ www.icloud.com
 
 ### cf优选域名推荐列表
 ```
+www.wetest.vip
+
 # 稳定大厂域名
 unpkg.com
 www.visa.com.sg
