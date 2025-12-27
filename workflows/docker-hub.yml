@@ -1,16 +1,16 @@
-# Docker hub构建并推送示例，请替换用户名和密钥，手动触发，自动推送
+# Docker hub构建并推送，需指定用户名和密钥变量，手动触发，自动推送
 name: Docker-hub构建并推送
 on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Version number'
+        description: '版本号'
         required: true
         default: 'latest'
       image_name:
-        description: 'Docker image name (without username)'
+        description: 'Docker镜像名称（不含用户名）'
         required: true
-        default: 'my-image'
+        default: 'myimage'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -45,7 +45,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
-          # 这里的点代表仓库的根目录，如果需要更改子目录则更改这里即可，例如：./src
+          # 结尾的点代表仓库的根目录，可以更改为子目录，例如：./src
           context: .
           push: true
           platforms: linux/amd64

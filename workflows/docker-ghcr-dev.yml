@@ -44,6 +44,6 @@ jobs:
             --tag ghcr.io/${{ github.repository }}:${{ env.VERSION }} \
             --build-arg VERSION=${{ env.VERSION }} \
             .
-        # 这里结尾的点代表仓库的根目录，如果需要更改子目录则更改这里即可，例如：./node
+        # 结尾的点代表仓库的根目录，可以更改为子目录，例如：./src
         env:
           GHCR_PUBLIC: true
