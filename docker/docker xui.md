@@ -155,10 +155,6 @@ www.cisco.com
 update.microsoft
 www.tesla.com
 slack.com
-www.ibm.com
-www.ebay.com
-store.steampowered.com
-www.riotgames.com
 www.xbox.com
 www.icloud.com
 ```
