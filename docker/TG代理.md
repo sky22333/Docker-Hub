@@ -81,11 +81,11 @@ services:
 [general]
 use_middle_proxy = true
 # ad_tag = "00000000000000000000000000000000"
-# 来自 @MTProxybot 的32位十六进制
+# 来自 @MTProxybot 的32位十六进制，不要用机器人里的链接
 
 # === 日志级别 ===
 # 日志级别: debug | verbose | normal | silent
-log_level = "normal"
+log_level = "silent"
 
 [general.modes]
 classic = false
@@ -94,22 +94,18 @@ tls = true
 
 [general.links]
 show = "*"
-# show = ["alice", "bob"] # 只为 alice 和 bob 显示链接
-# show = "*"              # 为所有用户显示链接
-# public_host = "proxy.example.com"  # tg:// 链接使用的主机（IP或域名）
-# public_port = 443                  # tg:// 链接使用的端口（默认: server.port）
 
 # === 服务器绑定 ===
 [server]
 port = 443
-# proxy_protocol = false           # 如果在 HAProxy/nginx 后面并启用了 PROXY protocol，需要开启
+# proxy_protocol = false           # 如果反代并启用了 PROXY protocol，需要开启
 # metrics_port = 9090
 # metrics_whitelist = ["127.0.0.1", "::1", "0.0.0.0/0"]
 
 [server.api]
 enabled = true
 listen = "0.0.0.0:9091"
-whitelist = ["127.0.0.0/8","172.16.0.0/12"]
+whitelist = ["127.0.0.0/8", "172.16.0.0/12"]
 minimal_runtime_enabled = false
 minimal_runtime_cache_ttl_ms = 1000
 
