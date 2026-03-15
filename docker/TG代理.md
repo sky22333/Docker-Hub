@@ -81,7 +81,7 @@ services:
 [general]
 use_middle_proxy = true
 # ad_tag = "00000000000000000000000000000000"
-# @MTProxybot：将用户密钥发送给此机器人，然后输入机器人给你的tag密钥，注意两者不相同，记得取消注释，TG账户需要2019年以前的
+# @MTProxybot：将用户密钥发送给此机器人，然后输入机器人返回的tag密钥，记得取消注释，TG账户需要2019年以前的
 
 # === 日志级别 ===
 # 日志级别: debug | verbose | normal | silent
