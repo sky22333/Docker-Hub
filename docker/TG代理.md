@@ -59,7 +59,7 @@ services:
     restart: unless-stopped
     ports:
       - "443:443"
-      - "127.0.0.2:9090:9090"
+      - "127.0.0.2:9091:9091"
     volumes:
       - ./config.toml:/run/telemt/config.toml:ro
     working_dir: /run/telemt
@@ -109,7 +109,7 @@ port = 443
 [server.api]
 enabled = true
 listen = "0.0.0.0:9091"
-whitelist = ["127.0.0.0/8"]
+whitelist = ["127.0.0.0/8","172.16.0.0/12"]
 minimal_runtime_enabled = false
 minimal_runtime_cache_ttl_ms = 1000
 
