@@ -124,6 +124,7 @@ tls_front_dir = "tlsfront"   # TLS 模拟缓存目录
 # [[upstreams]]
 # type = "socks5"
 # address = "IP:port"
+# weight = 1
 # enabled = true
 
 # === 用户密钥 ===
