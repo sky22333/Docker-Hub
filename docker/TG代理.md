@@ -120,6 +120,13 @@ mask = true
 tls_emulation = true        # 获取真实证书长度并模拟 TLS 记录
 tls_front_dir = "tlsfront"   # TLS 模拟缓存目录
 
+# === 上游socks5代理链 ===
+# [[upstreams]]
+# type = "socks5"
+# address = "IP:port"
+# enabled = true
+
+# === 用户密钥 ===
 [access.users]
 # 格式: "username" = "32位十六进制secret"
 user1 = "00000000000000000000000000000000"
