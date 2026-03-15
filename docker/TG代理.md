@@ -45,7 +45,93 @@ IP 和端口取决于你 docker 的配置：
 http://服务器IP/add.php
 ```
 
+## rust版本TG代理
+项目地址：https://github.com/telemt/telemt
+#### 生成密钥：
+```
+openssl rand -hex 16
+```
+#### `docker-compose.yml`配置
+```
+services:
+  telemt:
+    image: ghcr.io/telemt/telemt:latest
+    restart: unless-stopped
+    ports:
+      - "443:443"
+      - "127.0.0.2:9090:9090"
+    volumes:
+      - ./config.toml:/run/telemt/config.toml:ro
+    working_dir: /run/telemt
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    cap_add:
+      - NET_BIND_SERVICE
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+```
+#### `config.toml`配置
+```
+# === 频道推广 ===
+[general]
+use_middle_proxy = true
+# ad_tag = "00000000000000000000000000000000"
+# 来自 @MTProxybot 的32位十六进制
 
+# === 日志级别 ===
+# 日志级别: debug | verbose | normal | silent
+log_level = "normal"
 
+[general.modes]
+classic = false
+secure = false
+tls = true
+
+[general.links]
+show = "*"
+# show = ["alice", "bob"] # 只为 alice 和 bob 显示链接
+# show = "*"              # 为所有用户显示链接
+# public_host = "proxy.example.com"  # tg:// 链接使用的主机（IP或域名）
+# public_port = 443                  # tg:// 链接使用的端口（默认: server.port）
+
+# === 服务器绑定 ===
+[server]
+port = 443
+# proxy_protocol = false           # 如果在 HAProxy/nginx 后面并启用了 PROXY protocol，需要开启
+# metrics_port = 9090
+# metrics_whitelist = ["127.0.0.1", "::1", "0.0.0.0/0"]
+
+[server.api]
+enabled = true
+listen = "0.0.0.0:9091"
+whitelist = ["127.0.0.0/8"]
+minimal_runtime_enabled = false
+minimal_runtime_cache_ttl_ms = 1000
+
+# 在多个接口/IP上监听 - IPv4
+[[server.listeners]]
+ip = "0.0.0.0"
+
+# === 反审查与伪装 ===
+[censorship]
+tls_domain = "www.bing.com"
+mask = true
+tls_emulation = true        # 获取真实证书长度并模拟 TLS 记录
+tls_front_dir = "tlsfront"   # TLS 模拟缓存目录
+
+[access.users]
+# 格式: "username" = "32位十六进制secret"
+hello = "00000000000000000000000000000000"
+```
+
+#### 获取链接
+```
+curl -s http://127.0.0.2:9091/v1/users | jq
+```
 
 ---
