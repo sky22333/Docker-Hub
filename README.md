@@ -282,9 +282,8 @@ sudo systemctl restart docker
 ```
 {
   "ipv6": true,
-  "fixed-cidr-v6": "fd00::/80",
-  "ip6tables": true,
-  "experimental": true
+  "fixed-cidr-v6": "fd00:1::/64",
+  "ip6tables": true
 }
 ```
 重启：`sudo systemctl restart docker`
