@@ -1,38 +1,8 @@
-###  docker部署3xui
+### s-ui
+https://github.com/admin8800/s-ui
 
-```
-docker run -itd \
-   -e XRAY_VMESS_AEAD_FORCED=false \
-   -v $PWD/db/:/etc/x-ui/ \
-   -v $PWD/cert/:/root/cert/ \
-   --network=host \
-   --restart=always \
-   --name 3x-ui \
-   xiangnile/3x-ui
-```
-
-```
-端口：2053
-用户名：admin
-密码：admin
-```
-面板数据在`root/db`目录下
-
-### `docker-compose.yml`
-```
-services:
-  xui:
-    image: xiangnile/3x-ui
-    container_name: xui
-    restart: always
-    network_mode: host
-    environment:
-      XRAY_VMESS_AEAD_FORCED: "false"
-    volumes:
-      - ./db:/etc/x-ui
-      - ./cert:/root/cert
-```
-
+### 3x-ui
+https://github.com/MHSanaei/3x-ui/blob/main/README.zh_CN.md
 
 #### 容器里的命令
 查看面板信息
@@ -72,69 +42,6 @@ ip addr show lo
 分配
 ```
 sudo ip addr add 127.0.0.1/8 dev lo
-```
-
----
-### 脚本
-```
-bash <(curl -Ls https://raw.githubusercontent.com/admin8800/3x-ui/main/install.sh)
-```
-
----
-
-###  官方最新3x-ui
-```
-docker run -dit \
-  --name 3x-ui \
-  --network host \
-  --restart unless-stopped \
-  -e XRAY_VMESS_AEAD_FORCED=false \
-  -e XUI_ENABLE_FAIL2BAN=true \
-  -v "$(pwd)/db:/etc/x-ui" \
-  -v "$(pwd)/cert:/root/cert" \
-  ghcr.io/mhsanaei/3x-ui
-```
-
-### `docker-compose.yml`
-```
-services:
-  xui:
-    image: ghcr.io/mhsanaei/3x-ui
-    container_name: 3x-ui
-    restart: unless-stopped
-    network_mode: host
-    environment:
-      XRAY_VMESS_AEAD_FORCED: "false"
-      XUI_ENABLE_FAIL2BAN: "true"
-    volumes:
-      - ./db:/etc/x-ui
-      - ./cert:/root/cert
-```
-
-
-### s-ui面板sing-box
-```
-docker run -itd \
-  --name s-ui \
-  --restart unless-stopped \
-  --network host \
-  -v $(pwd)/db:/app/db \
-  -v $(pwd)/cert:/app/cert \
-  alireza7/s-ui
-```
-
-`docker-compose.yml`
-```
-services:
-  s-ui:
-    image: alireza7/s-ui
-    container_name: s-ui
-    volumes:
-      - ./db:/app/db
-      - ./cert:/app/cert
-    tty: true
-    restart: unless-stopped
-    network_mode: host
 ```
 
 ---
