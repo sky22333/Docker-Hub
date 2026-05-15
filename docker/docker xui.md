@@ -11,7 +11,7 @@ https://github.com/MHSanaei/3x-ui/blob/main/README.zh_CN.md
 ```
 修改用户名和密码
 ```
-/app/x-ui setting -username 用户名 -password 密码
+/app/x-ui setting -username 用户名 -password 密码 -resetTwoFactor true
 ```
 修改面板路径
 ```
