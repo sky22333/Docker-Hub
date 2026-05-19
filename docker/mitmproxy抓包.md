@@ -26,21 +26,8 @@ sudo update-ca-certificates
 
 [普通命令代理](https://github.com/mzz2017/gg/blob/main/README_zh.md)
 
-```
-# 开启系统级流量重定向
-iptables -t nat -A OUTPUT -o lo -j RETURN
-iptables -t nat -A PREROUTING -i lo -j RETURN
-iptables -t nat -A OUTPUT -d 192.168.1.100 -j RETURN
-iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
-iptables -t nat -A PREROUTING -p tcp --dport 443 -j REDIRECT --to-port 8080
-iptables -t nat -A OUTPUT -p tcp --dport 80 -j REDIRECT --to-port 8080
-iptables -t nat -A OUTPUT -p tcp --dport 443 -j REDIRECT --to-port 8080
 
-# 清除规则
-iptables -t nat -F
-```
-
----
+[go版本](https://github.com/lqqyt2423/go-mitmproxy)
 
 
 ## win系统安装 mitmproxy
