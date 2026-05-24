@@ -1,44 +1,13 @@
-## Docker-Compose 部署Xboard面板
+### Docker-Compose 部署Xboard面板
 
 
-### [原项目地址](https://github.com/cedar2025/Xboard)
+- [官方github](https://github.com/cedar2025/Xboard)
 
-### [备用项目](https://github.com/admin8800/Xboard)
+- [第三方](https://github.com/admin8800/Xboard)
 
-### [部署教程](https://github.com/cedar2025/Xboard/blob/dev/docs/docker-compose%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97.md)
 
-#### [防机器人验证](https://www.google.com/recaptcha/admin/create)
----
 
-主题目录
-```
-public/theme
-```
-
-支付插件目录
-```
-app/Payments
-```
-
-强制获取订阅（URL后面加上这个参数）
-```
-&flag=meta&types=all
-```
-
-忘记管理员密码可以在站点目录下执行命令找回密码
-```
-docker exec -it xboard sh
-```
-```
-php artisan reset:password 管理员邮箱
-```
-重启
-```
-docker restart xboard
-```
----
-
-###  订阅被墙解决办法：
+####  订阅被墙解决办法：
 
 使用此方法后机场官网可以Cloudflare上打开质询，减少被墙几率和攻击几率。
 
@@ -57,7 +26,7 @@ docker restart xboard
 ---
 
 
-## 迁移
+#### 迁移
 ```
 # 备份现有数据库
 mysqldump -u root -p --databases my_database > my_database_backup.sql
@@ -81,9 +50,15 @@ mysql -u root -p my_database < my_database_backup.sql
 然后进入数据库的`v2_settings`表，修改https配置，域名配置，路径配置，即可正常进入后台
 
 ---
+
+#### 内置数据库路径
+```
+.docker/.data/database.sqlite
+```
+
 ---
 
-### Xboard将reCAPTCHA替换为Cloudflare Turnstile的方法
+#### Xboard将reCAPTCHA替换为Cloudflare Turnstile的方法
 
 1.修改 `/vendor/google/recaptcha/src/ReCaptcha/ReCaptcha.php`
  配置中的`SITE_VERIFY_URL`为`https://challenges.cloudflare.com/turnstile/v0/siteverify`
