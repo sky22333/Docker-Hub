@@ -14,17 +14,15 @@ mkdir wordpress && cd wordpress
 ```
 services:
   db:
-    image: mysql:5.7
-    volumes:
-      - ./data/mysql:/var/lib/mysql
+    image: mariadb:10.11
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: wordpressyyds
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: wordpress
-      MYSQL_PASSWORD: wordpress
-    networks:
-      - wp
+      MARIADB_ROOT_PASSWORD: wordpressyyds
+      MARIADB_DATABASE: wordpress
+      MARIADB_USER: wordpress
+      MARIADB_PASSWORD: wordpress
+    volumes:
+      - ./data/mysql:/var/lib/mysql
 
   wordpress:
     container_name: wordpress
@@ -41,11 +39,6 @@ services:
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
       WORDPRESS_DB_NAME: wordpress
-    networks:
-      - wp
-
-networks:
-  wp:
 ```
 
 运行：
@@ -66,7 +59,7 @@ docker compose up -d
 
 进入 wordpress 容器
 ```
-docker exec -it wordpress /bin/bash
+docker exec -it wordpress /bin/sh
 ```
 wordpress 容器中的这个路径`/usr/local/etc/php/`，是存放 `php.ini` 的地方，但是默认是没有 `php.ini` 这个文件的，所以我们要通过复制一份`php.ini-production`文件，来生成 `php.ini` 文件。
 ```
@@ -75,16 +68,8 @@ cd /usr/local/etc/php/
 ```
 cp php.ini-production php.ini
 ```
-然后使用vim编辑器修改即可，如果没有则需要安装一下
-
-更新及安装vim，使用如下代码
 ```
-apt-get update
-apt-get install vim
-```
-安装完成vim，现在就可以对php.ini进行编辑了。
-```
-vim php.ini
+vi php.ini
 ```
 找到这几个变量，根据自己需求修改。
 ```
@@ -92,8 +77,6 @@ upload_max_filesize = 2M      # PHP最大上传文件大小
 post_max_size = 8M            # 服务器最大数据量和文件大小
 memory_limit = 128M           # PHP内存占用限制
 ```
-最后一步！
-
 重启wordpress
 ```
 docker restart wordpress
@@ -108,23 +91,21 @@ docker restart wordpress
 ```
 services:
   db:
-    image: mysql:5.7
-    volumes:
-      - ./data/mysql:/var/lib/mysql
+    image: mariadb:10.11
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: wordpressyyds
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: wordpress
-      MYSQL_PASSWORD: wordpress
-    networks:
-      - wp
+      MARIADB_ROOT_PASSWORD: wordpressyyds
+      MARIADB_DATABASE: wordpress
+      MARIADB_USER: wordpress
+      MARIADB_PASSWORD: wordpress
+    volumes:
+      - ./data/mysql:/var/lib/mysql
 
   wordpress:
     container_name: wordpress
     depends_on:
       - db
-      - redis  # 添加redis
+      - redis
     image: wordpress:latest
     volumes:
       - ./data/wp:/var/www/html
@@ -137,18 +118,11 @@ services:
       WORDPRESS_DB_PASSWORD: wordpress
       WORDPRESS_DB_NAME: wordpress
       WORDPRESS_REDIS_HOST: redis
-    networks:
-      - wp
 
   redis:
     image: redis:alpine
     container_name: redis
     restart: always
-    networks:
-      - wp
-
-networks:
-  wp:
 ```
 
 - 在`wp-config.php`文件中添加以下代码
@@ -162,7 +136,7 @@ define('WP_CACHE', true);
 
 - 容器内安装redis扩展
 ```
-docker exec -it wordpress /bin/bash
+docker exec -it wordpress /bin/sh
 ```
 ```
 apt-get update && apt-get install -y libz-dev libssl-dev
@@ -180,10 +154,8 @@ docker restart wordpress
 ---
 - 修改后台路径插件`WPS Hide Login`
 - 备份插件`WPvivid`
-- 直播播放器插件`SRS Player`
 - 优化性能缓存插件`WP Fastest Cache`
 - 压缩图片和懒加载插件`Smush`
-
 
 ---
 
