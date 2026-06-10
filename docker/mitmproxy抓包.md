@@ -22,13 +22,7 @@ sudo update-ca-certificates
 
 打开面板查看流量日志
 
-[透明代理配置教程](https://docs.mitmproxy.org/stable/howto-transparent/)
-
-[普通命令代理](https://github.com/mzz2017/gg/blob/main/README_zh.md)
-
-
-[go版本](https://github.com/lqqyt2423/go-mitmproxy)
-
+linux可配合 [daed](https://github.com/daeuniverse/daed) 透明代理捕获系统所有流量
 
 ## win系统安装 mitmproxy
 
@@ -43,23 +37,13 @@ sudo update-ca-certificates
     mitmproxy --listen-host 0.0.0.0 --listen-port 8080 --web-host 0.0.0.0 --web-port 8081
     ```
 
-## 3. 配置系统使用代理
 ### 设置系统代理
 1. 打开 **设置** -> **网络和互联网** -> **代理**。
 2. 在 **手动代理设置** 中，开启 **使用代理服务器**。
    - 代理地址：`127.0.0.1`
    - 端口：`8080`
 
-### 命令行设置系统代理
-1. 通过PowerShell设置全局代理：
-
-`netsh winhttp set proxy 127.0.0.1:8080`
-
-2. 验证代理设置：
-
-`netsh winhttp show proxy`
-
-## 4. 信任 mitmproxy 证书
+可配合 [proxifyre-ui](https://github.com/sky22333/proxifyre-ui) 透明代理捕获系统所有流量
 
 ### 下载 mitmproxy 证书
 1. 在浏览器中访问 `http://mitm.it`。
@@ -74,19 +58,3 @@ sudo update-ca-certificates
    - 在证书管理器中，右键点击 **受信任的根证书颁发机构** 文件夹，选择 **所有任务** -> **导入**。
    - 在导入向导中选择下载的证书文件（`mitmproxy-ca-cert.pem`），然后选择 **放入以下存储**，并选择 **受信任的根证书颁发机构**。
    - 完成导入并确认证书已经被信任。
-
-### 在浏览器中安装证书
-1. **Chrome/Edge**：
-    - 打开 **设置** -> **隐私与安全** -> **安全** -> **管理证书**。
-    - 导入证书并信任它。
-2. **Firefox**：
-    - 打开 **设置** -> **隐私与安全** -> **证书** -> **查看证书**。
-    - 导入并信任证书。
-
-## 5. 测试代理
-1. 打开浏览器访问任意网站，查看 `mitmproxy` 控制台是否显示日志。
-
-## 常见问题
-- **证书未信任**：确保证书已正确安装并信任。可以尝试重新启动系统以确保证书生效。
-- **代理不生效**：确认代理配置正确，`mitmproxy` 正在运行。
-- **某些应用未生效**：某些应用程序可能不遵循系统代理设置，需单独配置代理。
