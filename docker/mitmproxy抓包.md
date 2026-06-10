@@ -38,10 +38,7 @@ linux可配合 [daed](https://github.com/daeuniverse/daed) 透明代理捕获系
 mitmweb --listen-host 0.0.0.0 --listen-port 8080 --web-host 0.0.0.0 --web-port 8081
 ```
 
-### 设置系统代理
-```
-127.0.0.1:8080
-```
+默认8080(代理端口)，和8081(面板端口)
 
 可配合 [proxifyre-ui](https://github.com/sky22333/proxifyre-ui) 透明代理捕获系统所有流量
 
