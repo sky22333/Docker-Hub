@@ -34,7 +34,7 @@ linux可配合 [daed](https://github.com/daeuniverse/daed) 透明代理捕获系
 1. 打开 **命令提示符** 或 **PowerShell**。
 2. 启动 mitmproxy，默认监听 `8080` 端口：
     ```
-    mitmproxy --listen-host 0.0.0.0 --listen-port 8080 --web-host 0.0.0.0 --web-port 8081
+    mitmweb --listen-host 0.0.0.0 --listen-port 8080 --web-host 0.0.0.0 --web-port 8081
     ```
 
 ### 设置系统代理
