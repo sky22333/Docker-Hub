@@ -41,3 +41,5 @@ use_udp = true
 listen = "0.0.0.0:8899"
 remote = "落地机IP:9900"
 ```
+
+多个转发就增加`[[endpoints]]`
