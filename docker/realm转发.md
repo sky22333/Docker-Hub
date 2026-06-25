@@ -18,7 +18,7 @@ services:
 ```
 [[endpoints]]
 listen = "0.0.0.0:8899"
-remote = "B机器IP:8443"
+remote = "落地机IP:8443"
 remote_transport = "tls;sni=bing.com;insecure"
 ```
 
@@ -39,5 +39,5 @@ use_udp = true
 
 [[endpoints]]
 listen = "0.0.0.0:8899"
-remote = "落地机:9900"
+remote = "落地机IP:9900"
 ```
