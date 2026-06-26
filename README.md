@@ -370,7 +370,3 @@ sudo rm -rf /etc/docker /var/lib/docker
 - 配合 BuildKit，速度快且资源利用率高
 
 - 支持使用简单的 JSON 或 HCL 文件配置，清晰明了
-
-
-## Stargazers over time
-[![Stargazers over time](https://starchart.cc/sky22333/Docker-Hub.svg?variant=adaptive)](https://starchart.cc/sky22333/Docker-Hub)
