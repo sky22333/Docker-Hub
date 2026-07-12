@@ -24,7 +24,7 @@ jobs:
 
     steps:
       - name: 拉取代码
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: 设置 Docker Buildx
         uses: docker/setup-buildx-action@v4
@@ -54,3 +54,5 @@ jobs:
             ${{ env.IMAGE_NAME }}:latest
             ${{ env.DOCKERHUB_IMAGE_NAME }}:${{ inputs.version }}
             ${{ env.DOCKERHUB_IMAGE_NAME }}:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

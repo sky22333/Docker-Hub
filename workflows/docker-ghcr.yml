@@ -20,9 +20,10 @@ jobs:
   build:
     name: 构建并推送多架构镜像
     runs-on: ubuntu-latest
+
     steps:
       - name: 拉取代码
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: 设置 Docker Buildx
         uses: docker/setup-buildx-action@v4
@@ -43,3 +44,5 @@ jobs:
           tags: |
             ${{ env.IMAGE_NAME }}:${{ inputs.version }}
             ${{ env.IMAGE_NAME }}:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
